@@ -19,6 +19,13 @@
 		5862EED8269C9ED700BE2EA4 /* fbu_appUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EED7269C9ED700BE2EA4 /* fbu_appUITests.m */; };
 		5862EEEA269CA28F00BE2EA4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEE9269CA28F00BE2EA4 /* LoginViewController.m */; };
 		5862EEEE269CA40600BE2EA4 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEED269CA40600BE2EA4 /* SignupViewController.m */; };
+		5862EEF7269CB66A00BE2EA4 /* MainFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEF6269CB66A00BE2EA4 /* MainFeedViewController.m */; };
+		5862EEFA269CB79500BE2EA4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEF9269CB79500BE2EA4 /* SettingsViewController.m */; };
+		5862EEFD269CBEC300BE2EA4 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEFC269CBEC300BE2EA4 /* ListCell.m */; };
+		5862EF00269CBF2E00BE2EA4 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEFF269CBF2E00BE2EA4 /* ListViewController.m */; };
+		5862EF03269CC03A00BE2EA4 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF02269CC03A00BE2EA4 /* List.m */; };
+		5862EF06269CC04E00BE2EA4 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF05269CC04E00BE2EA4 /* Task.m */; };
+		5862EF09269CC6B400BE2EA4 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF08269CC6B400BE2EA4 /* TaskViewController.m */; };
 		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
 		878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */; };
 /* End PBXBuildFile section */
@@ -65,6 +72,20 @@
 		5862EEE9269CA28F00BE2EA4 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		5862EEEC269CA40600BE2EA4 /* SignupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
 		5862EEED269CA40600BE2EA4 /* SignupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		5862EEF5269CB66A00BE2EA4 /* MainFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainFeedViewController.h; sourceTree = "<group>"; };
+		5862EEF6269CB66A00BE2EA4 /* MainFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFeedViewController.m; sourceTree = "<group>"; };
+		5862EEF8269CB79500BE2EA4 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5862EEF9269CB79500BE2EA4 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		5862EEFB269CBEC300BE2EA4 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
+		5862EEFC269CBEC300BE2EA4 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		5862EEFE269CBF2E00BE2EA4 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		5862EEFF269CBF2E00BE2EA4 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		5862EF01269CC03A00BE2EA4 /* List.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
+		5862EF02269CC03A00BE2EA4 /* List.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
+		5862EF04269CC04E00BE2EA4 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		5862EF05269CC04E00BE2EA4 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		5862EF07269CC6B400BE2EA4 /* TaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
+		5862EF08269CC6B400BE2EA4 /* TaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +201,14 @@
 				5862EEE9269CA28F00BE2EA4 /* LoginViewController.m */,
 				5862EEEC269CA40600BE2EA4 /* SignupViewController.h */,
 				5862EEED269CA40600BE2EA4 /* SignupViewController.m */,
+				5862EEF5269CB66A00BE2EA4 /* MainFeedViewController.h */,
+				5862EEF6269CB66A00BE2EA4 /* MainFeedViewController.m */,
+				5862EEF8269CB79500BE2EA4 /* SettingsViewController.h */,
+				5862EEF9269CB79500BE2EA4 /* SettingsViewController.m */,
+				5862EEFE269CBF2E00BE2EA4 /* ListViewController.h */,
+				5862EEFF269CBF2E00BE2EA4 /* ListViewController.m */,
+				5862EF07269CC6B400BE2EA4 /* TaskViewController.h */,
+				5862EF08269CC6B400BE2EA4 /* TaskViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -187,6 +216,8 @@
 		5862EEE6269CA22800BE2EA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5862EEFB269CBEC300BE2EA4 /* ListCell.h */,
+				5862EEFC269CBEC300BE2EA4 /* ListCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +225,10 @@
 		5862EEE7269CA23500BE2EA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5862EF01269CC03A00BE2EA4 /* List.h */,
+				5862EF02269CC03A00BE2EA4 /* List.m */,
+				5862EF04269CC04E00BE2EA4 /* Task.h */,
+				5862EF05269CC04E00BE2EA4 /* Task.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -449,9 +484,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				5862EEEE269CA40600BE2EA4 /* SignupViewController.m in Sources */,
+				5862EF00269CBF2E00BE2EA4 /* ListViewController.m in Sources */,
+				5862EEF7269CB66A00BE2EA4 /* MainFeedViewController.m in Sources */,
 				5862EEB8269C9ED400BE2EA4 /* ViewController.m in Sources */,
+				5862EF06269CC04E00BE2EA4 /* Task.m in Sources */,
 				5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */,
+				5862EEFD269CBEC300BE2EA4 /* ListCell.m in Sources */,
+				5862EF09269CC6B400BE2EA4 /* TaskViewController.m in Sources */,
 				5862EEC3269C9ED600BE2EA4 /* main.m in Sources */,
+				5862EEFA269CB79500BE2EA4 /* SettingsViewController.m in Sources */,
+				5862EF03269CC03A00BE2EA4 /* List.m in Sources */,
 				5862EEB5269C9ED400BE2EA4 /* SceneDelegate.m in Sources */,
 				5862EEEA269CA28F00BE2EA4 /* LoginViewController.m in Sources */,
 			);

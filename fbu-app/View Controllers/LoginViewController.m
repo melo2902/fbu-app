@@ -17,7 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+
+    [self.view addGestureRecognizer:tap];
 }
 
 - (IBAction)onTapLogin:(id)sender {
@@ -50,6 +54,11 @@
             [self performSegueWithIdentifier:@"loggedInSegue" sender:nil];
         }
     }];
+}
+
+-(void)dismissKeyboard {
+    [self.emailLabel resignFirstResponder];
+    [self.passwordLabel resignFirstResponder];
 }
 
 /*
