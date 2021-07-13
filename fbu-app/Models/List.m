@@ -11,19 +11,23 @@
 @dynamic name;
 @dynamic arrayOfItems;
 @dynamic totalWorkingTime;
+@dynamic author;
 
 + (nonnull NSString *)parseClassName {
     return @"List";
 }
 
-+ (void) createList: ( NSString *)name withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (List *) createList: ( NSString *)name withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     List *newList = [[List alloc] initWithClassName:@"List"];
     newList.name = name;
     newList.arrayOfItems = [NSMutableArray new];
     newList.totalWorkingTime = @(0);
+    newList.author = PFUser.currentUser;
     
     [newList saveInBackgroundWithBlock: completion];
+    
+    return newList;
 }
 
 @end

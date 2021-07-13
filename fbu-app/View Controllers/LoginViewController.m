@@ -48,8 +48,8 @@
             }];
             
         } else {
-            NSLog(@"User logged in successfully");
             
+            NSLog(@"Do we hit this?");
             // display view controller that needs to shown after successful login
             [self performSegueWithIdentifier:@"loggedInSegue" sender:nil];
         }

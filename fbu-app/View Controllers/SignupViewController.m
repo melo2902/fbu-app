@@ -7,6 +7,7 @@
 
 #import "SignupViewController.h"
 #import "Parse/Parse.h"
+#import "List.h"
 
 @interface SignupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-
+    
     [self.view addGestureRecognizer:tap];
 }
 
@@ -39,20 +40,32 @@
         newUser[@"lastName"] = self.lastNameField.text;
         newUser.password = self.passwordField.text;
         
+        //      Set up array with initial list objects
+//        Wonder if this is hit too late?
+        NSMutableArray *preDefinedLists = [[NSMutableArray alloc] init];
+        [self createPredefinedLists:@"All" toList:preDefinedLists];
+        [self createPredefinedLists:@"My Day" toList:preDefinedLists];
+        [self createPredefinedLists:@"Tasks" toList:preDefinedLists];
+        [self createPredefinedLists:@"Messages" toList:preDefinedLists];
+        
+        NSLog(@"%@", preDefinedLists);
+        
+        newUser[@"lists"] = preDefinedLists;
+        
         // call sign up function on the object
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (error != nil) {
                 NSLog(@"Error: %@", error.localizedDescription);
                 
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sign Up Failed"
-                    message:@"The username is already taken!"
-                    preferredStyle:(UIAlertControllerStyleAlert)];
+                                                                               message:@"The username is already taken!"
+                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
                 
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                    style:UIAlertActionStyleDefault
-                    handler:^(UIAlertAction * _Nonnull action) {
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
                 }];
-
+                
                 [alert addAction:okAction];
                 
                 [self presentViewController:alert animated:YES completion:^{
@@ -66,19 +79,25 @@
         }];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sign Up Failed"
-            message:@"Please input matching passwords!"
-            preferredStyle:(UIAlertControllerStyleAlert)];
+                                                                       message:@"Please input matching passwords!"
+                                                                preferredStyle:(UIAlertControllerStyleAlert)];
         
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-            style:UIAlertActionStyleDefault
-            handler:^(UIAlertAction * _Nonnull action) {
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
         }];
-
+        
         [alert addAction:okAction];
         
         [self presentViewController:alert animated:YES completion:^{
         }];
     }
+}
+
+-(void) createPredefinedLists:(NSString *) name toList:(NSMutableArray *) definedList {
+    List *newList = [List createList:name withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    }];
+    [definedList addObject:newList];
 }
 
 -(void)dismissKeyboard {
@@ -90,15 +109,13 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)emailLabel:(id)sender {
-}
 @end

@@ -14,8 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableArray *arrayOfItems;
 @property (nonatomic, strong) NSNumber *totalWorkingTime;
+@property (nonatomic, strong) PFUser *author;
 
-+ (void) createList: ( NSString *)name withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (List *) createList: ( NSString *)name withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

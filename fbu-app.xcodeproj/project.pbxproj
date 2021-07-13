@@ -26,6 +26,7 @@
 		5862EF03269CC03A00BE2EA4 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF02269CC03A00BE2EA4 /* List.m */; };
 		5862EF06269CC04E00BE2EA4 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF05269CC04E00BE2EA4 /* Task.m */; };
 		5862EF09269CC6B400BE2EA4 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF08269CC6B400BE2EA4 /* TaskViewController.m */; };
+		5862EF0D269DE3EE00BE2EA4 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0C269DE3EE00BE2EA4 /* APIManager.m */; };
 		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
 		878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,8 @@
 		5862EF05269CC04E00BE2EA4 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		5862EF07269CC6B400BE2EA4 /* TaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
 		5862EF08269CC6B400BE2EA4 /* TaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
+		5862EF0B269DE3EE00BE2EA4 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		5862EF0C269DE3EE00BE2EA4 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +161,7 @@
 		5862EEAF269C9ED400BE2EA4 /* fbu-app */ = {
 			isa = PBXGroup;
 			children = (
+				5862EF0A269DE3DB00BE2EA4 /* API Manager */,
 				5862EEE7269CA23500BE2EA4 /* Models */,
 				5862EEE6269CA22800BE2EA4 /* Views */,
 				5862EEE5269CA22200BE2EA4 /* View Controllers */,
@@ -231,6 +235,15 @@
 				5862EF05269CC04E00BE2EA4 /* Task.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5862EF0A269DE3DB00BE2EA4 /* API Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5862EF0B269DE3EE00BE2EA4 /* APIManager.h */,
+				5862EF0C269DE3EE00BE2EA4 /* APIManager.m */,
+			);
+			path = "API Manager";
 			sourceTree = "<group>";
 		};
 		6FEE81DCAF646E2A04BCAD83 /* Pods */ = {
@@ -487,6 +500,7 @@
 				5862EF00269CBF2E00BE2EA4 /* ListViewController.m in Sources */,
 				5862EEF7269CB66A00BE2EA4 /* MainFeedViewController.m in Sources */,
 				5862EEB8269C9ED400BE2EA4 /* ViewController.m in Sources */,
+				5862EF0D269DE3EE00BE2EA4 /* APIManager.m in Sources */,
 				5862EF06269CC04E00BE2EA4 /* Task.m in Sources */,
 				5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */,
 				5862EEFD269CBEC300BE2EA4 /* ListCell.m in Sources */,

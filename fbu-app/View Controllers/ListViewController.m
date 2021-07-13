@@ -8,7 +8,9 @@
 #import "ListViewController.h"
 
 @interface ListViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation ListViewController
@@ -16,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.listNameLabel.text = self.list[@"name"];
+//    self.workingTimeLabel.text = self.list[@"totalWorkingTime"];
 }
 
 /*

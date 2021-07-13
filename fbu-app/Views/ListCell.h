@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ListCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
 
 @end
 
