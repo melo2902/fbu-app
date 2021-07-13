@@ -7,6 +7,7 @@
 
 #import "PFObject.h"
 #import "Parse/Parse.h"
+#import "Task.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *author;
 
 + (List *) createList: ( NSString *)name withCompletion: (PFBooleanResultBlock  _Nullable)completion;
+
++ (void) addTask: ( Task *)task toList: (List *) list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

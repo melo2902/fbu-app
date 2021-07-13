@@ -6,6 +6,8 @@
 //
 
 #import "SettingsViewController.h"
+#import "SceneDelegate.h"
+#import "LoginViewController.h"
 #import "APIManager.h"
 #import "Parse/Parse.h"
 
@@ -57,6 +59,17 @@
     } else {
         // will have a nice alert displaying soon.
     }
+}
+
+- (IBAction)onTapLogOut:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+    }];
+    
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    sceneDelegate.window.rootViewController = loginViewController;
 }
 
 /*

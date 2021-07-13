@@ -21,6 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [PFUser logOut];
+    
     // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
@@ -40,17 +42,19 @@
         newUser[@"lastName"] = self.lastNameField.text;
         newUser.password = self.passwordField.text;
         
-        //      Set up array with initial list objects
-//        Wonder if this is hit too late?
         NSMutableArray *preDefinedLists = [[NSMutableArray alloc] init];
         [self createPredefinedLists:@"All" toList:preDefinedLists];
         [self createPredefinedLists:@"My Day" toList:preDefinedLists];
         [self createPredefinedLists:@"Tasks" toList:preDefinedLists];
         [self createPredefinedLists:@"Messages" toList:preDefinedLists];
-        
-        NSLog(@"%@", preDefinedLists);
-        
+
+        PFUser *currentUser = PFUser.currentUser;
+        NSLog(@"%@currentUser", currentUser);
         newUser[@"lists"] = preDefinedLists;
+        
+//        NSLog(@"%@", preDefinedLists);
+//
+//        newUser[@"lists"] = preDefinedLists;
         
         // call sign up function on the object
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
@@ -73,6 +77,7 @@
             } else {
                 NSLog(@"User registered successfully");
                 
+//                [self addListToUser];
                 // manually segue to logged in view
                 [self performSegueWithIdentifier:@"signedUpSegue" sender:nil];
             }
@@ -92,6 +97,27 @@
         [self presentViewController:alert animated:YES completion:^{
         }];
     }
+}
+
+//This is not right
+-(void) addListToUser {
+    // set up array with initial list objects
+    NSMutableArray *preDefinedLists = [[NSMutableArray alloc] init];
+    [self createPredefinedLists:@"All" toList:preDefinedLists];
+    [self createPredefinedLists:@"My Day" toList:preDefinedLists];
+    [self createPredefinedLists:@"Tasks" toList:preDefinedLists];
+    [self createPredefinedLists:@"Messages" toList:preDefinedLists];
+
+    PFUser *currentUser = PFUser.currentUser;
+    currentUser[@"lists"] = preDefinedLists;
+
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error){
+            NSLog(@"Error: %@", error.localizedDescription);
+        } else {
+            NSLog(@"Arrays saved successfully");
+        }
+    }];
 }
 
 -(void) createPredefinedLists:(NSString *) name toList:(NSMutableArray *) definedList {

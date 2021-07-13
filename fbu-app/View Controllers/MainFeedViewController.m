@@ -34,90 +34,35 @@
 }
 
 - (void) getLists {
-//    PFQuery *query = [PFUser query];
-//    [query whereKey:@"username" equalTo:PFUser.currentUser.username];
-//    [query includeKey:@"lists"];
-//
-//    [query findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * _Nullable error) {
-//           if (error) {
-//               NSLog(@"error: %@",error);
-//           } else {
-//               NSLog(@"%@object", objects);
-//               NSLog(@"object%@", [objects firstObject]);
-////               self.profileToSet = [objects firstObject];
-//           // Do the rest of the setup with the profileToSet PFUser PFObject.
-//           }
-//       }];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"List"];
-    [query includeKey:@"author"];
-    [query whereKey:@"author" equalTo: PFUser.currentUser];
-    NSLog(@"%@", PFUser.currentUser);
-    [query findObjectsInBackgroundWithBlock:^(NSArray *lists, NSError *error) {
-        if (lists != nil) {
-//            if (!lists.count) {
-            NSLog(@"Lists%@", lists);
-            self.arrayOfLists = (NSMutableArray *) lists;
-            NSLog(@"%@arrayOfLists", self.arrayOfLists);
+    PFQuery *query = [PFUser query];
+//    [query whereKey:@"author" equalTo:PFUser.currentUser];
+    [query whereKey:@"username" equalTo:PFUser.currentUser.username];
+    NSLog(@"%@", PFUser.currentUser.username);
+    [query includeKey:@"lists.name"];
+    [query includeKey:@"lists.totalWorkingTime"];
+    [query includeKey:@"lists.author"];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+           //You found the user!
+           PFUser *queriedUser = (PFUser *)object;
+            NSLog(@"%@", queriedUser[@"lists"]);
+            self.arrayOfLists = queriedUser[@"lists"];
             [self.tableView reloadData];
-//            } else {
-//                self.arrayOfLists = PFUser.currentUser[@"lists"];
-//                [self.tableView reloadData];
-//            }
-        } else {
-            NSLog(@"%@", error.localizedDescription);
         }
+
     }];
-    
-//    NSMutableArray *lists = (NSMutableArray *)[query findObjects];
-//    self.arrayOfLists = (NSMutableArray *) lists;
-//
-//    [currentUser]
-//    PFQuery *query = [PFUser query];
-//    [query whereKey:@"email" equalTo:@"email@example.com"];
-//    NSArray *users = [query findObjects];
-    
-//    PFQuery *query = [PFQuery queryWithClassName:@"User"];
-//    [query whereKey:@"];
-//    [query orderByDescending:@"createdAt"];
-   
-    // fetch data asynchronously
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
-//        if (posts != nil) {
-//            self.posts = posts;
-//
-//            [self.tableView reloadData];
-//        } else {
-//            NSLog(@"%@", error.localizedDescription);
-//        }
-//    }];
-    
-//    PFUser *user = [PFUser currentUser];
-//    self.arrayOfLists = PFUser.currentUser[@"lists"];
-//
-//    NSLog(@"%@", PFUser.currentUser);
-//    NSLog(@"%@", self.arrayOfLists);
-    
-//    [self.tableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    NSLog(@"do we hit here");
     ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell" forIndexPath:indexPath];
     
     List *list = self.arrayOfLists[indexPath.row];
-//    cell.listNameLabel.text = list.name;
-    NSLog(@"name%@", list[@"name"]);
     cell.listNameLabel.text = list[@"name"];
     
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 1;
-//
-    NSLog(@"%lu", (unsigned long)self.arrayOfLists.count);
-    NSLog(@"%@ARRAY", self.arrayOfLists);
     return self.arrayOfLists.count;
 }
 

@@ -6,6 +6,7 @@
 //
 
 #import "List.h"
+#import "Parse/Parse.h"
 
 @implementation List
 @dynamic name;
@@ -21,13 +22,24 @@
     
     List *newList = [[List alloc] initWithClassName:@"List"];
     newList.name = name;
-    newList.arrayOfItems = [NSMutableArray new];
+    newList.arrayOfItems = [[NSMutableArray alloc] init];
     newList.totalWorkingTime = @(0);
-    newList.author = PFUser.currentUser;
+//    newList.author = PFUser.currentUser;
+    
+    NSLog(@"author%@", newList.author);
     
     [newList saveInBackgroundWithBlock: completion];
     
     return newList;
+}
+
++ (void) addTask: ( Task *)task toList: (List*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+    
+    NSLog(@"list%@", list);
+    [list[@"arrayOfItems"] addObject:task];
+
+    NSLog(@"%@", list[@"arrayOfItems"]);
+    [list saveInBackgroundWithBlock: completion];
 }
 
 @end

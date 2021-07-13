@@ -106,6 +106,14 @@
                                     <action selector="onTapAddPlatform:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="IJS-OF-rR6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1S-Ba-dq4">
+                                <rect key="frame" x="26" y="344" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="onTapLogOut:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="P7b-cZ-axt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Imz-eg-ecC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -201,9 +209,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label of List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pt-fd-yxw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label of List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pt-fd-yxw">
                                 <rect key="frame" x="30" y="81" width="207" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -212,6 +219,34 @@
                                 <rect key="frame" x="30" y="192" width="336" height="598"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="67" id="KuR-wg-slr" customClass="TaskCell">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="336" height="67"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KuR-wg-slr" id="kbu-lx-hyf">
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="67"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaE-Zu-vzE">
+                                                    <rect key="frame" x="18" y="22" width="20" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="circle" catalog="system"/>
+                                                    <state key="selected" image="circle.fill" catalog="system"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Task Item Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydk-uC-0h8">
+                                                    <rect key="frame" x="59" y="22" width="277" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="taskItemLabel" destination="Ydk-uC-0h8" id="i3r-9o-5D8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a task..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Inb-kc-09Z">
                                 <rect key="frame" x="30" y="137" width="336" height="34"/>
@@ -219,9 +254,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mX-he-hvF">
-                                <rect key="frame" x="245" y="102" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mX-he-hvF">
+                                <rect key="frame" x="245" y="99.666666666666671" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -229,12 +263,19 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8L7-NB-Pr5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2mX-he-hvF" firstAttribute="centerY" secondItem="9Pt-fd-yxw" secondAttribute="centerY" constant="5" id="6tz-Vb-3le"/>
+                            <constraint firstItem="2mX-he-hvF" firstAttribute="leading" secondItem="9Pt-fd-yxw" secondAttribute="trailing" constant="8" id="8ZF-j1-gIj"/>
+                            <constraint firstItem="9Pt-fd-yxw" firstAttribute="leading" secondItem="8L7-NB-Pr5" secondAttribute="leading" constant="30" id="KWX-UE-qcZ"/>
+                            <constraint firstItem="9Pt-fd-yxw" firstAttribute="top" secondItem="8L7-NB-Pr5" secondAttribute="top" constant="25" id="iRv-0p-lcQ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c3b-i2-RwL"/>
                     <connections>
                         <outlet property="addedTaskBar" destination="Inb-kc-09Z" id="Hks-zt-qUL"/>
                         <outlet property="listNameLabel" destination="9Pt-fd-yxw" id="oYC-xc-eEV"/>
                         <outlet property="tableView" destination="UOo-0c-DmN" id="Ddf-bu-2zK"/>
+                        <outlet property="workingTimeLabel" destination="2mX-he-hvF" id="ST0-Fc-e40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwP-4P-wfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -402,9 +443,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uL1-L1-8iG"/>
+        <segue reference="6rf-sN-hYh"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="circle" catalog="system" width="128" height="121"/>
+        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">

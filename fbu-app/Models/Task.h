@@ -6,19 +6,20 @@
 //
 
 #import "PFObject.h"
-#import "Parse/Parse.h"
+#import "Parse/Parse.h" // Not sure if I need this or not
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Task : PFObject
 @property (nonatomic, strong) PFUser *author;
+@property (nonatomic, strong) NSString *listTitle;
 @property (nonatomic, strong) NSString *taskTitle;
 @property (nonatomic, strong) NSNumber *workingTime;
 @property (nonatomic, strong) NSDate *dueDate;
 @property (nonatomic, strong) NSString *notes;
 @property (nonatomic) BOOL completed;
 
-+ (void) createTask: ( NSString *)name withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (Task*) createTask: ( NSString *)name inList: ( NSString *)list withCompletion: (PFBooleanResultBlock  _Nullable) completion;
 
 @end
 
