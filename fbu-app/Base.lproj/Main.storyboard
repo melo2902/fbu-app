@@ -111,6 +111,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="f2D-De-N7D"/>
+                    <connections>
+                        <outlet property="userNameLabel" destination="3hO-et-RQQ" id="Lvw-3e-Mqd"/>
+                        <outlet property="userPFPView" destination="Zmq-0I-8DZ" id="4ut-Er-hlR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4FZ-9t-uQU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -228,9 +232,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="c3b-i2-RwL"/>
                     <connections>
+                        <outlet property="addedTaskBar" destination="Inb-kc-09Z" id="Hks-zt-qUL"/>
                         <outlet property="listNameLabel" destination="9Pt-fd-yxw" id="oYC-xc-eEV"/>
                         <outlet property="tableView" destination="UOo-0c-DmN" id="Ddf-bu-2zK"/>
-                        <outlet property="workingTimeLabel" destination="2mX-he-hvF" id="Thw-Ua-5ZW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwP-4P-wfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

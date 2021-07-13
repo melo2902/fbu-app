@@ -7,8 +7,11 @@
 
 #import "SettingsViewController.h"
 #import "APIManager.h"
+#import "Parse/Parse.h"
 
 @interface SettingsViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
 @end
 
@@ -18,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //    definesPresentationContext = true
+    self.userNameLabel.text = PFUser.currentUser.username;
 }
 
 - (IBAction)onTapAddPlatform:(id)sender {
@@ -40,6 +44,7 @@
             NSMutableString *URLString = [[NSMutableString alloc] init];
             [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
             [URLString appendString:[APIManager getAuthToken]];
+//            I think I'm just using my own getAuthToken, I need to be able to grab other peoples
             NSLog(@"%@", URLString);
             NSError* error = nil;
             NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];

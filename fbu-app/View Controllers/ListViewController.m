@@ -6,11 +6,13 @@
 //
 
 #import "ListViewController.h"
+#import "Task.h"
 
-@interface ListViewController ()
+@interface ListViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextField *addedTaskBar;
 @end
 
 @implementation ListViewController
@@ -18,9 +20,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.addedTaskBar.delegate = self;
     
     self.listNameLabel.text = self.list[@"name"];
 //    self.workingTimeLabel.text = self.list[@"totalWorkingTime"];
+}
+
+// Also, want to be able to add a long version of it
+// This is the short term quick add
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"%@", self.addedTaskBar.text);
+    
+    [Task createTask:self.addedTaskBar.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    }];
+    
+    self.addedTaskBar.text = @"";
+    [self.tableView reloadData];
+
+    return YES;
 }
 
 /*

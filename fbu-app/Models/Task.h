@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Task : PFObject
+@property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) NSString *taskTitle;
 @property (nonatomic, strong) NSNumber *workingTime;
 @property (nonatomic, strong) NSDate *dueDate;

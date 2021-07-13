@@ -8,6 +8,7 @@
 #import "Task.h"
 
 @implementation Task
+@dynamic author;
 @dynamic taskTitle;
 @dynamic workingTime;
 @dynamic dueDate;
@@ -17,6 +18,7 @@
 + (void) createTask: ( NSString *)name withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Task *newTask = [[Task alloc] initWithClassName:@"Task"];
+    newTask.author = PFUser.currentUser;
     newTask.taskTitle = name;
     newTask.workingTime = @(0);
     
