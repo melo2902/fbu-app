@@ -36,7 +36,7 @@
         // set user properties
         newUser.username = [NSString stringWithFormat:@"%@ %@", self.firstNameField.text, self.lastNameField.text];
         newUser[@"firstName"] = self.firstNameField.text;
-//        newUser.email = self.emailField.text;
+        newUser.email = self.emailField.text;
         newUser[@"lastName"] = self.lastNameField.text;
         newUser.password = self.passwordField.text;
         
