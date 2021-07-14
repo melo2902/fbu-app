@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *addedTaskBar;
 @property (nonatomic, strong) NSMutableArray *arrayOfTasks;
+@property (nonatomic, strong) NSMutableArray *completedTasks;
 @property (nonatomic, strong) List *currentList;
 @end
 
@@ -37,38 +38,56 @@
 }
 
 - (void) getTasks {
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"username" equalTo:PFUser.currentUser.username];
-    [query includeKey:@"lists"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query whereKey:@"author" equalTo: PFUser.currentUser];
+    [query whereKey:@"listTitle" equalTo: self.list[@"name"]];
+    [query whereKey:@"author" equalTo: PFUser.currentUser];
     
-//    [query whereKey:@"lists.name" equalTo: self.list[@"name"]];
-//    NSLog(@"%@", self.list[@"name"]);
-//    [query includeKey:@"lists.arrayOfItems"];
-//    [query includeKey:@"lists.name"];
-    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (!error) {
-            //You found the user!
-            PFUser *queriedUser = (PFUser *)object;
-            NSArray *userLists = queriedUser[@"lists"];
+    [query orderByDescending:@"createdAt"];
+   
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
+        if (tasks != nil) {
+            self.arrayOfTasks = (NSMutableArray *) tasks;
             
-            for (List *object in userLists) {
-                NSString *name = object[@"name"];
-                if ([name isEqual: self.list[@"name"]]){
-                    NSLog(@"object %@", object);
-                    NSLog(@"why is this empty%@", object[@"arrayOfItems"]);
-                    
-                    self.currentList = object;
-                    self.arrayOfTasks = object[@"arrayOfItems"];
-                    NSLog(@"%@", self.arrayOfTasks);
-                    [self.tableView reloadData];
-//                    self.arrayOfTasks = [[NSMutableArray alloc] init];
-                }
-                // do something with object
-            }
-            
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
         }
-        
     }];
+    
+//    PFQuery *query = [PFUser query];
+//    [query whereKey:@"username" equalTo:PFUser.currentUser.username];
+//    [query includeKey:@"lists"];
+//
+////    [query whereKey:@"lists.name" equalTo: self.list[@"name"]];
+////    NSLog(@"%@", self.list[@"name"]);
+////    [query includeKey:@"lists.arrayOfItems"];
+////    [query includeKey:@"lists.name"];
+//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+//        if (!error) {
+//            //You found the user!
+//            PFUser *queriedUser = (PFUser *)object;
+//            NSArray *userLists = queriedUser[@"lists"];
+//
+//            for (List *object in userLists) {
+//                NSString *name = object[@"name"];
+//                if ([name isEqual: self.list[@"name"]]){
+//                    NSLog(@"object %@", object);
+//                    NSLog(@"why is this empty%@", object[@"arrayOfItems"]);
+//
+//                    self.currentList = object;
+//                    self.arrayOfTasks = object[@"arrayOfItems"];
+//                    NSLog(@"%@", self.arrayOfTasks);
+//                    [self.tableView reloadData];
+////                    self.arrayOfTasks = [[NSMutableArray alloc] init];
+//                }
+//                // do something with object
+//            }
+//
+//        }
+//
+//    }];
 }
 
 // Also, want to be able to add a long version of it
@@ -91,6 +110,51 @@
     [self.tableView reloadData];
     
     return YES;
+}
+
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIContextualAction *notif1Action = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"10m" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+
+       //...
+
+    }];
+
+    UIContextualAction *notif2Action = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"1hr" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+
+        //...
+
+        completionHandler(YES);
+    }];
+    
+    UIContextualAction *notif3Action = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"EOD" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+
+        //...
+
+        completionHandler(YES);
+    }];
+
+    notif1Action.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
+    notif2Action.backgroundColor = [UIColor colorNamed:@"CL_LightGray_2"];
+    notif3Action.backgroundColor = [UIColor colorNamed:@"CL_LightGray_2"];
+
+    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1Action,notif2Action, notif3Action]];
+    SwipeActions.performsFirstActionWithFullSwipe=false;
+    return SwipeActions;
+}
+
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+
+       //...
+
+    }];
+
+    deleteAction.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
+
+    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
+    SwipeActions.performsFirstActionWithFullSwipe= YES;
+    return SwipeActions;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

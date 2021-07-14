@@ -232,6 +232,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="circle" catalog="system"/>
                                                     <state key="selected" image="circle.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="onTapStatus:" destination="KuR-wg-slr" eventType="touchUpInside" id="0Oa-Rq-1mR"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Task Item Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydk-uC-0h8">
                                                     <rect key="frame" x="59" y="22" width="277" height="19"/>
@@ -443,7 +446,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6rf-sN-hYh"/>
+        <segue reference="uL1-L1-8iG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>
