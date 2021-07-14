@@ -453,7 +453,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ura-8s-WLI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="aFP-4Z-unb" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="aFP-4Z-unb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="9WQ-oG-j6K"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZMA-nf-8JQ">

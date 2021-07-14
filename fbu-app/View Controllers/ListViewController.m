@@ -118,11 +118,11 @@
     
     Task *task = self.arrayOfTasks[indexPath.row];
     
-    UIContextualAction *notif1 = [self createNotification:(NSString *) @"Oops, not general" inStringTime:@"30secs" inSeconds:30 withIdentifier: task[@"taskTitle"]];
+    UIContextualAction *notif1 = [self createNotification:(NSString *) @"Oops, not general" inStringTime:@"30s" inSeconds:30 withIdentifier: task[@"taskTitle"]];
     
-    UIContextualAction *notif2 = [self createNotification:(NSString *) @"30-oops, not general" inStringTime:@"60secs" inSeconds:60 withIdentifier: task[@"taskTitle"]];
+    UIContextualAction *notif2 = [self createNotification:(NSString *) @"30-oops, not general" inStringTime:@"60s" inSeconds:60 withIdentifier: task[@"taskTitle"]];
     
-    UIContextualAction *notif3 = [self createNotification:(NSString *) @"60-oops, not general" inStringTime:@"90secs" inSeconds:90 withIdentifier: task[@"taskTitle"]];
+    UIContextualAction *notif3 = [self createNotification:(NSString *) @"60-oops, not general" inStringTime:@"90s" inSeconds:90 withIdentifier: task[@"taskTitle"]];
     
     UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
     SwipeActions.performsFirstActionWithFullSwipe=false;

@@ -29,11 +29,11 @@
         [Parse initializeWithConfiguration:config];
     
 //    User persist session
-//    if (PFUser.currentUser) {
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//
-//        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"UITabBarController"];
-//    }
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
+    }
 }
 
 
