@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface AppDelegate ()
 
@@ -16,6 +17,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+
+    UNAuthorizationOptions options = UNAuthorizationOptionAlert + UNAuthorizationOptionSound + UNAuthorizationOptionBadge + UNAuthorizationOptionCarPlay;
+    
+    [center requestAuthorizationWithOptions:options
+     completionHandler:^(BOOL granted, NSError * _Nullable error) {
+      if (!granted) {
+        NSLog(@"User did not grant access");
+      }
+    }];
+    
+//    Need to make a notification settings check intermittedly
+    // Objective-C
+//    [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+//      if (settings.authorizationStatus != UNAuthorizationStatusAuthorized) {
+//        // Notifications not allowed
+//      }
+//    }];
+    
     return YES;
 }
 
