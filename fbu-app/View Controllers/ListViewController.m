@@ -8,6 +8,7 @@
 #import "ListViewController.h"
 #import "Parse/Parse.h"
 #import "List.h"
+#import "TaskViewController.h"
 #import "Task.h"
 #import "TaskCell.h"
 
@@ -170,14 +171,22 @@
     return self.arrayOfTasks.count;
 }
 
-/*
  #pragma mark - Navigation
  
- // In a storyboard-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
+//  Get the new view controller using [segue destinationViewController].
+//  Pass the selected object to the new view controller.
+
+//     Will probably need to be a delegate (update later)
+     if ([segue.identifier isEqual:@"showTaskDetailSegue"]) {
+         TaskCell *tappedCell = sender;
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+         Task *task = self.arrayOfTasks[indexPath.row];
+         
+         TaskViewController *taskViewController = [segue destinationViewController];
+         taskViewController.task = task;
+     }
  }
- */
 
 @end

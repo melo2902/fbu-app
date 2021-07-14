@@ -8,7 +8,8 @@
 #import "TaskViewController.h"
 
 @interface TaskViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *taskTitleLabel;
+@property (weak, nonatomic) IBOutlet UITextView *notesLabel;
 @end
 
 @implementation TaskViewController
@@ -16,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.taskTitleLabel.text = self.task[@"taskTitle"];
+    self.notesLabel.text = self.task[@"notes"];
 }
 
 /*

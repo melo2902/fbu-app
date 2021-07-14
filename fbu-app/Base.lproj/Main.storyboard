@@ -247,6 +247,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="taskItemLabel" destination="Ydk-uC-0h8" id="i3r-9o-5D8"/>
+                                            <segue destination="WDD-FF-1uq" kind="show" identifier="showTaskDetailSegue" id="FNR-W3-Kfa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -290,7 +291,7 @@
             <objects>
                 <viewController storyboardIdentifier="TaskViewController" id="WDD-FF-1uq" customClass="TaskViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lke-eq-OH7">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMe-Cd-SXC">
@@ -327,6 +328,11 @@
                         <viewLayoutGuide key="safeArea" id="hRQ-9t-yrh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="N0S-Xh-eSW"/>
+                    <connections>
+                        <outlet property="notesLabel" destination="2Vh-3A-NAc" id="wkr-nC-4dQ"/>
+                        <outlet property="taskTitleLabel" destination="tMe-Cd-SXC" id="Hje-6f-VdP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmF-vw-ME7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
