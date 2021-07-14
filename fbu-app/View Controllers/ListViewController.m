@@ -6,6 +6,7 @@
 //
 
 #import "ListViewController.h"
+#import <UserNotifications/UserNotifications.h>
 #import "Parse/Parse.h"
 #import "List.h"
 #import "TaskViewController.h"
@@ -115,10 +116,33 @@
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+//    Pull this out to a seeprate functions
     UIContextualAction *notif1Action = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"10m" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
 
-       //...
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+//        content.title = @"Don't forget";
+        content.body = @"Reply to message!";
+        content.sound = [UNNotificationSound defaultSound];
 
+//        This is in seconds
+        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
+          triggerWithTimeInterval:30 repeats:NO];
+        
+        NSString *identifier = @"UYLLocalNotification";
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
+            content:content trigger:trigger];
+
+//        Add a custom action later though will have to use delegate
+        
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+//         *center = currentNotificationCenter;
+        
+        [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+          if (error != nil) {
+            NSLog(@"Something went wrong: %@",error);
+          }
+        }];
+        
     }];
 
     UIContextualAction *notif2Action = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"1hr" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
