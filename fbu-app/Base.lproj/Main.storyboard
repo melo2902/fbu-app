@@ -233,32 +233,43 @@
                                 <rect key="frame" x="30" y="182.66666666666669" width="330" height="607.33333333333326"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="67" id="KuR-wg-slr" customClass="TaskCell">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="330" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="56" id="KuR-wg-slr" customClass="TaskCell">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="330" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KuR-wg-slr" id="kbu-lx-hyf">
-                                            <rect key="frame" x="0.0" y="0.0" width="330" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="330" height="56"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaE-Zu-vzE">
-                                                    <rect key="frame" x="18" y="22" width="20" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaE-Zu-vzE">
+                                                    <rect key="frame" x="15" y="17" width="22" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="Jlq-WG-lZA"/>
+                                                        <constraint firstAttribute="height" constant="22" id="u3H-Fe-Gbv"/>
+                                                    </constraints>
                                                     <state key="normal" image="circle" catalog="system"/>
                                                     <state key="selected" image="circle.fill" catalog="system"/>
                                                     <connections>
                                                         <action selector="onTapStatus:" destination="KuR-wg-slr" eventType="touchUpInside" id="0Oa-Rq-1mR"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Task Item Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydk-uC-0h8">
-                                                    <rect key="frame" x="59" y="22" width="277" height="19"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Item Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydk-uC-0h8">
+                                                    <rect key="frame" x="57" y="15" width="265" height="26"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="JaE-Zu-vzE" firstAttribute="centerY" secondItem="kbu-lx-hyf" secondAttribute="centerY" id="5nZ-vD-7On"/>
+                                                <constraint firstItem="Ydk-uC-0h8" firstAttribute="leading" secondItem="JaE-Zu-vzE" secondAttribute="trailing" constant="20" id="UiR-of-eNA"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ydk-uC-0h8" secondAttribute="bottom" constant="15" id="bPC-RG-MPV"/>
+                                                <constraint firstItem="Ydk-uC-0h8" firstAttribute="centerY" secondItem="kbu-lx-hyf" secondAttribute="centerY" id="jqm-Il-O2l"/>
+                                                <constraint firstItem="JaE-Zu-vzE" firstAttribute="leading" secondItem="kbu-lx-hyf" secondAttribute="leading" constant="15" id="qrA-Tb-d2l"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ydk-uC-0h8" secondAttribute="trailing" constant="8" id="xIk-2R-FTt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="completionButton" destination="JaE-Zu-vzE" id="3cV-Gi-uuT"/>
                                             <outlet property="taskItemLabel" destination="Ydk-uC-0h8" id="i3r-9o-5D8"/>
                                             <segue destination="WDD-FF-1uq" kind="show" identifier="showTaskDetailSegue" id="FNR-W3-Kfa"/>
                                         </connections>

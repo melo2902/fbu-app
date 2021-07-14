@@ -177,10 +177,16 @@
     return SwipeActions;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Deselect the row
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
     
     Task *task = self.arrayOfTasks[indexPath.row];
+    cell.task = task;
     cell.taskItemLabel.text = task[@"taskTitle"];
     
     return cell;

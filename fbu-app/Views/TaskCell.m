@@ -6,6 +6,7 @@
 //
 
 #import "TaskCell.h"
+#import "Parse/Parse.h"
 
 @implementation TaskCell
 
@@ -21,6 +22,20 @@
 }
 
 - (IBAction)onTapStatus:(id)sender {
+    if (self.completionButton.selected) {
+        NSLog(@"Button is not selected!");
+        self.completionButton.selected = NO;
+    // Let change the CSS of the selection criteria
+        
+        self.task[@"completed"] = @NO;
+        
+    } else {
+        NSLog(@"Button is selected!");
+        self.completionButton.selected = YES;
+        self.task[@"completed"] = @YES;
+    }
+    
+    [self.task saveInBackground];
 }
 
 @end
