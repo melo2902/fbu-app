@@ -46,7 +46,7 @@
     [query whereKey:@"author" equalTo: PFUser.currentUser];
     
     [query orderByDescending:@"createdAt"];
-   
+    
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         if (tasks != nil) {
@@ -58,38 +58,38 @@
         }
     }];
     
-//    PFQuery *query = [PFUser query];
-//    [query whereKey:@"username" equalTo:PFUser.currentUser.username];
-//    [query includeKey:@"lists"];
-//
-////    [query whereKey:@"lists.name" equalTo: self.list[@"name"]];
-////    NSLog(@"%@", self.list[@"name"]);
-////    [query includeKey:@"lists.arrayOfItems"];
-////    [query includeKey:@"lists.name"];
-//    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-//        if (!error) {
-//            //You found the user!
-//            PFUser *queriedUser = (PFUser *)object;
-//            NSArray *userLists = queriedUser[@"lists"];
-//
-//            for (List *object in userLists) {
-//                NSString *name = object[@"name"];
-//                if ([name isEqual: self.list[@"name"]]){
-//                    NSLog(@"object %@", object);
-//                    NSLog(@"why is this empty%@", object[@"arrayOfItems"]);
-//
-//                    self.currentList = object;
-//                    self.arrayOfTasks = object[@"arrayOfItems"];
-//                    NSLog(@"%@", self.arrayOfTasks);
-//                    [self.tableView reloadData];
-////                    self.arrayOfTasks = [[NSMutableArray alloc] init];
-//                }
-//                // do something with object
-//            }
-//
-//        }
-//
-//    }];
+    //    PFQuery *query = [PFUser query];
+    //    [query whereKey:@"username" equalTo:PFUser.currentUser.username];
+    //    [query includeKey:@"lists"];
+    //
+    ////    [query whereKey:@"lists.name" equalTo: self.list[@"name"]];
+    ////    NSLog(@"%@", self.list[@"name"]);
+    ////    [query includeKey:@"lists.arrayOfItems"];
+    ////    [query includeKey:@"lists.name"];
+    //    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    //        if (!error) {
+    //            //You found the user!
+    //            PFUser *queriedUser = (PFUser *)object;
+    //            NSArray *userLists = queriedUser[@"lists"];
+    //
+    //            for (List *object in userLists) {
+    //                NSString *name = object[@"name"];
+    //                if ([name isEqual: self.list[@"name"]]){
+    //                    NSLog(@"object %@", object);
+    //                    NSLog(@"why is this empty%@", object[@"arrayOfItems"]);
+    //
+    //                    self.currentList = object;
+    //                    self.arrayOfTasks = object[@"arrayOfItems"];
+    //                    NSLog(@"%@", self.arrayOfTasks);
+    //                    [self.tableView reloadData];
+    ////                    self.arrayOfTasks = [[NSMutableArray alloc] init];
+    //                }
+    //                // do something with object
+    //            }
+    //
+    //        }
+    //
+    //    }];
 }
 
 // Also, want to be able to add a long version of it
@@ -116,67 +116,62 @@
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    Pull this out to a seeprate functions
-    UIContextualAction *notif1Action = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"10m" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-
-        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-//        content.title = @"Don't forget";
-        content.body = @"Reply to message!";
-        content.sound = [UNNotificationSound defaultSound];
-
-//        This is in seconds
-        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
-          triggerWithTimeInterval:30 repeats:NO];
-        
-        NSString *identifier = @"UYLLocalNotification";
-        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
-            content:content trigger:trigger];
-
-//        Add a custom action later though will have to use delegate
-        
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-//         *center = currentNotificationCenter;
-        
-        [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-          if (error != nil) {
-            NSLog(@"Something went wrong: %@",error);
-          }
-        }];
-        
-    }];
-
-    UIContextualAction *notif2Action = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"1hr" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-
-        //...
-
-        completionHandler(YES);
-    }];
+    Task *task = self.arrayOfTasks[indexPath.row];
     
-    UIContextualAction *notif3Action = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"EOD" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-
-        //...
-
-        completionHandler(YES);
-    }];
-
-    notif1Action.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
-    notif2Action.backgroundColor = [UIColor colorNamed:@"CL_LightGray_2"];
-    notif3Action.backgroundColor = [UIColor colorNamed:@"CL_LightGray_2"];
-
-    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1Action,notif2Action, notif3Action]];
+    UIContextualAction *notif1 = [self createNotification:(NSString *) @"Oops, not general" inStringTime:@"30secs" inSeconds:30 withIdentifier: task[@"taskTitle"]];
+    
+    UIContextualAction *notif2 = [self createNotification:(NSString *) @"30-oops, not general" inStringTime:@"60secs" inSeconds:60 withIdentifier: task[@"taskTitle"]];
+    
+    UIContextualAction *notif3 = [self createNotification:(NSString *) @"60-oops, not general" inStringTime:@"90secs" inSeconds:90 withIdentifier: task[@"taskTitle"]];
+    
+    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
     SwipeActions.performsFirstActionWithFullSwipe=false;
     return SwipeActions;
 }
 
+- (UIContextualAction*) createNotification:(NSString *) respondant inStringTime: (NSString *) time inSeconds: (NSTimeInterval) seconds withIdentifier: (NSString *) message {
+    UIContextualAction *notification = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:time handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+        content.body = [NSString stringWithFormat:@"Reply to %@'s message!", respondant];
+        content.sound = [UNNotificationSound defaultSound];
+        
+        // This is in seconds
+        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
+                                                      triggerWithTimeInterval:seconds repeats:NO];
+        
+        NSString *identifier = [NSString stringWithFormat:@"%@:%@", respondant, message];
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
+            content:content trigger:trigger];
+        
+        //        Add a custom action later though will have to use delegate
+        
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Unable to set notification, error: %@",error);
+            }
+        }];
+        
+        completionHandler(YES);
+    }];
+    
+//   Need to add a different color
+    notification.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
+    
+    return notification;
+    
+}
+
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-
-       //...
-
+        
+        //...
+        
     }];
-
+    
     deleteAction.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
-
+    
     UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
     SwipeActions.performsFirstActionWithFullSwipe= YES;
     return SwipeActions;
@@ -195,22 +190,22 @@
     return self.arrayOfTasks.count;
 }
 
- #pragma mark - Navigation
- 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//  Get the new view controller using [segue destinationViewController].
-//  Pass the selected object to the new view controller.
+#pragma mark - Navigation
 
-//     Will probably need to be a delegate (update later)
-     if ([segue.identifier isEqual:@"showTaskDetailSegue"]) {
-         TaskCell *tappedCell = sender;
-         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-         Task *task = self.arrayOfTasks[indexPath.row];
-         
-         TaskViewController *taskViewController = [segue destinationViewController];
-         taskViewController.task = task;
-     }
- }
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //  Get the new view controller using [segue destinationViewController].
+    //  Pass the selected object to the new view controller.
+    
+    //     Will probably need to be a delegate (update later)
+    if ([segue.identifier isEqual:@"showTaskDetailSegue"]) {
+        TaskCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Task *task = self.arrayOfTasks[indexPath.row];
+        
+        TaskViewController *taskViewController = [segue destinationViewController];
+        taskViewController.task = task;
+    }
+}
 
 @end
