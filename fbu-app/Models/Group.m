@@ -10,6 +10,7 @@
 @implementation Group
 @dynamic groupName;
 @dynamic groupID;
+@dynamic lastSender;
 @dynamic lastMessage;
 
 + (nonnull NSString *)parseClassName {
@@ -23,6 +24,7 @@
         newGroup.groupName =  [data objectForKey:@"name"];
         newGroup.groupID = [data objectForKey:@"group_id"];
         NSDictionary *lastSenderData = [[data objectForKey:@"messages"] objectForKey:@"preview"];
+        newGroup.lastSender = [lastSenderData objectForKey:@"nickname"];
         newGroup.lastMessage = [lastSenderData objectForKey:@"text"];
 
         NSLog(@"%@", newGroup.groupID);

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Group : PFObject
 @property (nonatomic, strong) NSString *groupName;
 @property (nonatomic, strong) NSString *groupID;
+@property (nonatomic, strong) NSString *lastSender;
 @property (nonatomic, strong) NSString *lastMessage;
 
 -(instancetype)initWithJSONData:(NSDictionary*)data;

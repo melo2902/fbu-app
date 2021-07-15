@@ -235,7 +235,7 @@
         cell.group = group;
 //        Hmm...
 //        cell.groupNameLabel.text = group[@"groupName"];
-        cell.lastMessagelabel.text = group[@"lastMessage"];
+        cell.lastMessageLabel.text = group[@"lastMessage"];
         return cell;
     }
 }
