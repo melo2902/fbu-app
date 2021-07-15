@@ -8,6 +8,7 @@
 #import "Group.h"
 
 @implementation Group
+@dynamic groupName;
 @dynamic groupID;
 @dynamic lastMessage;
 
@@ -19,7 +20,7 @@
     Group *newGroup = [[Group alloc] initWithClassName:@"Group"];
     
     if(newGroup){
-//        newGroup.groupName =  [data objectForKey:@"name"];
+        newGroup.groupName =  [data objectForKey:@"name"];
         newGroup.groupID = [data objectForKey:@"group_id"];
         NSDictionary *lastSenderData = [[data objectForKey:@"messages"] objectForKey:@"preview"];
         newGroup.lastMessage = [lastSenderData objectForKey:@"text"];
