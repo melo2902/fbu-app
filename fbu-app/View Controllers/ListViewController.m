@@ -14,6 +14,7 @@
 #import "TaskCell.h"
 #import "MessageCell.h"
 #import "Group.h"
+#import "ConversationViewController.h"
 
 @interface ListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
@@ -259,6 +260,13 @@
         
         TaskViewController *taskViewController = [segue destinationViewController];
         taskViewController.task = task;
+    } else if ([segue.identifier isEqual:@"showConversationSegue"]) {
+        MessageCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Group *group = self.arrayOfMessages[indexPath.row - self.arrayOfTasks.count];
+        
+        ConversationViewController *conversationViewController = [segue destinationViewController];
+        conversationViewController.group = group;
     }
 }
 

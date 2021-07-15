@@ -292,7 +292,7 @@
                                                     <state key="selected" image="circle.fill" catalog="system"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message in conversation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQg-D6-pUe">
-                                                    <rect key="frame" x="56.999999999999986" y="21" width="224.66666666666663" height="35"/>
+                                                    <rect key="frame" x="57" y="21" width="245" height="35"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20.333333333333329" id="bUJ-Kl-D2q"/>
@@ -304,6 +304,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fQg-D6-pUe" secondAttribute="bottom" constant="10" id="6vI-sw-PIm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fQg-D6-pUe" secondAttribute="trailing" constant="8" id="Bmw-73-NA5"/>
                                                 <constraint firstItem="KsK-RX-nhW" firstAttribute="centerY" secondItem="Z7a-Pu-Ozq" secondAttribute="centerY" id="bsX-hc-Fbz"/>
                                                 <constraint firstItem="fQg-D6-pUe" firstAttribute="leading" secondItem="KsK-RX-nhW" secondAttribute="trailing" constant="20" id="njf-V2-s6i"/>
                                                 <constraint firstItem="fQg-D6-pUe" firstAttribute="centerY" secondItem="Z7a-Pu-Ozq" secondAttribute="centerY" id="uFc-Jx-HjP"/>
@@ -312,6 +313,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lastMessagelabel" destination="fQg-D6-pUe" id="h7v-HT-bgy"/>
+                                            <segue destination="WJa-aj-Ahx" kind="show" identifier="showConversationSegue" id="svi-XQ-L2j"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -426,16 +428,32 @@
             </objects>
             <point key="canvasLocation" x="1470.7692307692307" y="1579.6208530805686"/>
         </scene>
-        <!--View Controller-->
+        <!--Conversation View Controller-->
         <scene sceneID="bEi-f4-5Jm">
             <objects>
-                <viewController id="WJa-aj-Ahx" sceneMemberID="viewController">
+                <viewController id="WJa-aj-Ahx" customClass="ConversationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lZS-a9-gJL">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conversation Name Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-9K-jHL">
+                                <rect key="frame" x="10" y="66" width="332.33333333333331" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="XoF-4f-hJd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OqG-9K-jHL" firstAttribute="leading" secondItem="XoF-4f-hJd" secondAttribute="leading" constant="10" id="ixs-Uc-kL2"/>
+                            <constraint firstItem="OqG-9K-jHL" firstAttribute="top" secondItem="XoF-4f-hJd" secondAttribute="top" constant="10" id="jiZ-ZE-Arg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="aBJ-QA-c6Q"/>
+                    <connections>
+                        <outlet property="conversationNameLabel" destination="OqG-9K-jHL" id="6lX-hR-Mwb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="758-5y-gJF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
