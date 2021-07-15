@@ -9,6 +9,7 @@
 
 @implementation APIManager
 #pragma mark - Auth
+// Currently implemented in Settings View Controllers
 + (void)signInUser {
     NSURL *oAuthURL = [NSURL URLWithString:@"https://oauth.groupme.com/oauth/authorize?client_id=ArUTvcq7X9Nkt0xJTnkP1wPXfAuOCSNB3lE6ZvxbxGAdDKkr"];
     SFSafariViewController *sfvc = [[SFSafariViewController alloc] initWithURL:oAuthURL];

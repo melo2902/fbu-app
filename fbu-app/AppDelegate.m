@@ -57,5 +57,33 @@
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
 }
 
+#pragma mark - URI handling
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *, id> *)options {
+    NSLog(@"Send bakc");
+    
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
+                                                resolvingAgainstBaseURL:NO];
+    NSArray *queryItems = urlComponents.queryItems;
+    NSString *oAuthToken = [self valueForKey:@"access_token" fromQueryItems:queryItems];
+    
+    NSLog(@"NSURL%@", urlComponents);
+    NSLog(@"QUERY%@", queryItems);
+    NSLog(@"oAuth%@", oAuthToken);
+    
+//    [Lockbox archiveObject:oAuthToken forKey:@"oAuthToken"];
+    return YES;
+}
+
+- (NSString *)valueForKey:(NSString *)key
+           fromQueryItems:(NSArray *)queryItems {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@", key];
+    NSURLQueryItem *queryItem = [[queryItems
+                                  filteredArrayUsingPredicate:predicate]
+                                 firstObject];
+    return queryItem.value;
+}
 
 @end

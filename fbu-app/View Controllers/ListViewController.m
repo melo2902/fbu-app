@@ -12,13 +12,16 @@
 #import "TaskViewController.h"
 #import "Task.h"
 #import "TaskCell.h"
+#import "MessageCell.h"
+#import "Group.h"
 
 @interface ListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *addedTaskBar;
-@property (nonatomic, strong) NSMutableArray *arrayOfTasks;
+@property (nonatomic, strong) NSMutableArray *arrayOfTasks; // Eventually want these to be combined but deal with later
+@property (nonatomic, strong) NSMutableArray *arrayOfMessages;
 @property (nonatomic, strong) NSMutableArray *completedTasks;
 @property (nonatomic, strong) List *currentList;
 @end
@@ -37,6 +40,7 @@
     self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
     
     [self getTasks];
+    [self getConversations];
 }
 
 - (void) getTasks {
@@ -90,6 +94,36 @@
     //        }
     //
     //    }];
+}
+
+-(void) getConversations {
+//    grab conversations - need to save more information
+    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+//    [query whereKey:@"author" equalTo: PFUser.currentUser];
+//    [query whereKey:@"listTitle" equalTo: self.list[@"name"]];
+//    [query whereKey:@"author" equalTo: PFUser.currentUser];
+    
+//    [query orderByDescending:@"createdAt"];
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *groups, NSError *error) {
+        if (groups != nil) {
+            self.arrayOfMessages = (NSMutableArray *) groups;
+            
+            NSLog(@"hit here@%", self.arrayOfMessages);
+//            for(NSDictionary *eachGroup in arrayFromServer){
+//                NSLog(@"each Group %@", eachGroup);
+//    //            Not sure if this is right but we rolling with it for now
+//                Group *group = [[Group alloc] initWithJSONData:eachGroup];
+//                [groups addObject:group];
+//            }
+            
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
 }
 
 // Also, want to be able to add a long version of it
@@ -183,17 +217,31 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
+//    Later I need to be able to differentiate between the two
     
-    Task *task = self.arrayOfTasks[indexPath.row];
-    cell.task = task;
-    cell.taskItemLabel.text = task[@"taskTitle"];
-    
-    return cell;
+    if (indexPath.row < self.arrayOfTasks.count) {
+        TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
+        
+        Task *task = self.arrayOfTasks[indexPath.row];
+        cell.task = task;
+        cell.taskItemLabel.text = task[@"taskTitle"];
+        
+        return cell;
+    } else {
+        MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
+        
+        Group *group = self.arrayOfMessages[indexPath.row - self.arrayOfTasks.count];
+        cell.group = group;
+//        Hmm...
+//        cell.groupNameLabel.text = group[@"groupName"];
+        cell.lastMessagelabel.text = group[@"lastMessage"];
+        return cell;
+    }
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arrayOfTasks.count;
+//    return self.arrayOfTasks.count;
+    return self.arrayOfTasks.count + self.arrayOfMessages.count;
 }
 
 #pragma mark - Navigation
