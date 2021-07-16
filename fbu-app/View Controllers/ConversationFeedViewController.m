@@ -121,7 +121,7 @@
     
 //    [URLString appendString:@"1?token="];
     [URLString appendString:[APIManager getAuthToken]];
-    [URLString appendString:[NSString stringWithFormat:@"&page=%@", @5]];
+    [URLString appendString:[NSString stringWithFormat:@"&page=%@", @1]];
         
 //    [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
 //    [URLString appendString:@"&page=2"];
@@ -199,7 +199,11 @@
                 NSLog(@"each Group %@", eachGroup);
     //            Not sure if this is right but we rolling with it for now
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
-                [self.arrayOfMessages addObject:group];
+                
+//                Eventually have to generalize to be users nickname
+                if (![group.lastSender isEqual:@"Melody Wen"]) {
+                    [self.arrayOfMessages addObject:group];
+                }
                 
                 NSLog(@"arrayof%@", self.arrayOfMessages);
                 [self.tableView reloadData];
