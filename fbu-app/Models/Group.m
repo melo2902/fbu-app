@@ -2,38 +2,24 @@
 //  Group.m
 //  fbu-app
 //
-//  Created by mwen on 7/15/21.
+//  Created by mwen on 7/16/21.
 //
 
 #import "Group.h"
 
 @implementation Group
-@dynamic groupName;
-@dynamic groupID;
-@dynamic lastSender;
-@dynamic lastMessage;
-
-+ (nonnull NSString *)parseClassName {
-    return @"Group";
-}
 
 -(instancetype)initWithJSONData:(NSDictionary*)data{
-    Group *newGroup = [[Group alloc] initWithClassName:@"Group"];
+    self = [super init];
     
-    if(newGroup){
-        newGroup.groupName =  [data objectForKey:@"name"];
-        newGroup.groupID = [data objectForKey:@"group_id"];
+    if(self){
+        self.groupName =  [data objectForKey:@"name"];
+        self.groupID = [data objectForKey:@"group_id"];
         NSDictionary *lastSenderData = [[data objectForKey:@"messages"] objectForKey:@"preview"];
-        newGroup.lastSender = [lastSenderData objectForKey:@"nickname"];
-        newGroup.lastMessage = [lastSenderData objectForKey:@"text"];
-
-        NSLog(@"%@", newGroup.groupID);
+        self.lastSender = [lastSenderData objectForKey:@"nickname"];
+        self.lastMessage = [lastSenderData objectForKey:@"text"];
     }
-//        self.groupName =  [data objectForKey:@"name"];
 //        self.groupDescription = [data objectForKey:@"description"];
-//        NSDictionary *lastSenderData = [[data objectForKey:@"messages"] objectForKey:@"preview"];
-//        self.lastSender = [lastSenderData objectForKey:@"nickname"];
-//        self.lastMessage = [lastSenderData objectForKey:@"text"];
 //        self.members = [data objectForKey:@"members"];
 //        self.groupLastUpdated = [data objectForKey:@"updated_at"];
 //        if ([data objectForKey:@"image_url"] != [NSNull null]){
@@ -54,8 +40,7 @@
 //        }
 //
 //    }
-    return newGroup;
+    return self;
 }
-
 
 @end
