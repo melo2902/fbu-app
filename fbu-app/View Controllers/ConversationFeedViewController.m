@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (assign, nonatomic) BOOL endLoading;
+@property (assign, nonatomic) NSNumber *pageCount;
+@property (assign, nonatomic) NSNumber *lastPage;
 @end
 
 @implementation ConversationFeedViewController
@@ -24,6 +27,9 @@
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.pageCount = @2;
+    self.lastPage = @1000;
     
     [self getConversations];
 }
@@ -89,18 +95,33 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row + 1 == [self.arrayOfMessages count]){
 //        Don't want to save the groups
-        [self getConversationsAPI];
         
+//        we are not hitting this
+        if (!self.endLoading){
+            [self getConversationsAPI];
+        } else {
+            NSLog(@"where do we end%@", self.pageCount);
+        }
 //        [self getConversations:[self.arrayOfMessages count] + 10];
     }
 }
 
 -(void) getConversationsAPI {
+    
+    if ([self.pageCount intValue] <= [self.lastPage intValue])  {
     // Configure session so that completion handler is executed on main UI thread
     NSMutableString *URLString = [[NSMutableString alloc] init];
 //    [URLString appendString:@"https://api.groupme.com/groups?token="];
     [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
+    
+//    NSDictionary *parameters = @{@"page": self.pageCount};
+    
+//    [URLString appendString:@"1?token="];
     [URLString appendString:[APIManager getAuthToken]];
+    [URLString appendString:[NSString stringWithFormat:@"&page=%@", @5]];
+        
+//    [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
+//    [URLString appendString:@"&page=2"];
     NSError* error = nil;
     NSLog(@"%@", URLString);
     NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
@@ -112,6 +133,13 @@
     [self setupGroupsFromJSONArray:data];
     
     // ... Use the new data to update the data source ...
+//    double pageCountValue = [self.pageCount doubleValue];
+//    self.pageCount = pageCountValue + 1;
+    
+//    int newPageCount = [self.pageCount intValue] + 1;
+//    self.pageCount = [NSNumber numberWithInt:newPageCount];
+    self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
+    NSLog(@"pageCount %@", self.pageCount);
     
     // Reload the tableView now that there is new data
     [self.tableView reloadData];
@@ -137,6 +165,7 @@
 //        }
 //    }];
 //    [task resume];
+    }
 }
 
 -(void)setupGroupsFromJSONArray:(NSData*)dataFromServerArray{
@@ -144,28 +173,40 @@
 //    NSMutableArray *groups = [[NSMutableArray alloc] init];
     NSDictionary *arrayFromServer = [NSJSONSerialization JSONObjectWithData:dataFromServerArray options:0 error:nil];
     arrayFromServer = [arrayFromServer objectForKey:@"response"];
-    NSLog(@"array %@", arrayFromServer);
-    if(error){
-        NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
-    }
-    else {
-//        self.groups = [[NSMutableArray alloc] init];
-//        NSMutableArray *groups = [[NSMutableArray alloc] init];
-        
-        for(NSDictionary *eachGroup in arrayFromServer){
-            NSLog(@"each Group %@", eachGroup);
-//            Not sure if this is right but we rolling with it for now
-            Group *group = [[Group alloc] initWithJSONData:eachGroup];
-            [self.arrayOfMessages addObject:group];
-//            [groups addObject:group];
+    
+    NSLog(@"good?");
+    if ([arrayFromServer count] == 0) {
+        NSLog(@"bad");
+        self.endLoading = YES;
+    } else {
+        NSLog(@"array %@", arrayFromServer);
+        if ([arrayFromServer count] < 10) {
+            NSLog(@"bad");
+            self.lastPage = self.pageCount;
+            self.endLoading = YES;
         }
-        
-//        PFUser.currentUser[@"GroupME"] = groups;
-//        [PFUser.currentUser saveInBackground];
+        if(error){
+            NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
+        }
+        else {
+    //        self.groups = [[NSMutableArray alloc] init];
+    //        NSMutableArray *groups = [[NSMutableArray alloc] init];
+            
+            for(NSDictionary *eachGroup in arrayFromServer){
+                NSLog(@"each Group %@", eachGroup);
+    //            Not sure if this is right but we rolling with it for now
+                Group *group = [[Group alloc] initWithJSONData:eachGroup];
+                [self.arrayOfMessages addObject:group];
+    //            [groups addObject:group];
+            }
+            
+    //        PFUser.currentUser[@"GroupME"] = groups;
+    //        [PFUser.currentUser saveInBackground];
+        }
+    //    dispatch_async(dispatch_get_main_queue(), ^{
+    //        [self.tableView reloadData];
+    //    });
     }
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.tableView reloadData];
-//    });
 }
 
 
