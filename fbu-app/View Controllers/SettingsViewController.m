@@ -44,6 +44,7 @@
 //            [APIManager getUserData];
 //            I think my logged in is saved from before
 //            Only the top group is preseent and half of it
+//            Want to remove this later
             NSMutableString *URLString = [[NSMutableString alloc] init];
             [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
             [URLString appendString:[APIManager getAuthToken]];

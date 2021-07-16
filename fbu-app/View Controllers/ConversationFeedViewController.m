@@ -30,41 +30,42 @@
     
     self.pageCount = @2;
     self.lastPage = @1000;
+    self.arrayOfMessages = [[NSMutableArray alloc]init];
     
-    [self getConversations];
+    [self getConversationsAPI];
 }
 
--(void) getConversations {
-//    grab conversations - need to save more information
-    
-//    Do I really want to save the groups? no, i don't thnk so?
-    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-//    [query whereKey:@"author" equalTo: PFUser.currentUser];
-//    [query whereKey:@"listTitle" equalTo: self.list[@"name"]];
-//    [query whereKey:@"author" equalTo: PFUser.currentUser];
-    
-//    [query orderByDescending:@"createdAt"];
-    
-    // fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *groups, NSError *error) {
-        if (groups != nil) {
-            self.arrayOfMessages = (NSMutableArray *) groups;
-            
-            NSLog(@"hit here%@", self.arrayOfMessages);
-//            for(NSDictionary *eachGroup in arrayFromServer){
-//                NSLog(@"each Group %@", eachGroup);
-//    //            Not sure if this is right but we rolling with it for now
-//                Group *group = [[Group alloc] initWithJSONData:eachGroup];
-//                [groups addObject:group];
-//            }
-            
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    
-}
+//-(void) getConversations {
+////    grab conversations - need to save more information
+//
+////    Do I really want to save the groups? no, i don't thnk so?
+//    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+////    [query whereKey:@"author" equalTo: PFUser.currentUser];
+////    [query whereKey:@"listTitle" equalTo: self.list[@"name"]];
+////    [query whereKey:@"author" equalTo: PFUser.currentUser];
+//
+////    [query orderByDescending:@"createdAt"];
+//
+//    // fetch data asynchronously
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *groups, NSError *error) {
+//        if (groups != nil) {
+//            self.arrayOfMessages = (NSMutableArray *) groups;
+//
+//            NSLog(@"hit here%@", self.arrayOfMessages);
+////            for(NSDictionary *eachGroup in arrayFromServer){
+////                NSLog(@"each Group %@", eachGroup);
+////    //            Not sure if this is right but we rolling with it for now
+////                Group *group = [[Group alloc] initWithJSONData:eachGroup];
+////                [groups addObject:group];
+////            }
+//
+//            [self.tableView reloadData];
+//        } else {
+//            NSLog(@"%@", error.localizedDescription);
+//        }
+//    }];
+//
+//}
 
 /*
 #pragma mark - Navigation
@@ -82,8 +83,8 @@
     Group *group = self.arrayOfMessages[indexPath.row];
     cell.group = group;
 //        Hmm...
-    cell.groupNameLabel.text = group[@"groupName"];
-    cell.lastMessageLabel.text = group[@"lastMessage"];
+    cell.groupNameLabel.text = group.groupName;
+    cell.lastMessageLabel.text = group.lastMessage;
     return cell;
 }
 
@@ -108,8 +109,10 @@
 
 -(void) getConversationsAPI {
     
+//    NSLog(@")
     if ([self.pageCount intValue] <= [self.lastPage intValue])  {
     // Configure session so that completion handler is executed on main UI thread
+        
     NSMutableString *URLString = [[NSMutableString alloc] init];
 //    [URLString appendString:@"https://api.groupme.com/groups?token="];
     [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
@@ -197,6 +200,10 @@
     //            Not sure if this is right but we rolling with it for now
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
                 [self.arrayOfMessages addObject:group];
+                
+                NSLog(@"arrayof%@", self.arrayOfMessages);
+                [self.tableView reloadData];
+                
     //            [groups addObject:group];
             }
             

@@ -41,7 +41,7 @@
     self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
     
     [self getTasks];
-    [self getConversations];
+//    [self getConversations];
 }
 
 - (void) getTasks {
@@ -96,36 +96,36 @@
     //
     //    }];
 }
-
--(void) getConversations {
-//    grab conversations - need to save more information
-    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-//    [query whereKey:@"author" equalTo: PFUser.currentUser];
-//    [query whereKey:@"listTitle" equalTo: self.list[@"name"]];
-//    [query whereKey:@"author" equalTo: PFUser.currentUser];
-    
-//    [query orderByDescending:@"createdAt"];
-    
-    // fetch data asynchronously
-    [query findObjectsInBackgroundWithBlock:^(NSArray *groups, NSError *error) {
-        if (groups != nil) {
-            self.arrayOfMessages = (NSMutableArray *) groups;
-            
-            NSLog(@"hit here@%", self.arrayOfMessages);
-//            for(NSDictionary *eachGroup in arrayFromServer){
-//                NSLog(@"each Group %@", eachGroup);
-//    //            Not sure if this is right but we rolling with it for now
-//                Group *group = [[Group alloc] initWithJSONData:eachGroup];
-//                [groups addObject:group];
-//            }
-            
-            [self.tableView reloadData];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    
-}
+//
+//-(void) getConversations {
+////    grab conversations - need to save more information
+//    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
+////    [query whereKey:@"author" equalTo: PFUser.currentUser];
+////    [query whereKey:@"listTitle" equalTo: self.list[@"name"]];
+////    [query whereKey:@"author" equalTo: PFUser.currentUser];
+//
+////    [query orderByDescending:@"createdAt"];
+//
+//    // fetch data asynchronously
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *groups, NSError *error) {
+//        if (groups != nil) {
+//            self.arrayOfMessages = (NSMutableArray *) groups;
+//
+//            NSLog(@"hit here@%", self.arrayOfMessages);
+////            for(NSDictionary *eachGroup in arrayFromServer){
+////                NSLog(@"each Group %@", eachGroup);
+////    //            Not sure if this is right but we rolling with it for now
+////                Group *group = [[Group alloc] initWithJSONData:eachGroup];
+////                [groups addObject:group];
+////            }
+//
+//            [self.tableView reloadData];
+//        } else {
+//            NSLog(@"%@", error.localizedDescription);
+//        }
+//    }];
+//
+//}
 
 // Also, want to be able to add a long version of it
 // This is the short term quick add
@@ -235,7 +235,8 @@
         cell.group = group;
 //        Hmm...
 //        cell.groupNameLabel.text = group[@"groupName"];
-        cell.lastMessageLabel.text = group[@"lastMessage"];
+        cell.lastMessageLabel.text = group.lastMessage;
+//        cell.lastMessageLabel.text = group[@"lastMessage"];
         return cell;
     }
 }

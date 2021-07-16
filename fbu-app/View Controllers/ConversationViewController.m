@@ -17,7 +17,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.conversationNameLabel.text = self.group[@"lastMessage"];
+    self.conversationNameLabel.text = self.group.lastMessage;
 }
 
 /*
