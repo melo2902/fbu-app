@@ -196,19 +196,13 @@
     //        NSMutableArray *groups = [[NSMutableArray alloc] init];
             
             for(NSDictionary *eachGroup in arrayFromServer){
-                NSLog(@"each Group %@", eachGroup);
-    //            Not sure if this is right but we rolling with it for now
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
-                
-//                Eventually have to generalize to be users nickname
-                if (![group.lastSender isEqual:@"Melody Wen"]) {
+            
+                if (![group.lastSender isEqual:PFUser.currentUser[@"GroupMe"][@"name"]]) {
                     [self.arrayOfMessages addObject:group];
                 }
                 
-                NSLog(@"arrayof%@", self.arrayOfMessages);
                 [self.tableView reloadData];
-                
-    //            [groups addObject:group];
             }
             
     //        PFUser.currentUser[@"GroupME"] = groups;

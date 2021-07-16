@@ -46,15 +46,19 @@
 //            Only the top group is preseent and half of it
 //            Want to remove this later
             NSMutableString *URLString = [[NSMutableString alloc] init];
-            [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
+            [URLString appendString:@"https://api.groupme.com/v3/users/me?token="];
             [URLString appendString:[APIManager getAuthToken]];
 //            I think I'm just using my own getAuthToken, I need to be able to grab other peoples
             NSLog(@"%@", URLString);
             NSError* error = nil;
             NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
-//            NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//            NSLog(@"userdata %@", userData);
-            [self setupGroupsFromJSONArray:data];
+            NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSLog(@"userdata %@", userData);
+            
+//            NSLog(@"Name%@", userData[@"response"][@"name"]);
+            [self updateUserwithPlatform:userData[@"response"][@"name"]];
+//            NSLog(@"data%@", data);
+//            [self setupGroupsFromJSONArray:data];
         } else {
             NSLog(@"Oh no can't open url because no safari view controller");
         }
@@ -63,33 +67,13 @@
     }
 }
 
-//Probably want to set up in the API manager, continuously call it?
--(void)setupGroupsFromJSONArray:(NSData*)dataFromServerArray{
-    NSError *error;
-//    NSMutableArray *groups = [[NSMutableArray alloc] init];
-    NSDictionary *arrayFromServer = [NSJSONSerialization JSONObjectWithData:dataFromServerArray options:0 error:nil];
-    arrayFromServer = [arrayFromServer objectForKey:@"response"];
-    NSLog(@"array %@", arrayFromServer);
-    if(error){
-        NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
-    }
-    else {
-//        self.groups = [[NSMutableArray alloc] init];
-        NSMutableArray *groups = [[NSMutableArray alloc] init];
-        
-        for(NSDictionary *eachGroup in arrayFromServer){
-            NSLog(@"each Group %@", eachGroup);
-//            Not sure if this is right but we rolling with it for now
-            Group *group = [[Group alloc] initWithJSONData:eachGroup];
-            [groups addObject:group];
-        }
-        
-        PFUser.currentUser[@"GroupME"] = groups;
-        [PFUser.currentUser saveInBackground];
-    }
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [self.tableView reloadData];
-//    });
+-(void) updateUserwithPlatform:(NSString*) name {
+    PFUser *user = PFUser.currentUser;
+    
+    user[@"GroupMe"] =  @{}.mutableCopy;
+    user[@"GroupMe"][@"name"] = name;
+    user[@"GroupMe"][@"readConversations"] = [[NSMutableArray alloc]init];
+    [user saveInBackground];
 }
 
 - (IBAction)onTapLogOut:(id)sender {
