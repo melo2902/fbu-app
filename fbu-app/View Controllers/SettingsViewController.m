@@ -11,6 +11,7 @@
 #import "APIManager.h"
 #import "Parse/Parse.h"
 #import "Group.h"
+#import "Platform.h"
 
 @interface SettingsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
@@ -54,7 +55,9 @@
             NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
             NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
-            [self updateUserwithPlatform:userData[@"response"][@"name"]];
+            Platform *newPlatform = [[Platform alloc] initWithJSONData:userData onPlatform: @"GroupMe"];
+            [self updateUserwithPlatform:newPlatform];
+            
         } else {
             NSLog(@"Oh no can't open url because no safari view controller");
         }
@@ -64,12 +67,14 @@
 }
 
 //potentially load all the conversations when the user first chooses, so it doesn't have to update the stuff at the verybeginnign (consistency in the remaining)
--(void) updateUserwithPlatform:(NSString*) name {
+-(void) updateUserwithPlatform:(Platform*) platform {
     PFUser *user = PFUser.currentUser;
+
+    user[@"GroupMe"] = platform;
     
-    user[@"GroupMe"] =  @{}.mutableCopy;
-    user[@"GroupMe"][@"name"] = name;
-    user[@"GroupMe"][@"readConversations"] = [[NSMutableArray alloc]init];
+//    user[@"GroupMe"] =  @{}.mutableCopy;
+//    user[@"GroupMe"][@"name"] = name;
+//    user[@"GroupMe"][@"readConversations"] = [[NSMutableArray alloc]init];
     [user saveInBackground];
 }
 

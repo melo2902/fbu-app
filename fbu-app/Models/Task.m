@@ -16,6 +16,10 @@
 @dynamic notes;
 @dynamic completed;
 
++ (nonnull NSString *)parseClassName {
+    return @"Task";
+}
+
 + (Task*) createTask: ( NSString *)name inList: ( NSString *)list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Task *newTask = [[Task alloc] initWithClassName:@"Task"];

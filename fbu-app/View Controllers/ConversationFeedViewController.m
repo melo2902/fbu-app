@@ -198,11 +198,17 @@
             for(NSDictionary *eachGroup in arrayFromServer){
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
             
+                NSLog(@"%@group", group.lastSender);
+                NSLog(@"%@curre", PFUser.currentUser[@"GroupMe"][@"name"]);
+
                 if (![group.lastSender isEqual:PFUser.currentUser[@"GroupMe"][@"name"]]) {
                     [self.arrayOfMessages addObject:group];
-                } else if (![PFUser.currentUser[@"GroupMe"][@"readConversations"] containsObject:group.groupID]) {
-                    [self.arrayOfMessages addObject:group];
                 }
+                
+           
+//                if (![PFUser.currentUser[@"GroupMe"][@"readConversations"] containsObject:group.groupID]) {
+//                        [self.arrayOfMessages addObject:group];
+//                }
                 
                 [self.tableView reloadData];
             }
