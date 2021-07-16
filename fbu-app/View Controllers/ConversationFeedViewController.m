@@ -200,6 +200,8 @@
             
                 if (![group.lastSender isEqual:PFUser.currentUser[@"GroupMe"][@"name"]]) {
                     [self.arrayOfMessages addObject:group];
+                } else if (![PFUser.currentUser[@"GroupMe"][@"readConversations"] containsObject:group.groupID]) {
+                    [self.arrayOfMessages addObject:group];
                 }
                 
                 [self.tableView reloadData];

@@ -53,12 +53,8 @@
             NSError* error = nil;
             NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
             NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSLog(@"userdata %@", userData);
-            
-//            NSLog(@"Name%@", userData[@"response"][@"name"]);
+
             [self updateUserwithPlatform:userData[@"response"][@"name"]];
-//            NSLog(@"data%@", data);
-//            [self setupGroupsFromJSONArray:data];
         } else {
             NSLog(@"Oh no can't open url because no safari view controller");
         }
@@ -67,6 +63,7 @@
     }
 }
 
+//potentially load all the conversations when the user first chooses, so it doesn't have to update the stuff at the verybeginnign (consistency in the remaining)
 -(void) updateUserwithPlatform:(NSString*) name {
     PFUser *user = PFUser.currentUser;
     

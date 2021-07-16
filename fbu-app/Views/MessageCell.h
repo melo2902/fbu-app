@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
 @property (strong, nonatomic) Group *group;
+@property (weak, nonatomic) IBOutlet UIButton *statusButton;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -542,6 +542,9 @@
                                                     </constraints>
                                                     <state key="normal" image="circle" catalog="system"/>
                                                     <state key="selected" image="circle.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="onTapStatusButton:" destination="tOl-Ls-Omc" eventType="touchUpInside" id="kKX-Aw-rnQ"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GROUP ME NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-Ko-sxy">
                                                     <rect key="frame" x="57" y="10" width="124" height="50"/>
@@ -572,6 +575,7 @@
                                         <connections>
                                             <outlet property="groupNameLabel" destination="IBc-Ko-sxy" id="BWv-Nf-dYc"/>
                                             <outlet property="lastMessageLabel" destination="PfY-Hl-s3h" id="VR2-KX-HdI"/>
+                                            <outlet property="statusButton" destination="UPj-8x-7PE" id="d6P-Ch-4yv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
