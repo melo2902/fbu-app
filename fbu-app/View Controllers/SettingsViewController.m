@@ -56,7 +56,7 @@
             NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
             Platform *newPlatform = [[Platform alloc] initWithJSONData:userData onPlatform: @"GroupMe"];
-            [self updateUserwithPlatform:newPlatform];
+            [self updateUser:newPlatform withPlatform: @"GroupMe"];
             
         } else {
             NSLog(@"Oh no can't open url because no safari view controller");
@@ -67,14 +67,10 @@
 }
 
 //potentially load all the conversations when the user first chooses, so it doesn't have to update the stuff at the verybeginnign (consistency in the remaining)
--(void) updateUserwithPlatform:(Platform*) platform {
+-(void) updateUser:(Platform*) platform withPlatform: (NSString*) name {
     PFUser *user = PFUser.currentUser;
-
-    user[@"GroupMe"] = platform;
+    user[name] = platform;
     
-//    user[@"GroupMe"] =  @{}.mutableCopy;
-//    user[@"GroupMe"][@"name"] = name;
-//    user[@"GroupMe"][@"readConversations"] = [[NSMutableArray alloc]init];
     [user saveInBackground];
 }
 

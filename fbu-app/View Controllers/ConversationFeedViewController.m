@@ -10,6 +10,7 @@
 #import "MessageCell.h"
 #import "Group.h"
 #import "APIManager.h"
+#import "Platform.h"
 
 @interface ConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -192,18 +193,17 @@
             NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
         }
         else {
-    //        self.groups = [[NSMutableArray alloc] init];
-    //        NSMutableArray *groups = [[NSMutableArray alloc] init];
+            Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
+            [currPlatform fetchIfNeeded];
             
             for(NSDictionary *eachGroup in arrayFromServer){
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
             
-                NSLog(@"%@group", group.lastSender);
-                NSLog(@"%@curre", PFUser.currentUser[@"GroupMe"][@"name"]);
-
-                if (![group.lastSender isEqual:PFUser.currentUser[@"GroupMe"][@"name"]]) {
+                if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
                     [self.arrayOfMessages addObject:group];
                 }
+                
+//                [self.arrayOfMessages addObject:group];
                 
            
 //                if (![PFUser.currentUser[@"GroupMe"][@"readConversations"] containsObject:group.groupID]) {

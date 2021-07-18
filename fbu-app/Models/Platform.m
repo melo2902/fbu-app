@@ -25,7 +25,12 @@
     if (newPlatform) {
 //        newPlatform.user = PFUser.currentUser;
         newPlatform.platformName = platform;
-        newPlatform.userName = [data objectForKey:@"name"];
+        
+        NSDictionary *response = [data objectForKey:@"response"];
+        
+        newPlatform.userName = [response objectForKey:@"name"];
+        NSLog(@"data%@", data);
+        NSLog(@"why does this not save%@", newPlatform.userName);
         newPlatform.onReadConversations = [[NSDictionary alloc]init];
     }
     
