@@ -69,21 +69,21 @@
 //}
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
     Group *group = self.arrayOfMessages[indexPath.row];
     cell.group = group;
-//        Hmm...
+    //        Hmm...
     cell.groupNameLabel.text = group.groupName;
     cell.lastMessageLabel.text = group.lastMessage;
     return cell;
@@ -96,85 +96,85 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row + 1 == [self.arrayOfMessages count]){
-//        Don't want to save the groups
+        //        Don't want to save the groups
         
-//        we are not hitting this
+        //        we are not hitting this
         if (!self.endLoading){
             [self getConversationsAPI];
         } else {
             NSLog(@"where do we end%@", self.pageCount);
         }
-//        [self getConversations:[self.arrayOfMessages count] + 10];
+        //        [self getConversations:[self.arrayOfMessages count] + 10];
     }
 }
 
 -(void) getConversationsAPI {
     
-//    NSLog(@")
+    //    NSLog(@")
     if ([self.pageCount intValue] <= [self.lastPage intValue])  {
-    // Configure session so that completion handler is executed on main UI thread
+        // Configure session so that completion handler is executed on main UI thread
         
-    NSMutableString *URLString = [[NSMutableString alloc] init];
-//    [URLString appendString:@"https://api.groupme.com/groups?token="];
-    [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
-    
-//    NSDictionary *parameters = @{@"page": self.pageCount};
-    
-//    [URLString appendString:@"1?token="];
-    [URLString appendString:[APIManager getAuthToken]];
-    [URLString appendString:[NSString stringWithFormat:@"&page=%@", @1]];
+        NSMutableString *URLString = [[NSMutableString alloc] init];
+        //    [URLString appendString:@"https://api.groupme.com/groups?token="];
+        [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
         
-//    [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
-//    [URLString appendString:@"&page=2"];
-    NSError* error = nil;
-    NSLog(@"%@", URLString);
-    NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
-//    NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//    NSLog(@"%@", userData);
-//
-    self.isMoreDataLoading = false;
-    
-    [self setupGroupsFromJSONArray:data];
-    
-    // ... Use the new data to update the data source ...
-//    double pageCountValue = [self.pageCount doubleValue];
-//    self.pageCount = pageCountValue + 1;
-    
-//    int newPageCount = [self.pageCount intValue] + 1;
-//    self.pageCount = [NSNumber numberWithInt:newPageCount];
-    self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
-    NSLog(@"pageCount %@", self.pageCount);
-    
-    // Reload the tableView now that there is new data
-    [self.tableView reloadData];
-    
-//    Need this to make it on the main thread
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//
-//    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
-//        if (requestError != nil) {
-//
-//        }
-//        else
-//        {
-//            // Update flag
-//            self.isMoreDataLoading = false;
-//
-//            // ... Use the new data to update the data source ...
-//
-//            // Reload the tableView now that there is new data
-//            [self.tableView reloadData];
-//        }
-//    }];
-//    [task resume];
+        //    NSDictionary *parameters = @{@"page": self.pageCount};
+        
+        //    [URLString appendString:@"1?token="];
+        [URLString appendString:[APIManager getAuthToken]];
+        [URLString appendString:[NSString stringWithFormat:@"&page=%@", @1]];
+        
+        //    [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
+        //    [URLString appendString:@"&page=2"];
+        NSError* error = nil;
+        NSLog(@"%@", URLString);
+        NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
+        //    NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        //    NSLog(@"%@", userData);
+        //
+        self.isMoreDataLoading = false;
+        
+        [self setupGroupsFromJSONArray:data];
+        
+        // ... Use the new data to update the data source ...
+        //    double pageCountValue = [self.pageCount doubleValue];
+        //    self.pageCount = pageCountValue + 1;
+        
+        //    int newPageCount = [self.pageCount intValue] + 1;
+        //    self.pageCount = [NSNumber numberWithInt:newPageCount];
+        self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
+        NSLog(@"pageCount %@", self.pageCount);
+        
+        // Reload the tableView now that there is new data
+        [self.tableView reloadData];
+        
+        //    Need this to make it on the main thread
+        //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        //
+        //    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+        //
+        //    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
+        //        if (requestError != nil) {
+        //
+        //        }
+        //        else
+        //        {
+        //            // Update flag
+        //            self.isMoreDataLoading = false;
+        //
+        //            // ... Use the new data to update the data source ...
+        //
+        //            // Reload the tableView now that there is new data
+        //            [self.tableView reloadData];
+        //        }
+        //    }];
+        //    [task resume];
     }
 }
 
 -(void)setupGroupsFromJSONArray:(NSData*)dataFromServerArray{
     NSError *error;
-//    NSMutableArray *groups = [[NSMutableArray alloc] init];
+    //    NSMutableArray *groups = [[NSMutableArray alloc] init];
     NSDictionary *arrayFromServer = [NSJSONSerialization JSONObjectWithData:dataFromServerArray options:0 error:nil];
     arrayFromServer = [arrayFromServer objectForKey:@"response"];
     
@@ -189,36 +189,36 @@
             self.lastPage = self.pageCount;
             self.endLoading = YES;
         }
+        
         if(error){
             NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
-        }
-        else {
+        } else {
             Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
             [currPlatform fetchIfNeeded];
             
             for(NSDictionary *eachGroup in arrayFromServer){
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
-            
+                
                 if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
                     [self.arrayOfMessages addObject:group];
                 }
                 
-//                [self.arrayOfMessages addObject:group];
+                //                [self.arrayOfMessages addObject:group];
                 
-           
-//                if (![PFUser.currentUser[@"GroupMe"][@"readConversations"] containsObject:group.groupID]) {
-//                        [self.arrayOfMessages addObject:group];
-//                }
+                
+                //                if (![PFUser.currentUser[@"GroupMe"][@"readConversations"] containsObject:group.groupID]) {
+                //                        [self.arrayOfMessages addObject:group];
+                //                }
                 
                 [self.tableView reloadData];
             }
             
-    //        PFUser.currentUser[@"GroupME"] = groups;
-    //        [PFUser.currentUser saveInBackground];
+            //        PFUser.currentUser[@"GroupME"] = groups;
+            //        [PFUser.currentUser saveInBackground];
         }
-    //    dispatch_async(dispatch_get_main_queue(), ^{
-    //        [self.tableView reloadData];
-    //    });
+        //    dispatch_async(dispatch_get_main_queue(), ^{
+        //        [self.tableView reloadData];
+        //    });
     }
 }
 
@@ -226,17 +226,17 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (!self.isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
-       int scrollViewContentHeight = self.tableView.contentSize.height;
-       int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
-       
-       // When the user has scrolled past the threshold, start requesting
-       if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
-           self.isMoreDataLoading = true;
-           
-           [self getConversationsAPI];
-           // ... Code to load more results ...
-       }
-
+        int scrollViewContentHeight = self.tableView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
+            self.isMoreDataLoading = true;
+            
+            [self getConversationsAPI];
+            // ... Code to load more results ...
+        }
+        
     }
 }
 

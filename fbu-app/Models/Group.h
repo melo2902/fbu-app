@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *groupID;
 @property (nonatomic, strong) NSString *lastSender;
 @property (nonatomic, strong) NSString *lastMessage;
+@property (nonatomic, strong) NSString *lastUpdated;
 
 -(instancetype)initWithJSONData:(NSDictionary*)data;
 

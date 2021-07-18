@@ -18,6 +18,9 @@
         NSDictionary *lastSenderData = [[data objectForKey:@"messages"] objectForKey:@"preview"];
         self.lastSender = [lastSenderData objectForKey:@"nickname"];
         self.lastMessage = [lastSenderData objectForKey:@"text"];
+        
+//        NSLog(@"data%@", [data objectForKey:@"updated_at"]);
+        self.lastUpdated = [data objectForKey:@"updated_at"];
     }
 //        self.groupDescription = [data objectForKey:@"description"];
 //        self.members = [data objectForKey:@"members"];

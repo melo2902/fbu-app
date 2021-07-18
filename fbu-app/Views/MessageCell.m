@@ -7,6 +7,7 @@
 
 #import "MessageCell.h"
 #import "Parse/Parse.h"
+#import "Platform.h"
 
 @implementation MessageCell
 
@@ -36,18 +37,17 @@
         self.statusButton.selected = YES;
         
 //        This is for specific case when the user leaves the person, on read, not when they reply
-        [user[@"GroupMe"][@"readConversations"] addObject:self.group.groupID];
+        Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
+        [currPlatform fetchIfNeeded];
         
-        NSLog(@"update%@", user[@"GroupMe"][@"readConversations"]);
-//        self.group[@"completed"] = @YES;
+        currPlatform[@"onReadConversations"][self.group.groupID] = self.group.lastUpdated;
+        
+        [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                NSLog(@"saved conversation ID");
+            }
+        }];
     }
-    
-    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"saved conversation ID");
-        }
-    }];
-//    [self.task saveInBackground];
 }
 
 
