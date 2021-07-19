@@ -90,7 +90,6 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"count %lu", (unsigned long)self.arrayOfMessages.count);
     return self.arrayOfMessages.count;
 }
 
@@ -115,60 +114,30 @@
         // Configure session so that completion handler is executed on main UI thread
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
-        //    [URLString appendString:@"https://api.groupme.com/groups?token="];
         [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
-        
-        //    NSDictionary *parameters = @{@"page": self.pageCount};
-        
-        //    [URLString appendString:@"1?token="];
         [URLString appendString:[APIManager getAuthToken]];
         [URLString appendString:[NSString stringWithFormat:@"&page=%@", @1]];
         
-        //    [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
-        //    [URLString appendString:@"&page=2"];
-        NSError* error = nil;
-        NSLog(@"%@", URLString);
-        NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
-        //    NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-        //    NSLog(@"%@", userData);
-        //
-        self.isMoreDataLoading = false;
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
-        [self setupGroupsFromJSONArray:data];
+        NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
         
-        // ... Use the new data to update the data source ...
-        //    double pageCountValue = [self.pageCount doubleValue];
-        //    self.pageCount = pageCountValue + 1;
-        
-        //    int newPageCount = [self.pageCount intValue] + 1;
-        //    self.pageCount = [NSNumber numberWithInt:newPageCount];
-        self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
-        NSLog(@"pageCount %@", self.pageCount);
-        
-        // Reload the tableView now that there is new data
-        [self.tableView reloadData];
-        
-        //    Need this to make it on the main thread
-        //    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        //
-        //    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-        //
-        //    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
-        //        if (requestError != nil) {
-        //
-        //        }
-        //        else
-        //        {
-        //            // Update flag
-        //            self.isMoreDataLoading = false;
-        //
-        //            // ... Use the new data to update the data source ...
-        //
-        //            // Reload the tableView now that there is new data
-        //            [self.tableView reloadData];
-        //        }
-        //    }];
-        //    [task resume];
+        NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:URLString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
+            if (requestError != nil) {
+                NSLog(@"Trouble requesting page");
+            } else {
+                // Update flag
+                self.isMoreDataLoading = false;
+                
+                // ... Use the new data to update the data source ...
+                [self setupGroupsFromJSONArray:data];
+                //                    self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
+                
+                // Reload the tableView now that there is new data
+                [self.tableView reloadData];
+            }
+        }];
+        [task resume];
     }
 }
 
@@ -234,7 +203,6 @@
             self.isMoreDataLoading = true;
             
             [self getConversationsAPI];
-            // ... Code to load more results ...
         }
         
     }
