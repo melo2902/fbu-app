@@ -9,13 +9,15 @@
 #import "APIManager.h"
 #import "MessageCell.h"
 
+// Not sure if I actually want scroll
 @interface ConversationViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (assign, nonatomic) BOOL endLoading;
-@property (assign, nonatomic) NSNumber *pageCount;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (assign, nonatomic) NSNumber *refreshBegin;
 @end
 
 @implementation ConversationViewController
@@ -23,10 +25,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
     self.groupNameLabel.text = self.group.lastMessage;
     self.arrayOfMessages = [[NSMutableArray alloc]init];
-    
+    self.refreshBegin = @0;
+
     [self getMessages];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getMessages) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 // Have it work before add the asethetic
@@ -36,8 +46,6 @@
     [URLString appendString:self.group.groupID];
     [URLString appendString:@"/messages?token="];
     [URLString appendString:[APIManager getAuthToken]];
-//    [URLString appendString:[NSString stringWithFormat:@"&page=%@", @1]];
-    //        [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
@@ -51,58 +59,56 @@
             self.isMoreDataLoading = false;
             
             // ... Use the new data to update the data source ...
-//            [self setupGroupsFromJSONArray:data];
             [self setupMessages:data];
-            
-//            NSLog(@"Convesationarray%@", messageFromServer);
-//            self.arrayOfMessages = arrayFromServer;
-            
-            self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
             
             // Reload the tableView now that there is new data
             [self.tableView reloadData];
         }
     }];
     [task resume];
+    [self.refreshControl endRefreshing];
 }
 
 - (void) setupMessages: (NSData*)data{
+    self.refreshBegin = [NSNumber numberWithInt:[self.refreshBegin intValue] + 1];
+    
     NSDictionary *arrayFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSDictionary *responseFromServer = [arrayFromServer objectForKey:@"response"];
     NSDictionary *messageFromServer = [responseFromServer objectForKey:@"messages"];
     
     for(NSDictionary *eachGroup in messageFromServer){
-//        Group *group = [[Group alloc] initWithJSONData:eachGroup];
-        [self.arrayOfMessages addObject:eachGroup[@"text"]];
-        NSLog(@"self.arrayOfMessages%@", self.arrayOfMessages);
+        [self.arrayOfMessages insertObject:eachGroup[@"text"] atIndex:0];
         [self.tableView reloadData];
     }
     
 }
 
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    if (!self.isMoreDataLoading) {
-        // Calculate the position of one screen length before the bottom of the results
-        int scrollViewContentHeight = self.tableView.contentSize.height;
-        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
-        
-        // When the user has scrolled past the threshold, start requesting
-        if(scrollView.contentOffset.y < scrollOffsetThreshold && self.tableView.isDragging) {
-            self.isMoreDataLoading = true;
-            
-            [self getMessages];
-        }
-        
-    }
-}
+//- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
+//    if (!self.isMoreDataLoading) {
+//        // Calculate the position of one screen length before the bottom of the results
+//        int scrollViewContentHeight = self.tableView.contentSize.height;
+//        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
+//
+//        // When the user has scrolled past the threshold, start requesting
+//        if(scrollView.contentOffset.y < 0) {
+////        if(scrollView.contentOffset.y < scrollOffsetThreshold && self.tableView.isDragging) {
+//            self.isMoreDataLoading = true;
+//
+//            [self getMessages];
+//        }
+//
+//    }
+//}
 
+// null error has to be associated wtih a particlar message
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
-//    Group *group = self.arrayOfMessages[indexPath.row];
-    //    cell.group = group;
-//    cell.groupNameLabel.text = group.groupName;
-//    cell.lastMessageLabel.text = group.lastMessage;
+    NSString *message = self.arrayOfMessages[indexPath.row];
+    NSLog(@"%@", message);
+    cell.lastMessageLabel.text = message;
+    cell.groupNameLabel.text = [NSString stringWithFormat:@"%@:%li", self.refreshBegin, (long)indexPath.row];
+    
     return cell;
 }
 
@@ -110,6 +116,11 @@
     return self.arrayOfMessages.count;
 }
 
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if(indexPath.row + 1 == [self.arrayOfMessages count]){
+//        [self getMessages];
+//    }
+//}
 
 /*
 #pragma mark - Navigation
