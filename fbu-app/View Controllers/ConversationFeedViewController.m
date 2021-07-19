@@ -19,7 +19,6 @@
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (assign, nonatomic) BOOL endLoading;
 @property (assign, nonatomic) NSNumber *pageCount;
-@property (assign, nonatomic) NSNumber *lastPage;
 @end
 
 @implementation ConversationFeedViewController
@@ -30,8 +29,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.pageCount = @2;
-    self.lastPage = @1000;
+    self.pageCount = @1;
     self.arrayOfMessages = [[NSMutableArray alloc]init];
     
     [self getConversationsAPI];
@@ -53,9 +51,6 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row + 1 == [self.arrayOfMessages count]){
-        //        Don't want to save the groups
-        
-        //        we are not hitting this
         if (!self.endLoading){
             [self getConversationsAPI];
         } else {
@@ -66,14 +61,13 @@
 }
 
 -(void) getConversationsAPI {
-    if ([self.pageCount intValue] <= [self.lastPage intValue])  {
+    if (!self.endLoading)  {
         // Configure session so that completion handler is executed on main UI thread
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
         [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
         [URLString appendString:[APIManager getAuthToken]];
-        [URLString appendString:[NSString stringWithFormat:@"&page=%@", @1]];
-        //        [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
+        [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
@@ -91,27 +85,28 @@
                 self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
                 
                 // Reload the tableView now that there is new data
-                [self.tableView reloadData];
+                //                [self.tableView reloadData];
             }
         }];
         [task resume];
+    } else {
+        NSLog(@"Testing if this is the last thing");
     }
 }
 
 -(void)setupGroupsFromJSONArray:(NSData*)dataFromServerArray{
     NSError *error;
-    //    NSMutableArray *groups = [[NSMutableArray alloc] init];
     NSDictionary *arrayFromServer = [NSJSONSerialization JSONObjectWithData:dataFromServerArray options:0 error:nil];
     arrayFromServer = [arrayFromServer objectForKey:@"response"];
     
-    NSLog(@"good?");
-    if ([arrayFromServer count] == 0) {
-        NSLog(@"bad");
+    NSInteger numOfNewGroups = [arrayFromServer count];
+    NSInteger empty = 0;
+    NSInteger aboutToBeEmpty = 10;
+    
+    if (numOfNewGroups == empty) {
         self.endLoading = YES;
     } else {
-        if ([arrayFromServer count] < 10) {
-            NSLog(@"bad");
-            self.lastPage = self.pageCount;
+        if (numOfNewGroups < aboutToBeEmpty) {
             self.endLoading = YES;
         }
         
@@ -127,7 +122,7 @@
                     [self.arrayOfMessages addObject:group];
                 }
                 
-                NSLog(@"onReadConversations%@%@",currPlatform.objectId, currPlatform[@"onReadConversations"]);
+                //                NSLog(@"onReadConversations%@%@",currPlatform.objectId, currPlatform[@"onReadConversations"]);
                 
                 //                [self.arrayOfMessages addObject:group];
                 
@@ -136,15 +131,13 @@
                 //                        [self.arrayOfMessages addObject:group];
                 //                }
                 
-                [self.tableView reloadData];
+                //                [self.tableView reloadData];
             }
-            
-            //        PFUser.currentUser[@"GroupME"] = groups;
-            //        [PFUser.currentUser saveInBackground];
         }
-        //    dispatch_async(dispatch_get_main_queue(), ^{
-        //        [self.tableView reloadData];
-        //    });
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
     }
 }
 

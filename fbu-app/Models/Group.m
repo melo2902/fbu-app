@@ -17,7 +17,12 @@
         self.groupID = [data objectForKey:@"group_id"];
         NSDictionary *lastSenderData = [[data objectForKey:@"messages"] objectForKey:@"preview"];
         self.lastSender = [lastSenderData objectForKey:@"nickname"];
-        self.lastMessage = [lastSenderData objectForKey:@"text"];
+        
+        if ([lastSenderData objectForKey:@"text"] != [NSNull null]) {
+            self.lastMessage = [lastSenderData objectForKey:@"text"];
+        } else {
+            self.lastMessage = @"";
+        }
         
 //        NSLog(@"data%@", [data objectForKey:@"updated_at"]);
         self.lastUpdated = [data objectForKey:@"updated_at"];
