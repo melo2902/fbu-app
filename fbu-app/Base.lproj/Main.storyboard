@@ -577,7 +577,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="110" id="tOl-Ls-Omc" customClass="MessageCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="110" id="tOl-Ls-Omc" customClass="ConversationCell">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tOl-Ls-Omc" id="CiJ-nN-7hV">
@@ -593,7 +593,7 @@
                                                     <state key="normal" image="circle" catalog="system"/>
                                                     <state key="selected" image="circle.fill" catalog="system"/>
                                                     <connections>
-                                                        <action selector="onTapStatusButton:" destination="tOl-Ls-Omc" eventType="touchUpInside" id="kKX-Aw-rnQ"/>
+                                                        <action selector="onTapStatusButton:" destination="tOl-Ls-Omc" eventType="touchUpInside" id="2l4-5G-Oe0"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GROUP ME NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-Ko-sxy">
@@ -623,8 +623,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="groupNameLabel" destination="IBc-Ko-sxy" id="BWv-Nf-dYc"/>
-                                            <outlet property="lastMessageLabel" destination="PfY-Hl-s3h" id="VR2-KX-HdI"/>
+                                            <outlet property="groupNameLabel" destination="IBc-Ko-sxy" id="tH5-3n-7Ne"/>
+                                            <outlet property="lastMessageLabel" destination="PfY-Hl-s3h" id="yuB-gz-0sE"/>
                                             <outlet property="statusButton" destination="UPj-8x-7PE" id="d6P-Ch-4yv"/>
                                             <segue destination="WJa-aj-Ahx" kind="show" identifier="showConversationSegue" id="qkx-7x-pvG"/>
                                         </connections>

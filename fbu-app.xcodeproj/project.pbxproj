@@ -33,6 +33,7 @@
 		5862EF2126A0C86100BE2EA4 /* ConversationFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2026A0C86100BE2EA4 /* ConversationFeedViewController.m */; };
 		5862EF2426A20FD800BE2EA4 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2326A20FD800BE2EA4 /* Group.m */; };
 		5862EF2826A221F900BE2EA4 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2726A221F800BE2EA4 /* Platform.m */; };
+		5862EF2E26A6276600BE2EA4 /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2D26A6276600BE2EA4 /* ConversationCell.m */; };
 		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
 		878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,8 @@
 		5862EF2326A20FD800BE2EA4 /* Group.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		5862EF2626A221F800BE2EA4 /* Platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
 		5862EF2726A221F800BE2EA4 /* Platform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Platform.m; sourceTree = "<group>"; };
+		5862EF2C26A6276600BE2EA4 /* ConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationCell.h; sourceTree = "<group>"; };
+		5862EF2D26A6276600BE2EA4 /* ConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,6 +251,8 @@
 				5862EF0F269E141500BE2EA4 /* TaskCell.m */,
 				5862EF1926A08DF200BE2EA4 /* MessageCell.h */,
 				5862EF1A26A08DF200BE2EA4 /* MessageCell.m */,
+				5862EF2C26A6276600BE2EA4 /* ConversationCell.h */,
+				5862EF2D26A6276600BE2EA4 /* ConversationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 				5862EF0D269DE3EE00BE2EA4 /* APIManager.m in Sources */,
 				5862EF06269CC04E00BE2EA4 /* Task.m in Sources */,
 				5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */,
+				5862EF2E26A6276600BE2EA4 /* ConversationCell.m in Sources */,
 				5862EEFD269CBEC300BE2EA4 /* ListCell.m in Sources */,
 				5862EF09269CC6B400BE2EA4 /* TaskViewController.m in Sources */,
 				5862EF1E26A09E1100BE2EA4 /* ConversationViewController.m in Sources */,

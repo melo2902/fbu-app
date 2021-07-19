@@ -7,7 +7,7 @@
 
 #import "ConversationFeedViewController.h"
 #import "Parse/Parse.h"
-#import "MessageCell.h"
+#import "ConversationCell.h"
 #import "Group.h"
 #import "APIManager.h"
 #import "Platform.h"
@@ -38,7 +38,7 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
+    ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationCell" forIndexPath:indexPath];
     
     Group *group = self.arrayOfMessages[indexPath.row];
     cell.group = group;
