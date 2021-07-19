@@ -36,7 +36,22 @@
         Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
         [currPlatform fetchIfNeeded];
        
-        currPlatform[@"onReadConversations"][self.group.groupID] = self.group.lastUpdated;
+        
+//        Conversation *updateConversation = [Conversation updateConversation:self.group.groupID withTimeStamp: self.group.lastUpdated withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//            if (succeeded) {
+//                NSLog(@"Conversation created");
+//            }
+//        }];
+        
+        NSMutableDictionary *pastConversations = currPlatform[@"onReadConversations"][0];
+        
+        pastConversations[self.group.groupID] = self.group.lastUpdated;
+        
+//        if ([pastConversations objectForKey:self.group.groupID]){
+//            pastConversations[self.group]
+//        }
+        
+        currPlatform[@"onReadConversations"][0] = pastConversations;
         
         [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {

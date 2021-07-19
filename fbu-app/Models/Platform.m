@@ -31,7 +31,13 @@
         newPlatform.userName = [response objectForKey:@"name"];
         NSLog(@"data%@", data);
         NSLog(@"why does this not save%@", newPlatform.userName);
-        newPlatform.onReadConversations = [[NSMutableDictionary alloc]init];
+        
+        NSMutableArray *conversationsArray = [[NSMutableArray alloc]init];
+        NSMutableDictionary *conversationDictionary = [[NSMutableDictionary alloc]init];
+        
+        [conversationsArray addObject:conversationDictionary];
+        
+        newPlatform.onReadConversations = conversationsArray;
     }
     
     [newPlatform saveInBackground];
