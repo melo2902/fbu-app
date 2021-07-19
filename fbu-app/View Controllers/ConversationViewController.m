@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
+@property (nonatomic, strong) NSString *latestMessageID;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (assign, nonatomic) BOOL endLoading;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -47,6 +48,12 @@
     [URLString appendString:@"/messages?token="];
     [URLString appendString:[APIManager getAuthToken]];
     
+    if ([self.latestMessageID length] != 0) {
+        [URLString appendString:[NSString stringWithFormat:@"&before_id=%@", self.latestMessageID]];
+    }
+    
+    NSLog(@"URL String%@", URLString);
+    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
@@ -76,8 +83,12 @@
     NSDictionary *responseFromServer = [arrayFromServer objectForKey:@"response"];
     NSDictionary *messageFromServer = [responseFromServer objectForKey:@"messages"];
     
+    NSLog(@"array%@", messageFromServer);
+//  Goes from the latest to the earliest
     for(NSDictionary *eachGroup in messageFromServer){
         [self.arrayOfMessages insertObject:eachGroup[@"text"] atIndex:0];
+        self.latestMessageID = eachGroup[@"id"];
+    
         [self.tableView reloadData];
     }
     
@@ -105,7 +116,6 @@
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
     NSString *message = self.arrayOfMessages[indexPath.row];
-    NSLog(@"%@", message);
     cell.lastMessageLabel.text = message;
     cell.groupNameLabel.text = [NSString stringWithFormat:@"%@:%li", self.refreshBegin, (long)indexPath.row];
     
