@@ -16,6 +16,7 @@
 @interface ConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
+@property (nonatomic, strong) NSMutableArray *pageNumbers;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (assign, nonatomic) BOOL endLoading;
 @property (assign, nonatomic) NSNumber *pageCount;
@@ -31,6 +32,7 @@
     
     self.pageCount = @1;
     self.arrayOfMessages = [[NSMutableArray alloc]init];
+    self.pageNumbers = [[NSMutableArray alloc]init];
     
     [self getConversationsAPI];
 }
@@ -61,8 +63,9 @@
 }
 
 -(void) getConversationsAPI {
-    if (!self.endLoading)  {
+    if (!self.endLoading && ![self.pageNumbers containsObject:self.pageCount])  {
         // Configure session so that completion handler is executed on main UI thread
+        [self.pageNumbers addObject:self.pageCount];
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
         [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
