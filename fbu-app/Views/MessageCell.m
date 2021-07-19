@@ -23,14 +23,10 @@
 }
 
 - (IBAction)onTapStatusButton:(id)sender {
-    PFUser *user = PFUser.currentUser;
-    
     if (self.statusButton.selected) {
         NSLog(@"Button is not selected!");
         self.statusButton.selected = NO;
     // Let change the CSS of the selection criteria
-        
-//        self.group[@"completed"] = @NO;
         
     } else {
         NSLog(@"Button is selected!");
@@ -39,12 +35,12 @@
 //        This is for specific case when the user leaves the person, on read, not when they reply
         Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
         [currPlatform fetchIfNeeded];
-        
+       
         currPlatform[@"onReadConversations"][self.group.groupID] = self.group.lastUpdated;
         
         [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                NSLog(@"saved conversation ID");
+                NSLog(@"Saved conversation ID with associated timestamp%@", currPlatform[@"onReadConversations"]);
             }
         }];
     }

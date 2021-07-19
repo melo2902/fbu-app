@@ -41,7 +41,7 @@
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
     Group *group = self.arrayOfMessages[indexPath.row];
-    //    cell.group = group;
+    cell.group = group;
     cell.groupNameLabel.text = group.groupName;
     cell.lastMessageLabel.text = group.lastMessage;
     return cell;
@@ -123,10 +123,11 @@
             
             for(NSDictionary *eachGroup in arrayFromServer){
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
-                
                 if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
                     [self.arrayOfMessages addObject:group];
                 }
+                
+                NSLog(@"onReadConversations%@%@",currPlatform.objectId, currPlatform[@"onReadConversations"]);
                 
                 //                [self.arrayOfMessages addObject:group];
                 
