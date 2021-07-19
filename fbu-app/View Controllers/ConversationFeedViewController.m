@@ -11,6 +11,7 @@
 #import "Group.h"
 #import "APIManager.h"
 #import "Platform.h"
+#import "ConversationViewController.h"
 
 @interface ConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,54 +37,11 @@
     [self getConversationsAPI];
 }
 
-//-(void) getConversations {
-////    grab conversations - need to save more information
-//
-////    Do I really want to save the groups? no, i don't thnk so?
-//    PFQuery *query = [PFQuery queryWithClassName:@"Group"];
-////    [query whereKey:@"author" equalTo: PFUser.currentUser];
-////    [query whereKey:@"listTitle" equalTo: self.list[@"name"]];
-////    [query whereKey:@"author" equalTo: PFUser.currentUser];
-//
-////    [query orderByDescending:@"createdAt"];
-//
-//    // fetch data asynchronously
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *groups, NSError *error) {
-//        if (groups != nil) {
-//            self.arrayOfMessages = (NSMutableArray *) groups;
-//
-//            NSLog(@"hit here%@", self.arrayOfMessages);
-////            for(NSDictionary *eachGroup in arrayFromServer){
-////                NSLog(@"each Group %@", eachGroup);
-////    //            Not sure if this is right but we rolling with it for now
-////                Group *group = [[Group alloc] initWithJSONData:eachGroup];
-////                [groups addObject:group];
-////            }
-//
-//            [self.tableView reloadData];
-//        } else {
-//            NSLog(@"%@", error.localizedDescription);
-//        }
-//    }];
-//
-//}
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
-
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
     Group *group = self.arrayOfMessages[indexPath.row];
-    cell.group = group;
-    //        Hmm...
+    //    cell.group = group;
     cell.groupNameLabel.text = group.groupName;
     cell.lastMessageLabel.text = group.lastMessage;
     return cell;
@@ -108,8 +66,6 @@
 }
 
 -(void) getConversationsAPI {
-    
-    //    NSLog(@")
     if ([self.pageCount intValue] <= [self.lastPage intValue])  {
         // Configure session so that completion handler is executed on main UI thread
         
@@ -117,6 +73,7 @@
         [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
         [URLString appendString:[APIManager getAuthToken]];
         [URLString appendString:[NSString stringWithFormat:@"&page=%@", @1]];
+        //        [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
@@ -131,7 +88,7 @@
                 
                 // ... Use the new data to update the data source ...
                 [self setupGroupsFromJSONArray:data];
-                //                    self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
+                self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
                 
                 // Reload the tableView now that there is new data
                 [self.tableView reloadData];
@@ -152,7 +109,6 @@
         NSLog(@"bad");
         self.endLoading = YES;
     } else {
-        NSLog(@"array %@", arrayFromServer);
         if ([arrayFromServer count] < 10) {
             NSLog(@"bad");
             self.lastPage = self.pageCount;
@@ -191,7 +147,6 @@
     }
 }
 
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (!self.isMoreDataLoading) {
         // Calculate the position of one screen length before the bottom of the results
@@ -205,6 +160,22 @@
             [self getConversationsAPI];
         }
         
+    }
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"showConversationSegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Group *group = self.arrayOfMessages[indexPath.row];
+        
+        ConversationViewController *conversationViewController = [segue destinationViewController];
+        conversationViewController.group = group;
     }
 }
 
