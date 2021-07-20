@@ -40,10 +40,9 @@
         newUser.password = self.passwordField.text;
         
         NSMutableArray *preDefinedLists = [[NSMutableArray alloc] init];
-        [self createPredefinedLists:@"All" toList:preDefinedLists];
         [self createPredefinedLists:@"My Day" toList:preDefinedLists];
-        [self createPredefinedLists:@"Tasks" toList:preDefinedLists];
-        [self createPredefinedLists:@"Messages" toList:preDefinedLists];
+        [self createPredefinedLists:@"My Tomorrow" toList:preDefinedLists];
+        [self createPredefinedLists:@"All" toList:preDefinedLists];
         
         newUser[@"lists"] = preDefinedLists;
         

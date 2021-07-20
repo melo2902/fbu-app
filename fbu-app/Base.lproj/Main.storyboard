@@ -536,7 +536,7 @@
                         <outlet property="firstNameField" destination="ZIi-5U-CCJ" id="hns-do-m4r"/>
                         <outlet property="lastNameField" destination="eHt-d1-Mwu" id="Hko-sm-XKi"/>
                         <outlet property="passwordField" destination="qLE-rs-Ofn" id="mdE-bM-kR3"/>
-                        <segue destination="OVU-Ho-fJ5" kind="show" id="Bak-5O-5l0"/>
+                        <segue destination="OVU-Ho-fJ5" kind="show" identifier="signedUpSegue" id="Bak-5O-5l0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="727-am-a56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -647,7 +647,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MAA-rn-xWN"/>
+        <segue reference="Bak-5O-5l0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>
