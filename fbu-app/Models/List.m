@@ -36,4 +36,10 @@
     [list saveInBackgroundWithBlock: completion];
 }
 
++ (void) deleteTask: ( Task *)task toList: (List*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+
+    [list[@"arrayOfItems"] removeObject:task];
+    [list saveInBackgroundWithBlock: completion];
+}
+
 @end

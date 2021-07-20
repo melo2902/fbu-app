@@ -119,7 +119,20 @@
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-        [self.arrayOfTasks removeObject: self.arrayOfTasks[indexPath.row]];
+        
+        Task *task = self.arrayOfTasks[indexPath.row];
+        
+        // Tasks aren't pulled from the list
+        [List deleteTask:task toList:self.list withCompletion:
+         ^(BOOL succeeded, NSError * _Nullable error) {
+        }];
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+        [query getObjectInBackgroundWithId:task.objectId block:^(PFObject *taskObject, NSError *error) {
+          [taskObject deleteInBackground];
+        }];
+        
+        [self.arrayOfTasks removeObject: task];
         
         [self.tableView reloadData];
         completionHandler(YES);
