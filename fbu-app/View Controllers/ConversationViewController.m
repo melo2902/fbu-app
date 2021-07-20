@@ -87,7 +87,7 @@
     
     NSString *message = self.arrayOfMessages[indexPath.row];
     
-    if ([message length] == 0){
+    if ([message isKindOfClass:[NSNull class]]){
         cell.lastMessageLabel.text = @"";
     } else {
         cell.lastMessageLabel.text = message;
