@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
 
     [self.view addGestureRecognizer:tap];
@@ -28,7 +27,6 @@
     NSString *email = self.emailLabel.text;
     NSString *password = self.passwordLabel.text;
     
-//    Check if we can do logInwithEmail
     [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
@@ -48,9 +46,6 @@
             }];
             
         } else {
-            
-            NSLog(@"Do we hit this?");
-            // display view controller that needs to shown after successful login
             [self performSegueWithIdentifier:@"loggedInSegue" sender:nil];
         }
     }];
@@ -61,16 +56,4 @@
     [self.passwordLabel resignFirstResponder];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)usernameLabel:(id)sender {
-}
 @end

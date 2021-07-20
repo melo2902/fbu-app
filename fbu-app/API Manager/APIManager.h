@@ -11,10 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface APIManager : NSObject
-+ (void)signInUser;
-//+ (BOOL)isLoggedIn;
 + (NSString *)getAuthToken;
-+ (NSDictionary *)getUserData;
 @end
 
 NS_ASSUME_NONNULL_END

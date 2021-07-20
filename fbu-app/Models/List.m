@@ -24,9 +24,6 @@
     newList.name = name;
     newList.arrayOfItems = [[NSMutableArray alloc] init];
     newList.totalWorkingTime = @(0);
-//    newList.author = PFUser.currentUser;
-    
-    NSLog(@"author%@", newList.author);
     
     [newList saveInBackgroundWithBlock: completion];
     
@@ -34,11 +31,8 @@
 }
 
 + (void) addTask: ( Task *)task toList: (List*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
-    
-    NSLog(@"list%@", list);
-    [list[@"arrayOfItems"] addObject:task];
 
-    NSLog(@"%@", list[@"arrayOfItems"]);
+    [list[@"arrayOfItems"] addObject:task];
     [list saveInBackgroundWithBlock: completion];
 }
 

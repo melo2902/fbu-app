@@ -28,7 +28,6 @@
 
         [Parse initializeWithConfiguration:config];
     
-//    User persist session
     if (PFUser.currentUser) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 

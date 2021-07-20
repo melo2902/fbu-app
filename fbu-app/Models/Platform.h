@@ -15,11 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *platformName;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSMutableArray *onReadConversations;
-//@property (nonatomic, strong) NSString *taskTitle;
-//@property (nonatomic, strong) NSNumber *workingTime;
-//@property (nonatomic, strong) NSDate *dueDate;
-//@property (nonatomic, strong) NSString *notes;
-//@property (nonatomic) BOOL completed;
 
 -(instancetype)initWithJSONData:(NSDictionary*)data onPlatform: (NSString*) platform;
 

@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -56,15 +56,14 @@
         if (!self.endLoading){
             [self getConversationsAPI];
         } else {
-            NSLog(@"where do we end%@", self.pageCount);
+            NSLog(@"Stop loading conversations");
         }
-        //        [self getConversations:[self.arrayOfMessages count] + 10];
     }
 }
 
 -(void) getConversationsAPI {
     if (!self.endLoading && ![self.pageNumbers containsObject:self.pageCount])  {
-        // Configure session so that completion handler is executed on main UI thread
+        
         [self.pageNumbers addObject:self.pageCount];
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
@@ -80,20 +79,15 @@
             if (requestError != nil) {
                 NSLog(@"Trouble requesting page");
             } else {
-                // Update flag
-                self.isMoreDataLoading = false;
                 
-                // ... Use the new data to update the data source ...
+                self.isMoreDataLoading = false;
                 [self setupGroupsFromJSONArray:data];
                 self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
-                
-                // Reload the tableView now that there is new data
-                //                [self.tableView reloadData];
             }
         }];
         [task resume];
     } else {
-        NSLog(@"Testing if this is the last thing");
+        NSLog(@"All conversations already loaded");
     }
 }
 
@@ -124,17 +118,6 @@
                 if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
                     [self.arrayOfMessages addObject:group];
                 }
-                
-                //                NSLog(@"onReadConversations%@%@",currPlatform.objectId, currPlatform[@"onReadConversations"]);
-                
-                //                [self.arrayOfMessages addObject:group];
-                
-                
-                //                if (![PFUser.currentUser[@"GroupMe"][@"readConversations"] containsObject:group.groupID]) {
-                //                        [self.arrayOfMessages addObject:group];
-                //                }
-                
-                //                [self.tableView reloadData];
             }
         }
         
@@ -146,11 +129,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (!self.isMoreDataLoading) {
-        // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
         
-        // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
             self.isMoreDataLoading = true;
             
@@ -162,10 +143,7 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if ([segue.identifier isEqual:@"showConversationSegue"]) {
         UITableViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];

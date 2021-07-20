@@ -23,7 +23,6 @@
     [super viewDidLoad];
     [PFUser logOut];
     
-    // Do any additional setup after loading the view.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
@@ -32,10 +31,8 @@
 - (IBAction)onTapSignUp:(id)sender {
     if ([self.passwordField.text isEqualToString:self.confirmPasswordField.text]){
         
-        // initialize a user object
         PFUser *newUser = [PFUser user];
         
-        // set user properties
         newUser.username = [NSString stringWithFormat:@"%@ %@", self.firstNameField.text, self.lastNameField.text];
         newUser[@"firstName"] = self.firstNameField.text;
         newUser.email = self.emailField.text;
@@ -47,16 +44,9 @@
         [self createPredefinedLists:@"My Day" toList:preDefinedLists];
         [self createPredefinedLists:@"Tasks" toList:preDefinedLists];
         [self createPredefinedLists:@"Messages" toList:preDefinedLists];
-
-        PFUser *currentUser = PFUser.currentUser;
-        NSLog(@"%@currentUser", currentUser);
+        
         newUser[@"lists"] = preDefinedLists;
         
-//        NSLog(@"%@", preDefinedLists);
-//
-//        newUser[@"lists"] = preDefinedLists;
-        
-        // call sign up function on the object
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (error != nil) {
                 NSLog(@"Error: %@", error.localizedDescription);
@@ -77,8 +67,6 @@
             } else {
                 NSLog(@"User registered successfully");
                 
-//                [self addListToUser];
-                // manually segue to logged in view
                 [self performSegueWithIdentifier:@"signedUpSegue" sender:nil];
             }
         }];
@@ -99,27 +87,6 @@
     }
 }
 
-//This is not right
--(void) addListToUser {
-    // set up array with initial list objects
-    NSMutableArray *preDefinedLists = [[NSMutableArray alloc] init];
-    [self createPredefinedLists:@"All" toList:preDefinedLists];
-    [self createPredefinedLists:@"My Day" toList:preDefinedLists];
-    [self createPredefinedLists:@"Tasks" toList:preDefinedLists];
-    [self createPredefinedLists:@"Messages" toList:preDefinedLists];
-
-    PFUser *currentUser = PFUser.currentUser;
-    currentUser[@"lists"] = preDefinedLists;
-
-    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error){
-            NSLog(@"Error: %@", error.localizedDescription);
-        } else {
-            NSLog(@"Arrays saved successfully");
-        }
-    }];
-}
-
 -(void) createPredefinedLists:(NSString *) name toList:(NSMutableArray *) definedList {
     List *newList = [List createList:name withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
@@ -133,15 +100,5 @@
     [self.passwordField resignFirstResponder];
     [self.confirmPasswordField resignFirstResponder];
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

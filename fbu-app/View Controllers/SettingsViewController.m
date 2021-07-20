@@ -10,7 +10,6 @@
 #import "LoginViewController.h"
 #import "APIManager.h"
 #import "Parse/Parse.h"
-#import "Group.h"
 #import "Platform.h"
 
 @interface SettingsViewController ()
@@ -23,13 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    //    definesPresentationContext = true
+
     self.userNameLabel.text = PFUser.currentUser.username;
 }
 
 - (IBAction)onTapAddPlatform:(id)sender {
-    //    Later need to allow the user multiple choices
+    // Later allow users to have multiple choices
     [self signInUser];
 }
 
@@ -38,19 +36,12 @@
     SFSafariViewController *sfvc = [[SFSafariViewController alloc] initWithURL:oAuthURL];
     if (oAuthURL) {
         if ([SFSafariViewController class] != nil) {
-            //            UIViewController *rootController = [UIApplication sharedApplication].keyWindow.rootViewController;
-            //            [rootController presentViewController:sfvc animated:YES completion:nil];
             [self presentViewController:sfvc animated:YES completion:nil];
             
-//            [APIManager getUserData];
-//            I think my logged in is saved from before
-//            Only the top group is preseent and half of it
-//            Want to remove this later
             NSMutableString *URLString = [[NSMutableString alloc] init];
             [URLString appendString:@"https://api.groupme.com/v3/users/me?token="];
             [URLString appendString:[APIManager getAuthToken]];
-//            I think I'm just using my own getAuthToken, I need to be able to grab other peoples
-            NSLog(@"%@", URLString);
+
             NSError* error = nil;
             NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
             NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -66,7 +57,6 @@
     }
 }
 
-//potentially load all the conversations when the user first chooses, so it doesn't have to update the stuff at the verybeginnign (consistency in the remaining)
 -(void) updateUser:(Platform*) platform withPlatform: (NSString*) name {
     PFUser *user = PFUser.currentUser;
     user[name] = platform;
@@ -84,15 +74,5 @@
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
