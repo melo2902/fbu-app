@@ -35,7 +35,7 @@
         NSMutableArray *conversations = currPlatform[@"onReadConversations"];
         
         for (Conversation *conversationItem in conversations) {
-            if ([conversationItem.conversationID isEqual:self.group.groupID]) {
+            if ([conversationItem[@"conversationID"] isEqual:self.group.groupID]) {
                 [conversations removeObject:conversationItem];
             }
         }
