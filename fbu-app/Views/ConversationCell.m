@@ -8,6 +8,7 @@
 #import "ConversationCell.h"
 #import "Parse/Parse.h"
 #import "Platform.h"
+#import "Conversation.h"
 
 @implementation ConversationCell
 
@@ -31,9 +32,22 @@
         Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
         [currPlatform fetchIfNeeded];
         
-        NSMutableDictionary *pastConversations = currPlatform[@"onReadConversations"][0];
-        pastConversations[self.group.groupID] = self.group.lastUpdated;
-        currPlatform[@"onReadConversations"][0] = pastConversations;
+        NSMutableArray *conversations = currPlatform[@"onReadConversations"];
+        
+        for (Conversation *conversationItem in conversations) {
+            if ([conversationItem.conversationID isEqual:self.group.groupID]) {
+                [conversations removeObject:conversationItem];
+            }
+        }
+        
+        Conversation *updateConversation = [Conversation updateConversation:self.group.groupID withTimeStamp: self.group.lastUpdated withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                NSLog(@"Conversation created");
+            }
+        }];
+        
+        [conversations addObject: updateConversation];
+        currPlatform[@"onReadConversations"] = conversations;
         
         [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {

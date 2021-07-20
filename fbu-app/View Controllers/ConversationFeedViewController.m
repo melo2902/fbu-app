@@ -16,9 +16,9 @@
 @interface ConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
-@property (nonatomic, strong) NSMutableArray *pageNumbers;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (assign, nonatomic) BOOL endLoading;
+@property (nonatomic, strong) NSMutableArray *pageNumbers;
 @property (assign, nonatomic) NSNumber *pageCount;
 @end
 

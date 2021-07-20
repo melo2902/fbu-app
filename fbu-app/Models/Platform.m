@@ -26,13 +26,7 @@
         
         NSDictionary *response = [data objectForKey:@"response"];
         newPlatform.userName = [response objectForKey:@"name"];
-        
-        NSMutableArray *conversationsArray = [[NSMutableArray alloc]init];
-        NSMutableDictionary *conversationDictionary = [[NSMutableDictionary alloc]init];
-        
-        [conversationsArray addObject:conversationDictionary];
-        
-        newPlatform.onReadConversations = conversationsArray;
+        newPlatform.onReadConversations = [[NSMutableArray alloc]init];
     }
     
     [newPlatform saveInBackground];
