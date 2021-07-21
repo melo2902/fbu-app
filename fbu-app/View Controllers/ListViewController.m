@@ -40,7 +40,7 @@
 - (void) getTasks {
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query whereKey:@"author" equalTo: PFUser.currentUser];
-    [query whereKey:@"listTitle" equalTo: self.list[@"name"]];
+    [query whereKey:@"inLists" equalTo: self.list[@"name"]];
     [query orderByDescending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {

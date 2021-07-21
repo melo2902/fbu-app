@@ -9,7 +9,7 @@
 
 @implementation Task
 @dynamic author;
-@dynamic listTitle;
+@dynamic inLists;
 @dynamic taskTitle;
 @dynamic workingTime;
 @dynamic dueDate;
@@ -25,7 +25,14 @@
     Task *newTask = [[Task alloc] initWithClassName:@"Task"];
     
     newTask.author = PFUser.currentUser;
-    newTask.listTitle = list;
+    
+    NSMutableArray *lists = [[NSMutableArray alloc] init];
+    [lists addObject: list];
+    if (![list isEqual:@"All"]){
+        [lists addObject:@"All"];
+    }
+    newTask.inLists = lists;
+    
     newTask.taskTitle = name;
     newTask.workingTime = @(0);
     newTask.notes = @"";
