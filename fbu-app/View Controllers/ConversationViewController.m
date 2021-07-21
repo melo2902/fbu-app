@@ -9,7 +9,7 @@
 #import "APIManager.h"
 #import "MessageCell.h"
 
-@interface ConversationViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface ConversationViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
@@ -17,6 +17,7 @@
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (assign, nonatomic) NSNumber *refreshBegin;
+@property (weak, nonatomic) IBOutlet UITextField *sendTextMessageLabel;
 @end
 
 @implementation ConversationViewController
@@ -26,6 +27,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.sendTextMessageLabel.delegate = self;
     
     self.groupNameLabel.text = self.group.lastMessage;
     self.arrayOfMessages = [[NSMutableArray alloc]init];
@@ -80,6 +82,17 @@
         [self.tableView reloadData];
     }
     
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [APIManager sendTextMessage:self.sendTextMessageLabel.text inGroup:self.group.groupID];
+    
+    [self.arrayOfMessages addObject: self.sendTextMessageLabel.text];
+    
+    self.sendTextMessageLabel.text = @"";
+    [self.tableView reloadData];
+    
+    return YES;
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

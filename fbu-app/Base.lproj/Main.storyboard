@@ -393,17 +393,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOI-5t-Y89">
-                                <rect key="frame" x="16" y="20" width="124" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOI-5t-Y89">
+                                <rect key="frame" x="20" y="40" width="86.666666666666671" height="18"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9YR-3P-xxJ">
-                                <rect key="frame" x="30" y="82" width="330" height="673.33333333333326"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9YR-3P-xxJ">
+                                <rect key="frame" x="30" y="70" width="330" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="56" id="5Y0-t2-O0s" customClass="MessageCell">
@@ -451,13 +449,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Send a text message.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vWp-m7-ofB">
+                                <rect key="frame" x="30" y="784" width="330" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XoF-4f-hJd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XoF-4f-hJd" firstAttribute="trailing" secondItem="vWp-m7-ofB" secondAttribute="trailing" constant="30" id="291-Jd-Tsg"/>
+                            <constraint firstItem="XoF-4f-hJd" firstAttribute="trailing" secondItem="9YR-3P-xxJ" secondAttribute="trailing" constant="30" id="2ZS-DP-qYW"/>
+                            <constraint firstItem="vWp-m7-ofB" firstAttribute="leading" secondItem="XoF-4f-hJd" secondAttribute="leading" constant="30" id="3ll-QB-hHh"/>
+                            <constraint firstItem="9YR-3P-xxJ" firstAttribute="leading" secondItem="XoF-4f-hJd" secondAttribute="leading" constant="30" id="6EK-eO-Oup"/>
+                            <constraint firstItem="9YR-3P-xxJ" firstAttribute="top" secondItem="oOI-5t-Y89" secondAttribute="bottom" constant="12" id="78N-qr-98q"/>
+                            <constraint firstItem="XoF-4f-hJd" firstAttribute="bottom" secondItem="9YR-3P-xxJ" secondAttribute="bottom" constant="50" id="MjC-t7-t91"/>
+                            <constraint firstItem="oOI-5t-Y89" firstAttribute="leading" secondItem="XoF-4f-hJd" secondAttribute="leading" constant="20" id="bSf-Ta-V3B"/>
+                            <constraint firstItem="oOI-5t-Y89" firstAttribute="top" secondItem="lZS-a9-gJL" secondAttribute="top" constant="40" id="dG2-DK-dPV"/>
+                            <constraint firstItem="XoF-4f-hJd" firstAttribute="bottom" secondItem="vWp-m7-ofB" secondAttribute="bottom" constant="10" id="trw-5D-zut"/>
+                            <constraint firstItem="vWp-m7-ofB" firstAttribute="top" secondItem="9YR-3P-xxJ" secondAttribute="bottom" constant="24" id="xXw-Wh-K2p"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aBJ-QA-c6Q"/>
                     <connections>
                         <outlet property="groupNameLabel" destination="oOI-5t-Y89" id="TgK-84-DSX"/>
+                        <outlet property="sendTextMessageLabel" destination="vWp-m7-ofB" id="cdl-Fe-Jkb"/>
                         <outlet property="tableView" destination="9YR-3P-xxJ" id="dDA-D5-OfU"/>
                     </connections>
                 </viewController>

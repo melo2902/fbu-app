@@ -118,12 +118,12 @@
             for(NSDictionary *eachGroup in arrayFromServer){
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
                 BOOL foundConversation = NO;
-                
+
                 if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
-                    
+
                     for (Conversation *conversationItem in savedConversations) {
                         [conversationItem fetchIfNeeded];
-                        
+
                         if ([conversationItem[@"conversationID"] isEqual:group.groupID]) {
                             foundConversation = YES;
                             // New message since the user has last seen the conversations
@@ -131,14 +131,14 @@
                                 [savedConversations removeObject:conversationItem];
                                 currPlatform[@"onReadConversations"] = savedConversations;
                                 [currPlatform saveInBackground];
-                                
+
                                 [self.arrayOfMessages addObject:group];
                             }
-                            
+
                             break;
                         }
                     }
-                    
+
                     if (!foundConversation) {
                         [self.arrayOfMessages addObject:group];
                     }
