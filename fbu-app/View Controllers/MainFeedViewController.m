@@ -11,10 +11,12 @@
 #import "List.h"
 #import "ListCell.h"
 
-@interface MainFeedViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *userListTableView;
+@property (weak, nonatomic) IBOutlet UITextField *addNewListField;
 @property (nonatomic, strong) NSMutableArray *arrayOfLists;
 @end
 
@@ -25,6 +27,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.addNewListField.delegate = self;
     
     self.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
 
@@ -45,6 +48,22 @@
         }
 
     }];
+}
+
+// Quick list return
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    List *newList =[List createList:self.addNewListField.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"New list created");
+        }
+    }];
+    
+    [self.arrayOfLists addObject:newList];
+    
+    self.addNewListField.text = @"";
+    [self.tableView reloadData];
+    
+    return YES;
 }
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
