@@ -10,6 +10,7 @@
 #import "Parse/Parse.h"
 #import "List.h"
 #import "TaskViewController.h"
+#import "XLFTaskViewController.h"
 #import "Task.h"
 #import "TaskCell.h"
 
@@ -167,12 +168,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     // Need a delegate to prepare segue
-    if ([segue.identifier isEqual:@"showTaskDetailSegue"]) {
+    if ([segue.identifier isEqual:@"showTaskDetailsSegue"]) {
         TaskCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         Task *task = self.arrayOfTasks[indexPath.row];
         
-        TaskViewController *taskViewController = [segue destinationViewController];
+        XLFTaskViewController *taskViewController = [segue destinationViewController];
         taskViewController.task = task;
     }
 }
