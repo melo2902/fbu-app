@@ -91,6 +91,36 @@
     return YES;
 }
 
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (tableView == self.userListTableView){
+        UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+            
+            List *list = self.arrayOfUserLists[indexPath.row];
+            
+            PFQuery *query = [PFQuery queryWithClassName:@"List"];
+            [query getObjectInBackgroundWithId:list.objectId block:^(PFObject *listObject, NSError *error) {
+              [listObject deleteInBackground];
+            }];
+            
+            [self.arrayOfUserLists removeObject: list];
+            
+            [self.userListTableView reloadData];
+            completionHandler(YES);
+        }];
+        
+        deleteAction.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
+        
+        UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
+        SwipeActions.performsFirstActionWithFullSwipe= YES;
+        return SwipeActions;
+    }
+    
+    return nil;
+
+}
+
+
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell" forIndexPath:indexPath];
     
