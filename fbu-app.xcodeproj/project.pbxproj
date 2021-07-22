@@ -36,6 +36,7 @@
 		5862EF3126A7622800BE2EA4 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3026A7622800BE2EA4 /* Conversation.m */; };
 		5862EF3726A9CD7400BE2EA4 /* InitialFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3626A9CD7400BE2EA4 /* InitialFilterViewController.m */; };
 		5862EF3A26A9CEA700BE2EA4 /* SelectionConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3926A9CEA700BE2EA4 /* SelectionConversationCell.m */; };
+		5862EF3426A8CA2000BE2EA4 /* XLFTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */; };
 		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
 		878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */; };
 /* End PBXBuildFile section */
@@ -116,6 +117,8 @@
 		5862EF3626A9CD7400BE2EA4 /* InitialFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitialFilterViewController.m; sourceTree = "<group>"; };
 		5862EF3826A9CEA700BE2EA4 /* SelectionConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionConversationCell.h; sourceTree = "<group>"; };
 		5862EF3926A9CEA700BE2EA4 /* SelectionConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectionConversationCell.m; sourceTree = "<group>"; };
+		5862EF3226A8CA2000BE2EA4 /* XLFTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLFTaskViewController.h; sourceTree = "<group>"; };
+		5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLFTaskViewController.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +247,8 @@
 				5862EF2026A0C86100BE2EA4 /* ConversationFeedViewController.m */,
 				5862EF3526A9CD7400BE2EA4 /* InitialFilterViewController.h */,
 				5862EF3626A9CD7400BE2EA4 /* InitialFilterViewController.m */,
+				5862EF3226A8CA2000BE2EA4 /* XLFTaskViewController.h */,
+				5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -561,6 +566,7 @@
 				5862EF2826A221F900BE2EA4 /* Platform.m in Sources */,
 				5862EF10269E141500BE2EA4 /* TaskCell.m in Sources */,
 				5862EF1B26A08DF200BE2EA4 /* MessageCell.m in Sources */,
+				5862EF3426A8CA2000BE2EA4 /* XLFTaskViewController.m in Sources */,
 				5862EEB5269C9ED400BE2EA4 /* SceneDelegate.m in Sources */,
 				5862EEEA269CA28F00BE2EA4 /* LoginViewController.m in Sources */,
 				5862EF2126A0C86100BE2EA4 /* ConversationFeedViewController.m in Sources */,
