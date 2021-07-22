@@ -68,7 +68,7 @@
         <!--Item-->
         <scene sceneID="irP-Ba-PFS">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="ubJ-Zr-8Zu" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" modalPresentationStyle="fullScreen" id="ubJ-Zr-8Zu" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z0Q-Qb-78n">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -718,13 +718,13 @@
         <!--Initial Filter View Controller-->
         <scene sceneID="kp3-f6-ix0">
             <objects>
-                <viewController storyboardIdentifier="InitialFilterViewController" id="Di4-KZ-Qqz" customClass="InitialFilterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialFilterViewController" modalPresentationStyle="fullScreen" id="Di4-KZ-Qqz" customClass="InitialFilterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kna-sH-i9w">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="50a-Mp-g6q">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
