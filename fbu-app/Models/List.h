@@ -16,8 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *arrayOfItems;
 @property (nonatomic, strong) NSNumber *totalWorkingTime;
 @property (nonatomic, strong) PFUser *author;
+@property (nonatomic) BOOL defaultList;
 
-+ (List *) createList: ( NSString *)name withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (List *) createList: ( NSString *)name ifDefault: (BOOL) userDefined withCompletion: (PFBooleanResultBlock  _Nullable)completion;
+
++ (void) addList: ( List *)list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 + (void) addTask: ( Task *)task toList: (List *) list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

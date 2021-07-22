@@ -87,7 +87,7 @@
 }
 
 -(void) createPredefinedLists:(NSString *) name toList:(NSMutableArray *) definedList {
-    List *newList = [List createList:name withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    List *newList = [List createList:name ifDefault: YES withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
     [definedList addObject:newList];
 }
