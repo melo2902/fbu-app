@@ -126,6 +126,13 @@
         
         ListViewController *listViewController = [segue destinationViewController];
         listViewController.list = list;
+    } else if ([segue.identifier isEqual:@"openUserListSegue"]) {
+        ListCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.userListTableView indexPathForCell:tappedCell];
+        List *list = self.arrayOfUserLists[indexPath.row];
+        
+        ListViewController *listViewController = [segue destinationViewController];
+        listViewController.list = list;
     }
 }
 
