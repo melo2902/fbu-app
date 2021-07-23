@@ -16,20 +16,10 @@ NSString *const kDateTimeInline = @"dateTimeInline";
 
 @implementation XLFTaskViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self){
-        [self initializeForm];
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self){
-        [self initializeForm];
-    }
-    return self;
+- (void) viewDidLoad {
+    [super viewDidLoad];
+    
+    [self initializeForm];
 }
 
 - (void)initializeForm {
@@ -55,6 +45,8 @@ NSString *const kDateTimeInline = @"dateTimeInline";
     
     // Estimated work hours
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"workHours" rowType:XLFormRowDescriptorTypeDecimal title:@"Work Hours"];
+    [row.cellConfigAtConfigure setObject:@(NSTextAlignmentRight) forKey:@"textField.textAlignment"];
+    row.value = self.task[@"workingTime"];
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
@@ -76,6 +68,7 @@ NSString *const kDateTimeInline = @"dateTimeInline";
     // Notes
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeTextView];
     [row.cellConfigAtConfigure setObject:@"Notes" forKey:@"textView.placeholder"];
+    row.value = self.task[@"notes"];
     [section addFormRow:row];
     
     self.form = form;
@@ -85,17 +78,12 @@ NSString *const kDateTimeInline = @"dateTimeInline";
 -(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)rowDescriptor oldValue:(id)oldValue newValue:(id)newValue {
     [super formRowDescriptorValueHasChanged:rowDescriptor oldValue:oldValue newValue:newValue];
     if ([rowDescriptor.tag isEqualToString:@"workHours"]){
-        if ([[rowDescriptor.value valueData] isEqualToNumber:@(0)] == NO && [[oldValue valueData] isEqualToNumber:@(0)]){
-        
-            XLFormRowDescriptor * newRow = [rowDescriptor copy];
-            newRow.tag = @"secondAlert";
-            newRow.title = @"Second Alert";
-            [self.form addFormRow:newRow afterRow:rowDescriptor];
-        }
-        else if ([[oldValue valueData] isEqualToNumber:@(0)] == NO && [[newValue valueData] isEqualToNumber:@(0)]){
-            [self.form removeFormRowWithTag:@"secondAlert"];
-        }
+        self.task[@"workingTime"] = newValue;
+    } else if ([rowDescriptor.tag isEqualToString:@"notes"]) {
+        self.task[@"notes"] = newValue;
     }
+    
+    [self.task saveInBackground];
 }
 
 @end
