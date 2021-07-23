@@ -429,76 +429,6 @@
             </objects>
             <point key="canvasLocation" x="2920" y="865.87677725118476"/>
         </scene>
-        <!--Task View Controller-->
-        <scene sceneID="hZ8-f0-DMM">
-            <objects>
-                <viewController storyboardIdentifier="TaskViewController" id="WDD-FF-1uq" customClass="TaskViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lke-eq-OH7">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMe-Cd-SXC">
-                                <rect key="frame" x="25" y="74" width="357" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0g-sK-EIY">
-                                <rect key="frame" x="25" y="125" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9T-vP-gfu">
-                                <rect key="frame" x="25" y="388" width="50" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Vh-3A-NAc">
-                                <rect key="frame" x="29" y="423" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Working Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbf-zE-h5Z">
-                                <rect key="frame" x="25" y="156" width="110" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MSc-gZ-Ya1">
-                                <rect key="frame" x="154" y="183" width="220" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="hRQ-9t-yrh"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="hRQ-9t-yrh" firstAttribute="trailing" secondItem="tMe-Cd-SXC" secondAttribute="trailing" constant="8" id="2D7-ee-9TL"/>
-                            <constraint firstItem="tMe-Cd-SXC" firstAttribute="top" secondItem="hRQ-9t-yrh" secondAttribute="top" constant="30" id="Rv7-yK-yvz"/>
-                            <constraint firstItem="Dbf-zE-h5Z" firstAttribute="top" secondItem="S0g-sK-EIY" secondAttribute="bottom" constant="10" id="Vlq-nu-CxD"/>
-                            <constraint firstItem="S0g-sK-EIY" firstAttribute="top" secondItem="tMe-Cd-SXC" secondAttribute="bottom" constant="15" id="ka3-ty-UWZ"/>
-                            <constraint firstItem="v9T-vP-gfu" firstAttribute="leading" secondItem="tMe-Cd-SXC" secondAttribute="leading" id="mR1-hZ-dKs"/>
-                            <constraint firstItem="S0g-sK-EIY" firstAttribute="leading" secondItem="tMe-Cd-SXC" secondAttribute="leading" id="s5w-2j-3lL"/>
-                            <constraint firstItem="tMe-Cd-SXC" firstAttribute="leading" secondItem="hRQ-9t-yrh" secondAttribute="leading" constant="25" id="uTD-h2-1c9"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="N0S-Xh-eSW"/>
-                    <connections>
-                        <outlet property="notesLabel" destination="2Vh-3A-NAc" id="wkr-nC-4dQ"/>
-                        <outlet property="taskTitleLabel" destination="tMe-Cd-SXC" id="Hje-6f-VdP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dmF-vw-ME7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2494" y="1619"/>
-        </scene>
         <!--Conversation View Controller-->
         <scene sceneID="bEi-f4-5Jm">
             <objects>
@@ -872,9 +802,6 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.message" catalog="system" width="128" height="113"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="109"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
