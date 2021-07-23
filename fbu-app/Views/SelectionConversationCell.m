@@ -27,31 +27,12 @@
     if (self.selectConversationButton.selected) {
         NSLog(@"Button is not selected!");
         self.selectConversationButton.selected = NO;
-   
+        self.group.onRead = YES;
+
     } else {
         NSLog(@"Button is selected!");
         self.selectConversationButton.selected = YES;
-        
-        Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
-        [currPlatform fetchIfNeeded];
-        
-        NSMutableArray *conversations = currPlatform[@"onReadConversations"];
-        
-        Conversation *updateConversation = [Conversation updateConversation:self.group.groupID withTimeStamp: self.group.lastUpdated withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                NSLog(@"Conversation created");
-            }
-        }];
-        
-        [conversations addObject: updateConversation];
-        
-        currPlatform[@"onReadConversations"] = conversations;
-        
-        [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                NSLog(@"Saved conversation ID with associated timestamp%@", currPlatform[@"onReadConversations"]);
-            }
-        }];
+        self.group.onRead = NO;
     }
 }
 

@@ -34,12 +34,12 @@
     
     self.pageCount = @1;
     self.arrayOfConversations = [[NSMutableArray alloc]init];
+    self.pageNumbers = [[NSMutableArray alloc]init];
     
     [self getConversationsAPI];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    NSLog(@"Selection Conversation");
     SelectionConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectionConversationCell" forIndexPath:indexPath];
     
     Group *group = self.arrayOfConversations[indexPath.row];
@@ -65,7 +65,7 @@
 
 -(void) getConversationsAPI {
     if (!self.endLoading && ![self.pageNumbers containsObject:self.pageCount])  {
-
+        
         [self.pageNumbers addObject:self.pageCount];
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
@@ -114,42 +114,14 @@
         } else {
             Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
             [currPlatform fetchIfNeeded];
-//            NSMutableArray *savedConversations = currPlatform[@"onReadConversations"];
             
-            NSLog(@"Array From Server: %@", arrayFromServer);
-            
+            // Page stating that we've already pre-filtered out the read texts
             for(NSDictionary *eachGroup in arrayFromServer){
                 Group *group = [[Group alloc] initWithJSONData:eachGroup];
                 
-                [self.arrayOfConversations addObject:group];
-//                BOOL foundConversation = NO;
-//
-//                if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
-//
-//                    for (Conversation *conversationItem in savedConversations) {
-//                        [conversationItem fetchIfNeeded];
-//
-//                        if ([conversationItem[@"conversationID"] isEqual:group.groupID]) {
-//                            foundConversation = YES;
-//                            // New message since the user has last seen the conversations
-//                            if (group.lastUpdated > conversationItem[@"latestTimeStamp"]) {
-//                                [savedConversations removeObject:conversationItem];
-//                                currPlatform[@"onReadConversations"] = savedConversations;
-//                                [currPlatform saveInBackground];
-//
-//                                [self.arrayOfMessages addObject:group];
-//                            }
-//
-//                            break;
-//                        }
-//                    }
-//
-//                    if (!foundConversation) {
-//                        [self.arrayOfMessages addObject:group];
-//                    }
-//                }
-                
-                // Don't want to list any to-do items that has the user as the last sent
+                if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
+                    [self.arrayOfConversations addObject:group];
+                }
             }
         }
         
@@ -173,15 +145,42 @@
     }
 }
 
+- (IBAction)onSelectConversations:(id)sender {
+    Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
+    [currPlatform fetchIfNeeded];
+    NSMutableArray *conversations = currPlatform[@"onReadConversations"];
+    
+    for (Group *group in self.arrayOfConversations) {
+        if (group.onRead) {
+            Conversation *updateConversation = [Conversation updateConversation:group.groupID withTimeStamp: group.lastUpdated withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    NSLog(@"Leave conversation out: %@", group.groupName);
+                }
+            }];
+            
+            [conversations addObject: updateConversation];
+        } else {
+            NSLog(@"This group should be left in: %@", group.groupName);
+        }
+    }
+    
+    currPlatform[@"onReadConversations"] = conversations;
+    
+    [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"onRead Conversations filtered out%@", currPlatform[@"onReadConversations"]);
+        }
+    }];
+}
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

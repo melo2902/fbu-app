@@ -24,6 +24,8 @@
         } else {
             self.lastMessage = @"";
         }
+        
+        self.onRead = YES;
     }
     
     return self;

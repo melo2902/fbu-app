@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *lastSender;
 @property (nonatomic, strong) NSString *lastMessage;
 @property (nonatomic, strong) NSString *lastUpdated;
+@property (nonatomic) BOOL onRead;
 
 -(instancetype)initWithJSONData:(NSDictionary*)data;
 
