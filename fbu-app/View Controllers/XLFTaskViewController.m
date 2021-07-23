@@ -38,6 +38,9 @@ NSString *const kDateTimeInline = @"dateTimeInline";
     [row.cellConfigAtConfigure setObject:@"Tag Line" forKey:@"textField.placeholder"];
     [section addFormRow:row];
 
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
     // Due Date
     row = [XLFormRowDescriptor formRowDescriptorWithTag:kDateTimeInline rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Due Date"];
     row.value = [NSDate new];
@@ -48,9 +51,6 @@ NSString *const kDateTimeInline = @"dateTimeInline";
     [row.cellConfigAtConfigure setObject:@(NSTextAlignmentRight) forKey:@"textField.textAlignment"];
     row.value = self.task[@"workingTime"];
     [section addFormRow:row];
-    
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
     
     // Repeat due date
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"repeat" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Repeat"];
@@ -65,13 +65,32 @@ NSString *const kDateTimeInline = @"dateTimeInline";
                             ];
     [section addFormRow:row];
     
+    section = [XLFormSectionDescriptor formSectionWithTitle:@"NOTES"];
+    [form addFormSection:section];
+    
     // Notes
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeTextView];
     [row.cellConfigAtConfigure setObject:@"Notes" forKey:@"textView.placeholder"];
     row.value = self.task[@"notes"];
     [section addFormRow:row];
     
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    XLFormRowDescriptor * buttonRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"button" rowType:XLFormRowDescriptorTypeButton title:@"Add to My Day"];
+    buttonRow.action.formSelector = @selector(addToMyDay:);
+    [section addFormRow:buttonRow];
+    
     self.form = form;
+}
+
+-(void)addToMyDay:(XLFormRowDescriptor *)sender{
+    if ([[sender.sectionDescriptor.formDescriptor formRowWithTag:@"button"].value boolValue]){
+        NSLog(@"Button clicked");
+    } else {
+        NSLog(@"Button unclicked?");
+    }
+    [self deselectFormRow:sender];
 }
 
 #pragma mark - XLFormDescriptorDelegate
