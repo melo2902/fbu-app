@@ -56,6 +56,7 @@
 
 // Quick task add
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
+        
     Task *newTask = [Task createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
     
@@ -64,6 +65,9 @@
     }];
     
     [self.arrayOfTasks addObject:newTask];
+    
+    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
+    self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
     
     self.addedTaskBar.text = @"";
     [self.tableView reloadData];
@@ -134,6 +138,9 @@
         }];
         
         [self.arrayOfTasks removeObject: task];
+        
+        NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
+        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
         
         [self.tableView reloadData];
         completionHandler(YES);

@@ -6,6 +6,7 @@
 //
 
 #import "Task.h"
+#import "List.h"
 
 @implementation Task
 @dynamic author;
@@ -31,10 +32,11 @@
     if (![list isEqual:@"All"]){
         [lists addObject:@"All"];
     }
+    
     newTask.inLists = lists;
     
     newTask.taskTitle = name;
-    newTask.workingTime = @(0);
+    newTask.workingTime = @(1); // Allow the user to change the default working time
     newTask.notes = @"";
     newTask.completed = NO;
     

@@ -44,12 +44,21 @@
 + (void) addTask: ( Task *)task toList: (List*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
 
     [list[@"arrayOfItems"] addObject:task];
+  
+    float updatedWorkingTime = [list[@"totalWorkingTime"] floatValue] + [task[@"workingTime"] floatValue];
+    
+    list[@"totalWorkingTime"] = [NSNumber numberWithFloat:updatedWorkingTime];
+    
     [list saveInBackgroundWithBlock: completion];
 }
 
 + (void) deleteTask: ( Task *)task toList: (List*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
 
     [list[@"arrayOfItems"] removeObject:task];
+    float updatedWorkingTime = [list[@"totalWorkingTime"] floatValue] - [task[@"workingTime"] floatValue];
+    
+    list[@"totalWorkingTime"] = [NSNumber numberWithFloat:updatedWorkingTime];
+    
     [list saveInBackgroundWithBlock: completion];
 }
 
