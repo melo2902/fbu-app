@@ -7,13 +7,13 @@
 
 #import "AppDelegate.h"
 #import <UserNotifications/UserNotifications.h>
+#import "Parse/Parse.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -30,6 +30,33 @@
     }];
     
     return YES;
+}
+
+//- (void)applicationDidBecomeActive:(UIApplication *)application {
+//    NSLog(@"The user is beginning to use the app");
+////    PFUser.currentUser
+//}
+//
+//- (void)applicationWillResignActive:(UIApplication *)application {
+//    PFUser.currentUser[@"lastOpened"] = [NSDate date];
+//    [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (succeeded){
+//            NSLog(@"The user is leaving the app - resign active");
+//        }
+//    }];
+//}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    PFUser *currentUser = [PFUser currentUser];
+    
+    currentUser[@"lastOpened"] = [NSDate date];
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded){
+            NSLog(@"The user is leaving the app - terminate");
+        } else {
+            NSLog(@"Error: %@", error);
+        }
+    }];
 }
 
 

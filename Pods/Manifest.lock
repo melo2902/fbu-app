@@ -4,19 +4,23 @@ PODS:
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
     - Bolts/Tasks (= 1.9.1)
+  - XLForm (4.3.0)
 
 DEPENDENCIES:
   - Parse
+  - XLForm (~> 4.3)
 
 SPEC REPOS:
   trunk:
     - Bolts
     - Parse
+    - XLForm
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
+  XLForm: a439f9512078ed538e8335c8b06d3f3286bbfd37
 
-PODFILE CHECKSUM: d6b358c775eae06159f36725f661466e2a02c71d
+PODFILE CHECKSUM: e5a4a6a354b11b15db5397907748b3e82f1b77ec
 
 COCOAPODS: 1.10.1
