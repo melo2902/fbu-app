@@ -14,6 +14,7 @@
 #import "Platform.h"
 #import "ConversationViewController.h"
 #import "Conversation.h"
+#import "DateTools.h"
 
 @interface ConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -46,6 +47,12 @@
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
     cell.lastMessageLabel.text = group.lastMessage;
+    
+    double unixTimeStamp =[group.lastUpdated doubleValue];
+    NSTimeInterval _interval=unixTimeStamp;
+    NSDate *dateString = [NSDate dateWithTimeIntervalSince1970:_interval];
+    cell.dataAgoLabel.text = dateString.shortTimeAgoSinceNow;
+    
     return cell;
 }
 

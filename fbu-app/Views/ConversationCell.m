@@ -9,6 +9,7 @@
 #import "Parse/Parse.h"
 #import "Platform.h"
 #import "Conversation.h"
+#import "DateTools.h"
 
 @implementation ConversationCell
 

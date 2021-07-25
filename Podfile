@@ -8,6 +8,7 @@ target 'fbu-app' do
   # Pods for fbu-app
   pod 'Parse'
   pod 'XLForm', '~> 4.3'
+  pod 'DateTools'
 
   target 'fbu-appTests' do
     inherit! :search_paths
