@@ -10,10 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//@protocol TaskCellDelegate <NSObject>
-//- (void)ListViewController:(TaskCell *)cell updateCompletion:(NSString *)description;
-//@end
-
 @interface TaskCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *taskItemLabel;
 @property (strong, nonatomic) Task* task;
