@@ -38,9 +38,7 @@
     self.listNameLabel.text = self.list[@"name"];
     NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
     self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
-    
-    self.arrayOfTasks = [[NSMutableArray alloc] init];
-    self.arrayOfCompletedTasks = [[NSMutableArray alloc] init];
+
     [self getTasks];
 }
 
@@ -51,6 +49,10 @@
     [query orderByDescending:@"createdAt"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
+        
+        self.arrayOfTasks = [[NSMutableArray alloc] init];
+        self.arrayOfCompletedTasks = [[NSMutableArray alloc] init];
+        
         if (tasks != nil) {
             for (Task *task in tasks) {
                 if ([task[@"completed"] isEqual:@0]) {
@@ -196,6 +198,25 @@
    
     cell.task = task;
     cell.taskItemLabel.text = task[@"taskTitle"];
+    
+    if ([cell.task[@"completed"] isEqual: @0]){
+        [cell.completionButton setSelected:NO];
+    } else {
+        [cell.completionButton setSelected:YES];
+    }
+    
+    cell.completionButtonTapHandler = ^{
+        if ([task[@"completed"]  isEqual: @0]){
+            [self.arrayOfTasks addObject:task];
+            [self.arrayOfCompletedTasks removeObject:task];
+        } else {
+            [self.arrayOfCompletedTasks addObject:task];
+            [self.arrayOfTasks removeObject:task];
+        }
+        
+        [self.tasksTableView reloadData];
+        [self.completedTableView reloadData];
+    };
     
     return cell;
 }

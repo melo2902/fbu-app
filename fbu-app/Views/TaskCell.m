@@ -32,7 +32,11 @@
         self.task[@"completed"] = @YES;
     }
     
-    [self.task saveInBackground];
+    [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            self.completionButtonTapHandler();
+        }
+    }];
 }
 
 @end
