@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface XLFTaskViewController : XLFormViewController
 @property (strong, nonatomic) Task *task;
+@property (strong, nonatomic) NSString *listName;
 @end
 
 NS_ASSUME_NONNULL_END

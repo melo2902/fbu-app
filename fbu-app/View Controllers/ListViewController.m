@@ -9,7 +9,6 @@
 #import <UserNotifications/UserNotifications.h>
 #import "Parse/Parse.h"
 #import "List.h"
-#import "TaskViewController.h"
 #import "XLFTaskViewController.h"
 #import "Task.h"
 #import "TaskCell.h"
@@ -242,6 +241,9 @@
         
         XLFTaskViewController *taskViewController = [segue destinationViewController];
         taskViewController.task = task;
+    } else if ([segue.identifier isEqual:@"addNewTaskSegue"]) {
+        XLFTaskViewController *taskViewController = [segue destinationViewController];
+        taskViewController.listName = self.list[@"name"];
     }
 }
 

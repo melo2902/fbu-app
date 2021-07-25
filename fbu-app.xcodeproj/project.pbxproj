@@ -24,7 +24,6 @@
 		5862EF00269CBF2E00BE2EA4 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEFF269CBF2E00BE2EA4 /* ListViewController.m */; };
 		5862EF03269CC03A00BE2EA4 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF02269CC03A00BE2EA4 /* List.m */; };
 		5862EF06269CC04E00BE2EA4 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF05269CC04E00BE2EA4 /* Task.m */; };
-		5862EF09269CC6B400BE2EA4 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF08269CC6B400BE2EA4 /* TaskViewController.m */; };
 		5862EF0D269DE3EE00BE2EA4 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0C269DE3EE00BE2EA4 /* APIManager.m */; };
 		5862EF10269E141500BE2EA4 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0F269E141500BE2EA4 /* TaskCell.m */; };
 		5862EF1B26A08DF200BE2EA4 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF1A26A08DF200BE2EA4 /* MessageCell.m */; };
@@ -34,9 +33,9 @@
 		5862EF2826A221F900BE2EA4 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2726A221F800BE2EA4 /* Platform.m */; };
 		5862EF2E26A6276600BE2EA4 /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2D26A6276600BE2EA4 /* ConversationCell.m */; };
 		5862EF3126A7622800BE2EA4 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3026A7622800BE2EA4 /* Conversation.m */; };
+		5862EF3426A8CA2000BE2EA4 /* XLFTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */; };
 		5862EF3726A9CD7400BE2EA4 /* InitialFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3626A9CD7400BE2EA4 /* InitialFilterViewController.m */; };
 		5862EF3A26A9CEA700BE2EA4 /* SelectionConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3926A9CEA700BE2EA4 /* SelectionConversationCell.m */; };
-		5862EF3426A8CA2000BE2EA4 /* XLFTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */; };
 		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
 		878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */; };
 /* End PBXBuildFile section */
@@ -93,8 +92,6 @@
 		5862EF02269CC03A00BE2EA4 /* List.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
 		5862EF04269CC04E00BE2EA4 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		5862EF05269CC04E00BE2EA4 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		5862EF07269CC6B400BE2EA4 /* TaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
-		5862EF08269CC6B400BE2EA4 /* TaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 		5862EF0B269DE3EE00BE2EA4 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		5862EF0C269DE3EE00BE2EA4 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
 		5862EF0E269E141500BE2EA4 /* TaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
@@ -113,12 +110,12 @@
 		5862EF2D26A6276600BE2EA4 /* ConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
 		5862EF2F26A7622800BE2EA4 /* Conversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
 		5862EF3026A7622800BE2EA4 /* Conversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
+		5862EF3226A8CA2000BE2EA4 /* XLFTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLFTaskViewController.h; sourceTree = "<group>"; };
+		5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLFTaskViewController.m; sourceTree = "<group>"; };
 		5862EF3526A9CD7400BE2EA4 /* InitialFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InitialFilterViewController.h; sourceTree = "<group>"; };
 		5862EF3626A9CD7400BE2EA4 /* InitialFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitialFilterViewController.m; sourceTree = "<group>"; };
 		5862EF3826A9CEA700BE2EA4 /* SelectionConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionConversationCell.h; sourceTree = "<group>"; };
 		5862EF3926A9CEA700BE2EA4 /* SelectionConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectionConversationCell.m; sourceTree = "<group>"; };
-		5862EF3226A8CA2000BE2EA4 /* XLFTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLFTaskViewController.h; sourceTree = "<group>"; };
-		5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLFTaskViewController.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,8 +236,6 @@
 				5862EEF9269CB79500BE2EA4 /* SettingsViewController.m */,
 				5862EEFE269CBF2E00BE2EA4 /* ListViewController.h */,
 				5862EEFF269CBF2E00BE2EA4 /* ListViewController.m */,
-				5862EF07269CC6B400BE2EA4 /* TaskViewController.h */,
-				5862EF08269CC6B400BE2EA4 /* TaskViewController.m */,
 				5862EF1C26A09E1100BE2EA4 /* ConversationViewController.h */,
 				5862EF1D26A09E1100BE2EA4 /* ConversationViewController.m */,
 				5862EF1F26A0C86100BE2EA4 /* ConversationFeedViewController.h */,
@@ -557,7 +552,6 @@
 				5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */,
 				5862EF2E26A6276600BE2EA4 /* ConversationCell.m in Sources */,
 				5862EEFD269CBEC300BE2EA4 /* ListCell.m in Sources */,
-				5862EF09269CC6B400BE2EA4 /* TaskViewController.m in Sources */,
 				5862EF3A26A9CEA700BE2EA4 /* SelectionConversationCell.m in Sources */,
 				5862EF1E26A09E1100BE2EA4 /* ConversationViewController.m in Sources */,
 				5862EEC3269C9ED600BE2EA4 /* main.m in Sources */,

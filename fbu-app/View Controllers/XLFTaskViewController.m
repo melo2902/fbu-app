@@ -7,7 +7,7 @@
 
 #import "XLFTaskViewController.h"
 #import "XLForm.h"
-
+#import "Task.h"
 NSString *const kDateTimeInline = @"dateTimeInline";
 
 @interface XLFTaskViewController ()
@@ -18,6 +18,14 @@ NSString *const kDateTimeInline = @"dateTimeInline";
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
+    if (!self.task) {
+        self.task = [Task createTask:@"" inList:self.listName withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                NSLog(@"Task created");
+            }
+        }];
+    }
     
     [self initializeForm];
 }
