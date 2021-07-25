@@ -6,6 +6,7 @@
 //
 
 #import "ConversationFeedViewController.h"
+#import <UserNotifications/UserNotifications.h>
 #import "Parse/Parse.h"
 #import "ConversationCell.h"
 #import "Group.h"
@@ -166,6 +167,55 @@
         }
         
     }
+}
+
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Group *group = self.arrayOfMessages[indexPath.row];
+    
+//    Need to change the identifiers later later
+    UIContextualAction *notif1 = [self createNotification:(NSString *) @"30 second notification" inStringTime:@"30s" inSeconds:30 withIdentifier: @"groupID"];
+    
+    UIContextualAction *notif2 = [self createNotification:(NSString *) @"60 second notification" inStringTime:@"60s" inSeconds:60 withIdentifier: @"groupID"];
+    
+    UIContextualAction *notif3 = [self createNotification:(NSString *) @"90 second notification" inStringTime:@"90s" inSeconds:90 withIdentifier: @"groupID"];
+    
+    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
+    SwipeActions.performsFirstActionWithFullSwipe=false;
+    return SwipeActions;
+}
+
+- (UIContextualAction*) createNotification:(NSString *) respondant inStringTime: (NSString *) time inSeconds: (NSTimeInterval) seconds withIdentifier: (NSString *) message {
+    
+    UIContextualAction *notification = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:time handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+        content.body = [NSString stringWithFormat:@"Reply to %@'s message!", respondant];
+        content.sound = [UNNotificationSound defaultSound];
+        
+        UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
+            triggerWithTimeInterval:seconds repeats:NO];
+        
+        NSString *identifier = [NSString stringWithFormat:@"%@:%@", respondant, message];
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
+            content:content trigger:trigger];
+        
+        // Add a custom action later though will have to use delegate
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (error != nil) {
+                NSLog(@"Unable to set notification, error: %@",error);
+            }
+        }];
+        
+        completionHandler(YES);
+    }];
+    
+    // Need to add a different color
+    notification.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
+    
+    return notification;
+    
 }
 
 #pragma mark - Navigation
