@@ -49,7 +49,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query whereKey:@"author" equalTo: PFUser.currentUser];
     [query whereKey:@"inLists" equalTo: self.list[@"name"]];
-    [query orderByDescending:@"createdAt"];
+    [query orderByAscending:@"dueDate"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         
@@ -64,10 +64,6 @@
                     [self.arrayOfCompletedTasks addObject:task];
                 }
             }
-            
-            self.arrayOfTasks = [[self.arrayOfTasks sortedArrayUsingComparator:^NSComparisonResult(Task *taskOne, Task *taskTwo) {
-                return [taskOne[@"dueDate"] compare:taskTwo[@"dueDate"]];
-            }] mutableCopy];
             
             [self.tasksTableView reloadData];
             [self.completedTableView reloadData];
