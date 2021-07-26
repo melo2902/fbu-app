@@ -12,6 +12,7 @@
 #import "XLFTaskViewController.h"
 #import "Task.h"
 #import "TaskCell.h"
+#import "DateTools.h"
 
 @interface ListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
@@ -198,6 +199,10 @@
     Task *task;
     if (tableView == self.tasksTableView) {
         task = self.arrayOfTasks[indexPath.row];
+        
+        NSDate *dateString = task[@"dueDate"];
+        cell.dueDateLabel.text =  dateString.shortTimeAgoSinceNow;
+        
     } else {
         task = self.arrayOfCompletedTasks[indexPath.row];
     }

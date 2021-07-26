@@ -324,23 +324,32 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Item Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydk-uC-0h8">
-                                                    <rect key="frame" x="57" y="15" width="265" height="26"/>
+                                                    <rect key="frame" x="56.999999999999993" y="15" width="118.33333333333331" height="26"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5Q-Qm-PuM">
+                                                    <rect key="frame" x="262.33333333333331" y="19.666666666666668" width="59.666666666666686" height="17.000000000000004"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="JaE-Zu-vzE" firstAttribute="centerY" secondItem="kbu-lx-hyf" secondAttribute="centerY" id="5nZ-vD-7On"/>
+                                                <constraint firstItem="Q5Q-Qm-PuM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ydk-uC-0h8" secondAttribute="trailing" constant="10" id="SPI-UL-1Wo"/>
                                                 <constraint firstItem="Ydk-uC-0h8" firstAttribute="leading" secondItem="JaE-Zu-vzE" secondAttribute="trailing" constant="20" id="UiR-of-eNA"/>
+                                                <constraint firstItem="Q5Q-Qm-PuM" firstAttribute="centerY" secondItem="Ydk-uC-0h8" secondAttribute="centerY" id="ZeZ-De-ean"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ydk-uC-0h8" secondAttribute="bottom" constant="15" id="bPC-RG-MPV"/>
+                                                <constraint firstAttribute="trailing" secondItem="Q5Q-Qm-PuM" secondAttribute="trailing" constant="8" id="epQ-kc-Hsr"/>
                                                 <constraint firstItem="Ydk-uC-0h8" firstAttribute="centerY" secondItem="kbu-lx-hyf" secondAttribute="centerY" id="jqm-Il-O2l"/>
                                                 <constraint firstItem="JaE-Zu-vzE" firstAttribute="leading" secondItem="kbu-lx-hyf" secondAttribute="leading" constant="15" id="qrA-Tb-d2l"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ydk-uC-0h8" secondAttribute="trailing" constant="8" id="xIk-2R-FTt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="completionButton" destination="JaE-Zu-vzE" id="3cV-Gi-uuT"/>
+                                            <outlet property="dueDateLabel" destination="Q5Q-Qm-PuM" id="Pho-qb-PVh"/>
                                             <outlet property="taskItemLabel" destination="Ydk-uC-0h8" id="i3r-9o-5D8"/>
                                             <segue destination="15q-3i-RO4" kind="show" identifier="showTaskDetailsSegue" id="ZfJ-JM-Rzw"/>
                                         </connections>

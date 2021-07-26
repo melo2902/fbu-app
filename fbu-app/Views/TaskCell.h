@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *taskItemLabel;
 @property (strong, nonatomic) Task* task;
 @property (weak, nonatomic) IBOutlet UIButton *completionButton;
+@property (weak, nonatomic) IBOutlet UILabel *dueDateLabel;
 @property (nonatomic, copy) void(^completionButtonTapHandler)(void);
 @end
 
