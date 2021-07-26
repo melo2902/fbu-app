@@ -80,16 +80,14 @@
                                     <constraint firstAttribute="width" constant="135" id="ua4-zr-BY8"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name of User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hO-et-RQQ">
-                                <rect key="frame" x="93" y="215" width="205" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hO-et-RQQ">
+                                <rect key="frame" x="92.666666666666686" y="165" width="205" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLD-rH-X3x">
-                                <rect key="frame" x="156" y="265" width="78" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLD-rH-X3x">
+                                <rect key="frame" x="156" y="217" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -146,12 +144,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Zmq-0I-8DZ" firstAttribute="top" secondItem="Imz-eg-ecC" secondAttribute="top" constant="20" id="FDY-B3-j6b"/>
+                            <constraint firstItem="oLD-rH-X3x" firstAttribute="top" secondItem="3hO-et-RQQ" secondAttribute="bottom" constant="10" id="Foc-Tz-yx5"/>
+                            <constraint firstItem="3hO-et-RQQ" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="Meh-nt-fvj"/>
+                            <constraint firstItem="3hO-et-RQQ" firstAttribute="top" secondItem="Zmq-0I-8DZ" secondAttribute="bottom" constant="10" id="Wy1-tO-Kqj"/>
+                            <constraint firstItem="oLD-rH-X3x" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="e5I-2X-xjY"/>
                             <constraint firstItem="Zmq-0I-8DZ" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="wDS-DH-urk"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="MUX-DV-puW"/>
                     <navigationItem key="navigationItem" id="f2D-De-N7D"/>
                     <connections>
+                        <outlet property="userEmailLabel" destination="oLD-rH-X3x" id="ebl-Jd-xCD"/>
                         <outlet property="userNameLabel" destination="3hO-et-RQQ" id="Lvw-3e-Mqd"/>
                         <outlet property="userPFPView" destination="Zmq-0I-8DZ" id="4ut-Er-hlR"/>
                     </connections>

@@ -15,7 +15,7 @@
 @interface SettingsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *userEmailLabel;
 @end
 
 @implementation SettingsViewController
@@ -24,6 +24,7 @@
     [super viewDidLoad];
 
     self.userNameLabel.text = PFUser.currentUser.username;
+    self.userEmailLabel.text = PFUser.currentUser.email;
     
     if (PFUser.currentUser[@"pfp"]) {
        PFFileObject *pfp = PFUser.currentUser[@"pfp"];
