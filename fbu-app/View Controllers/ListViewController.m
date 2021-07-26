@@ -257,7 +257,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     // Need a delegate to prepare segue
-    if ([segue.identifier isEqual:@"showTaskDetailsSegue"]) {
+    if ([segue.identifier isEqual:@"showTaskDetailsSegue"]|| [segue.identifier isEqual:@"showCompletedTaskDetailsSegue"]) {
         TaskCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tasksTableView indexPathForCell:tappedCell];
         Task *task = self.arrayOfTasks[indexPath.row];

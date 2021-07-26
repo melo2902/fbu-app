@@ -406,6 +406,7 @@
                                         <connections>
                                             <outlet property="completionButton" destination="g9Y-PG-DzS" id="AaC-xv-i04"/>
                                             <outlet property="taskItemLabel" destination="RUS-VA-Z4S" id="LE7-6Q-W8u"/>
+                                            <segue destination="15q-3i-RO4" kind="show" identifier="showCompletedTaskDetailsSegue" id="jb7-xe-Sm3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -836,7 +837,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="t6j-4o-zKt"/>
+        <segue reference="jb7-xe-Sm3"/>
         <segue reference="Bak-5O-5l0"/>
         <segue reference="j1S-vu-Rx0"/>
     </inferredMetricsTieBreakers>
