@@ -39,6 +39,9 @@
     self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
 
     [self getTasks];
+    
+    // Add an image background programatically for list
+    // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
 }
 
 - (void) getTasks {
