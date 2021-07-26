@@ -50,8 +50,8 @@ NSString *const kDateTimeInline = @"dateTimeInline";
     [form addFormSection:section];
     
     // Due Date
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kDateTimeInline rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Due Date"];
-    row.value = [NSDate new];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"dueDate" rowType:XLFormRowDescriptorTypeDate title:@"Due Date"];
+    row.value = self.task[@"dueDate"];
     [section addFormRow:row];
     
     // Estimated work hours
@@ -108,6 +108,8 @@ NSString *const kDateTimeInline = @"dateTimeInline";
         self.task[@"workingTime"] = newValue;
     } else if ([rowDescriptor.tag isEqualToString:@"notes"]) {
         self.task[@"notes"] = newValue;
+    } else if ([rowDescriptor.tag isEqualToString:@"dueDate"]) {
+        self.task[@"dueDate"] = newValue;
     }
     
     [self.task saveInBackground];
