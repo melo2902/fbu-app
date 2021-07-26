@@ -208,10 +208,26 @@
         if ([task[@"completed"]  isEqual: @0]){
             [self.arrayOfTasks addObject:task];
             [self.arrayOfCompletedTasks removeObject:task];
+            
+            [List updateTask:task toList:self.list changeCompletion:NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    NSLog(@"Update list time");
+                }
+            }];
+            
         } else {
             [self.arrayOfCompletedTasks addObject:task];
             [self.arrayOfTasks removeObject:task];
+            
+            [List updateTask:task toList:self.list changeCompletion:YES withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    NSLog(@"Update list time");
+                }
+            }];
         }
+        
+        NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
+        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
         
         [self.tasksTableView reloadData];
         [self.completedTableView reloadData];

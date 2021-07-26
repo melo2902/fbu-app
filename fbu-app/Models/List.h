@@ -26,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) deleteTask: ( Task *)task toList: (List *) list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
++ (void) updateTask: ( Task *)task toList: (List*) list changeCompletion: (BOOL) completed withCompletion:(PFBooleanResultBlock  _Nullable)completion;
+
 @end
 
 NS_ASSUME_NONNULL_END

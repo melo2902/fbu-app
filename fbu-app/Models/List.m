@@ -62,4 +62,18 @@
     [list saveInBackgroundWithBlock: completion];
 }
 
++ (void) updateTask: ( Task *)task toList: (List*) list changeCompletion: (BOOL) completed withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+
+    if (completed) {
+        float updatedWorkingTime = [list[@"totalWorkingTime"] floatValue] - [task[@"workingTime"] floatValue];
+        
+        list[@"totalWorkingTime"] = [NSNumber numberWithFloat:updatedWorkingTime];
+    } else {
+        float updatedWorkingTime = [list[@"totalWorkingTime"] floatValue] + [task[@"workingTime"] floatValue];
+        
+        list[@"totalWorkingTime"] = [NSNumber numberWithFloat:updatedWorkingTime];
+    }
+    
+    [list saveInBackgroundWithBlock: completion];
+}
 @end
