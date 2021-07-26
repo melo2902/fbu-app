@@ -46,12 +46,23 @@
     Group *group = self.arrayOfMessages[indexPath.row];
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
-    cell.lastMessageLabel.attributedText = [self modifyMessage:group.lastMessage withSender: group.lastSender];
+    
+    if (![group.lastSender isEqual: [NSNull null]]) {
+        cell.lastMessageLabel.attributedText = [self modifyMessage:group.lastMessage withSender: group.lastSender];
+    } else {
+        cell.lastMessageLabel.text = group.lastMessage;
+    }
+    
     
     double unixTimeStamp =[group.lastUpdated doubleValue];
     NSTimeInterval _interval=unixTimeStamp;
     NSDate *dateString = [NSDate dateWithTimeIntervalSince1970:_interval];
     cell.dataAgoLabel.text = dateString.shortTimeAgoSinceNow;
+    
+    cell.completionButtonTapHandler = ^{
+        [self.arrayOfMessages removeObject:group];
+        [self.tableView reloadData];
+    };
     
     return cell;
 }

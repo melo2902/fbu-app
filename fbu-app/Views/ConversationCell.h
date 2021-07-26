@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Group *group;
 @property (weak, nonatomic) IBOutlet UILabel *dataAgoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *statusButton;
+@property (nonatomic, copy) void(^completionButtonTapHandler)(void);
 @end
 
 NS_ASSUME_NONNULL_END

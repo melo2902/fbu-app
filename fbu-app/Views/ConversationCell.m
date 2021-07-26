@@ -53,6 +53,8 @@
         [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 NSLog(@"Saved conversation ID with associated timestamp%@", currPlatform[@"onReadConversations"]);
+                
+                self.completionButtonTapHandler();
             }
         }];
     }
