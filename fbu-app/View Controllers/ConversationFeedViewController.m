@@ -46,7 +46,7 @@
     Group *group = self.arrayOfMessages[indexPath.row];
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
-    cell.lastMessageLabel.text = group.lastMessage;
+    cell.lastMessageLabel.attributedText = [self modifyMessage:group.lastMessage withSender: group.lastSender];
     
     double unixTimeStamp =[group.lastUpdated doubleValue];
     NSTimeInterval _interval=unixTimeStamp;
@@ -222,6 +222,24 @@
     notification.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
     
     return notification;
+    
+}
+
+-(NSMutableAttributedString *)modifyMessage:(NSString *)message withSender:(NSString *)sender {
+    NSUInteger usernameLength = [sender length];
+
+    NSMutableAttributedString *lastMessage = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@", sender, message]];
+    NSRange selectedRange = NSMakeRange(0, usernameLength + 1);
+
+    [lastMessage beginEditing];
+    
+    [lastMessage addAttribute:NSFontAttributeName
+               value:[UIFont fontWithName:@"Helvetica-Bold" size:17.0]
+               range:selectedRange];
+
+    [lastMessage endEditing];
+    
+    return lastMessage;
     
 }
 
