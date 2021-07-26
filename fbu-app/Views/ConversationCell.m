@@ -38,6 +38,8 @@
         for (Conversation *conversationItem in conversations) {
             if ([conversationItem[@"conversationID"] isEqual:self.group.groupID]) {
                 [conversations removeObject:conversationItem];
+                
+                break;
             }
         }
         
