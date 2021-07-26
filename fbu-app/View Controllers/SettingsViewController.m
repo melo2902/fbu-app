@@ -24,6 +24,19 @@
     [super viewDidLoad];
 
     self.userNameLabel.text = PFUser.currentUser.username;
+    
+    if (PFUser.currentUser[@"pfp"]) {
+       PFFileObject *pfp = PFUser.currentUser[@"pfp"];
+       
+       [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+           if (!error) {
+               UIImage *originalImage = [UIImage imageWithData:imageData];
+               self.userPFPView.image = originalImage;
+               self.userPFPView.layer.cornerRadius = self.userPFPView.frame.size.width / 2;
+               self.userPFPView.clipsToBounds = true;
+           }
+       }];
+    }
 }
 
 - (IBAction)onTapAddPlatform:(id)sender {
