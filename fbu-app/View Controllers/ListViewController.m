@@ -64,6 +64,10 @@
                 }
             }
             
+            self.arrayOfTasks = [[self.arrayOfTasks sortedArrayUsingComparator:^NSComparisonResult(Task *taskOne, Task *taskTwo) {
+                return [taskOne[@"dueDate"] compare:taskTwo[@"dueDate"]];
+            }] mutableCopy];
+            
             [self.tasksTableView reloadData];
             [self.completedTableView reloadData];
         } else {
