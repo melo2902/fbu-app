@@ -99,9 +99,9 @@
     MessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MessageCell" forIndexPath:indexPath];
     
     NSString *message = self.arrayOfMessages[indexPath.row];
-    
+
     if ([message isKindOfClass:[NSNull class]]){
-        cell.lastMessageLabel.text = @"";
+        cell.lastMessageLabel.text = @"Sent a photo";
     } else {
         cell.lastMessageLabel.text = message;
     }

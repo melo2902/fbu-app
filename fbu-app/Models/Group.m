@@ -22,7 +22,7 @@
         if ([lastSenderData objectForKey:@"text"] != [NSNull null]) {
             self.lastMessage = [lastSenderData objectForKey:@"text"];
         } else {
-            self.lastMessage = @"";
+            self.lastMessage = @"Sent a photo";
         }
         
         self.onRead = YES;
