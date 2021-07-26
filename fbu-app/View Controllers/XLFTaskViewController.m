@@ -8,7 +8,6 @@
 #import "XLFTaskViewController.h"
 #import "XLForm.h"
 #import "Task.h"
-NSString *const kDateTimeInline = @"dateTimeInline";
 
 @interface XLFTaskViewController ()
 
