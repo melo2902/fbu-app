@@ -39,10 +39,60 @@
     NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
     self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
 
+    if ([self.list[@"name"] isEqual:@"My Day"] || [self.list[@"name"] isEqual:@"My Tomorrow"]) {
+        [self checkMyDayMyTomorrowTasks];
+    }
+    
     [self getTasks];
     
     // Add an image background programatically for list
     // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
+}
+
+- (void) checkMyDayMyTomorrowTasks {
+    PFQuery *query = [PFQuery queryWithClassName:@"Task"];
+    [query whereKey:@"author" equalTo: PFUser.currentUser];
+    [query whereKey:@"inLists" equalTo: self.list[@"name"]];
+    [query orderByAscending:@"dueDate"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
+        NSDate *currentDate = [NSDate date];
+        
+        if ([self.list[@"name"] isEqual:@"My Day"]) {
+            for (Task *task in tasks) {
+                if ([task.createdAt isSameDay:currentDate]) {
+                    continue;
+                } else {
+                    NSMutableArray *currentLists = task[@"inLists"];
+                    [currentLists removeObject:@"My Day"];
+                    task[@"inLists"] = currentLists;
+                    [task saveInBackground];
+                }
+            }
+        } else {
+            for (Task *task in tasks) {
+                NSDate *nextDate = [task.createdAt dateByAddingDays:1];
+                
+                if ([nextDate isSameDay:currentDate]) {
+                    // Move task from My Tomorrow to My Day
+                    NSMutableArray *currentLists = task[@"inLists"];
+                    [currentLists removeObject:@"My Tomorrow"];
+                    [currentLists addObject:@"My Day"];
+                    task[@"inLists"] = currentLists;
+                    [task saveInBackground];;
+                } else if ([task.createdAt isSameDay:currentDate]) {
+                    // Task created today for tomorrow
+                    continue;
+                } else {
+                    NSMutableArray *currentLists = task[@"inLists"];
+                    [currentLists removeObject:@"My Tomorrow"];
+                    task[@"inLists"] = currentLists;
+                    [task saveInBackground];
+                }
+            }
+        }
+        
+    }];
 }
 
 - (void) getTasks {
