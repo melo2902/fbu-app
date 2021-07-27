@@ -14,7 +14,6 @@
 @property(nonatomic) NSMutableArray *userData;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
 @property (nonatomic, strong) NSString *latestMessageID;
-@property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property(strong, nonatomic) NSMutableDictionary *avatarTable;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
@@ -52,7 +51,7 @@ NSString * const mediaTypes[] = { @"image", @"video", @"location" };
     NSMutableString *URLString = [[NSMutableString alloc] init];
     [URLString appendString:@"https://api.groupme.com/v3/groups/"];
     [URLString appendString:self.group.groupID];
-    [URLString appendString:@"/messages?token="];
+    [URLString appendString:@"/messages?limit=10&token="];
     [URLString appendString:[APIManager getAuthToken]];
     
     if ([self.latestMessageID length] != 0) {

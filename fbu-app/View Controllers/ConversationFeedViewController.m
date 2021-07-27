@@ -86,7 +86,7 @@
         [self.pageNumbers addObject:self.pageCount];
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
-        [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
+        [URLString appendString:@"https://api.groupme.com/v3/groups?limit=6&token="];
         [URLString appendString:[APIManager getAuthToken]];
         [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
         
