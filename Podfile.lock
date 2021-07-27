@@ -1,6 +1,9 @@
 PODS:
   - Bolts/Tasks (1.9.1)
   - DateTools (2.0.0)
+  - JSQMessagesViewController (7.3.5):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - Parse (1.19.2):
     - Parse/Core (= 1.19.2)
   - Parse/Core (1.19.2):
@@ -9,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - DateTools
+  - JSQMessagesViewController
   - Parse
   - XLForm (~> 4.3)
 
@@ -16,15 +20,19 @@ SPEC REPOS:
   trunk:
     - Bolts
     - DateTools
+    - JSQMessagesViewController
+    - JSQSystemSoundPlayer
     - Parse
     - XLForm
 
 SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   DateTools: 933ac9c490f21f92127cf690ccd8c397e0126caf
+  JSQMessagesViewController: 6587f56aedbcb150a8ba1d968e1ef58b1bc758b7
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Parse: 081fb8755c3000fd11df817eec235def233d0af3
   XLForm: a439f9512078ed538e8335c8b06d3f3286bbfd37
 
-PODFILE CHECKSUM: 62e86356c19e2bd51b6f47a4ae084ce46092e333
+PODFILE CHECKSUM: 7c92cca70896ab69adc82b507599c9d06cfccc32
 
 COCOAPODS: 1.10.1

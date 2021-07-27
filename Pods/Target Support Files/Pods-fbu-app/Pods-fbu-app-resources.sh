@@ -98,11 +98,25 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Assets/JSQMessagesAssets.bundle"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesViewController.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellIncoming.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellOutgoing.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesLoadEarlierHeaderView.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesToolbarContentView.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesTypingIndicatorFooterView.xib"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle"
   install_resource "${PODS_ROOT}/XLForm/XLForm/XLForm.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/DateTools/DateTools/DateTools/DateTools.bundle"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Assets/JSQMessagesAssets.bundle"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesViewController.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellIncoming.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellOutgoing.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesLoadEarlierHeaderView.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesToolbarContentView.xib"
+  install_resource "${PODS_ROOT}/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesTypingIndicatorFooterView.xib"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle"
   install_resource "${PODS_ROOT}/XLForm/XLForm/XLForm.bundle"
 fi
