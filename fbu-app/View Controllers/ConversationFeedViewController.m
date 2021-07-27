@@ -15,6 +15,7 @@
 #import "ConversationViewController.h"
 #import "Conversation.h"
 #import "DateTools.h"
+#import "MessagesViewController.h"
 
 @interface ConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -262,6 +263,12 @@
         
         ConversationViewController *conversationViewController = [segue destinationViewController];
         conversationViewController.group = group;
+    } else if ([segue.identifier isEqual:@"showDetailSegue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+
+        Group *group = self.arrayOfMessages[indexPath.row];
+        MessagesViewController *messagesViewController = (MessagesViewController *)[segue destinationViewController];
+        messagesViewController.group = group;
     }
 }
 

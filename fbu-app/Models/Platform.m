@@ -9,6 +9,7 @@
 
 @implementation Platform
 @dynamic user;
+@dynamic userID;
 @dynamic platformName;
 @dynamic userName;
 @dynamic onReadConversations;
@@ -26,6 +27,7 @@
         
         NSDictionary *response = [data objectForKey:@"response"];
         newPlatform.userName = [response objectForKey:@"name"];
+        newPlatform.userID = [response objectForKey:@"id"];
         newPlatform.onReadConversations = [[NSMutableArray alloc]init];
     }
     

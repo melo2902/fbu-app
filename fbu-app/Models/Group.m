@@ -18,6 +18,7 @@
         NSDictionary *lastSenderData = [[data objectForKey:@"messages"] objectForKey:@"preview"];
         self.lastSender = [lastSenderData objectForKey:@"nickname"];
         self.lastUpdated = [data objectForKey:@"updated_at"];
+        self.members = [data objectForKey:@"members"];
         
         if ([lastSenderData objectForKey:@"text"] != [NSNull null]) {
             self.lastMessage = [lastSenderData objectForKey:@"text"];

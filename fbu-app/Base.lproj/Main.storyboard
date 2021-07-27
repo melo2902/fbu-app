@@ -718,7 +718,7 @@
                                             <outlet property="groupNameLabel" destination="IBc-Ko-sxy" id="tH5-3n-7Ne"/>
                                             <outlet property="lastMessageLabel" destination="PfY-Hl-s3h" id="yuB-gz-0sE"/>
                                             <outlet property="statusButton" destination="UPj-8x-7PE" id="d6P-Ch-4yv"/>
-                                            <segue destination="WJa-aj-Ahx" kind="show" identifier="showConversationSegue" id="qkx-7x-pvG"/>
+                                            <segue destination="8Te-rc-IIw" kind="show" identifier="showDetailSegue" id="JHH-fG-aTV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -854,6 +854,34 @@
             </objects>
             <point key="canvasLocation" x="3312" y="1575"/>
         </scene>
+        <!--Messages View Controller-->
+        <scene sceneID="ZuL-E5-sdo">
+            <objects>
+                <viewController storyboardIdentifier="MessagesViewController" modalPresentationStyle="fullScreen" id="8Te-rc-IIw" customClass="MessagesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HIP-IH-FUa">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Send a text message.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zu-L4-ciM">
+                                <rect key="frame" x="30" y="774.33333333333337" width="330" height="25.666666666666629"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5gW-JE-uPq"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <constraints>
+                            <constraint firstItem="5gW-JE-uPq" firstAttribute="trailing" secondItem="8Zu-L4-ciM" secondAttribute="trailing" constant="30" id="1tP-HR-6NU"/>
+                            <constraint firstItem="8Zu-L4-ciM" firstAttribute="leading" secondItem="5gW-JE-uPq" secondAttribute="leading" constant="30" id="ASs-1R-qzK"/>
+                            <constraint firstItem="5gW-JE-uPq" firstAttribute="bottom" secondItem="8Zu-L4-ciM" secondAttribute="bottom" constant="10" id="WTE-M3-GRB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qec-LH-0eB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h9q-Pr-8ic" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1643" y="1567"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="jb7-xe-Sm3"/>
@@ -873,6 +901,9 @@
         <image name="tray.and.arrow.down" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

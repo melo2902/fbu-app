@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) NSString *platformName;
 @property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSMutableArray *onReadConversations;
 
 -(instancetype)initWithJSONData:(NSDictionary*)data onPlatform: (NSString*) platform;
