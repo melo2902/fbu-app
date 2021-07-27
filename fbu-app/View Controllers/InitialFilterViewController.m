@@ -11,7 +11,6 @@
 #import "Group.h"
 #import "APIManager.h"
 #import "Platform.h"
-#import "ConversationViewController.h"
 #import "Conversation.h"
 
 @interface InitialFilterViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>

@@ -12,7 +12,6 @@
 #import "Group.h"
 #import "APIManager.h"
 #import "Platform.h"
-#import "ConversationViewController.h"
 #import "Conversation.h"
 #import "DateTools.h"
 #import "MessagesViewController.h"
@@ -256,14 +255,7 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqual:@"showConversationSegue"]) {
-        UITableViewCell *tappedCell = sender;
-        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-        Group *group = self.arrayOfMessages[indexPath.row];
-        
-        ConversationViewController *conversationViewController = [segue destinationViewController];
-        conversationViewController.group = group;
-    } else if ([segue.identifier isEqual:@"showDetailSegue"]) {
+    if ([segue.identifier isEqual:@"showDetailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 
         Group *group = self.arrayOfMessages[indexPath.row];
