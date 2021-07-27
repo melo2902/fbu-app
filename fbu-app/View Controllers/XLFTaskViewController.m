@@ -41,8 +41,8 @@
     [form addFormSection:section];
 
     // Title
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"tagLine" rowType:XLFormRowDescriptorTypeText];
-    [row.cellConfigAtConfigure setObject:@"Tag Line" forKey:@"textField.placeholder"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"taskTitle" rowType:XLFormRowDescriptorTypeText];
+    row.value = self.task[@"taskTitle"];
     [section addFormRow:row];
 
     section = [XLFormSectionDescriptor formSection];
@@ -109,6 +109,8 @@
         self.task[@"notes"] = newValue;
     } else if ([rowDescriptor.tag isEqualToString:@"dueDate"]) {
         self.task[@"dueDate"] = newValue;
+    } else if ([rowDescriptor.tag isEqualToString:@"taskTitle"]) {
+        self.task[@"taskTitle"] = newValue;
     }
     
     [self.task saveInBackground];
