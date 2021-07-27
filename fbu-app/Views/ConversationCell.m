@@ -57,6 +57,8 @@
                 NSLog(@"Saved conversation ID with associated timestamp%@", currPlatform[@"onReadConversations"]);
                 
                 self.completionButtonTapHandler();
+                
+                self.statusButton.selected = NO;
             }
         }];
     }
