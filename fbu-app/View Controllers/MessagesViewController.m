@@ -100,7 +100,46 @@ NSString * const mediaTypes[] = { @"image", @"video", @"location" };
             
             if (jsqMessage) {
                 [self.arrayOfMessages addObject:jsqMessage];
+            }
+        }
+        
+        // Media messages
+        if ([[message objectForKey:@"attachments"] count]) {
+
+            for (NSDictionary *attachment in [message objectForKey:@"attachments"]) {
+                // IMAGE //
+                if ([[attachment objectForKey:@"type"] isEqualToString:@"image"] || [[attachment objectForKey:@"type"] isEqualToString:@"linked_image"]){
+                    
+                    NSURL *photoURL = [NSURL URLWithString:[attachment objectForKey:@"url"]];
+                    NSData *photoData = [NSData dataWithContentsOfURL:photoURL];
+                    JSQPhotoMediaItem *photo = [[JSQPhotoMediaItem alloc] initWithImage:[UIImage imageWithData:photoData]];
+
+                    // Don't mark as outgoing if not me
+                    if (![senderId isEqualToString:self.senderId]){
+                        photo.appliesMediaViewMaskAsOutgoing = NO;
+                    }
+                    
+                    jsqMessage = [[JSQMessage alloc] initWithSenderId:senderId
+                                                    senderDisplayName:senderName
+                                                                 date:sentDate
+                                                                media:photo];
+                }
                 
+                // VIDEO //
+                if ([[attachment objectForKey:@"type"] isEqualToString:@"video"]){
+                    JSQVideoMediaItem *mediaItem = [[JSQVideoMediaItem alloc] initWithFileURL:[attachment objectForKey:@"url"] isReadyToPlay:NO];
+                    
+                    [self.collectionView reloadData];
+
+                    jsqMessage = [[JSQMessage alloc] initWithSenderId:senderId
+                                                    senderDisplayName:senderName
+                                                                 date:sentDate
+                                                                media:mediaItem];
+                }
+                
+                if (jsqMessage) {
+                    [self.arrayOfMessages addObject:jsqMessage];
+                }
             }
         }
         
