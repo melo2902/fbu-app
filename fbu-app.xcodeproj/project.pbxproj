@@ -27,7 +27,6 @@
 		5862EF0D269DE3EE00BE2EA4 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0C269DE3EE00BE2EA4 /* APIManager.m */; };
 		5862EF10269E141500BE2EA4 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0F269E141500BE2EA4 /* TaskCell.m */; };
 		5862EF1B26A08DF200BE2EA4 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF1A26A08DF200BE2EA4 /* MessageCell.m */; };
-		5862EF1E26A09E1100BE2EA4 /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF1D26A09E1100BE2EA4 /* ConversationViewController.m */; };
 		5862EF2126A0C86100BE2EA4 /* ConversationFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2026A0C86100BE2EA4 /* ConversationFeedViewController.m */; };
 		5862EF2426A20FD800BE2EA4 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2326A20FD800BE2EA4 /* Group.m */; };
 		5862EF2826A221F900BE2EA4 /* Platform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2726A221F800BE2EA4 /* Platform.m */; };
@@ -99,8 +98,6 @@
 		5862EF0F269E141500BE2EA4 /* TaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		5862EF1926A08DF200BE2EA4 /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		5862EF1A26A08DF200BE2EA4 /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
-		5862EF1C26A09E1100BE2EA4 /* ConversationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationViewController.h; sourceTree = "<group>"; };
-		5862EF1D26A09E1100BE2EA4 /* ConversationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationViewController.m; sourceTree = "<group>"; };
 		5862EF1F26A0C86100BE2EA4 /* ConversationFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationFeedViewController.h; sourceTree = "<group>"; };
 		5862EF2026A0C86100BE2EA4 /* ConversationFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationFeedViewController.m; sourceTree = "<group>"; };
 		5862EF2226A20FD800BE2EA4 /* Group.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
@@ -239,8 +236,6 @@
 				5862EEF9269CB79500BE2EA4 /* SettingsViewController.m */,
 				5862EEFE269CBF2E00BE2EA4 /* ListViewController.h */,
 				5862EEFF269CBF2E00BE2EA4 /* ListViewController.m */,
-				5862EF1C26A09E1100BE2EA4 /* ConversationViewController.h */,
-				5862EF1D26A09E1100BE2EA4 /* ConversationViewController.m */,
 				5862EF1F26A0C86100BE2EA4 /* ConversationFeedViewController.h */,
 				5862EF2026A0C86100BE2EA4 /* ConversationFeedViewController.m */,
 				5862EF3526A9CD7400BE2EA4 /* InitialFilterViewController.h */,
@@ -559,7 +554,6 @@
 				5862EF2E26A6276600BE2EA4 /* ConversationCell.m in Sources */,
 				5862EEFD269CBEC300BE2EA4 /* ListCell.m in Sources */,
 				5862EF3A26A9CEA700BE2EA4 /* SelectionConversationCell.m in Sources */,
-				5862EF1E26A09E1100BE2EA4 /* ConversationViewController.m in Sources */,
 				5862EEC3269C9ED600BE2EA4 /* main.m in Sources */,
 				5862EEFA269CB79500BE2EA4 /* SettingsViewController.m in Sources */,
 				5862EF03269CC03A00BE2EA4 /* List.m in Sources */,
