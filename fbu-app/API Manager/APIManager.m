@@ -6,12 +6,21 @@
 //
 
 #import "APIManager.h"
-
+#import "Parse/Parse.h"
 @implementation APIManager
 #pragma mark - Auth
 
-+ (NSString *)getAuthToken {
-    return @"KPap1zhC20J3k7gL2baYtAF1p4SelSZRAYfgNBVK";
++ (void) setAuthToken: (NSString *) givenAuthToken {
+    PFUser.currentUser[@"authToken"] = givenAuthToken;
+    [PFUser.currentUser saveInBackground];
+}
+
++ (NSString *)returnAuthToken {
+    if (PFUser.currentUser[@"authToken"]) {
+        return PFUser.currentUser[@"authToken"];
+    }
+    
+    return nil;
 }
 
 + (void) sendTextMessage: (NSString *) text inGroup: (NSString *) groupID {
@@ -33,7 +42,7 @@
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[self getAuthToken] forHTTPHeaderField:@"X-Access-Token"];
+    [request setValue:PFUser.currentUser[@"authToken"] forHTTPHeaderField:@"X-Access-Token"];
     [request setHTTPBody:requestData];
     
     NSURLSession *session = [NSURLSession sharedSession];

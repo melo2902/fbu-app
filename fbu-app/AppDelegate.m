@@ -81,7 +81,7 @@
             options:(NSDictionary<NSString *, id> *)options {
     NSLog(@"Hit this?");
     NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
-                                                resolvingAgainstBaseURL:NO];
+                                            resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;
     NSString *oAuthToken = [self valueForKey:@"access_token" fromQueryItems:queryItems];
     NSLog(@"Given oAuthToken: %@", oAuthToken);

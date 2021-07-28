@@ -87,7 +87,7 @@
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
         [URLString appendString:@"https://api.groupme.com/v3/groups?limit=6&token="];
-        [URLString appendString:[APIManager getAuthToken]];
+        [URLString appendString:PFUser.currentUser[@"authToken"]];
         [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -250,11 +250,6 @@
     
     return lastMessage;
     
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Deselect the row
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Navigation

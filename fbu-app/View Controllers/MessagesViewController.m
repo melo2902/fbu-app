@@ -97,7 +97,7 @@
         [URLString appendString:@"https://api.groupme.com/v3/groups/"];
         [URLString appendString:self.group.groupID];
         [URLString appendString:@"/messages?limit=10&token="];
-        [URLString appendString:[APIManager getAuthToken]];
+        [URLString appendString:PFUser.currentUser[@"authToken"]];
         
         if ([self.latestMessageID length] != 0) {
             [URLString appendString:[NSString stringWithFormat:@"&before_id=%@", self.latestMessageID]];
