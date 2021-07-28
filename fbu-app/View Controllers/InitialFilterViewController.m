@@ -45,8 +45,30 @@
     Group *group = self.arrayOfConversations[indexPath.row];
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
-    cell.lastMessageLabel.text = group.lastMessage;
+    if (![group.lastSender isEqual: [NSNull null]]) {
+        cell.lastMessageLabel.attributedText = [self modifyMessage:group.lastMessage withSender: group.lastSender];
+    } else {
+        cell.lastMessageLabel.text = group.lastMessage;
+    }
     return cell;
+}
+
+-(NSMutableAttributedString *)modifyMessage:(NSString *)message withSender:(NSString *)sender {
+    NSUInteger usernameLength = [sender length];
+    
+    NSMutableAttributedString *lastMessage = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@: %@", sender, message]];
+    NSRange selectedRange = NSMakeRange(0, usernameLength + 1);
+    
+    [lastMessage beginEditing];
+    
+    [lastMessage addAttribute:NSFontAttributeName
+                        value:[UIFont fontWithName:@"Helvetica-Bold" size:17.0]
+                        range:selectedRange];
+    
+    [lastMessage endEditing];
+    
+    return lastMessage;
+    
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

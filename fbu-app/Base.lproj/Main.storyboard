@@ -778,6 +778,64 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="72" id="pH4-Ca-qIp" customClass="ConversationCell">
+                                <rect key="frame" x="10" y="10" width="414" height="72"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pH4-Ca-qIp" id="4jD-IZ-c9A">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RjQ-Fd-ew1">
+                                            <rect key="frame" x="15" y="25" width="22" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="22" id="Ewu-dn-MLq"/>
+                                                <constraint firstAttribute="width" constant="22" id="UHL-ab-2b9"/>
+                                            </constraints>
+                                            <state key="normal" image="circle" catalog="system"/>
+                                            <state key="selected" image="circle.fill" catalog="system"/>
+                                            <connections>
+                                                <action selector="onTapStatusButton:" destination="pH4-Ca-qIp" eventType="touchUpInside" id="OgO-Ph-CsP"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GROUP ME NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SND-2w-bXE">
+                                            <rect key="frame" x="57" y="10" width="128.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message in conversation" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="op4-lW-x4d">
+                                            <rect key="frame" x="57" y="38" width="337" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Ago" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0d-bU-GFz">
+                                            <rect key="frame" x="342" y="11" width="57" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="op4-lW-x4d" firstAttribute="top" secondItem="SND-2w-bXE" secondAttribute="bottom" constant="10" id="7tm-dT-9s8"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="op4-lW-x4d" secondAttribute="bottom" constant="10" id="ACf-9j-3g7"/>
+                                        <constraint firstItem="X0d-bU-GFz" firstAttribute="centerY" secondItem="SND-2w-bXE" secondAttribute="centerY" id="AFq-jF-vl1"/>
+                                        <constraint firstAttribute="trailing" secondItem="op4-lW-x4d" secondAttribute="trailing" constant="20" id="QDj-hO-6eg"/>
+                                        <constraint firstItem="RjQ-Fd-ew1" firstAttribute="leading" secondItem="4jD-IZ-c9A" secondAttribute="leading" constant="15" id="Qfl-Tx-GUv"/>
+                                        <constraint firstItem="op4-lW-x4d" firstAttribute="leading" secondItem="RjQ-Fd-ew1" secondAttribute="trailing" constant="20" id="W95-fQ-3wD"/>
+                                        <constraint firstItem="SND-2w-bXE" firstAttribute="leading" secondItem="RjQ-Fd-ew1" secondAttribute="trailing" constant="20" id="fon-26-kAM"/>
+                                        <constraint firstItem="SND-2w-bXE" firstAttribute="top" secondItem="4jD-IZ-c9A" secondAttribute="top" constant="10" id="htV-fX-qO3"/>
+                                        <constraint firstItem="RjQ-Fd-ew1" firstAttribute="centerY" secondItem="4jD-IZ-c9A" secondAttribute="centerY" id="rWY-UR-TLN"/>
+                                        <constraint firstAttribute="trailing" secondItem="X0d-bU-GFz" secondAttribute="trailing" constant="15" id="ymk-Qw-Vv9"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dataAgoLabel" destination="X0d-bU-GFz" id="OgS-um-EZn"/>
+                                    <outlet property="groupNameLabel" destination="SND-2w-bXE" id="82a-hC-s4Z"/>
+                                    <outlet property="lastMessageLabel" destination="op4-lW-x4d" id="TrY-hD-AA8"/>
+                                    <outlet property="statusButton" destination="RjQ-Fd-ew1" id="NFl-y8-kgp"/>
+                                </connections>
+                            </tableViewCell>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vmj-Sc-Xon"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -948,7 +1006,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kW6-NG-E3p"/>
+        <segue reference="ViC-Rd-IC0"/>
         <segue reference="wYF-Ja-7ib"/>
         <segue reference="j1S-vu-Rx0"/>
         <segue reference="jb7-xe-Sm3"/>
