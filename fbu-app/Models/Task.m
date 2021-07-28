@@ -40,8 +40,6 @@
     newTask.notes = @"";
     newTask.completed = NO;
     
-    [newTask saveInBackgroundWithBlock: completion];
-    
     return newTask;
 }
 

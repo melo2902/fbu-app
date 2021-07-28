@@ -21,7 +21,7 @@
     if (!self.task) {
         self.task = [Task createTask:@"" inList:self.listName withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                NSLog(@"Task created");
+                NSLog(@"Task created but not saved yet");
             }
         }];
     }

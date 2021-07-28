@@ -129,6 +129,8 @@
     Task *newTask = [Task createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
     
+    [newTask saveInBackground];
+    
     [List addTask:newTask toList:self.list withCompletion:
      ^(BOOL succeeded, NSError * _Nullable error) {
     }];
