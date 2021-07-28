@@ -475,7 +475,7 @@
                     <navigationItem key="navigationItem" id="c3b-i2-RwL">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="irX-oV-tT6">
                             <connections>
-                                <action selector="onTapBackButton:" destination="qBH-jg-DRD" id="RlL-OO-fkh"/>
+                                <action selector="onTapBackButton:" destination="w0w-jk-5Uh" id="WNk-0O-ao6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -489,6 +489,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwP-4P-wfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="w0w-jk-5Uh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2442.0289855072465" y="865.84821428571422"/>
         </scene>
@@ -804,7 +805,15 @@
                         <viewLayoutGuide key="safeArea" id="r9j-Me-BOI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GJL-xc-Rko"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="GJL-xc-Rko">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="eS6-Gh-Rt0">
+                            <connections>
+                                <action selector="onTapBackButton:" destination="q3I-3q-oj6" id="zoW-ZS-uQ2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="6171.0144927536239" y="1601.7857142857142"/>
