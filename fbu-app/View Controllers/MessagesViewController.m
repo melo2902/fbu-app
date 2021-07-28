@@ -10,7 +10,7 @@
 #import "APIManager.h"
 #import "Platform.h"
 
-@interface MessagesViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MessagesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate>
 @property(nonatomic) NSMutableArray *userData;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
 @property (nonatomic, strong) NSString *latestMessageID;
@@ -18,16 +18,22 @@
 @property(strong, nonatomic) NSMutableDictionary *avatarTable;
 @property (strong, nonatomic) JSQMessagesBubbleImage *outgoingBubbleImageData;
 @property (strong, nonatomic) JSQMessagesBubbleImage *incomingBubbleImageData;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (assign, nonatomic) BOOL endLoading;
+@property (assign, nonatomic) CGFloat oldContentHeight;
 @end
 
 @implementation MessagesViewController
-NSString * const mediaTypes[] = { @"image", @"video", @"location" };
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = self.group.groupName;
+    self.isMoreDataLoading = NO;
+    self.endLoading = NO;
     self.arrayOfMessages = [[NSMutableArray alloc]init];
-    
+    self.oldContentHeight = self.collectionView.contentSize.height;
+   
     Platform *userPlatform = PFUser.currentUser[@"GroupMe"];
     [userPlatform fetchIfNeeded];
     
@@ -48,36 +54,48 @@ NSString * const mediaTypes[] = { @"image", @"video", @"location" };
 }
 
 - (void) getMessages {
-    NSMutableString *URLString = [[NSMutableString alloc] init];
-    [URLString appendString:@"https://api.groupme.com/v3/groups/"];
-    [URLString appendString:self.group.groupID];
-    [URLString appendString:@"/messages?limit=10&token="];
-    [URLString appendString:[APIManager getAuthToken]];
-    
-    if ([self.latestMessageID length] != 0) {
-        [URLString appendString:[NSString stringWithFormat:@"&before_id=%@", self.latestMessageID]];
-    }
-    
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    
-    NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:URLString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
-        if (requestError != nil) {
-            NSLog(@"Trouble requesting page");
-        } else {
-            [self setupMessages:data];
+    if (!self.isMoreDataLoading && !self.endLoading) {
+        self.isMoreDataLoading = YES;
+        
+        NSMutableString *URLString = [[NSMutableString alloc] init];
+        [URLString appendString:@"https://api.groupme.com/v3/groups/"];
+        [URLString appendString:self.group.groupID];
+        [URLString appendString:@"/messages?limit=10&token="];
+        [URLString appendString:[APIManager getAuthToken]];
+        
+        if ([self.latestMessageID length] != 0) {
+            [URLString appendString:[NSString stringWithFormat:@"&before_id=%@", self.latestMessageID]];
         }
-    }];
-    
-    [task resume];
-    [self.refreshControl endRefreshing];
+        
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        
+        NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+        
+        NSURLSessionDataTask *task = [session dataTaskWithURL:[NSURL URLWithString:URLString] completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
+            if (requestError != nil) {
+                NSLog(@"Trouble requesting page");
+            } else {
+                [self setupMessages:data];
+            }
+        }];
+        
+        [task resume];
+    }
 }
 
 - (void) setupMessages: (NSData*)data{
     NSDictionary *arrayFromServer = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSDictionary *responseFromServer = [arrayFromServer objectForKey:@"response"];
     NSDictionary *messageFromServer = [responseFromServer objectForKey:@"messages"];
+    
+    NSInteger numOfNewGroups = [messageFromServer count];
+    NSInteger aboutToBeEmpty = 10;
+    
+    if (numOfNewGroups < aboutToBeEmpty) {
+        self.endLoading = YES;
+    }
+    
+    NSMutableArray *newMessages = [[NSMutableArray alloc] init];
     
     for(NSDictionary *message in messageFromServer){
         JSQMessage *jsqMessage;
@@ -90,21 +108,17 @@ NSString * const mediaTypes[] = { @"image", @"video", @"location" };
         
         NSString *messageText = [message objectForKey:@"text"];
         
-        // Text messages
         if (![messageText isEqual:[NSNull null]]) {
-            NSLog(@"Message %@", [message objectForKey:@"text"]);
             jsqMessage = [[JSQMessage alloc] initWithSenderId:senderId
                                             senderDisplayName:senderName
                                                          date:sentDate
                                                          text:messageText];
             
             if (jsqMessage) {
-                [self.arrayOfMessages addObject:jsqMessage];
+                [newMessages addObject:jsqMessage];
             }
-        }
-        
-        // Media messages
-        if ([[message objectForKey:@"attachments"] count]) {
+            
+        } else if ([[message objectForKey:@"attachments"] count]) {
 
             for (NSDictionary *attachment in [message objectForKey:@"attachments"]) {
                 // IMAGE //
@@ -128,9 +142,6 @@ NSString * const mediaTypes[] = { @"image", @"video", @"location" };
                 // VIDEO //
                 if ([[attachment objectForKey:@"type"] isEqualToString:@"video"]){
                     JSQVideoMediaItem *mediaItem = [[JSQVideoMediaItem alloc] initWithFileURL:[attachment objectForKey:@"url"] isReadyToPlay:NO];
-                    
-                    [self.collectionView reloadData];
-
                     jsqMessage = [[JSQMessage alloc] initWithSenderId:senderId
                                                     senderDisplayName:senderName
                                                                  date:sentDate
@@ -138,17 +149,32 @@ NSString * const mediaTypes[] = { @"image", @"video", @"location" };
                 }
                 
                 if (jsqMessage) {
-                    [self.arrayOfMessages addObject:jsqMessage];
+                    [newMessages addObject:jsqMessage];
                 }
             }
         }
         
         self.latestMessageID = message[@"id"];
     }
-    
-    self.arrayOfMessages = [[[self.arrayOfMessages reverseObjectEnumerator] allObjects] mutableCopy];
+
+    newMessages = [[[newMessages reverseObjectEnumerator] allObjects] mutableCopy];
+    self.arrayOfMessages = [[newMessages arrayByAddingObjectsFromArray:self.arrayOfMessages] mutableCopy];
     [self.collectionView reloadData];
-    [self scrollToBottomAnimated:YES];
+    
+    CGFloat newTableViewHeight = self.collectionView.contentSize.height;
+    self.collectionView.contentOffset = CGPointMake(0, newTableViewHeight - self.oldContentHeight);
+    self.oldContentHeight = self.collectionView.contentSize.height;
+    
+    self.isMoreDataLoading = NO;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (!self.isMoreDataLoading && !self.endLoading) {
+        if(scrollView.contentOffset.y < 10) {
+            [self getMessages];
+        }
+
+    }
 }
 
 - (void)setupChatBubbles {
@@ -299,6 +325,10 @@ NSString * const mediaTypes[] = { @"image", @"video", @"location" };
 - (CGFloat)collectionView:(JSQMessagesCollectionView *)collectionView
                    layout:(JSQMessagesCollectionViewFlowLayout *)collectionViewLayout heightForCellBottomLabelAtIndexPath:(NSIndexPath *)indexPath {
     return 0.0f;
+}
+
+- (IBAction)onTapBackButton:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 # pragma color templates
