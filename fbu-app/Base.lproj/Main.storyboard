@@ -475,7 +475,7 @@
                     <navigationItem key="navigationItem" id="c3b-i2-RwL">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="irX-oV-tT6">
                             <connections>
-                                <action selector="onTapBackButton:" destination="w0w-jk-5Uh" id="WNk-0O-ao6"/>
+                                <action selector="onTapBackButton:" destination="qBH-jg-DRD" id="gsu-K6-9y7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -489,7 +489,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwP-4P-wfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="w0w-jk-5Uh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2442.0289855072465" y="865.84821428571422"/>
         </scene>
