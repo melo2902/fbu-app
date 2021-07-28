@@ -303,6 +303,9 @@
     }
     
 }
+- (IBAction)onTapBackButton:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

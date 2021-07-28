@@ -471,7 +471,15 @@
                             <constraint firstItem="UOo-0c-DmN" firstAttribute="top" secondItem="Inb-kc-09Z" secondAttribute="bottom" constant="20" id="yAx-8w-qev"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="c3b-i2-RwL"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="c3b-i2-RwL">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="irX-oV-tT6">
+                            <connections>
+                                <action selector="onTapBackButton:" destination="qBH-jg-DRD" id="RlL-OO-fkh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addedTaskBar" destination="Inb-kc-09Z" id="Hks-zt-qUL"/>
                         <outlet property="completedTableView" destination="0Zh-MO-B6y" id="n27-Rm-xPP"/>
