@@ -323,8 +323,10 @@
         NSIndexPath *indexPath = [self.tasksTableView indexPathForCell:tappedCell];
         Task *task = self.arrayOfTasks[indexPath.row];
         
-        XLFTaskViewController *taskViewController = [segue destinationViewController];
-        taskViewController.task = task;
+        XLFTaskViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+        vc.task = task;
+        
     } else if ([segue.identifier isEqual:@"addNewTaskSegue"]) {
         XLFTaskViewController *vc = segue.destinationViewController;
         vc.delegate = self;
