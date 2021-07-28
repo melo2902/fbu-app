@@ -167,14 +167,17 @@
         NSIndexPath *indexPath = [self.defaultTableView indexPathForCell:tappedCell];
         List *list = self.arrayOfDefaultLists[indexPath.row];
         
-        ListViewController *listViewController = [segue destinationViewController];
+        UINavigationController *navigationController = [segue destinationViewController];
+        ListViewController *listViewController = (ListViewController*) [navigationController topViewController];
         listViewController.list = list;
+        
     } else if ([segue.identifier isEqual:@"openUserListSegue"]) {
         ListCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.userListTableView indexPathForCell:tappedCell];
         List *list = self.arrayOfUserLists[indexPath.row];
         
-        ListViewController *listViewController = [segue destinationViewController];
+        UINavigationController *navigationController = [segue destinationViewController];
+        ListViewController *listViewController = (ListViewController*) [navigationController topViewController];
         listViewController.list = list;
     }
 }

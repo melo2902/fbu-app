@@ -259,7 +259,8 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 
         Group *group = self.arrayOfMessages[indexPath.row];
-        MessagesViewController *messagesViewController = (MessagesViewController *)[segue destinationViewController];
+        UINavigationController *navigationController = [segue destinationViewController];
+        MessagesViewController *messagesViewController = (MessagesViewController *)[navigationController topViewController];
         messagesViewController.group = group;
     }
 }
