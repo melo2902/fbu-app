@@ -310,6 +310,11 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Deselect the row
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 -(void)ListViewController:(XLFTaskViewController *)controller finishedUpdating:(Task *)task {
     [self getTasks];
 }
