@@ -116,10 +116,14 @@
 }
 
 - (IBAction)onTapSave:(id)sender {
-    [self.task saveInBackground];
-    [self.delegate ListViewController:self finishedUpdating:self.task];
-    
-    [super.navigationController popViewControllerAnimated:YES];
+    if (![self.task[@"taskTitle"] isEqual:@""]) {
+        [self.task saveInBackground];
+        [self.delegate ListViewController:self finishedUpdating:self.task];
+        
+        [super.navigationController popViewControllerAnimated:YES];
+    } else {
+        NSLog(@"Please add a task title");
+    }
 }
 
 @end
