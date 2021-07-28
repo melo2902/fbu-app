@@ -24,72 +24,69 @@
     [PFUser logOut];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    
     [self.view addGestureRecognizer:tap];
 }
 
+# pragma mark - sign up user
+
 - (IBAction)onTapSignUp:(id)sender {
     if ([self.passwordField.text isEqualToString:self.confirmPasswordField.text]){
-        
-        PFUser *newUser = [PFUser user];
-        
-        newUser.username = [NSString stringWithFormat:@"%@ %@", self.firstNameField.text, self.lastNameField.text];
-        newUser[@"firstName"] = self.firstNameField.text;
-        newUser.email = self.emailField.text;
-        newUser[@"lastName"] = self.lastNameField.text;
-        newUser.password = self.passwordField.text;
-        
-        NSMutableArray *preDefinedLists = [[NSMutableArray alloc] init];
-        [self createPredefinedLists:@"My Day" toList:preDefinedLists];
-        [self createPredefinedLists:@"My Tomorrow" toList:preDefinedLists];
-        [self createPredefinedLists:@"All" toList:preDefinedLists];
-        
-        newUser[@"lists"] = preDefinedLists;
+        PFUser* newUser = [self initializeUser];
         
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
             if (error != nil) {
                 NSLog(@"Error: %@", error.localizedDescription);
-                
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sign Up Failed"
-                                                                               message:@"The username is already taken!"
-                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
-                
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                   style:UIAlertActionStyleDefault
-                                                                 handler:^(UIAlertAction * _Nonnull action) {
-                }];
-                
-                [alert addAction:okAction];
-                
-                [self presentViewController:alert animated:YES completion:^{
-                }];
+                [self alertUserOfError:@"The username is already taken!" withTitle:@"Sign up Failed"];
             } else {
-                NSLog(@"User registered successfully");
-                
                 [self performSegueWithIdentifier:@"signedUpSegue" sender:nil];
             }
         }];
     } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sign Up Failed"
-                                                                       message:@"Please input matching passwords!"
-                                                                preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        
-        [alert addAction:okAction];
-        
-        [self presentViewController:alert animated:YES completion:^{
-        }];
+        [self alertUserOfError:@"Please input matching passwords!" withTitle:@"Sign up Failed"];
     }
 }
 
--(void) createPredefinedLists:(NSString *) name toList:(NSMutableArray *) definedList {
+- (PFUser *) initializeUser {
+    PFUser *newUser = [PFUser user];
+    
+    newUser.username = [NSString stringWithFormat:@"%@ %@", self.firstNameField.text, self.lastNameField.text];
+    newUser[@"firstName"] = self.firstNameField.text;
+    newUser.email = self.emailField.text;
+    newUser[@"lastName"] = self.lastNameField.text;
+    newUser.password = self.passwordField.text;
+    
+    NSMutableArray *preDefinedLists = [[NSMutableArray alloc] init];
+    [self createPredefinedLists:@"My Day" toList:preDefinedLists];
+    [self createPredefinedLists:@"My Tomorrow" toList:preDefinedLists];
+    [self createPredefinedLists:@"All" toList:preDefinedLists];
+    
+    newUser[@"lists"] = preDefinedLists;
+    
+    return newUser;
+}
+
+- (void)createPredefinedLists:(NSString *) name toList:(NSMutableArray *) definedList {
     List *newList = [List createList:name ifDefault: YES withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
     [definedList addObject:newList];
+}
+
+# pragma mark - alert error
+
+- (void)alertUserOfError: (NSString *) message withTitle: (NSString *) title {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
+                                                                   message:message
+                                                            preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alert addAction:okAction];
+    
+    [self presentViewController:alert animated:YES completion:^{
+    }];
 }
 
 -(void)dismissKeyboard {

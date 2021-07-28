@@ -19,7 +19,6 @@
     [super viewDidLoad];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-
     [self.view addGestureRecognizer:tap];
 }
 
@@ -30,20 +29,7 @@
     [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Log In Failed"
-                message:@"Check to make sure that your username and password are valid!"
-                preferredStyle:(UIAlertControllerStyleAlert)];
-            
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                style:UIAlertActionStyleDefault
-                handler:^(UIAlertAction * _Nonnull action) {
-            }];
-            
-            [alert addAction:okAction];
-            
-            [self presentViewController:alert animated:YES completion:^{
-            }];
+            [self alertUserOfError];
             
         } else {
             [self performSegueWithIdentifier:@"loggedInSegue" sender:nil];
@@ -51,7 +37,23 @@
     }];
 }
 
--(void)dismissKeyboard {
+- (void)alertUserOfError {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Log In Failed"
+        message:@"Check to make sure that your username and password are valid!"
+        preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+        style:UIAlertActionStyleDefault
+        handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alert addAction:okAction];
+    
+    [self presentViewController:alert animated:YES completion:^{
+    }];
+}
+
+- (void)dismissKeyboard {
     [self.emailLabel resignFirstResponder];
     [self.passwordLabel resignFirstResponder];
 }
