@@ -787,7 +787,13 @@
                         <viewLayoutGuide key="safeArea" id="jco-mx-l8F"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="APe-Jx-cD7"/>
+                    <navigationItem key="navigationItem" id="APe-Jx-cD7">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="nVl-JB-L9F">
+                            <connections>
+                                <action selector="onTapSave:" destination="15q-3i-RO4" id="ofQ-C2-qeP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wm-U9-db9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

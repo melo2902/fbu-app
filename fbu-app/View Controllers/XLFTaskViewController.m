@@ -112,8 +112,12 @@
     } else if ([rowDescriptor.tag isEqualToString:@"taskTitle"]) {
         self.task[@"taskTitle"] = newValue;
     }
-    
+}
+
+- (IBAction)onTapSave:(id)sender {
     [self.task saveInBackground];
+    
+    [super.navigationController popViewControllerAnimated:YES];
 }
 
 @end
