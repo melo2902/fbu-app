@@ -10,7 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class XLFTaskViewController;
+
+@protocol XLFTaskViewControllerDelegate <NSObject>
+- (void)ListViewController:(XLFTaskViewController *)controller finishedUpdating:(Task *)task;
+@end
+
 @interface XLFTaskViewController : XLFormViewController
+@property (nonatomic, weak) id <XLFTaskViewControllerDelegate> delegate;
 @property (strong, nonatomic) Task *task;
 @property (strong, nonatomic) NSString *listName;
 @end

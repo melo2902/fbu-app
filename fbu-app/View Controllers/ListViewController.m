@@ -14,7 +14,7 @@
 #import "TaskCell.h"
 #import "DateTools.h"
 
-@interface ListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface ListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tasksTableView;
@@ -310,6 +310,10 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+-(void)ListViewController:(XLFTaskViewController *)controller finishedUpdating:(Task *)task {
+    [self getTasks];
+}
+
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -322,8 +326,9 @@
         XLFTaskViewController *taskViewController = [segue destinationViewController];
         taskViewController.task = task;
     } else if ([segue.identifier isEqual:@"addNewTaskSegue"]) {
-        XLFTaskViewController *taskViewController = [segue destinationViewController];
-        taskViewController.listName = self.list[@"name"];
+        XLFTaskViewController *vc = segue.destinationViewController;
+        vc.delegate = self;
+        vc.listName = self.list[@"name"];
     }
 }
 

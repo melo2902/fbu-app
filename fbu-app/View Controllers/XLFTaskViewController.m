@@ -6,6 +6,7 @@
 //
 
 #import "XLFTaskViewController.h"
+#import "ListViewController.h"
 #import "XLForm.h"
 #import "Task.h"
 
@@ -116,6 +117,7 @@
 
 - (IBAction)onTapSave:(id)sender {
     [self.task saveInBackground];
+    [self.delegate ListViewController:self finishedUpdating:self.task];
     
     [super.navigationController popViewControllerAnimated:YES];
 }
