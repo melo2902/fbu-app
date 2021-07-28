@@ -170,6 +170,8 @@
             NSLog(@"onRead Conversations filtered out%@", currPlatform[@"onReadConversations"]);
         }
     }];
+    
+    [super.navigationController popViewControllerAnimated:YES];
 }
 
 /*

@@ -780,28 +780,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoN-B6-Ehw">
-                                <rect key="frame" x="338" y="44" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="tray.and.arrow.down" catalog="system"/>
-                                <state key="selected" image="checkmark.circle.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="onSelectConversations:" destination="Di4-KZ-Qqz" eventType="touchUpInside" id="4wl-un-2H5"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Vmj-Sc-Xon"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="message" catalog="system" selectedImage="message" id="rdA-wX-eB7"/>
-                    <navigationItem key="navigationItem" id="u7S-5X-SX8"/>
+                    <navigationItem key="navigationItem" id="u7S-5X-SX8">
+                        <barButtonItem key="rightBarButtonItem" image="pencil.circle.fill" catalog="system" id="WKH-GZ-Uga">
+                            <connections>
+                                <action selector="onSelectConversations:" destination="Di4-KZ-Qqz" id="KAw-WS-mLi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="50a-Mp-g6q" id="Bfo-YR-LLS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YqI-Ys-sHG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2370" y="2312"/>
+            <point key="canvasLocation" x="3520" y="2335"/>
         </scene>
         <!--Task View Controller-->
         <scene sceneID="Eoe-rk-UFd">
@@ -960,9 +957,9 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="message" catalog="system" width="128" height="113"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="plus.message" catalog="system" width="128" height="113"/>
-        <image name="tray.and.arrow.down" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
