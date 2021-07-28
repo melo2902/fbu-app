@@ -103,47 +103,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Messaging Platforms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4M-W0-Kzo">
-                                <rect key="frame" x="26" y="315" width="173" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messaging Platforms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4M-W0-Kzo">
+                                <rect key="frame" x="25" y="341" width="173" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlI-PI-CM4">
-                                <rect key="frame" x="333" y="314" width="18" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlI-PI-CM4">
+                                <rect key="frame" x="371" y="340.5" width="18" height="22"/>
                                 <state key="normal" image="plus" catalog="system"/>
                                 <connections>
                                     <action selector="onTapAddPlatform:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="IJS-OF-rR6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5c-Dt-plU">
-                                <rect key="frame" x="24" y="356" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="plus.message" catalog="system"/>
-                                <connections>
-                                    <segue destination="Di4-KZ-Qqz" kind="show" id="02E-7A-ofc"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZg-Pd-Xfi">
-                                <rect key="frame" x="26" y="398" width="89" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1S-Ba-dq4">
-                                <rect key="frame" x="26" y="436" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1S-Ba-dq4">
+                                <rect key="frame" x="25" y="414" width="55" height="30"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
                                     <action selector="onTapLogOut:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="P7b-cZ-axt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f03-Zc-usB">
-                                <rect key="frame" x="241" y="185" width="25" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5c-Dt-plU">
+                                <rect key="frame" x="25" y="377" width="22" height="22"/>
+                                <state key="normal" image="plus.message" catalog="system"/>
+                                <connections>
+                                    <segue destination="Di4-KZ-Qqz" kind="show" id="02E-7A-ofc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f03-Zc-usB">
+                                <rect key="frame" x="62" y="377" width="25" height="22"/>
                                 <state key="normal" image="camera" catalog="system"/>
                                 <connections>
                                     <action selector="editProfilePicture:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="Y2P-bo-bNf"/>
@@ -156,10 +144,20 @@
                         <constraints>
                             <constraint firstItem="Zmq-0I-8DZ" firstAttribute="top" secondItem="Imz-eg-ecC" secondAttribute="top" constant="20" id="FDY-B3-j6b"/>
                             <constraint firstItem="oLD-rH-X3x" firstAttribute="top" secondItem="3hO-et-RQQ" secondAttribute="bottom" constant="10" id="Foc-Tz-yx5"/>
+                            <constraint firstItem="y5c-Dt-plU" firstAttribute="top" secondItem="s4M-W0-Kzo" secondAttribute="bottom" constant="15" id="HZ7-hd-g0e"/>
+                            <constraint firstItem="a1S-Ba-dq4" firstAttribute="leading" secondItem="Imz-eg-ecC" secondAttribute="leading" constant="25" id="Iqp-vk-aVO"/>
+                            <constraint firstItem="f03-Zc-usB" firstAttribute="top" secondItem="y5c-Dt-plU" secondAttribute="top" id="LkV-G2-23A"/>
                             <constraint firstItem="3hO-et-RQQ" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="Meh-nt-fvj"/>
+                            <constraint firstItem="s4M-W0-Kzo" firstAttribute="top" secondItem="oLD-rH-X3x" secondAttribute="bottom" constant="15" id="Pje-0Y-7AD"/>
+                            <constraint firstItem="y5c-Dt-plU" firstAttribute="leading" secondItem="Imz-eg-ecC" secondAttribute="leading" constant="25" id="WMg-rU-LRA"/>
                             <constraint firstItem="3hO-et-RQQ" firstAttribute="top" secondItem="Zmq-0I-8DZ" secondAttribute="bottom" constant="10" id="Wy1-tO-Kqj"/>
+                            <constraint firstItem="a1S-Ba-dq4" firstAttribute="top" secondItem="y5c-Dt-plU" secondAttribute="bottom" constant="15" id="a9A-JU-84L"/>
+                            <constraint firstItem="Imz-eg-ecC" firstAttribute="trailing" secondItem="DlI-PI-CM4" secondAttribute="trailing" constant="25" id="cFJ-vg-Cde"/>
                             <constraint firstItem="oLD-rH-X3x" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="e5I-2X-xjY"/>
                             <constraint firstItem="Zmq-0I-8DZ" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="wDS-DH-urk"/>
+                            <constraint firstItem="s4M-W0-Kzo" firstAttribute="leading" secondItem="Imz-eg-ecC" secondAttribute="leading" constant="25" id="wmZ-hs-bO7"/>
+                            <constraint firstItem="f03-Zc-usB" firstAttribute="leading" secondItem="y5c-Dt-plU" secondAttribute="trailing" constant="15" id="xls-Dq-cw6"/>
+                            <constraint firstItem="DlI-PI-CM4" firstAttribute="centerY" secondItem="s4M-W0-Kzo" secondAttribute="centerY" id="yyU-7Q-bs5"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
