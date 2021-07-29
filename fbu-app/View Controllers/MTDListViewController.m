@@ -43,8 +43,8 @@
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     
     self.listNameLabel.text = self.list[@"name"];
-    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
-    self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+    
+    [self updateListWorkingTime];
 
     if ([self.list[@"name"] isEqual:@"My Day"] || [self.list[@"name"] isEqual:@"My Tomorrow"]) {
         [self checkMyDayMyTomorrowTasks];
@@ -152,8 +152,7 @@
     
     [self.arrayOfTasks insertObject:newTask atIndex:0];
     
-    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
-    self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+    [self updateListWorkingTime];
     
     self.addedTaskBar.text = @"";
     [self.tasksTableView reloadData];
@@ -237,8 +236,7 @@
         
         [self.arrayOfTasks removeObject: task];
         
-        NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
-        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+        [self updateListWorkingTime];
         
         [self.tasksTableView reloadData];
         completionHandler(YES);
@@ -307,14 +305,22 @@
             }];
         }
         
-        NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
-        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+        [self updateListWorkingTime];
         
         [self.tasksTableView reloadData];
         [self.completedTableView reloadData];
     };
     
     return cell;
+}
+
+- (void) updateListWorkingTime {
+    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
+    if ([workingTime isEqual: @"1"]) {
+        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
+    } else {
+        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+    }
 }
 
 - (NSAttributedString *) colorStringRed: (NSDate *) dueDate {
