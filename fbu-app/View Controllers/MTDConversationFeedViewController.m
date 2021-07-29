@@ -87,7 +87,7 @@
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
         [URLString appendString:@"https://api.groupme.com/v3/groups?limit=6&token="];
-        [URLString appendString:PFUser.currentUser[@"authToken"]];
+        [URLString appendString:[MTDAPIManager returnAuthToken]];
         [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];

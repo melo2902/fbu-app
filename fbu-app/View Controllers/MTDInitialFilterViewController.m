@@ -194,7 +194,9 @@
         }
     }];
     
-    [self performSegueWithIdentifier:@"showMessagesSegue" sender:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Dismiss View Controller");
+    }];
 }
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
