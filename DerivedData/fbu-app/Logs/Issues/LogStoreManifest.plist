@@ -6,7 +6,7 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
-		<key>26A7EE9B-07C4-42B5-A43B-B5ADAE8EE81F</key>
+		<key>02B15685-AD3E-4F79-A22E-382D87387B98</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogMajorGroupSection</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.target.product-type.library.static</string>
 			<key>fileName</key>
-			<string>26A7EE9B-07C4-42B5-A43B-B5ADAE8EE81F.xcactivitylog</string>
+			<string>02B15685-AD3E-4F79-A22E-382D87387B98.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -24,15 +24,15 @@
 				<string>W</string>
 			</dict>
 			<key>signature</key>
-			<string>Bolts-byiupwwnukivkcddjkmizxetkrxx</string>
+			<string>JSQSystemSoundPlayer-byiupwwnukivkcddjkmizxetkrxx</string>
 			<key>timeStartedRecording</key>
-			<real>649220113.11277699</real>
+			<real>649220418.89864504</real>
 			<key>timeStoppedRecording</key>
-			<real>649220113.11286497</real>
+			<real>649220418.89873397</real>
 			<key>title</key>
-			<string>Build target Bolts</string>
+			<string>Build target JSQSystemSoundPlayer</string>
 			<key>uniqueIdentifier</key>
-			<string>26A7EE9B-07C4-42B5-A43B-B5ADAE8EE81F</string>
+			<string>02B15685-AD3E-4F79-A22E-382D87387B98</string>
 		</dict>
 		<key>290CC517-E384-425D-B697-F60E977DC135</key>
 		<dict>
@@ -90,7 +90,7 @@
 			<key>uniqueIdentifier</key>
 			<string>48AA6E72-DE7C-4AF8-B187-C3FEDCFBB412</string>
 		</dict>
-		<key>4DFAFA29-258A-4C51-8A7E-D94720FCAF8A</key>
+		<key>4FF629B9-CDD5-46BC-B9FD-583B2AAD89E2</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogMajorGroupSection</string>
@@ -99,7 +99,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.target.product-type.library.static</string>
 			<key>fileName</key>
-			<string>4DFAFA29-258A-4C51-8A7E-D94720FCAF8A.xcactivitylog</string>
+			<string>4FF629B9-CDD5-46BC-B9FD-583B2AAD89E2.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -108,15 +108,43 @@
 				<string>W</string>
 			</dict>
 			<key>signature</key>
-			<string>JSQSystemSoundPlayer-byiupwwnukivkcddjkmizxetkrxx</string>
+			<string>JSQMessagesViewController-byiupwwnukivkcddjkmizxetkrxx</string>
 			<key>timeStartedRecording</key>
-			<real>649220113.11307096</real>
+			<real>649220418.89802897</real>
 			<key>timeStoppedRecording</key>
-			<real>649220113.11315298</real>
+			<real>649220418.898175</real>
 			<key>title</key>
-			<string>Build target JSQSystemSoundPlayer</string>
+			<string>Build target JSQMessagesViewController</string>
 			<key>uniqueIdentifier</key>
-			<string>4DFAFA29-258A-4C51-8A7E-D94720FCAF8A</string>
+			<string>4FF629B9-CDD5-46BC-B9FD-583B2AAD89E2</string>
+		</dict>
+		<key>5C4E371F-2894-4299-A14E-6374BC8CB442</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogMajorGroupSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.target.product-type.application</string>
+			<key>fileName</key>
+			<string>5C4E371F-2894-4299-A14E-6374BC8CB442.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>signature</key>
+			<string>fbu-app-asflvaiucpljaievtnhpxidnneic</string>
+			<key>timeStartedRecording</key>
+			<real>649220405.23312104</real>
+			<key>timeStoppedRecording</key>
+			<real>649220408.13906801</real>
+			<key>title</key>
+			<string>Build target fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>5C4E371F-2894-4299-A14E-6374BC8CB442</string>
 		</dict>
 		<key>656ED35F-1372-4CE8-AFBA-9897A6E4CA5F</key>
 		<dict>
@@ -146,6 +174,34 @@
 			<key>uniqueIdentifier</key>
 			<string>656ED35F-1372-4CE8-AFBA-9897A6E4CA5F</string>
 		</dict>
+		<key>659BD732-572B-4AC5-9BE4-515A9BED8619</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogMajorGroupSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.target.product-type.library.static</string>
+			<key>fileName</key>
+			<string>659BD732-572B-4AC5-9BE4-515A9BED8619.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>signature</key>
+			<string>DateTools-byiupwwnukivkcddjkmizxetkrxx</string>
+			<key>timeStartedRecording</key>
+			<real>649220418.89826405</real>
+			<key>timeStoppedRecording</key>
+			<real>649220418.89839602</real>
+			<key>title</key>
+			<string>Build target DateTools</string>
+			<key>uniqueIdentifier</key>
+			<string>659BD732-572B-4AC5-9BE4-515A9BED8619</string>
+		</dict>
 		<key>6D35E25F-3282-4238-AF09-C7E57FD91204</key>
 		<dict>
 			<key>className</key>
@@ -174,35 +230,7 @@
 			<key>uniqueIdentifier</key>
 			<string>6D35E25F-3282-4238-AF09-C7E57FD91204</string>
 		</dict>
-		<key>7FBC9BBA-29F1-4734-B775-367BD3D3713D</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogMajorGroupSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.target.product-type.application</string>
-			<key>fileName</key>
-			<string>7FBC9BBA-29F1-4734-B775-367BD3D3713D.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>signature</key>
-			<string>fbu-app-asflvaiucpljaievtnhpxidnneic</string>
-			<key>timeStartedRecording</key>
-			<real>649220110.97385895</real>
-			<key>timeStoppedRecording</key>
-			<real>649220112.242015</real>
-			<key>title</key>
-			<string>Build target fbu-app</string>
-			<key>uniqueIdentifier</key>
-			<string>7FBC9BBA-29F1-4734-B775-367BD3D3713D</string>
-		</dict>
-		<key>C41FF6D9-EF2C-4497-95EE-804B5BD9B741</key>
+		<key>B5AF6FFA-D758-40CF-AC56-72FB7ADA393B</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogMajorGroupSection</string>
@@ -211,7 +239,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.target.product-type.library.static</string>
 			<key>fileName</key>
-			<string>C41FF6D9-EF2C-4497-95EE-804B5BD9B741.xcactivitylog</string>
+			<string>B5AF6FFA-D758-40CF-AC56-72FB7ADA393B.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -220,43 +248,15 @@
 				<string>W</string>
 			</dict>
 			<key>signature</key>
-			<string>JSQMessagesViewController-byiupwwnukivkcddjkmizxetkrxx</string>
+			<string>Bolts-byiupwwnukivkcddjkmizxetkrxx</string>
 			<key>timeStartedRecording</key>
-			<real>649220113.11257195</real>
+			<real>649220418.89848602</real>
 			<key>timeStoppedRecording</key>
-			<real>649220113.11271095</real>
+			<real>649220418.89858103</real>
 			<key>title</key>
-			<string>Build target JSQMessagesViewController</string>
+			<string>Build target Bolts</string>
 			<key>uniqueIdentifier</key>
-			<string>C41FF6D9-EF2C-4497-95EE-804B5BD9B741</string>
-		</dict>
-		<key>CDFC168A-1AD8-4244-B0BB-3064E3CD0FB1</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogMajorGroupSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.target.product-type.library.static</string>
-			<key>fileName</key>
-			<string>CDFC168A-1AD8-4244-B0BB-3064E3CD0FB1.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>W</string>
-			</dict>
-			<key>signature</key>
-			<string>DateTools-byiupwwnukivkcddjkmizxetkrxx</string>
-			<key>timeStartedRecording</key>
-			<real>649220113.11292696</real>
-			<key>timeStoppedRecording</key>
-			<real>649220113.11301005</real>
-			<key>title</key>
-			<string>Build target DateTools</string>
-			<key>uniqueIdentifier</key>
-			<string>CDFC168A-1AD8-4244-B0BB-3064E3CD0FB1</string>
+			<string>B5AF6FFA-D758-40CF-AC56-72FB7ADA393B</string>
 		</dict>
 	</dict>
 	<key>preserveOldLogs</key>

@@ -65,7 +65,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLFormSectionDescriptor.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLFormDescriptorDelegate.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLFormRowNavigationAccessoryView.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Views/TaskCell.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Views/MTDTaskCell.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/DateTools/DateTools.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/DateTools/DTConstants.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/DateTools/DTError.h \

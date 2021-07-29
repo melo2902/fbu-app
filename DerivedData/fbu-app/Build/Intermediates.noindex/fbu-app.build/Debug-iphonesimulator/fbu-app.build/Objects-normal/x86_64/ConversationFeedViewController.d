@@ -50,7 +50,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPush+Deprecated.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFProduct.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPurchase.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Views/ConversationCell.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Views/MTDConversationCell.h \
   /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDGroup.h \
   /Users/mwen/Documents/fbu-app/fbu-app/API\ Manager/MTDAPIManager.h \
   /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDPlatform.h \

@@ -20,21 +20,21 @@
 		5862EEEE269CA40600BE2EA4 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEED269CA40600BE2EA4 /* SignupViewController.m */; };
 		5862EEF7269CB66A00BE2EA4 /* MainFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEF6269CB66A00BE2EA4 /* MainFeedViewController.m */; };
 		5862EEFA269CB79500BE2EA4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEF9269CB79500BE2EA4 /* SettingsViewController.m */; };
-		5862EEFD269CBEC300BE2EA4 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEFC269CBEC300BE2EA4 /* ListCell.m */; };
+		5862EEFD269CBEC300BE2EA4 /* MTDListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEFC269CBEC300BE2EA4 /* MTDListCell.m */; };
 		5862EF00269CBF2E00BE2EA4 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEFF269CBF2E00BE2EA4 /* ListViewController.m */; };
 		5862EF03269CC03A00BE2EA4 /* MTDList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF02269CC03A00BE2EA4 /* MTDList.m */; };
 		5862EF06269CC04E00BE2EA4 /* MTDTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF05269CC04E00BE2EA4 /* MTDTask.m */; };
 		5862EF0D269DE3EE00BE2EA4 /* MTDAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0C269DE3EE00BE2EA4 /* MTDAPIManager.m */; };
-		5862EF10269E141500BE2EA4 /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0F269E141500BE2EA4 /* TaskCell.m */; };
-		5862EF1B26A08DF200BE2EA4 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF1A26A08DF200BE2EA4 /* MessageCell.m */; };
+		5862EF10269E141500BE2EA4 /* MTDTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0F269E141500BE2EA4 /* MTDTaskCell.m */; };
+		5862EF1B26A08DF200BE2EA4 /* MTDMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF1A26A08DF200BE2EA4 /* MTDMessageCell.m */; };
 		5862EF2126A0C86100BE2EA4 /* ConversationFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2026A0C86100BE2EA4 /* ConversationFeedViewController.m */; };
 		5862EF2426A20FD800BE2EA4 /* MTDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2326A20FD800BE2EA4 /* MTDGroup.m */; };
 		5862EF2826A221F900BE2EA4 /* MTDPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2726A221F800BE2EA4 /* MTDPlatform.m */; };
-		5862EF2E26A6276600BE2EA4 /* ConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2D26A6276600BE2EA4 /* ConversationCell.m */; };
+		5862EF2E26A6276600BE2EA4 /* MTDConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2D26A6276600BE2EA4 /* MTDConversationCell.m */; };
 		5862EF3126A7622800BE2EA4 /* MTDConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3026A7622800BE2EA4 /* MTDConversation.m */; };
 		5862EF3426A8CA2000BE2EA4 /* XLFTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */; };
 		5862EF3726A9CD7400BE2EA4 /* InitialFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3626A9CD7400BE2EA4 /* InitialFilterViewController.m */; };
-		5862EF3A26A9CEA700BE2EA4 /* SelectionConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3926A9CEA700BE2EA4 /* SelectionConversationCell.m */; };
+		5862EF3A26A9CEA700BE2EA4 /* MTDSelectionConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3926A9CEA700BE2EA4 /* MTDSelectionConversationCell.m */; };
 		5862EF4026AF956C00BE2EA4 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3F26AF956C00BE2EA4 /* MessagesViewController.m */; };
 		586DE3EF26B1EFAF00DD22FF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586DE3EE26B1EFAF00DD22FF /* WebKit.framework */; };
 		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
@@ -85,8 +85,8 @@
 		5862EEF6269CB66A00BE2EA4 /* MainFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFeedViewController.m; sourceTree = "<group>"; };
 		5862EEF8269CB79500BE2EA4 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		5862EEF9269CB79500BE2EA4 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		5862EEFB269CBEC300BE2EA4 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
-		5862EEFC269CBEC300BE2EA4 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		5862EEFB269CBEC300BE2EA4 /* MTDListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDListCell.h; sourceTree = "<group>"; };
+		5862EEFC269CBEC300BE2EA4 /* MTDListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDListCell.m; sourceTree = "<group>"; };
 		5862EEFE269CBF2E00BE2EA4 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		5862EEFF269CBF2E00BE2EA4 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		5862EF01269CC03A00BE2EA4 /* MTDList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDList.h; sourceTree = "<group>"; };
@@ -95,26 +95,26 @@
 		5862EF05269CC04E00BE2EA4 /* MTDTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDTask.m; sourceTree = "<group>"; };
 		5862EF0B269DE3EE00BE2EA4 /* MTDAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDAPIManager.h; sourceTree = "<group>"; };
 		5862EF0C269DE3EE00BE2EA4 /* MTDAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDAPIManager.m; sourceTree = "<group>"; };
-		5862EF0E269E141500BE2EA4 /* TaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
-		5862EF0F269E141500BE2EA4 /* TaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
-		5862EF1926A08DF200BE2EA4 /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
-		5862EF1A26A08DF200BE2EA4 /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		5862EF0E269E141500BE2EA4 /* MTDTaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDTaskCell.h; sourceTree = "<group>"; };
+		5862EF0F269E141500BE2EA4 /* MTDTaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDTaskCell.m; sourceTree = "<group>"; };
+		5862EF1926A08DF200BE2EA4 /* MTDMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDMessageCell.h; sourceTree = "<group>"; };
+		5862EF1A26A08DF200BE2EA4 /* MTDMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDMessageCell.m; sourceTree = "<group>"; };
 		5862EF1F26A0C86100BE2EA4 /* ConversationFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationFeedViewController.h; sourceTree = "<group>"; };
 		5862EF2026A0C86100BE2EA4 /* ConversationFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationFeedViewController.m; sourceTree = "<group>"; };
 		5862EF2226A20FD800BE2EA4 /* MTDGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDGroup.h; sourceTree = "<group>"; };
 		5862EF2326A20FD800BE2EA4 /* MTDGroup.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDGroup.m; sourceTree = "<group>"; };
 		5862EF2626A221F800BE2EA4 /* MTDPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDPlatform.h; sourceTree = "<group>"; };
 		5862EF2726A221F800BE2EA4 /* MTDPlatform.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDPlatform.m; sourceTree = "<group>"; };
-		5862EF2C26A6276600BE2EA4 /* ConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConversationCell.h; sourceTree = "<group>"; };
-		5862EF2D26A6276600BE2EA4 /* ConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConversationCell.m; sourceTree = "<group>"; };
+		5862EF2C26A6276600BE2EA4 /* MTDConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDConversationCell.h; sourceTree = "<group>"; };
+		5862EF2D26A6276600BE2EA4 /* MTDConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDConversationCell.m; sourceTree = "<group>"; };
 		5862EF2F26A7622800BE2EA4 /* MTDConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDConversation.h; sourceTree = "<group>"; };
 		5862EF3026A7622800BE2EA4 /* MTDConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDConversation.m; sourceTree = "<group>"; };
 		5862EF3226A8CA2000BE2EA4 /* XLFTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLFTaskViewController.h; sourceTree = "<group>"; };
 		5862EF3326A8CA2000BE2EA4 /* XLFTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XLFTaskViewController.m; sourceTree = "<group>"; };
 		5862EF3526A9CD7400BE2EA4 /* InitialFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InitialFilterViewController.h; sourceTree = "<group>"; };
 		5862EF3626A9CD7400BE2EA4 /* InitialFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InitialFilterViewController.m; sourceTree = "<group>"; };
-		5862EF3826A9CEA700BE2EA4 /* SelectionConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionConversationCell.h; sourceTree = "<group>"; };
-		5862EF3926A9CEA700BE2EA4 /* SelectionConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectionConversationCell.m; sourceTree = "<group>"; };
+		5862EF3826A9CEA700BE2EA4 /* MTDSelectionConversationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDSelectionConversationCell.h; sourceTree = "<group>"; };
+		5862EF3926A9CEA700BE2EA4 /* MTDSelectionConversationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDSelectionConversationCell.m; sourceTree = "<group>"; };
 		5862EF3E26AF956C00BE2EA4 /* MessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
 		5862EF3F26AF956C00BE2EA4 /* MessagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
 		586DE3EE26B1EFAF00DD22FF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -255,16 +255,16 @@
 		5862EEE6269CA22800BE2EA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5862EEFB269CBEC300BE2EA4 /* ListCell.h */,
-				5862EEFC269CBEC300BE2EA4 /* ListCell.m */,
-				5862EF0E269E141500BE2EA4 /* TaskCell.h */,
-				5862EF0F269E141500BE2EA4 /* TaskCell.m */,
-				5862EF1926A08DF200BE2EA4 /* MessageCell.h */,
-				5862EF1A26A08DF200BE2EA4 /* MessageCell.m */,
-				5862EF2C26A6276600BE2EA4 /* ConversationCell.h */,
-				5862EF2D26A6276600BE2EA4 /* ConversationCell.m */,
-				5862EF3826A9CEA700BE2EA4 /* SelectionConversationCell.h */,
-				5862EF3926A9CEA700BE2EA4 /* SelectionConversationCell.m */,
+				5862EEFB269CBEC300BE2EA4 /* MTDListCell.h */,
+				5862EEFC269CBEC300BE2EA4 /* MTDListCell.m */,
+				5862EF0E269E141500BE2EA4 /* MTDTaskCell.h */,
+				5862EF0F269E141500BE2EA4 /* MTDTaskCell.m */,
+				5862EF1926A08DF200BE2EA4 /* MTDMessageCell.h */,
+				5862EF1A26A08DF200BE2EA4 /* MTDMessageCell.m */,
+				5862EF2C26A6276600BE2EA4 /* MTDConversationCell.h */,
+				5862EF2D26A6276600BE2EA4 /* MTDConversationCell.m */,
+				5862EF3826A9CEA700BE2EA4 /* MTDSelectionConversationCell.h */,
+				5862EF3926A9CEA700BE2EA4 /* MTDSelectionConversationCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -555,15 +555,15 @@
 				5862EF06269CC04E00BE2EA4 /* MTDTask.m in Sources */,
 				5862EF3126A7622800BE2EA4 /* MTDConversation.m in Sources */,
 				5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */,
-				5862EF2E26A6276600BE2EA4 /* ConversationCell.m in Sources */,
-				5862EEFD269CBEC300BE2EA4 /* ListCell.m in Sources */,
-				5862EF3A26A9CEA700BE2EA4 /* SelectionConversationCell.m in Sources */,
+				5862EF2E26A6276600BE2EA4 /* MTDConversationCell.m in Sources */,
+				5862EEFD269CBEC300BE2EA4 /* MTDListCell.m in Sources */,
+				5862EF3A26A9CEA700BE2EA4 /* MTDSelectionConversationCell.m in Sources */,
 				5862EEC3269C9ED600BE2EA4 /* main.m in Sources */,
 				5862EEFA269CB79500BE2EA4 /* SettingsViewController.m in Sources */,
 				5862EF03269CC03A00BE2EA4 /* MTDList.m in Sources */,
 				5862EF2826A221F900BE2EA4 /* MTDPlatform.m in Sources */,
-				5862EF10269E141500BE2EA4 /* TaskCell.m in Sources */,
-				5862EF1B26A08DF200BE2EA4 /* MessageCell.m in Sources */,
+				5862EF10269E141500BE2EA4 /* MTDTaskCell.m in Sources */,
+				5862EF1B26A08DF200BE2EA4 /* MTDMessageCell.m in Sources */,
 				5862EF3426A8CA2000BE2EA4 /* XLFTaskViewController.m in Sources */,
 				5862EEB5269C9ED400BE2EA4 /* SceneDelegate.m in Sources */,
 				5862EEEA269CA28F00BE2EA4 /* LoginViewController.m in Sources */,

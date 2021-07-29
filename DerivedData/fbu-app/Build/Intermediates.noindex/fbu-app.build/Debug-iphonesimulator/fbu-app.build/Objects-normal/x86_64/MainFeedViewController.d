@@ -53,4 +53,4 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/fbu-app/View\ Controllers/ListViewController.h \
   /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDList.h \
   /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDTask.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Views/ListCell.h
+  /Users/mwen/Documents/fbu-app/fbu-app/Views/MTDListCell.h

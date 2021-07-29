@@ -50,7 +50,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPush+Deprecated.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFProduct.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPurchase.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Views/SelectionConversationCell.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Views/MTDSelectionConversationCell.h \
   /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDGroup.h \
   /Users/mwen/Documents/fbu-app/fbu-app/View\ Controllers/MessagesViewController.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/JSQMessagesViewController.h \
