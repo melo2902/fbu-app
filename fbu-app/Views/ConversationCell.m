@@ -7,8 +7,8 @@
 
 #import "ConversationCell.h"
 #import "Parse/Parse.h"
-#import "Platform.h"
-#import "Conversation.h"
+#import "MTDPlatform.h"
+#import "MTDConversation.h"
 #import "DateTools.h"
 
 @implementation ConversationCell
@@ -30,12 +30,12 @@
         NSLog(@"Button is selected!");
         self.statusButton.selected = YES;
         
-        Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
+        MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
         [currPlatform fetchIfNeeded];
         
         NSMutableArray *conversations = currPlatform[@"onReadConversations"];
         
-        for (Conversation *conversationItem in conversations) {
+        for (MTDConversation *conversationItem in conversations) {
             if ([conversationItem[@"conversationID"] isEqual:self.group.groupID]) {
                 [conversations removeObject:conversationItem];
                 
@@ -43,7 +43,7 @@
             }
         }
         
-        Conversation *updateConversation = [Conversation updateConversation:self.group.groupID withTimeStamp: self.group.lastUpdated withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        MTDConversation *updateConversation = [MTDConversation updateConversation:self.group.groupID withTimeStamp: self.group.lastUpdated withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 NSLog(@"Conversation created");
             }

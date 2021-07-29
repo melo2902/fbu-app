@@ -6,9 +6,9 @@
 //
 
 #import "MessagesViewController.h"
-#import "Group.h"
-#import "APIManager.h"
-#import "Platform.h"
+#import "MTDGroup.h"
+#import "MTDAPIManager.h"
+#import "MTDPlatform.h"
 
 @interface MessagesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate>
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
@@ -37,7 +37,7 @@
     self.avatarTable = [[NSMutableDictionary alloc] init];
     // [self setUpAvatarTable];
     
-    Platform *userPlatform = PFUser.currentUser[@"GroupMe"];
+    MTDPlatform *userPlatform = PFUser.currentUser[@"GroupMe"];
     [userPlatform fetchIfNeeded];
     
     self.senderId = userPlatform[@"userID"];
@@ -303,7 +303,7 @@
                                                           text:text];
     [self.arrayOfMessages addObject:message];
 
-    [APIManager sendTextMessage:text inGroup:self.group.groupID];
+    [MTDAPIManager sendTextMessage:text inGroup:self.group.groupID];
     
     [self finishSendingMessageAnimated:YES];
     [self scrollToBottomAnimated:YES];

@@ -3,7 +3,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/fbu-app/View\ Controllers/ListViewController.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/dyld.modulemap \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/List.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDList.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFObject.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Bolts/BFTask.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Bolts/BFCancellationToken.h \
@@ -51,7 +51,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPush+Deprecated.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFProduct.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPurchase.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Task.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDTask.h \
   /Users/mwen/Documents/fbu-app/fbu-app/View\ Controllers/XLFTaskViewController.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLFormViewController.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLFormOptionsViewController.h \

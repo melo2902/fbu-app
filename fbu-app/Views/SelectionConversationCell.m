@@ -7,8 +7,8 @@
 
 #import "SelectionConversationCell.h"
 #import "Parse/Parse.h"
-#import "Platform.h"
-#import "Conversation.h"
+#import "MTDPlatform.h"
+#import "MTDConversation.h"
 
 @implementation SelectionConversationCell
 

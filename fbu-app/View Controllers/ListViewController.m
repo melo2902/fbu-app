@@ -8,9 +8,9 @@
 #import "ListViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import "Parse/Parse.h"
-#import "List.h"
+#import "MTDList.h"
 #import "XLFTaskViewController.h"
-#import "Task.h"
+#import "MTDTask.h"
 #import "TaskCell.h"
 #import "DateTools.h"
 
@@ -59,7 +59,7 @@
         NSDate *currentDate = [NSDate date];
         
         if ([self.list[@"name"] isEqual:@"My Day"]) {
-            for (Task *task in tasks) {
+            for (MTDTask *task in tasks) {
                 if ([task.createdAt isSameDay:currentDate]) {
                     continue;
                 } else {
@@ -70,7 +70,7 @@
                 }
             }
         } else {
-            for (Task *task in tasks) {
+            for (MTDTask *task in tasks) {
                 NSDate *nextDate = [task.createdAt dateByAddingDays:1];
                 
                 if ([nextDate isSameDay:currentDate]) {
@@ -107,7 +107,7 @@
         self.arrayOfCompletedTasks = [[NSMutableArray alloc] init];
         
         if (tasks != nil) {
-            for (Task *task in tasks) {
+            for (MTDTask *task in tasks) {
                 if ([task[@"completed"] isEqual:@0]) {
                     [self.arrayOfTasks addObject:task];
                 } else {
@@ -126,12 +126,12 @@
 // Quick task add
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
         
-    Task *newTask = [Task createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    MTDTask *newTask = [MTDTask createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
     
     [newTask saveInBackground];
     
-    [List addTask:newTask toList:self.list withCompletion:
+    [MTDList addTask:newTask toList:self.list withCompletion:
      ^(BOOL succeeded, NSError * _Nullable error) {
     }];
     
@@ -149,7 +149,7 @@
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (tableView == self.tasksTableView) {
-        Task *task = self.arrayOfTasks[indexPath.row];
+        MTDTask *task = self.arrayOfTasks[indexPath.row];
         
         UIContextualAction *notif1 = [self createNotification:(NSString *) @"30 second notification" inStringTime:@"30s" inSeconds:30 withIdentifier: task[@"taskTitle"]];
         
@@ -202,7 +202,7 @@
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
         
-        Task *task;
+        MTDTask *task;
         if (tableView == self.tasksTableView) {
             task = self.arrayOfTasks[indexPath.row];
         } else {
@@ -211,7 +211,7 @@
         
         
         // Tasks aren't pulled from the list
-        [List deleteTask:task toList:self.list withCompletion:
+        [MTDList deleteTask:task toList:self.list withCompletion:
          ^(BOOL succeeded, NSError * _Nullable error) {
         }];
         
@@ -244,7 +244,7 @@
     
     TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
     
-    Task *task;
+    MTDTask *task;
     if (tableView == self.tasksTableView) {
         task = self.arrayOfTasks[indexPath.row];
         
@@ -269,7 +269,7 @@
             [self.arrayOfTasks addObject:task];
             [self.arrayOfCompletedTasks removeObject:task];
             
-            [List updateTask:task toList:self.list changeCompletion:NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            [MTDList updateTask:task toList:self.list changeCompletion:NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
                 }
@@ -279,7 +279,7 @@
             [self.arrayOfCompletedTasks addObject:task];
             [self.arrayOfTasks removeObject:task];
             
-            [List updateTask:task toList:self.list changeCompletion:YES withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            [MTDList updateTask:task toList:self.list changeCompletion:YES withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
                 }
@@ -310,7 +310,7 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
--(void)ListViewController:(XLFTaskViewController *)controller finishedUpdating:(Task *)task {
+-(void)ListViewController:(XLFTaskViewController *)controller finishedUpdating:(MTDTask *)task {
     [self getTasks];
 }
 
@@ -321,7 +321,7 @@
     if ([segue.identifier isEqual:@"showTaskDetailsSegue"]|| [segue.identifier isEqual:@"showCompletedTaskDetailsSegue"]) {
         TaskCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tasksTableView indexPathForCell:tappedCell];
-        Task *task = self.arrayOfTasks[indexPath.row];
+        MTDTask *task = self.arrayOfTasks[indexPath.row];
         
         XLFTaskViewController *vc = segue.destinationViewController;
         vc.delegate = self;

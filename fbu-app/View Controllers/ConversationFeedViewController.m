@@ -9,10 +9,10 @@
 #import <UserNotifications/UserNotifications.h>
 #import "Parse/Parse.h"
 #import "ConversationCell.h"
-#import "Group.h"
-#import "APIManager.h"
-#import "Platform.h"
-#import "Conversation.h"
+#import "MTDGroup.h"
+#import "MTDAPIManager.h"
+#import "MTDPlatform.h"
+#import "MTDConversation.h"
 #import "DateTools.h"
 #import "MessagesViewController.h"
 
@@ -43,7 +43,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationCell" forIndexPath:indexPath];
     
-    Group *group = self.arrayOfMessages[indexPath.row];
+    MTDGroup *group = self.arrayOfMessages[indexPath.row];
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
     
@@ -129,19 +129,19 @@
         if (error){
             NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
         } else {
-            Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
+            MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
             [currPlatform fetchIfNeeded];
             NSMutableArray *savedConversations = currPlatform[@"onReadConversations"];
             NSMutableDictionary *onReadDictionary = [[NSMutableDictionary alloc] init];
             
-            for (Conversation *conversationItem in savedConversations) {
+            for (MTDConversation *conversationItem in savedConversations) {
                 [conversationItem fetchIfNeeded];
                 
                 onReadDictionary[conversationItem[@"conversationID"]] = conversationItem[@"latestTimeStamp"];
             }
             
             for(NSDictionary *eachGroup in arrayFromServer){
-                Group *group = [[Group alloc] initWithJSONData:eachGroup];
+                MTDGroup *group = [[MTDGroup alloc] initWithJSONData:eachGroup];
                 
                 if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
                     // Don't want to list any to-do items that has the user as the last sent
@@ -157,7 +157,7 @@
             }
 
             NSMutableArray* newSavedConversations = [[NSMutableArray alloc] init];
-            for (Conversation *conversationItem in savedConversations) {
+            for (MTDConversation *conversationItem in savedConversations) {
                 if ([onReadDictionary objectForKey:conversationItem[@"conversationID"]]) {
                     [newSavedConversations addObject:conversationItem];
                 }
@@ -187,7 +187,7 @@
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Group *group = self.arrayOfMessages[indexPath.row];
+    MTDGroup *group = self.arrayOfMessages[indexPath.row];
     
     //    Need to change the identifiers later later
     UIContextualAction *notif1 = [self createNotification:(NSString *) @"30 second notification" inStringTime:@"30s" inSeconds:30 withIdentifier: @"groupID"];
@@ -258,7 +258,7 @@
     if ([segue.identifier isEqual:@"showDetailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 
-        Group *group = self.arrayOfMessages[indexPath.row];
+        MTDGroup *group = self.arrayOfMessages[indexPath.row];
         UINavigationController *navigationController = [segue destinationViewController];
         MessagesViewController *messagesViewController = (MessagesViewController *)[navigationController topViewController];
         messagesViewController.group = group;

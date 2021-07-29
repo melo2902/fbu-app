@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Group.h"
+#import "MTDGroup.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
 @property (weak, nonatomic) IBOutlet UIButton *selectConversationButton;
-@property (strong, nonatomic) Group *group;
+@property (strong, nonatomic) MTDGroup *group;
 
 @end
 

@@ -6,14 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Group.h"
+#import "MTDGroup.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ConversationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
-@property (strong, nonatomic) Group *group;
+@property (strong, nonatomic) MTDGroup *group;
 @property (weak, nonatomic) IBOutlet UILabel *dataAgoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *statusButton;
 @property (nonatomic, copy) void(^completionButtonTapHandler)(void);

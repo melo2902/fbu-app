@@ -8,7 +8,7 @@
 #import "XLFTaskViewController.h"
 #import "ListViewController.h"
 #import "XLForm.h"
-#import "Task.h"
+#import "MTDTask.h"
 
 @interface XLFTaskViewController ()
 
@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     if (!self.task) {
-        self.task = [Task createTask:@"" inList:self.listName withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        self.task = [MTDTask createTask:@"" inList:self.listName withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 NSLog(@"Task created but not saved yet");
             }

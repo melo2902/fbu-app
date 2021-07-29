@@ -8,7 +8,7 @@
 #import "MainFeedViewController.h"
 #import "Parse/Parse.h"
 #import "ListViewController.h"
-#import "List.h"
+#import "MTDList.h"
 #import "ListCell.h"
 
 @interface MainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
@@ -77,7 +77,7 @@
     self.arrayOfUserLists = [[NSMutableArray alloc] init];
     self.arrayOfDefaultLists = [[NSMutableArray alloc] init];
     
-    for (List *list in userLists) {
+    for (MTDList *list in userLists) {
         if ([list[@"defaultList"]  isEqual: @1]) {
             [self.arrayOfDefaultLists addObject:list];
         } else {
@@ -94,7 +94,7 @@
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell" forIndexPath:indexPath];
     
-    List *list;
+    MTDList *list;
     if (tableView == self.defaultTableView) {
         list = self.arrayOfDefaultLists[indexPath.row];
     } else if (tableView == self.userListTableView) {
@@ -121,13 +121,13 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    List *newList =[List createList:self.addNewListField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    MTDList *newList =[MTDList createList:self.addNewListField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"New list created");
         }
     }];
     
-    [List addList:newList withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [MTDList addList:newList withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"Added list to user");
         }
@@ -145,7 +145,7 @@
     if (tableView == self.userListTableView){
         UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             
-            List *list = self.arrayOfUserLists[indexPath.row];
+            MTDList *list = self.arrayOfUserLists[indexPath.row];
             [self deleteActions:list];
             [self.userListTableView reloadData];
             
@@ -163,7 +163,7 @@
 
 }
 
-- (void) deleteActions: (List *) list {
+- (void) deleteActions: (MTDList *) list {
     PFQuery *query = [PFQuery queryWithClassName:@"List"];
     [query getObjectInBackgroundWithId:list.objectId block:^(PFObject *listObject, NSError *error) {
       [listObject deleteInBackground];
@@ -179,7 +179,7 @@
         ListCell *tappedCell = sender;
         
         NSIndexPath *indexPath = [self.defaultTableView indexPathForCell:tappedCell];
-        List *list = self.arrayOfDefaultLists[indexPath.row];
+        MTDList *list = self.arrayOfDefaultLists[indexPath.row];
         
         UINavigationController *navigationController = [segue destinationViewController];
         ListViewController *listViewController = (ListViewController*) [navigationController topViewController];
@@ -188,7 +188,7 @@
     } else if ([segue.identifier isEqual:@"openUserListSegue"]) {
         ListCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.userListTableView indexPathForCell:tappedCell];
-        List *list = self.arrayOfUserLists[indexPath.row];
+        MTDList *list = self.arrayOfUserLists[indexPath.row];
         
         UINavigationController *navigationController = [segue destinationViewController];
         ListViewController *listViewController = (ListViewController*) [navigationController topViewController];

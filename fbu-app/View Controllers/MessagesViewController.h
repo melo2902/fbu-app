@@ -7,12 +7,12 @@
 
 #import "JSQMessagesViewController.h"
 #import <JSQMessagesViewController/JSQMessages.h>
-#import "Group.h"
+#import "MTDGroup.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MessagesViewController : JSQMessagesViewController
-@property (strong, nonatomic) Group *group;
+@property (strong, nonatomic) MTDGroup *group;
 @end
 
 NS_ASSUME_NONNULL_END

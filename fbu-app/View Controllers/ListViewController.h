@@ -6,12 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "List.h"
+#import "MTDList.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ListViewController : UIViewController
-@property (strong, nonatomic) List *list;
+@property (strong, nonatomic) MTDList *list;
 @end
 
 NS_ASSUME_NONNULL_END

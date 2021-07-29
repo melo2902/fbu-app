@@ -3,7 +3,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/fbu-app/Views/ConversationCell.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/dyld.modulemap \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Group.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDGroup.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/Parse.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/ParseClientConfiguration.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFConstants.h \
@@ -51,8 +51,8 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPush+Deprecated.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFProduct.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPurchase.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Platform.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Conversation.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDPlatform.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDConversation.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/DateTools/DateTools.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/DateTools/DTConstants.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/DateTools/DTError.h \

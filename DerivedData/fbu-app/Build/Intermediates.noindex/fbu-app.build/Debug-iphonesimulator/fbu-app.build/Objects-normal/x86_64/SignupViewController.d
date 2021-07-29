@@ -50,5 +50,5 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPush+Deprecated.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFProduct.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPurchase.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/List.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Task.h
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDList.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDTask.h

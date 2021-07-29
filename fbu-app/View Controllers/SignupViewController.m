@@ -7,7 +7,7 @@
 
 #import "SignupViewController.h"
 #import "Parse/Parse.h"
-#import "List.h"
+#import "MTDList.h"
 
 @interface SignupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
@@ -66,7 +66,7 @@
 }
 
 - (void)createPredefinedLists:(NSString *) name toList:(NSMutableArray *) definedList {
-    List *newList = [List createList:name ifDefault: YES withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    MTDList *newList = [MTDList createList:name ifDefault: YES withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
     [definedList addObject:newList];
 }

@@ -8,9 +8,9 @@
 #import "SettingsViewController.h"
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
-#import "APIManager.h"
+#import "MTDAPIManager.h"
 #import "Parse/Parse.h"
-#import "Platform.h"
+#import "MTDPlatform.h"
 
 @interface SettingsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
@@ -54,13 +54,13 @@
             
             NSMutableString *URLString = [[NSMutableString alloc] init];
             [URLString appendString:@"https://api.groupme.com/v3/users/me?token="];
-            [URLString appendString:[APIManager returnAuthToken]];
+            [URLString appendString:[MTDAPIManager returnAuthToken]];
 
             NSError* error = nil;
             NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
             NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
-            Platform *newPlatform = [[Platform alloc] initWithJSONData:userData onPlatform: @"GroupMe"];
+            MTDPlatform *newPlatform = [[MTDPlatform alloc] initWithJSONData:userData onPlatform: @"GroupMe"];
             [self updateUser:newPlatform withPlatform: @"GroupMe"];
             
         } else {
@@ -71,7 +71,7 @@
     }
 }
 
--(void) updateUser:(Platform*) platform withPlatform: (NSString*) name {
+-(void) updateUser:(MTDPlatform*) platform withPlatform: (NSString*) name {
     PFUser *user = PFUser.currentUser;
     user[name] = platform;
     

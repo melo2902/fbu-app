@@ -15,7 +15,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLFormSectionDescriptor.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLFormDescriptorDelegate.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLFormRowNavigationAccessoryView.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Task.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDTask.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFObject.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Bolts/BFTask.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Bolts/BFCancellationToken.h \
@@ -64,7 +64,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFProduct.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPurchase.h \
   /Users/mwen/Documents/fbu-app/fbu-app/View\ Controllers/ListViewController.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/List.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDList.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/XLForm.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/NSArray+XLFormAdditions.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/XLForm/NSExpression+XLFormAdditions.h \

@@ -49,9 +49,9 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/UIImage+JSQMessages.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/UIView+JSQMessages.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/NSBundle+JSQMessages.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Group.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/API\ Manager/APIManager.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Platform.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDGroup.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/API\ Manager/MTDAPIManager.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDPlatform.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFObject.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Bolts/BFTask.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Bolts/BFCancellationToken.h \

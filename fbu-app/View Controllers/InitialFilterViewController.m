@@ -9,10 +9,10 @@
 #import "Parse/Parse.h"
 #import "SelectionConversationCell.h"
 #import "MessagesViewController.h"
-#import "Group.h"
-#import "APIManager.h"
-#import "Platform.h"
-#import "Conversation.h"
+#import "MTDGroup.h"
+#import "MTDAPIManager.h"
+#import "MTDPlatform.h"
+#import "MTDConversation.h"
 
 @interface InitialFilterViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -42,7 +42,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     SelectionConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectionConversationCell" forIndexPath:indexPath];
     
-    Group *group = self.arrayOfConversations[indexPath.row];
+    MTDGroup *group = self.arrayOfConversations[indexPath.row];
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
     if (![group.lastSender isEqual: [NSNull null]]) {
@@ -134,12 +134,12 @@
         if(error){
             NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
         } else {
-            Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
+            MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
             [currPlatform fetchIfNeeded];
             
             // Page stating that we've already pre-filtered out the read texts
             for(NSDictionary *eachGroup in arrayFromServer){
-                Group *group = [[Group alloc] initWithJSONData:eachGroup];
+                MTDGroup *group = [[MTDGroup alloc] initWithJSONData:eachGroup];
                 
                 if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
                     [self.arrayOfConversations addObject:group];
@@ -168,13 +168,13 @@
 }
 
 - (IBAction)onSelectConversations:(id)sender {
-    Platform *currPlatform = PFUser.currentUser[@"GroupMe"];
+    MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
     [currPlatform fetchIfNeeded];
     NSMutableArray *conversations = currPlatform[@"onReadConversations"];
     
-    for (Group *group in self.arrayOfConversations) {
+    for (MTDGroup *group in self.arrayOfConversations) {
         if (group.onRead) {
-            Conversation *updateConversation = [Conversation updateConversation:group.groupID withTimeStamp: group.lastUpdated withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            MTDConversation *updateConversation = [MTDConversation updateConversation:group.groupID withTimeStamp: group.lastUpdated withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Leave conversation out: %@", group.groupName);
                 }
@@ -201,7 +201,7 @@
      if ([segue.identifier isEqual:@"filterConversationDetailSegue"]) {
          NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 
-         Group *group = self.arrayOfConversations[indexPath.row];
+         MTDGroup *group = self.arrayOfConversations[indexPath.row];
          UINavigationController *navigationController = [segue destinationViewController];
          MessagesViewController *messagesViewController = (MessagesViewController *)[navigationController topViewController];
          messagesViewController.group = group;

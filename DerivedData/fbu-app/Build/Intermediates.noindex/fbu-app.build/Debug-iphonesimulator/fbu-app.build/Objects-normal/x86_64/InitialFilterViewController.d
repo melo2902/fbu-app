@@ -51,7 +51,7 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFProduct.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/PFPurchase.h \
   /Users/mwen/Documents/fbu-app/fbu-app/Views/SelectionConversationCell.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Group.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDGroup.h \
   /Users/mwen/Documents/fbu-app/fbu-app/View\ Controllers/MessagesViewController.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/JSQMessagesViewController.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/JSQMessagesCollectionView.h \
@@ -99,6 +99,6 @@ dependencies: \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/UIImage+JSQMessages.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/UIView+JSQMessages.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/JSQMessagesViewController/NSBundle+JSQMessages.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/API\ Manager/APIManager.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Platform.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/Models/Conversation.h
+  /Users/mwen/Documents/fbu-app/fbu-app/API\ Manager/MTDAPIManager.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDPlatform.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/Models/MTDConversation.h
