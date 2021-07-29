@@ -30,9 +30,13 @@
     self.defaultTableView.delegate = self;
     self.userListTableView.dataSource = self;
     self.userListTableView.delegate = self;
-    
     self.addNewListField.delegate = self;
     
+    [self initializeStates];
+    [self getLists];
+}
+
+- (void) initializeStates {
     self.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
 
     if (PFUser.currentUser[@"pfp"]) {
@@ -47,9 +51,9 @@
            }
        }];
     }
-    
-    [self getLists];
 }
+
+# pragma mark - List data
 
 - (void) getLists {
     PFQuery *query = [PFUser query];
@@ -63,76 +67,29 @@
         if (!error) {
             PFUser *queriedUser = (PFUser *)object;
             NSMutableArray *userLists = queriedUser[@"lists"];
-            
-            self.arrayOfUserLists = [[NSMutableArray alloc] init];
-            self.arrayOfDefaultLists = [[NSMutableArray alloc] init];
-            
-            for (List *list in userLists) {
-                if ([list[@"defaultList"]  isEqual: @1]) {
-                    [self.arrayOfDefaultLists addObject:list];
-                } else {
-                    [self.arrayOfUserLists addObject:list];
-                }
-            }
-            
-            [self.defaultTableView reloadData];
-            [self.userListTableView reloadData];
+            [self updateArrayData:userLists];
         }
 
     }];
 }
 
-// Quick list return
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    List *newList =[List createList:self.addNewListField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"New list created");
+- (void) updateArrayData:(NSMutableArray*) userLists {
+    self.arrayOfUserLists = [[NSMutableArray alloc] init];
+    self.arrayOfDefaultLists = [[NSMutableArray alloc] init];
+    
+    for (List *list in userLists) {
+        if ([list[@"defaultList"]  isEqual: @1]) {
+            [self.arrayOfDefaultLists addObject:list];
+        } else {
+            [self.arrayOfUserLists addObject:list];
         }
-    }];
-    
-    [List addList:newList withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"Added list to user");
-        }
-    }];
-    
-    [self.arrayOfUserLists addObject:newList];
-    self.addNewListField.text = @"";
-    
-    [self.userListTableView reloadData];
-    
-    return YES;
-}
-
-- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (tableView == self.userListTableView){
-        UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-            
-            List *list = self.arrayOfUserLists[indexPath.row];
-            
-            PFQuery *query = [PFQuery queryWithClassName:@"List"];
-            [query getObjectInBackgroundWithId:list.objectId block:^(PFObject *listObject, NSError *error) {
-              [listObject deleteInBackground];
-            }];
-            
-            [self.arrayOfUserLists removeObject: list];
-            
-            [self.userListTableView reloadData];
-            completionHandler(YES);
-        }];
-        
-        deleteAction.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
-        
-        UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
-        SwipeActions.performsFirstActionWithFullSwipe= YES;
-        return SwipeActions;
     }
     
-    return nil;
-
+    [self.defaultTableView reloadData];
+    [self.userListTableView reloadData];
 }
 
+# pragma mark - set up table view
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell" forIndexPath:indexPath];
@@ -160,8 +117,59 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Deselect the row
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    List *newList =[List createList:self.addNewListField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"New list created");
+        }
+    }];
+    
+    [List addList:newList withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"Added list to user");
+        }
+    }];
+    
+    self.addNewListField.text = @"";
+    [self.arrayOfUserLists addObject:newList];
+    [self.userListTableView reloadData];
+    
+    return YES;
+}
+
+- (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (tableView == self.userListTableView){
+        UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+            
+            List *list = self.arrayOfUserLists[indexPath.row];
+            [self deleteActions:list];
+            [self.userListTableView reloadData];
+            
+            completionHandler(YES);
+        }];
+        
+        deleteAction.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
+        
+        UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
+        SwipeActions.performsFirstActionWithFullSwipe= YES;
+        return SwipeActions;
+    }
+    
+    return nil;
+
+}
+
+- (void) deleteActions: (List *) list {
+    PFQuery *query = [PFQuery queryWithClassName:@"List"];
+    [query getObjectInBackgroundWithId:list.objectId block:^(PFObject *listObject, NSError *error) {
+      [listObject deleteInBackground];
+    }];
+    
+    [self.arrayOfUserLists removeObject: list];
 }
 
 #pragma mark - Navigation
@@ -169,6 +177,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual:@"openListSegue"]) {
         ListCell *tappedCell = sender;
+        
         NSIndexPath *indexPath = [self.defaultTableView indexPathForCell:tappedCell];
         List *list = self.arrayOfDefaultLists[indexPath.row];
         
