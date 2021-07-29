@@ -116,16 +116,15 @@
                                     <action selector="onTapAddPlatform:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="IJS-OF-rR6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1S-Ba-dq4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1S-Ba-dq4">
                                 <rect key="frame" x="25" y="414" width="55" height="30"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
                                     <action selector="onTapLogOut:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="P7b-cZ-axt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f03-Zc-usB">
-                                <rect key="frame" x="62" y="377" width="25" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f03-Zc-usB">
+                                <rect key="frame" x="25" y="377" width="25" height="22"/>
                                 <state key="normal" image="camera" catalog="system"/>
                                 <connections>
                                     <action selector="editProfilePicture:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="Y2P-bo-bNf"/>
@@ -141,12 +140,16 @@
                             <constraint firstItem="a1S-Ba-dq4" firstAttribute="leading" secondItem="Imz-eg-ecC" secondAttribute="leading" constant="25" id="Iqp-vk-aVO"/>
                             <constraint firstItem="3hO-et-RQQ" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="Meh-nt-fvj"/>
                             <constraint firstItem="s4M-W0-Kzo" firstAttribute="top" secondItem="oLD-rH-X3x" secondAttribute="bottom" constant="15" id="Pje-0Y-7AD"/>
+                            <constraint firstItem="f03-Zc-usB" firstAttribute="top" secondItem="s4M-W0-Kzo" secondAttribute="bottom" constant="15" id="Re6-rh-2SS"/>
                             <constraint firstItem="3hO-et-RQQ" firstAttribute="top" secondItem="Zmq-0I-8DZ" secondAttribute="bottom" constant="10" id="Wy1-tO-Kqj"/>
                             <constraint firstItem="Imz-eg-ecC" firstAttribute="trailing" secondItem="DlI-PI-CM4" secondAttribute="trailing" constant="25" id="cFJ-vg-Cde"/>
+                            <constraint firstItem="a1S-Ba-dq4" firstAttribute="leading" secondItem="Imz-eg-ecC" secondAttribute="leading" constant="25" id="dVc-yf-CU1"/>
                             <constraint firstItem="oLD-rH-X3x" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="e5I-2X-xjY"/>
+                            <constraint firstItem="a1S-Ba-dq4" firstAttribute="top" secondItem="f03-Zc-usB" secondAttribute="bottom" constant="15" id="sKn-H9-suC"/>
                             <constraint firstItem="Zmq-0I-8DZ" firstAttribute="centerX" secondItem="Z0Q-Qb-78n" secondAttribute="centerX" id="wDS-DH-urk"/>
                             <constraint firstItem="s4M-W0-Kzo" firstAttribute="leading" secondItem="Imz-eg-ecC" secondAttribute="leading" constant="25" id="wmZ-hs-bO7"/>
                             <constraint firstItem="DlI-PI-CM4" firstAttribute="centerY" secondItem="s4M-W0-Kzo" secondAttribute="centerY" id="yyU-7Q-bs5"/>
+                            <constraint firstItem="f03-Zc-usB" firstAttribute="leading" secondItem="Imz-eg-ecC" secondAttribute="leading" constant="25" id="zmn-yl-oiE"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -944,7 +947,7 @@
         <segue reference="j1S-vu-Rx0"/>
         <segue reference="ZfJ-JM-Rzw"/>
         <segue reference="PJW-e5-eQa"/>
-        <segue reference="Bak-5O-5l0"/>
+        <segue reference="MAA-rn-xWN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>

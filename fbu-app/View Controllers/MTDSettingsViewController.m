@@ -23,7 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initializeStates];
+}
 
+- (void) initializeStates {
     self.userNameLabel.text = PFUser.currentUser.username;
     self.userEmailLabel.text = PFUser.currentUser.email;
     
@@ -42,11 +45,10 @@
 }
 
 - (IBAction)onTapAddPlatform:(id)sender {
-    // Later allow users to have multiple choices
-    [self signInUser];
+    [self connectToGroupMe];
 }
 
-- (void)signInUser {
+- (void)connectToGroupMe {
     NSString *oAuthURL = @"https://oauth.groupme.com/oauth/authorize?client_id=fsmTfdnj8zqq1r3fnjB25IJ3muBt1VUYHcVc03BuZAkATsW1";
     
     WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];
@@ -92,13 +94,13 @@
     NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
     NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
-    MTDPlatform *newPlatform = [[MTDPlatform alloc] initWithJSONData:userData onPlatform: @"GroupMe"];
-    [self updateUser:newPlatform withPlatform: @"GroupMe"];
+    [self updateUser: @"GroupMe" withData: userData];
 }
 
--(void) updateUser:(MTDPlatform*) platform withPlatform: (NSString*) name {
+-(void) updateUser: (NSString*) name withData: (NSDictionary *) userData {
+    MTDPlatform *newPlatform = [[MTDPlatform alloc] initWithJSONData:userData onPlatform: name];
     PFUser *user = PFUser.currentUser;
-    user[name] = platform;
+    user[name] = newPlatform;
     
     [user saveInBackground];
 }
