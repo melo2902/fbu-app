@@ -143,7 +143,7 @@
             for(NSDictionary *eachGroup in arrayFromServer){
                 MTDGroup *group = [[MTDGroup alloc] initWithJSONData:eachGroup];
                 
-                if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
+                if (![group.lastSender isEqual:currPlatform[@"username"]]) {
                     // Don't want to list any to-do items that has the user as the last sent
                     if ([onReadDictionary objectForKey:group.groupID]) {
                         if (group.lastUpdated > onReadDictionary[group.groupID]) {
