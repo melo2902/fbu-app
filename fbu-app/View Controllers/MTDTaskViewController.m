@@ -117,8 +117,11 @@
 
 - (IBAction)onTapSave:(id)sender {
     if (![self.task[@"taskTitle"] isEqual:@""]) {
-        [self.task saveInBackground];
-        [self.delegate ListViewController:self finishedUpdating:self.task];
+        [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                [self.delegate ListViewController:self finishedUpdating:self.task];
+            }
+        }];
         
         [super.navigationController popViewControllerAnimated:YES];
     } else {
