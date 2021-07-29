@@ -27,8 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+ 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -103,7 +102,6 @@
             if (requestError != nil) {
                 NSLog(@"Trouble requesting page");
             } else {
-                
                 self.isMoreDataLoading = false;
                 [self setupGroupsFromJSONArray:data];
                 self.pageCount = [NSNumber numberWithInt:[self.pageCount intValue] + 1];
