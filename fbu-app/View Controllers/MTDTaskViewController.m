@@ -11,7 +11,7 @@
 #import "MTDTask.h"
 
 @interface MTDTaskViewController ()
-
+@property (nonatomic) NSNumber *oldTaskTime;
 @end
 
 @implementation MTDTaskViewController
@@ -26,6 +26,8 @@
             }
         }];
     }
+    
+    self.oldTaskTime = self.task[@"workingTime"];
     
     [self initializeForm];
 }
@@ -119,6 +121,14 @@
     if (![self.task[@"taskTitle"] isEqual:@""]) {
         [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
+                if (self.oldTaskTime) {
+                    float updatedWorkingTime = [self.task[@"workingTime"] floatValue] - [self.oldTaskTime floatValue];
+                    
+                    NSNumber* deltaTimeChange = [NSNumber numberWithFloat:updatedWorkingTime];
+                    
+//                    [self.delegate ListViewController:self finishedUpdating:deltaTimeChange];
+                }
+                
                 [self.delegate ListViewController:self finishedUpdating:self.task];
             }
         }];

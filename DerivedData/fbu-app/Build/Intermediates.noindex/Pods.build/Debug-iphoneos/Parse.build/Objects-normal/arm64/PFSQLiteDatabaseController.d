@@ -1,0 +1,19 @@
+dependencies: \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/LocalDataStore/SQLite/PFSQLiteDatabaseController.m \
+  /Users/mwen/Documents/fbu-app/Pods/Target\ Support\ Files/Parse/Parse-prefix.pch \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.5.sdk/usr/include/mach-o/dyld.modulemap \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/LocalDataStore/SQLite/PFSQLiteDatabaseController.h \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/PFConstants.h \
+  /Users/mwen/Documents/fbu-app/Pods/Headers/Private/Bolts/BFTask.h \
+  /Users/mwen/Documents/fbu-app/Pods/Headers/Private/Bolts/BFCancellationToken.h \
+  /Users/mwen/Documents/fbu-app/Pods/Headers/Private/Bolts/BFCancellationTokenRegistration.h \
+  /Users/mwen/Documents/fbu-app/Pods/Headers/Private/Bolts/BFGeneric.h \
+  /Users/mwen/Documents/fbu-app/Pods/Headers/Private/Bolts/BFTaskCompletionSource.h \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/PFAssert.h \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/PFMacros.h \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/PFErrorUtilities.h \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/PFAsyncTaskQueue.h \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/PFFileManager.h \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/LocalDataStore/SQLite/PFSQLiteDatabase_Private.h \
+  /Users/mwen/Documents/fbu-app/Pods/Parse/Parse/Parse/Internal/LocalDataStore/SQLite/PFSQLiteDatabase.h

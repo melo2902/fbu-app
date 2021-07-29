@@ -1,0 +1,93 @@
+{
+  "buildCommand" : "prepareForIndexing",
+  "configuredTargets" : [
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed1af33af1eda52f2126c7c964282e0b5e1"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed1d7b28a876297fade439a78df43ee9752"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed1964878f2a065e9c01b1234e6b6aa5f79"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed1bc473f2c7db84c6b1104cd2183682111"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed1adc75cf4cce99966ba0d3d4d2014359f"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed10ef2582d4dd734043cc85e7d244336ec"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed12d1215dfca2d51014750f91e64c7af3d"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed142420d0b25f0746c5a1bf88eb34ab1bb"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed13a48211409759e3a9929283c8bcb7463"
+    },
+    {
+      "guid" : "42aa3e0621cb7d1a6bc02edf26f73ed159a0f8b7111d58b0844eace70245472c"
+    },
+    {
+      "guid" : "181db1348981c134a68963fe659d0d1a999aef4b168a38edad5ebc812e7f33bb"
+    },
+    {
+      "guid" : "181db1348981c134a68963fe659d0d1acb1ffae65026f216b6fe7918720b8255"
+    },
+    {
+      "guid" : "181db1348981c134a68963fe659d0d1a40289b2954cbe6ef7dd0ea57e7346dcf"
+    }
+  ],
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "x86_64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator14.5",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "x86_64"
+      ],
+      "targetArchitecture" : "x86_64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/mwen/Documents/fbu-app/DerivedData/fbu-app/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/mwen/Documents/fbu-app/DerivedData/fbu-app/Build/Products",
+      "derivedDataPath" : "/Users/mwen/Documents/fbu-app/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/mwen/Documents/fbu-app/DerivedData/fbu-app/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/mwen/Documents/fbu-app/DerivedData/fbu-app/Index/PrecompiledHeaders",
+      "pchPath" : "/Users/mwen/Documents/fbu-app/DerivedData/fbu-app/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "iPhone12,1",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "14.5",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "ENABLE_PREVIEWS" : "NO",
+          "TARGET_DEVICE_IDENTIFIER" : "C35B7662-8060-4198-AD0A-A1E6B4FE9EAA",
+          "TARGET_DEVICE_MODEL" : "iPhone12,1",
+          "TARGET_DEVICE_OS_VERSION" : "14.5",
+          "TARGET_DEVICE_PLATFORM_NAME" : "iphonesimulator"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

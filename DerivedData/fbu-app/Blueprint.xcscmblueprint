@@ -1,0 +1,23 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E0C13D78392DD55F22402B456690EAB3B43B128E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E0C13D78392DD55F22402B456690EAB3B43B128E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9D409EB0-A9D4-42D8-85A7-87A9529090AE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E0C13D78392DD55F22402B456690EAB3B43B128E" : "fbu-app\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "fbu-app",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "fbu-app.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/melo2902\/fbu-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E0C13D78392DD55F22402B456690EAB3B43B128E"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ target 'fbu-app' do
   pod 'XLForm', '~> 4.3'
   pod 'DateTools'
   pod 'JSQMessagesViewController'
+  pod 'MBProgressHUD', '~> 1.2.0'
 
   target 'fbu-appTests' do
     inherit! :search_paths

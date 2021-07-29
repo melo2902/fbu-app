@@ -47,6 +47,7 @@
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
     
+    cell.lastMessageLabel.numberOfLines = 2;
     if (![group.lastSender isEqual: [NSNull null]]) {
         cell.lastMessageLabel.attributedText = [self modifyMessage:group.lastMessage withSender: group.lastSender];
     } else {

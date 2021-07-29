@@ -7,24 +7,25 @@
 	<string>Parse</string>
 	<string>AppKit</string>
 	<string>Foundation</string>
+	<string>CoreGraphics</string>
 	<string>AVFoundation</string>
 	<string>QuartzCore</string>
 	<string>libkern</string>
 	<string>SafariServices</string>
-	<string>os</string>
-	<string>JSQMessagesViewController</string>
+	<string>CoreServices</string>
 	<string>sys</string>
 	<string>UIKit</string>
-	<string>CoreServices</string>
+	<string>os</string>
+	<string>JSQMessagesViewController</string>
 	<string>CoreLocation</string>
 	<string>SystemConfiguration</string>
-	<string>UserNotifications</string>
-	<string>XCTest</string>
 	<string>WatchKit</string>
+	<string>XCTest</string>
+	<string>UserNotifications</string>
 	<string>JSQSystemSoundPlayer</string>
 	<string>StoreKit</string>
-	<string>AudioToolbox</string>
 	<string>Bolts</string>
+	<string>AudioToolbox</string>
 	<string>CommonCrypto</string>
 </array>
 </plist>
