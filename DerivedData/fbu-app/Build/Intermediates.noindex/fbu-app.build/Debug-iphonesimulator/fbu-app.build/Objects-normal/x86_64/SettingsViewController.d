@@ -4,7 +4,7 @@ dependencies: \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/dyld.modulemap \
   /Users/mwen/Documents/fbu-app/fbu-app/SceneDelegate.h \
-  /Users/mwen/Documents/fbu-app/fbu-app/View\ Controllers/LoginViewController.h \
+  /Users/mwen/Documents/fbu-app/fbu-app/View\ Controllers/MTDLoginViewController.h \
   /Users/mwen/Documents/fbu-app/fbu-app/API\ Manager/MTDAPIManager.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/Parse.h \
   /Users/mwen/Documents/fbu-app/Pods/Headers/Public/Parse/ParseClientConfiguration.h \
