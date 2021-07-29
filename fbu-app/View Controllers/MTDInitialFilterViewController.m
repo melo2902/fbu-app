@@ -194,7 +194,7 @@
         }
     }];
     
-    [super.navigationController popViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"showMessagesSegue" sender:nil];
 }
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -783,6 +783,7 @@
                         <barButtonItem key="rightBarButtonItem" image="pencil.circle.fill" catalog="system" id="WKH-GZ-Uga">
                             <connections>
                                 <action selector="onSelectConversations:" destination="Di4-KZ-Qqz" id="KAw-WS-mLi"/>
+                                <segue destination="0BD-ex-2YZ" kind="show" identifier="showMessagesSegue" id="PJW-e5-eQa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -942,6 +943,7 @@
         <segue reference="Uxo-Z5-1c8"/>
         <segue reference="j1S-vu-Rx0"/>
         <segue reference="ZfJ-JM-Rzw"/>
+        <segue reference="PJW-e5-eQa"/>
         <segue reference="Bak-5O-5l0"/>
     </inferredMetricsTieBreakers>
     <resources>
