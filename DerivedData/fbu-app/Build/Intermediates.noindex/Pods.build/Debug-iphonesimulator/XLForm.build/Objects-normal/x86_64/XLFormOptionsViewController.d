@@ -1,0 +1,46 @@
+dependencies: \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormOptionsViewController.m \
+  /Users/mwen/Documents/fbu-app/Pods/Target\ Support\ Files/XLForm/XLForm-prefix.pch \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/dyld.modulemap \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/NSObject+XLFormAdditions.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormOptionsViewController.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormRowDescriptorViewController.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormRowDescriptor.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormBaseCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormDescriptorCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormViewController.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormDescriptor.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormSectionDescriptor.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormDescriptorDelegate.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormRowNavigationAccessoryView.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormValidatorProtocol.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormValidationStatus.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormRightDetailCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLForm.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/NSArray+XLFormAdditions.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/NSExpression+XLFormAdditions.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/NSPredicate+XLFormAdditions.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/NSString+XLFormAdditions.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/UIView+XLFormAdditions.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormOptionsObject.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormInlineRowDescriptorCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormButtonCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormCheckCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormDateCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormDatePickerCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormInlineSelectorCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormLeftRightSelectorCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormPickerCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormRightImageButton.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormSegmentedCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormSelectorCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormSliderCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormStepCounterCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormSwitchCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormTextFieldCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormTextViewCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormTextView.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormImageCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormRegexValidator.h \
+  /Users/mwen/Documents/fbu-app/Pods/XLForm/XLForm/XL/XLFormValidator.h

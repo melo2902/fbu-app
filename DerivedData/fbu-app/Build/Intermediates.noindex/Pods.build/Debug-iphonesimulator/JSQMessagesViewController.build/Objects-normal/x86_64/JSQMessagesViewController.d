@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesViewController.m \
+  /Users/mwen/Documents/fbu-app/Pods/Target\ Support\ Files/JSQMessagesViewController/JSQMessagesViewController-prefix.pch \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/compact_unwind_encoding.modulemap \
+  /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator14.5.sdk/usr/include/mach-o/dyld.modulemap \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesViewController.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionView.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Layout/JSQMessagesCollectionViewFlowLayout.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Layout/JSQMessagesBubbleSizeCalculating.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Model/JSQMessagesCollectionViewDelegateFlowLayout.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Model/JSQMessagesCollectionViewDataSource.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCell.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesLabel.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCellTextView.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesInputToolbar.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesToolbarContentView.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesComposerTextView.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Controllers/JSQMessagesKeyboardController.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Layout/JSQMessagesCollectionViewFlowLayoutInvalidationContext.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Model/JSQMessageData.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Model/JSQMessageMediaData.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Model/JSQMessageBubbleImageDataSource.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Model/JSQMessageAvatarImageDataSource.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellIncoming.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesCollectionViewCellOutgoing.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesTypingIndicatorFooterView.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Views/JSQMessagesLoadEarlierHeaderView.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Categories/NSString+JSQMessages.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Categories/UIColor+JSQMessages.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Categories/UIDevice+JSQMessages.h \
+  /Users/mwen/Documents/fbu-app/Pods/JSQMessagesViewController/JSQMessagesViewController/Categories/NSBundle+JSQMessages.h

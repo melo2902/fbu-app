@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>417A7E15-B946-42D7-943F-81FC34E901F5</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>417A7E15-B946-42D7-943F-81FC34E901F5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649217627.46163595</real>
+			<key>timeStoppedRecording</key>
+			<real>649217662.16808295</real>
+			<key>title</key>
+			<string>Run fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>417A7E15-B946-42D7-943F-81FC34E901F5</string>
+		</dict>
+		<key>DF3B2429-291E-4228-982E-B37D914CB69A</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>DF3B2429-291E-4228-982E-B37D914CB69A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649219252.54672301</real>
+			<key>timeStoppedRecording</key>
+			<real>649219463.26306796</real>
+			<key>title</key>
+			<string>Run fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>DF3B2429-291E-4228-982E-B37D914CB69A</string>
+		</dict>
+		<key>E05139A5-D8F2-424B-ABD0-25244DDE78FD</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>E05139A5-D8F2-424B-ABD0-25244DDE78FD.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649219463.15010703</real>
+			<key>timeStoppedRecording</key>
+			<real>649219820.58345497</real>
+			<key>title</key>
+			<string>Run fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>E05139A5-D8F2-424B-ABD0-25244DDE78FD</string>
+		</dict>
+		<key>ECF8B08B-EBCF-4C52-B620-FB1741C27343</key>
+		<dict>
+			<key>className</key>
+			<string>DBGConsoleLog</string>
+			<key>documentTypeString</key>
+			<string>com.apple.dt.IDE.DebuggerLogContentType</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.DebugLog</string>
+			<key>fileName</key>
+			<string>ECF8B08B-EBCF-4C52-B620-FB1741C27343.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649219183.80033302</real>
+			<key>timeStoppedRecording</key>
+			<real>649219252.81140006</real>
+			<key>title</key>
+			<string>Run fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>ECF8B08B-EBCF-4C52-B620-FB1741C27343</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
