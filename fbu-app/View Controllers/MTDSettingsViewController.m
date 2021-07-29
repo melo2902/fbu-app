@@ -11,8 +11,9 @@
 #import "MTDAPIManager.h"
 #import "Parse/Parse.h"
 #import "MTDPlatform.h"
+#import "WebKit/WebKit.h"
 
-@interface MTDSettingsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface MTDSettingsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, WKNavigationDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userEmailLabel;
@@ -46,29 +47,53 @@
 }
 
 - (void)signInUser {
-    NSURL *oAuthURL = [NSURL URLWithString:@"https://oauth.groupme.com/oauth/authorize?client_id=ArUTvcq7X9Nkt0xJTnkP1wPXfAuOCSNB3lE6ZvxbxGAdDKkr"];
-    SFSafariViewController *sfvc = [[SFSafariViewController alloc] initWithURL:oAuthURL];
-    if (oAuthURL) {
-        if ([SFSafariViewController class] != nil) {
-            [self presentViewController:sfvc animated:YES completion:nil];
-            
-            NSMutableString *URLString = [[NSMutableString alloc] init];
-            [URLString appendString:@"https://api.groupme.com/v3/users/me?token="];
-            [URLString appendString:[MTDAPIManager returnAuthToken]];
+    NSString *oAuthURL = @"https://oauth.groupme.com/oauth/authorize?client_id=fsmTfdnj8zqq1r3fnjB25IJ3muBt1VUYHcVc03BuZAkATsW1";
+    
+    WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.frame configuration:theConfiguration];
+    webView.navigationDelegate = self;
+    NSURL *nsurl=[NSURL URLWithString:oAuthURL];
+    NSURLRequest *nsrequest=[NSURLRequest requestWithURL:nsurl];
+    [webView loadRequest:nsrequest];
+    [self.view addSubview:webView];
+}
 
-            NSError* error = nil;
-            NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
-            NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-            MTDPlatform *newPlatform = [[MTDPlatform alloc] initWithJSONData:userData onPlatform: @"GroupMe"];
-            [self updateUser:newPlatform withPlatform: @"GroupMe"];
-            
-        } else {
-            NSLog(@"Oh no can't open url because no safari view controller");
-        }
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if ([navigationAction.request.URL.absoluteString containsString:@"com.melo2902.fbu-app"]) {
+        decisionHandler(WKNavigationActionPolicyCancel);
+        
+        NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:navigationAction.request.URL
+                                                resolvingAgainstBaseURL:NO];
+        NSArray *queryItems = urlComponents.queryItems;
+        NSString *oAuthToken = [self valueForKey:@"access_token" fromQueryItems:queryItems];
+        [MTDAPIManager setAuthToken:oAuthToken];
+        
+        [self performSegueWithIdentifier:@"showFilterConvoSegue" sender:nil];
     } else {
-        // will have a nice alert displaying soon.
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
+}
+
+- (NSString *)valueForKey:(NSString *)key
+           fromQueryItems:(NSArray *)queryItems {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@", key];
+    NSURLQueryItem *queryItem = [[queryItems
+                                  filteredArrayUsingPredicate:predicate]
+                                 firstObject];
+    return queryItem.value;
+}
+
+- (void)grabUserData {
+    NSMutableString *URLString = [[NSMutableString alloc] init];
+    [URLString appendString:@"https://api.groupme.com/v3/users/me?token="];
+    [URLString appendString:[MTDAPIManager returnAuthToken]];
+
+    NSError* error = nil;
+    NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
+    NSDictionary *userData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
+    MTDPlatform *newPlatform = [[MTDPlatform alloc] initWithJSONData:userData onPlatform: @"GroupMe"];
+    [self updateUser:newPlatform withPlatform: @"GroupMe"];
 }
 
 -(void) updateUser:(MTDPlatform*) platform withPlatform: (NSString*) name {
