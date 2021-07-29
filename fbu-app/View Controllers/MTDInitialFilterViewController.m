@@ -44,6 +44,8 @@
     MTDGroup *group = self.arrayOfConversations[indexPath.row];
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
+    [cell.selectConversationButton setSelected: !group.onRead];
+    
     if (![group.lastSender isEqual: [NSNull null]]) {
         cell.lastMessageLabel.attributedText = [self modifyMessage:group.lastMessage withSender: group.lastSender];
     } else {
