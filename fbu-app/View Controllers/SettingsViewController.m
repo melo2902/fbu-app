@@ -54,7 +54,7 @@
             
             NSMutableString *URLString = [[NSMutableString alloc] init];
             [URLString appendString:@"https://api.groupme.com/v3/users/me?token="];
-            [URLString appendString:[APIManager getAuthToken]];
+            [URLString appendString:[APIManager returnAuthToken]];
 
             NSError* error = nil;
             NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:URLString] options:NSDataReadingUncached error:&error];
