@@ -127,7 +127,6 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-        
     MTDTask *newTask = [MTDTask createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
     
@@ -137,7 +136,7 @@
      ^(BOOL succeeded, NSError * _Nullable error) {
     }];
     
-    [self.arrayOfTasks addObject:newTask];
+    [self.arrayOfTasks insertObject:newTask atIndex:0];
     
     NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
     self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
