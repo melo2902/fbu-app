@@ -35,6 +35,13 @@
     self.completedTableView.dataSource = self;
     self.completedTableView.delegate = self;
     
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                 forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    
     self.listNameLabel.text = self.list[@"name"];
     NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
     self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
@@ -46,7 +53,7 @@
     [self getTasks];
     
     // Add an image background programatically for list
-    //  [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
+    // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
 }
 
 - (void) checkMyDayMyTomorrowTasks {
