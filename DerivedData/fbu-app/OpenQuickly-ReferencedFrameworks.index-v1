@@ -18,8 +18,8 @@
 	<string>CoreServices</string>
 	<string>CoreLocation</string>
 	<string>SystemConfiguration</string>
-	<string>XCTest</string>
 	<string>UserNotifications</string>
+	<string>XCTest</string>
 	<string>WatchKit</string>
 	<string>JSQSystemSoundPlayer</string>
 	<string>StoreKit</string>

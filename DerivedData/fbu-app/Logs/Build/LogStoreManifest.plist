@@ -6,6 +6,74 @@
 	<integer>10</integer>
 	<key>logs</key>
 	<dict>
+		<key>03212C5C-9819-42D8-8A42-5A5021505359</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>03212C5C-9819-42D8-8A42-5A5021505359.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221484.85117698</real>
+			<key>timeStoppedRecording</key>
+			<real>649221485.23225904</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>03212C5C-9819-42D8-8A42-5A5021505359</string>
+		</dict>
+		<key>08DCCB63-4EE5-417C-A274-8248B4D7F7B0</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>08DCCB63-4EE5-417C-A274-8248B4D7F7B0.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221245.66492796</real>
+			<key>timeStoppedRecording</key>
+			<real>649221246.32255602</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>08DCCB63-4EE5-417C-A274-8248B4D7F7B0</string>
+		</dict>
 		<key>0B1EDBE6-D4AC-41ED-9761-CE07428D2AFB</key>
 		<dict>
 			<key>className</key>
@@ -107,6 +175,40 @@
 			<string>Build fbu-app</string>
 			<key>uniqueIdentifier</key>
 			<string>0B3E6E3F-F82A-4DB1-9D48-6CE29B10B99E</string>
+		</dict>
+		<key>0CE6CA73-8818-4940-866F-145D2366A332</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>0CE6CA73-8818-4940-866F-145D2366A332.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221604.17657602</real>
+			<key>timeStoppedRecording</key>
+			<real>649221604.47165</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>0CE6CA73-8818-4940-866F-145D2366A332</string>
 		</dict>
 		<key>0D7833C2-BCBC-432E-BE35-C0B111FE56CC</key>
 		<dict>
@@ -244,6 +346,210 @@
 			<key>uniqueIdentifier</key>
 			<string>1C06661F-1D3D-4FC0-B24A-7D0D8729C24F</string>
 		</dict>
+		<key>1C8B3721-8BD7-4CA7-89C4-56A262758317</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>1C8B3721-8BD7-4CA7-89C4-56A262758317.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221949.47404504</real>
+			<key>timeStoppedRecording</key>
+			<real>649221950.132689</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>1C8B3721-8BD7-4CA7-89C4-56A262758317</string>
+		</dict>
+		<key>200071F7-C71D-44F6-8C23-D992DD6ED14B</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>200071F7-C71D-44F6-8C23-D992DD6ED14B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221199.13447702</real>
+			<key>timeStoppedRecording</key>
+			<real>649221199.86845696</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>200071F7-C71D-44F6-8C23-D992DD6ED14B</string>
+		</dict>
+		<key>207A5565-B890-448B-B73C-4FF35D98D119</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>207A5565-B890-448B-B73C-4FF35D98D119.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221938.71282601</real>
+			<key>timeStoppedRecording</key>
+			<real>649221938.944278</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>207A5565-B890-448B-B73C-4FF35D98D119</string>
+		</dict>
+		<key>286F7F43-0686-46D5-9A50-992EEDE83C48</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>286F7F43-0686-46D5-9A50-992EEDE83C48.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221534.56685495</real>
+			<key>timeStoppedRecording</key>
+			<real>649221535.26653099</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>286F7F43-0686-46D5-9A50-992EEDE83C48</string>
+		</dict>
+		<key>337B6F4D-763E-4504-A876-9D7D3BF3C740</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>337B6F4D-763E-4504-A876-9D7D3BF3C740.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221791.03340805</real>
+			<key>timeStoppedRecording</key>
+			<real>649221794.55987895</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>337B6F4D-763E-4504-A876-9D7D3BF3C740</string>
+		</dict>
+		<key>3630B21C-3752-4BD5-A209-5A4EE9334514</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3630B21C-3752-4BD5-A209-5A4EE9334514.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221796.27598</real>
+			<key>timeStoppedRecording</key>
+			<real>649221796.98823595</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>3630B21C-3752-4BD5-A209-5A4EE9334514</string>
+		</dict>
 		<key>48FAE7CA-2CC0-45BF-AC2F-419859198509</key>
 		<dict>
 			<key>className</key>
@@ -277,6 +583,74 @@
 			<string>Build fbu-app</string>
 			<key>uniqueIdentifier</key>
 			<string>48FAE7CA-2CC0-45BF-AC2F-419859198509</string>
+		</dict>
+		<key>4ADACDC5-E4FF-4E01-9920-4C4AB4B2A0E3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>4ADACDC5-E4FF-4E01-9920-4C4AB4B2A0E3.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221489.47073805</real>
+			<key>timeStoppedRecording</key>
+			<real>649221489.77572</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>4ADACDC5-E4FF-4E01-9920-4C4AB4B2A0E3</string>
+		</dict>
+		<key>50C3C3E6-D508-4870-B7D3-8EA67D8BCF81</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>50C3C3E6-D508-4870-B7D3-8EA67D8BCF81.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649220984.04204202</real>
+			<key>timeStoppedRecording</key>
+			<real>649220985.56913996</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>50C3C3E6-D508-4870-B7D3-8EA67D8BCF81</string>
 		</dict>
 		<key>53F4E57B-40BA-4066-AE4A-0C43CE241FF4</key>
 		<dict>
@@ -448,6 +822,40 @@
 			<key>uniqueIdentifier</key>
 			<string>57C9CEA2-E51D-4938-9B81-6AFDADD55F60</string>
 		</dict>
+		<key>5BA691B5-ABE7-4FE1-A229-2E59CAE19426</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>5BA691B5-ABE7-4FE1-A229-2E59CAE19426.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221348.74862397</real>
+			<key>timeStoppedRecording</key>
+			<real>649221349.37631905</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>5BA691B5-ABE7-4FE1-A229-2E59CAE19426</string>
+		</dict>
 		<key>5FBD3A50-B4F0-4240-9F2E-A5E8B3F1E140</key>
 		<dict>
 			<key>className</key>
@@ -549,6 +957,74 @@
 			<string>Build fbu-app</string>
 			<key>uniqueIdentifier</key>
 			<string>680C14C5-A7B4-4910-BF3A-1B996646DD42</string>
+		</dict>
+		<key>6B1254C3-D163-4C2B-8C54-AFB4688E0AAD</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>6B1254C3-D163-4C2B-8C54-AFB4688E0AAD.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649220924.92903304</real>
+			<key>timeStoppedRecording</key>
+			<real>649220925.539204</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>6B1254C3-D163-4C2B-8C54-AFB4688E0AAD</string>
+		</dict>
+		<key>6B92460B-C3C0-44BC-878C-68A21C248010</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>6B92460B-C3C0-44BC-878C-68A21C248010.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649220920.72964704</real>
+			<key>timeStoppedRecording</key>
+			<real>649220921.88385606</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>6B92460B-C3C0-44BC-878C-68A21C248010</string>
 		</dict>
 		<key>6D783577-90C7-4752-9477-42FB0DD18DBA</key>
 		<dict>
@@ -652,6 +1128,40 @@
 			<key>uniqueIdentifier</key>
 			<string>71BFE827-113F-46ED-8B78-93D2EA1E4C34</string>
 		</dict>
+		<key>71C2DCC9-7FEF-4AB9-B99A-E9C0A0B69799</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>71C2DCC9-7FEF-4AB9-B99A-E9C0A0B69799.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221845.07421696</real>
+			<key>timeStoppedRecording</key>
+			<real>649221845.25511396</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>71C2DCC9-7FEF-4AB9-B99A-E9C0A0B69799</string>
+		</dict>
 		<key>71F3D792-99BF-485B-915C-7D9F3B9E7698</key>
 		<dict>
 			<key>className</key>
@@ -720,6 +1230,40 @@
 			<key>uniqueIdentifier</key>
 			<string>73F71A5B-BD01-4D40-AED9-A00E4BA83B63</string>
 		</dict>
+		<key>7490FDC5-6F38-4037-8118-B8B66621C48C</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7490FDC5-6F38-4037-8118-B8B66621C48C.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221937.76826203</real>
+			<key>timeStoppedRecording</key>
+			<real>649221937.96147501</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>7490FDC5-6F38-4037-8118-B8B66621C48C</string>
+		</dict>
 		<key>7A3F30D1-96FD-467A-8A96-5AD7A0EEEF9C</key>
 		<dict>
 			<key>className</key>
@@ -753,6 +1297,40 @@
 			<string>Build fbu-app</string>
 			<key>uniqueIdentifier</key>
 			<string>7A3F30D1-96FD-467A-8A96-5AD7A0EEEF9C</string>
+		</dict>
+		<key>7B90CB1A-838A-4366-A93B-1A773420BC02</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7B90CB1A-838A-4366-A93B-1A773420BC02.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649220868.19045901</real>
+			<key>timeStoppedRecording</key>
+			<real>649220868.29859495</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>7B90CB1A-838A-4366-A93B-1A773420BC02</string>
 		</dict>
 		<key>7CD7086E-9B50-4D91-8FAD-E1F0E3E9A6A3</key>
 		<dict>
@@ -821,6 +1399,176 @@
 			<string>Build fbu-app</string>
 			<key>uniqueIdentifier</key>
 			<string>7CDA9805-12A8-480C-9CFA-C9439B43914C</string>
+		</dict>
+		<key>7FE4EEC1-B5AE-473F-BEFE-B590D1C4A483</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7FE4EEC1-B5AE-473F-BEFE-B590D1C4A483.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221319.454602</real>
+			<key>timeStoppedRecording</key>
+			<real>649221320.66542196</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>7FE4EEC1-B5AE-473F-BEFE-B590D1C4A483</string>
+		</dict>
+		<key>8383E42F-85B7-4C9D-B461-A52B220EF643</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8383E42F-85B7-4C9D-B461-A52B220EF643.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221197.18840098</real>
+			<key>timeStoppedRecording</key>
+			<real>649221197.57704306</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>8383E42F-85B7-4C9D-B461-A52B220EF643</string>
+		</dict>
+		<key>8550F6E6-9443-4D5D-BC4B-05EC6DBDCB5D</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8550F6E6-9443-4D5D-BC4B-05EC6DBDCB5D.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649220869.26015699</real>
+			<key>timeStoppedRecording</key>
+			<real>649220869.40321302</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>8550F6E6-9443-4D5D-BC4B-05EC6DBDCB5D</string>
+		</dict>
+		<key>8D648988-D075-488F-A82C-53221A525609</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8D648988-D075-488F-A82C-53221A525609.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221508.26591897</real>
+			<key>timeStoppedRecording</key>
+			<real>649221508.57049799</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>8D648988-D075-488F-A82C-53221A525609</string>
+		</dict>
+		<key>8DEABC71-A575-4C4E-84BA-080B31FABB74</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8DEABC71-A575-4C4E-84BA-080B31FABB74.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649220985.60147798</real>
+			<key>timeStoppedRecording</key>
+			<real>649220989.49147999</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>8DEABC71-A575-4C4E-84BA-080B31FABB74</string>
 		</dict>
 		<key>8EACAF51-1D38-4749-8F67-859D016AFFCD</key>
 		<dict>
@@ -991,6 +1739,74 @@
 			<string>Build fbu-app</string>
 			<key>uniqueIdentifier</key>
 			<string>A553F79A-A962-4D8E-B995-682D42D351CB</string>
+		</dict>
+		<key>A64A46BF-21A5-427A-990E-CD3C89E875E3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A64A46BF-21A5-427A-990E-CD3C89E875E3.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221835.48058295</real>
+			<key>timeStoppedRecording</key>
+			<real>649221835.59189999</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>A64A46BF-21A5-427A-990E-CD3C89E875E3</string>
+		</dict>
+		<key>A6F37924-AB44-4AF7-AC79-7EFB460B9E47</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A6F37924-AB44-4AF7-AC79-7EFB460B9E47.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221034.64202702</real>
+			<key>timeStoppedRecording</key>
+			<real>649221034.73486197</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>A6F37924-AB44-4AF7-AC79-7EFB460B9E47</string>
 		</dict>
 		<key>AAD12259-1F80-43E2-A600-E86123E3E258</key>
 		<dict>
@@ -1264,6 +2080,108 @@
 			<key>uniqueIdentifier</key>
 			<string>BEB5CA12-D6F4-4729-AD09-6EFD627D5EE0</string>
 		</dict>
+		<key>C0DBA42D-756E-4AD2-88A8-E54B67434711</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C0DBA42D-756E-4AD2-88A8-E54B67434711.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221486.06738305</real>
+			<key>timeStoppedRecording</key>
+			<real>649221486.34201205</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>C0DBA42D-756E-4AD2-88A8-E54B67434711</string>
+		</dict>
+		<key>C40F30E0-98BD-41C0-87EA-FE7B42E25EEF</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C40F30E0-98BD-41C0-87EA-FE7B42E25EEF.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221328.63817406</real>
+			<key>timeStoppedRecording</key>
+			<real>649221329.38916504</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>C40F30E0-98BD-41C0-87EA-FE7B42E25EEF</string>
+		</dict>
+		<key>C5453D79-69A1-4781-99D1-F3869AD36858</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C5453D79-69A1-4781-99D1-F3869AD36858.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221628.13596594</real>
+			<key>timeStoppedRecording</key>
+			<real>649221628.42662096</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>C5453D79-69A1-4781-99D1-F3869AD36858</string>
+		</dict>
 		<key>C829625F-2C5E-456D-9E4D-9BA9AD837B58</key>
 		<dict>
 			<key>className</key>
@@ -1400,6 +2318,108 @@
 			<key>uniqueIdentifier</key>
 			<string>E02D973B-66F2-4E54-97EE-ED1C53AD42DE</string>
 		</dict>
+		<key>E04C2D1F-83B9-4AAF-92B0-52712A709AB3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E04C2D1F-83B9-4AAF-92B0-52712A709AB3.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221036.10565495</real>
+			<key>timeStoppedRecording</key>
+			<real>649221036.19198596</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>E04C2D1F-83B9-4AAF-92B0-52712A709AB3</string>
+		</dict>
+		<key>E3C65622-F193-45E5-9925-2EBF69735A5B</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E3C65622-F193-45E5-9925-2EBF69735A5B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221272.45980704</real>
+			<key>timeStoppedRecording</key>
+			<real>649221272.88906896</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>E3C65622-F193-45E5-9925-2EBF69735A5B</string>
+		</dict>
+		<key>E90D6DB4-8461-4AFD-B062-BB21541BB3C0</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E90D6DB4-8461-4AFD-B062-BB21541BB3C0.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221844.22980404</real>
+			<key>timeStoppedRecording</key>
+			<real>649221844.35948706</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>E90D6DB4-8461-4AFD-B062-BB21541BB3C0</string>
+		</dict>
 		<key>E92AEE40-BB49-4C57-8D61-A1AC8A8C187D</key>
 		<dict>
 			<key>className</key>
@@ -1434,6 +2454,40 @@
 			<key>uniqueIdentifier</key>
 			<string>E92AEE40-BB49-4C57-8D61-A1AC8A8C187D</string>
 		</dict>
+		<key>EA8581CC-7303-4686-8DBF-364B86E6EB87</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>EA8581CC-7303-4686-8DBF-364B86E6EB87.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221797.87183404</real>
+			<key>timeStoppedRecording</key>
+			<real>649221798.08797503</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>EA8581CC-7303-4686-8DBF-364B86E6EB87</string>
+		</dict>
 		<key>EC563BD2-17CF-4132-B0B2-D56067733E5B</key>
 		<dict>
 			<key>className</key>
@@ -1467,6 +2521,40 @@
 			<string>Build fbu-app</string>
 			<key>uniqueIdentifier</key>
 			<string>EC563BD2-17CF-4132-B0B2-D56067733E5B</string>
+		</dict>
+		<key>F037ADCB-7E22-4223-BBA7-8191846522EF</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F037ADCB-7E22-4223-BBA7-8191846522EF.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221567.84164596</real>
+			<key>timeStoppedRecording</key>
+			<real>649221568.54695296</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>F037ADCB-7E22-4223-BBA7-8191846522EF</string>
 		</dict>
 		<key>F3F4DE4E-A9B8-4E31-829D-624B67497194</key>
 		<dict>
@@ -1535,6 +2623,40 @@
 			<string>Build fbu-app</string>
 			<key>uniqueIdentifier</key>
 			<string>F583F252-F36A-48F0-8E8F-DDEB39EE5AD5</string>
+		</dict>
+		<key>F7160AAE-139C-4201-890D-26DDF37E4794</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F7160AAE-139C-4201-890D-26DDF37E4794.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>fbu-app project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>fbu-app</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build fbu-app</string>
+			<key>timeStartedRecording</key>
+			<real>649221663.03447402</real>
+			<key>timeStoppedRecording</key>
+			<real>649221663.81065702</real>
+			<key>title</key>
+			<string>Build fbu-app</string>
+			<key>uniqueIdentifier</key>
+			<string>F7160AAE-139C-4201-890D-26DDF37E4794</string>
 		</dict>
 		<key>FE502B39-3A2A-4189-8C9B-F5EFC6C2602C</key>
 		<dict>
