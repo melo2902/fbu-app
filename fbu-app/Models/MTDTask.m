@@ -36,7 +36,7 @@
     newTask.inLists = lists;
     
     newTask.taskTitle = name;
-    newTask.workingTime = @(1); // Allow the user to change the default working time
+    newTask.workingTime = @(0); // Allow the user to change the default working time
     newTask.notes = @"";
     newTask.completed = NO;
     

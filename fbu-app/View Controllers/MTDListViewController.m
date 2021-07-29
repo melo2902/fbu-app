@@ -13,6 +13,7 @@
 #import "MTDTask.h"
 #import "MTDTaskCell.h"
 #import "DateTools.h"
+#import "MTDList.h"
 
 @interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
@@ -346,8 +347,14 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
--(void)ListViewController:(MTDTaskViewController *)controller finishedUpdating:(MTDTask *)task {
-    [self getTasks];
+-(void)ListViewController:(MTDTaskViewController *)controller withTimeChange:(NSNumber *)timeChange {
+    
+    [MTDList updateTime:timeChange toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            [self updateListWorkingTime];
+            [self getTasks];
+        }
+    }];
 }
 
 #pragma mark - Navigation

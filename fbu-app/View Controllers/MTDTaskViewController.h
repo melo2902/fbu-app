@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @class MTDTaskViewController;
 
 @protocol XLFTaskViewControllerDelegate <NSObject>
-- (void)ListViewController:(MTDTaskViewController *)controller finishedUpdating:(MTDTask *)task;
+- (void)ListViewController:(MTDTaskViewController *)controller withTimeChange:(NSNumber *)updateTime;
 @end
 
 @interface MTDTaskViewController : XLFormViewController
