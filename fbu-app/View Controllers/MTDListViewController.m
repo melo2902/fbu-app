@@ -46,7 +46,7 @@
     [self getTasks];
     
     // Add an image background programatically for list
-    // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
+    //  [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
 }
 
 - (void) checkMyDayMyTomorrowTasks {
@@ -102,28 +102,30 @@
     [query orderByAscending:@"dueDate"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
-        
-        self.arrayOfTasks = [[NSMutableArray alloc] init];
-        self.arrayOfCompletedTasks = [[NSMutableArray alloc] init];
-        
         if (tasks != nil) {
-            for (MTDTask *task in tasks) {
-                if ([task[@"completed"] isEqual:@0]) {
-                    [self.arrayOfTasks addObject:task];
-                } else {
-                    [self.arrayOfCompletedTasks addObject:task];
-                }
-            }
-            
-            [self.tasksTableView reloadData];
-            [self.completedTableView reloadData];
+            [self updateTaskArray:tasks];
         } else {
             NSLog(@"Error: %@", error.localizedDescription);
         }
     }];
 }
 
-// Quick task add
+- (void) updateTaskArray: (NSArray *) tasks {
+    self.arrayOfTasks = [[NSMutableArray alloc] init];
+    self.arrayOfCompletedTasks = [[NSMutableArray alloc] init];
+    
+    for (MTDTask *task in tasks) {
+        if ([task[@"completed"] isEqual:@0]) {
+            [self.arrayOfTasks addObject:task];
+        } else {
+            [self.arrayOfCompletedTasks addObject:task];
+        }
+    }
+    
+    [self.tasksTableView reloadData];
+    [self.completedTableView reloadData];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
         
     MTDTask *newTask = [MTDTask createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
@@ -248,8 +250,14 @@
     if (tableView == self.tasksTableView) {
         task = self.arrayOfTasks[indexPath.row];
         
-        NSDate *dateString = task[@"dueDate"];
-        cell.dueDateLabel.text =  dateString.shortTimeAgoSinceNow;
+        NSDate *currentDate = [NSDate new];
+        NSDate *taskDueDate = task[@"dueDate"];
+
+        if (taskDueDate && ![currentDate isEarlierThanOrEqualTo:taskDueDate]) {
+            cell.dueDateLabel.attributedText = [self colorStringRed:taskDueDate];
+        } else {
+            cell.dueDateLabel.text = taskDueDate.shortTimeAgoSinceNow;
+        }
         
     } else {
         task = self.arrayOfCompletedTasks[indexPath.row];
@@ -296,6 +304,15 @@
     return cell;
 }
 
+- (NSAttributedString *) colorStringRed: (NSDate *) dueDate {
+    UIColor *color = [UIColor redColor];
+    NSString *string = [NSString stringWithFormat:@"-%@", dueDate.shortTimeAgoSinceNow];
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : color };
+    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:string attributes:attrs];
+    
+    return attrStr;
+}
+
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (tableView == self.tasksTableView) {
@@ -317,7 +334,6 @@
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    // Need a delegate to prepare segue
     if ([segue.identifier isEqual:@"showTaskDetailsSegue"]|| [segue.identifier isEqual:@"showCompletedTaskDetailsSegue"]) {
         MTDTaskCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tasksTableView indexPathForCell:tappedCell];
