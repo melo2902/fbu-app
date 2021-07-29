@@ -11,7 +11,7 @@
 @dynamic user;
 @dynamic userID;
 @dynamic platformName;
-@dynamic userName;
+@dynamic username;
 @dynamic onReadConversations;
 
 + (nonnull NSString *)parseClassName {
@@ -26,7 +26,7 @@
         newPlatform.platformName = platform;
         
         NSDictionary *response = [data objectForKey:@"response"];
-        newPlatform.userName = [response objectForKey:@"name"];
+        newPlatform.username = [response objectForKey:@"name"];
         newPlatform.userID = [response objectForKey:@"id"];
         newPlatform.onReadConversations = [[NSMutableArray alloc]init];
     }

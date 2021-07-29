@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MTDPlatform : PFObject
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) NSString *platformName;
-@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSMutableArray *onReadConversations;
 

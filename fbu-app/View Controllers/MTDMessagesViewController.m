@@ -41,7 +41,7 @@
     [userPlatform fetchIfNeeded];
     
     self.senderId = userPlatform[@"userID"];
-    self.senderDisplayName = userPlatform[@"userName"];
+    self.senderDisplayName = userPlatform[@"username"];
     
     self.isMoreDataLoading = NO;
     self.endLoading = NO;

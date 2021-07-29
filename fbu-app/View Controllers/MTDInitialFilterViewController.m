@@ -141,7 +141,7 @@
             for(NSDictionary *eachGroup in arrayFromServer){
                 MTDGroup *group = [[MTDGroup alloc] initWithJSONData:eachGroup];
                 
-                if (![group.lastSender isEqual:currPlatform[@"userName"]]) {
+                if (![group.lastSender isEqual:currPlatform[@"username"]]) {
                     [self.arrayOfConversations addObject:group];
                 }
             }
