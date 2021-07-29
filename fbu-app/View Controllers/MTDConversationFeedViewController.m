@@ -30,14 +30,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    
-    self.pageCount = @1;
-    self.arrayOfMessages = [[NSMutableArray alloc]init];
-    self.pageNumbers = [[NSMutableArray alloc]init];
-    
-    [self getConversationsAPI];
+    if ([MTDAPIManager returnAuthToken]) {
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        
+        self.pageCount = @1;
+        self.arrayOfMessages = [[NSMutableArray alloc]init];
+        self.pageNumbers = [[NSMutableArray alloc]init];
+        
+        [self getConversationsAPI];
+    } else {
+        NSLog(@"User has not logged into their linked account yet");
+    }
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
