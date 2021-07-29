@@ -289,7 +289,7 @@
             [self.arrayOfTasks addObject:task];
             [self.arrayOfCompletedTasks removeObject:task];
             
-            [MTDList updateTask:task toList:self.list changeCompletion:NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            [MTDList updateTime: task[@"workingTime"] toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
                 }
@@ -299,7 +299,9 @@
             [self.arrayOfCompletedTasks addObject:task];
             [self.arrayOfTasks removeObject:task];
             
-            [MTDList updateTask:task toList:self.list changeCompletion:YES withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            float updatedWorkingTime = -1 * [task[@"workingTime"] floatValue];
+            
+            [MTDList updateTime:[NSNumber numberWithFloat:updatedWorkingTime] toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
                 }
