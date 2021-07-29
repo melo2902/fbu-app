@@ -34,6 +34,8 @@
     self.pageCount = @1;
     self.arrayOfConversations = [[NSMutableArray alloc]init];
     self.pageNumbers = [[NSMutableArray alloc]init];
+    [self.filterConversationButton setEnabled:NO];
+    [self.filterConversationButton setTintColor: [UIColor clearColor]];
     
     [self getConversationsAPI];
 }
@@ -81,6 +83,9 @@
         if (!self.endLoading){
             [self getConversationsAPI];
         } else {
+            [self.filterConversationButton setEnabled:YES];
+            [self.filterConversationButton setTintColor: nil];
+            
             NSLog(@"Stop loading conversations");
         }
     }

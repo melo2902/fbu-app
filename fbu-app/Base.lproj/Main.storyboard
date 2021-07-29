@@ -128,7 +128,6 @@
                                 <state key="normal" image="camera" catalog="system"/>
                                 <connections>
                                     <action selector="editProfilePicture:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="Y2P-bo-bNf"/>
-                                    <action selector="onTapAddPlatform:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="CBO-Ep-9Aw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -792,6 +791,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="filterConversationButton" destination="WKH-GZ-Uga" id="nY7-Bb-8ng"/>
                         <outlet property="tableView" destination="50a-Mp-g6q" id="Bfo-YR-LLS"/>
                     </connections>
                 </viewController>

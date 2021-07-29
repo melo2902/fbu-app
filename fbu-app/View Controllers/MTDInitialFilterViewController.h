@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MTDInitialFilterViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *filterConversationButton;
 @end
 
 NS_ASSUME_NONNULL_END
