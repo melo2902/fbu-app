@@ -114,13 +114,20 @@
     self.arrayOfTasks = [[NSMutableArray alloc] init];
     self.arrayOfCompletedTasks = [[NSMutableArray alloc] init];
     
+    NSMutableArray *emptyDueDateTasks = [[NSMutableArray alloc] init];
     for (MTDTask *task in tasks) {
         if ([task[@"completed"] isEqual:@0]) {
-            [self.arrayOfTasks addObject:task];
+            if (task[@"dueDate"]) {
+                [self.arrayOfTasks addObject:task];
+            } else {
+                [emptyDueDateTasks addObject:task];
+            }
         } else {
             [self.arrayOfCompletedTasks addObject:task];
         }
     }
+    
+    [self.arrayOfTasks addObjectsFromArray:emptyDueDateTasks];
     
     [self.tasksTableView reloadData];
     [self.completedTableView reloadData];
