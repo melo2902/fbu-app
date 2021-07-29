@@ -45,7 +45,6 @@
     
     self.isMoreDataLoading = NO;
     self.endLoading = NO;
-//    self.oldContentHeight = self.collectionView.contentSize.height;
 }
 
 # pragma mark - Initialize collection view

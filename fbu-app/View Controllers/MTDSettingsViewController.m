@@ -69,6 +69,7 @@
         NSArray *queryItems = urlComponents.queryItems;
         NSString *oAuthToken = [self valueForKey:@"access_token" fromQueryItems:queryItems];
         [MTDAPIManager setAuthToken:oAuthToken];
+        [self grabUserData];
         
         [self performSegueWithIdentifier:@"showFilterConvoSegue" sender:nil];
     } else {
