@@ -1,14 +1,14 @@
 //
-//  TaskCell.m
+//  MTDTaskCell.m
 //  fbu-app
 //
 //  Created by mwen on 7/13/21.
 //
 
-#import "TaskCell.h"
+#import "MTDTaskCell.h"
 #import "Parse/Parse.h"
 
-@implementation TaskCell
+@implementation MTDTaskCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

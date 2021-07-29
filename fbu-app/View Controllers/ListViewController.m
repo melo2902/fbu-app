@@ -11,7 +11,7 @@
 #import "MTDList.h"
 #import "XLFTaskViewController.h"
 #import "MTDTask.h"
-#import "TaskCell.h"
+#import "MTDTaskCell.h"
 #import "DateTools.h"
 
 @interface ListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
@@ -242,7 +242,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    TaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
+    MTDTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
     
     MTDTask *task;
     if (tableView == self.tasksTableView) {
@@ -319,7 +319,7 @@
     
     // Need a delegate to prepare segue
     if ([segue.identifier isEqual:@"showTaskDetailsSegue"]|| [segue.identifier isEqual:@"showCompletedTaskDetailsSegue"]) {
-        TaskCell *tappedCell = sender;
+        MTDTaskCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tasksTableView indexPathForCell:tappedCell];
         MTDTask *task = self.arrayOfTasks[indexPath.row];
         

@@ -1,14 +1,14 @@
 //
-//  MessageCell.m
+//  MTDMessageCell.m
 //  fbu-app
 //
 //  Created by mwen on 7/15/21.
 //
 
-#import "MessageCell.h"
+#import "MTDMessageCell.h"
 #import "Parse/Parse.h"
 
-@implementation MessageCell
+@implementation MTDMessageCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

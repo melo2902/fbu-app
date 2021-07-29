@@ -1,13 +1,13 @@
 //
-//  ListCell.m
+//  MTDListCell.m
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
 //
 
-#import "ListCell.h"
+#import "MTDListCell.h"
 
-@implementation ListCell
+@implementation MTDListCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

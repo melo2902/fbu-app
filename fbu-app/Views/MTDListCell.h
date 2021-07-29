@@ -1,5 +1,5 @@
 //
-//  ListCell.h
+//  MTDListCell.h
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListCell : UITableViewCell
+@interface MTDListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
 
 @end

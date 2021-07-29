@@ -1,16 +1,16 @@
 //
-//  SelectionConversationCell.m
+//  MTDSelectionConversationCell.m
 //  fbu-app
 //
 //  Created by mwen on 7/22/21.
 //
 
-#import "SelectionConversationCell.h"
+#import "MTDSelectionConversationCell.h"
 #import "Parse/Parse.h"
 #import "MTDPlatform.h"
 #import "MTDConversation.h"
 
-@implementation SelectionConversationCell
+@implementation MTDSelectionConversationCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

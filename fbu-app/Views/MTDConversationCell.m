@@ -1,17 +1,17 @@
 //
-//  ConversationCell.m
+//  MTDConversationCell.m
 //  fbu-app
 //
 //  Created by mwen on 7/19/21.
 //
 
-#import "ConversationCell.h"
+#import "MTDConversationCell.h"
 #import "Parse/Parse.h"
 #import "MTDPlatform.h"
 #import "MTDConversation.h"
 #import "DateTools.h"
 
-@implementation ConversationCell
+@implementation MTDConversationCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -1,5 +1,5 @@
 //
-//  SelectionConversationCell.h
+//  MTDSelectionConversationCell.h
 //  fbu-app
 //
 //  Created by mwen on 7/22/21.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SelectionConversationCell : UITableViewCell
+@interface MTDSelectionConversationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
 @property (weak, nonatomic) IBOutlet UIButton *selectConversationButton;

@@ -9,7 +9,7 @@
 #import "Parse/Parse.h"
 #import "ListViewController.h"
 #import "MTDList.h"
-#import "ListCell.h"
+#import "MTDListCell.h"
 
 @interface MainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
@@ -92,7 +92,7 @@
 # pragma mark - set up table view
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell" forIndexPath:indexPath];
+    MTDListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell" forIndexPath:indexPath];
     
     MTDList *list;
     if (tableView == self.defaultTableView) {
@@ -176,7 +176,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual:@"openListSegue"]) {
-        ListCell *tappedCell = sender;
+        MTDListCell *tappedCell = sender;
         
         NSIndexPath *indexPath = [self.defaultTableView indexPathForCell:tappedCell];
         MTDList *list = self.arrayOfDefaultLists[indexPath.row];
@@ -186,7 +186,7 @@
         listViewController.list = list;
         
     } else if ([segue.identifier isEqual:@"openUserListSegue"]) {
-        ListCell *tappedCell = sender;
+        MTDListCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.userListTableView indexPathForCell:tappedCell];
         MTDList *list = self.arrayOfUserLists[indexPath.row];
         

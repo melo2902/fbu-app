@@ -8,7 +8,7 @@
 #import "ConversationFeedViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import "Parse/Parse.h"
-#import "ConversationCell.h"
+#import "MTDConversationCell.h"
 #import "MTDGroup.h"
 #import "MTDAPIManager.h"
 #import "MTDPlatform.h"
@@ -41,7 +41,7 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationCell" forIndexPath:indexPath];
+    MTDConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationCell" forIndexPath:indexPath];
     
     MTDGroup *group = self.arrayOfMessages[indexPath.row];
     cell.group = group;

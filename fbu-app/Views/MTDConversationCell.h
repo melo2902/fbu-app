@@ -1,5 +1,5 @@
 //
-//  ConversationCell.h
+//  MTDConversationCell.h
 //  fbu-app
 //
 //  Created by mwen on 7/19/21.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ConversationCell : UITableViewCell
+@interface MTDConversationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
 @property (strong, nonatomic) MTDGroup *group;

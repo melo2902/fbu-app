@@ -7,7 +7,7 @@
 
 #import "InitialFilterViewController.h"
 #import "Parse/Parse.h"
-#import "SelectionConversationCell.h"
+#import "MTDSelectionConversationCell.h"
 #import "MessagesViewController.h"
 #import "MTDGroup.h"
 #import "MTDAPIManager.h"
@@ -40,7 +40,7 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    SelectionConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectionConversationCell" forIndexPath:indexPath];
+    MTDSelectionConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectionConversationCell" forIndexPath:indexPath];
     
     MTDGroup *group = self.arrayOfConversations[indexPath.row];
     cell.group = group;

@@ -1,5 +1,5 @@
 //
-//  MessageCell.h
+//  MTDMessageCell.h
 //  fbu-app
 //
 //  Created by mwen on 7/15/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MessageCell : UITableViewCell
+@interface MTDMessageCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *groupNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lastMessageLabel;
 @end
