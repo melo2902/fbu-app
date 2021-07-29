@@ -1,20 +1,20 @@
 //
-//  ListViewController.m
+//  MTDListViewController.m
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
 //
 
-#import "ListViewController.h"
+#import "MTDListViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import "Parse/Parse.h"
 #import "MTDList.h"
-#import "XLFTaskViewController.h"
+#import "MTDTaskViewController.h"
 #import "MTDTask.h"
 #import "MTDTaskCell.h"
 #import "DateTools.h"
 
-@interface ListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
+@interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tasksTableView;
@@ -24,7 +24,7 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfCompletedTasks;
 @end
 
-@implementation ListViewController
+@implementation MTDListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -310,7 +310,7 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
--(void)ListViewController:(XLFTaskViewController *)controller finishedUpdating:(MTDTask *)task {
+-(void)ListViewController:(MTDTaskViewController *)controller finishedUpdating:(MTDTask *)task {
     [self getTasks];
 }
 
@@ -323,12 +323,12 @@
         NSIndexPath *indexPath = [self.tasksTableView indexPathForCell:tappedCell];
         MTDTask *task = self.arrayOfTasks[indexPath.row];
         
-        XLFTaskViewController *vc = segue.destinationViewController;
+        MTDTaskViewController *vc = segue.destinationViewController;
         vc.delegate = self;
         vc.task = task;
         
     } else if ([segue.identifier isEqual:@"addNewTaskSegue"]) {
-        XLFTaskViewController *vc = segue.destinationViewController;
+        MTDTaskViewController *vc = segue.destinationViewController;
         vc.delegate = self;
         vc.listName = self.list[@"name"];
     }

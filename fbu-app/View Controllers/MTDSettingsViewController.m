@@ -1,24 +1,24 @@
 //
-//  SettingsViewController.m
+//  MTDSettingsViewController.m
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
 //
 
-#import "SettingsViewController.h"
+#import "MTDSettingsViewController.h"
 #import "SceneDelegate.h"
-#import "LoginViewController.h"
+#import "MTDLoginViewController.h"
 #import "MTDAPIManager.h"
 #import "Parse/Parse.h"
 #import "MTDPlatform.h"
 
-@interface SettingsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface MTDSettingsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userEmailLabel;
 @end
 
-@implementation SettingsViewController
+@implementation MTDSettingsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +85,7 @@
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    MTDLoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
 }
 

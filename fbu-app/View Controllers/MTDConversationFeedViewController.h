@@ -1,5 +1,5 @@
 //
-//  ConversationFeedViewController.h
+//  MTDConversationFeedViewController.h
 //  fbu-app
 //
 //  Created by mwen on 7/15/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ConversationFeedViewController : UIViewController
+@interface MTDConversationFeedViewController : UIViewController
 
 @end
 

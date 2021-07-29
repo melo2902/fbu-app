@@ -1,19 +1,19 @@
 //
-//  LoginViewController.m
+//  MTDLoginViewController.m
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
 //
 
-#import "LoginViewController.h"
+#import "MTDLoginViewController.h"
 #import "Parse/Parse.h"
 
-@interface LoginViewController ()
+@interface MTDLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
 @end
 
-@implementation LoginViewController
+@implementation MTDLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

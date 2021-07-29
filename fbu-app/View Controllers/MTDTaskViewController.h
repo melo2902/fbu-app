@@ -1,5 +1,5 @@
 //
-//  XLFTaskViewController.h
+//  MTDTaskViewController.h
 //  fbu-app
 //
 //  Created by mwen on 7/21/21.
@@ -10,13 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class XLFTaskViewController;
+@class MTDTaskViewController;
 
 @protocol XLFTaskViewControllerDelegate <NSObject>
-- (void)ListViewController:(XLFTaskViewController *)controller finishedUpdating:(MTDTask *)task;
+- (void)ListViewController:(MTDTaskViewController *)controller finishedUpdating:(MTDTask *)task;
 @end
 
-@interface XLFTaskViewController : XLFormViewController
+@interface MTDTaskViewController : XLFormViewController
 @property (nonatomic, weak) id <XLFTaskViewControllerDelegate> delegate;
 @property (strong, nonatomic) MTDTask *task;
 @property (strong, nonatomic) NSString *listName;

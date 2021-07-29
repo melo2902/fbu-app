@@ -1,5 +1,5 @@
 //
-//  MainFeedViewController.h
+//  MTDSettingsViewController.h
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MainFeedViewController : UIViewController
+@interface MTDSettingsViewController : UIViewController
 
 @end
 

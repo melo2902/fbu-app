@@ -1,11 +1,11 @@
 //
-//  ConversationFeedViewController.m
+//  MTDConversationFeedViewController.m
 //  fbu-app
 //
 //  Created by mwen on 7/15/21.
 //
 
-#import "ConversationFeedViewController.h"
+#import "MTDConversationFeedViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import "Parse/Parse.h"
 #import "MTDConversationCell.h"
@@ -14,9 +14,9 @@
 #import "MTDPlatform.h"
 #import "MTDConversation.h"
 #import "DateTools.h"
-#import "MessagesViewController.h"
+#import "MTDMessagesViewController.h"
 
-@interface ConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface MTDConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
@@ -25,7 +25,7 @@
 @property (assign, nonatomic) NSNumber *pageCount;
 @end
 
-@implementation ConversationFeedViewController
+@implementation MTDConversationFeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -260,7 +260,7 @@
 
         MTDGroup *group = self.arrayOfMessages[indexPath.row];
         UINavigationController *navigationController = [segue destinationViewController];
-        MessagesViewController *messagesViewController = (MessagesViewController *)[navigationController topViewController];
+        MTDMessagesViewController *messagesViewController = (MTDMessagesViewController *)[navigationController topViewController];
         messagesViewController.group = group;
     }
 }

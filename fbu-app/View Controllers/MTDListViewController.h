@@ -1,5 +1,5 @@
 //
-//  ListViewController.h
+//  MTDListViewController.h
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListViewController : UIViewController
+@interface MTDListViewController : UIViewController
 @property (strong, nonatomic) MTDList *list;
 @end
 

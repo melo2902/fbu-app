@@ -1,5 +1,5 @@
 //
-//  InitialFilterViewController.h
+//  MTDInitialFilterViewController.h
 //  fbu-app
 //
 //  Created by mwen on 7/22/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface InitialFilterViewController : UIViewController
+@interface MTDInitialFilterViewController : UIViewController
 
 @end
 

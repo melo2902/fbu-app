@@ -1,17 +1,17 @@
 //
-//  MainFeedViewController.m
+//  MTDMainFeedViewController.m
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
 //
 
-#import "MainFeedViewController.h"
+#import "MTDMainFeedViewController.h"
 #import "Parse/Parse.h"
-#import "ListViewController.h"
+#import "MTDListViewController.h"
 #import "MTDList.h"
 #import "MTDListCell.h"
 
-@interface MainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface MTDMainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *defaultTableView;
@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfUserLists;
 @end
 
-@implementation MainFeedViewController
+@implementation MTDMainFeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -182,7 +182,7 @@
         MTDList *list = self.arrayOfDefaultLists[indexPath.row];
         
         UINavigationController *navigationController = [segue destinationViewController];
-        ListViewController *listViewController = (ListViewController*) [navigationController topViewController];
+        MTDListViewController *listViewController = (MTDListViewController*) [navigationController topViewController];
         listViewController.list = list;
         
     } else if ([segue.identifier isEqual:@"openUserListSegue"]) {
@@ -191,7 +191,7 @@
         MTDList *list = self.arrayOfUserLists[indexPath.row];
         
         UINavigationController *navigationController = [segue destinationViewController];
-        ListViewController *listViewController = (ListViewController*) [navigationController topViewController];
+        MTDListViewController *listViewController = (MTDListViewController*) [navigationController topViewController];
         listViewController.list = list;
     }
 }

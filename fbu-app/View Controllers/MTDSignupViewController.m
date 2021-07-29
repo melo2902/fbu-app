@@ -1,15 +1,15 @@
 //
-//  SignupViewController.m
+//  MTDSignupViewController.m
 //  fbu-app
 //
 //  Created by mwen on 7/12/21.
 //
 
-#import "SignupViewController.h"
+#import "MTDSignupViewController.h"
 #import "Parse/Parse.h"
 #import "MTDList.h"
 
-@interface SignupViewController ()
+@interface MTDSignupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
 @end
 
-@implementation SignupViewController
+@implementation MTDSignupViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,20 +1,20 @@
 //
-//  InitialFilterViewController.m
+//  MTDInitialFilterViewController.m
 //  fbu-app
 //
 //  Created by mwen on 7/22/21.
 //
 
-#import "InitialFilterViewController.h"
+#import "MTDInitialFilterViewController.h"
 #import "Parse/Parse.h"
 #import "MTDSelectionConversationCell.h"
-#import "MessagesViewController.h"
+#import "MTDMessagesViewController.h"
 #import "MTDGroup.h"
 #import "MTDAPIManager.h"
 #import "MTDPlatform.h"
 #import "MTDConversation.h"
 
-@interface InitialFilterViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface MTDInitialFilterViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrayOfConversations;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
@@ -23,7 +23,7 @@
 @property (assign, nonatomic) NSNumber *pageCount;
 @end
 
-@implementation InitialFilterViewController
+@implementation MTDInitialFilterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -203,7 +203,7 @@
 
          MTDGroup *group = self.arrayOfConversations[indexPath.row];
          UINavigationController *navigationController = [segue destinationViewController];
-         MessagesViewController *messagesViewController = (MessagesViewController *)[navigationController topViewController];
+         MTDMessagesViewController *messagesViewController = (MTDMessagesViewController *)[navigationController topViewController];
          messagesViewController.group = group;
      }
  }

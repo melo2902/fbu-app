@@ -1,16 +1,16 @@
 //
-//  MessagesViewController.m
+//  MTDMessagesViewController.m
 //  fbu-app
 //
 //  Created by mwen on 7/26/21.
 //
 
-#import "MessagesViewController.h"
+#import "MTDMessagesViewController.h"
 #import "MTDGroup.h"
 #import "MTDAPIManager.h"
 #import "MTDPlatform.h"
 
-@interface MessagesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate>
+@interface MTDMessagesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate>
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
 @property (nonatomic, strong) NSString *latestMessageID;
 @property(strong, nonatomic) NSMutableDictionary *avatarTable;
@@ -21,7 +21,7 @@
 @property (assign, nonatomic) CGFloat oldContentHeight;
 @end
 
-@implementation MessagesViewController
+@implementation MTDMessagesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
