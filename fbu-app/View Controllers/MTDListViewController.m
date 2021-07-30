@@ -84,7 +84,13 @@
         
         if ([self.list[@"name"] isEqual:@"My Day"]) {
             for (MTDTask *task in tasks) {
+                NSDate *nextDate = [task.createdAt dateByAddingDays:1];
+                
                 if ([task.createdAt isSameDay:currentDate]) {
+                    // Task made day of
+                    continue;
+                } else if (([nextDate isSameDay:currentDate])) {
+                    // Task pulled from the "My Tomorrow" list
                     continue;
                 } else {
                     NSMutableArray *currentLists = task[@"inLists"];
