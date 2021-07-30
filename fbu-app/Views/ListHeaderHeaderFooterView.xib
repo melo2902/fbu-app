@@ -57,6 +57,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="addedTaskBar" destination="9gc-b1-eZy" id="DUp-cF-ZlC"/>
                 <outlet property="titleLabelTitle" destination="Jl0-Ef-Lrk" id="hMF-1c-OH0"/>
                 <outlet property="workingTimeLabel" destination="RiY-Ow-OMS" id="uHn-78-nJR"/>
             </connections>

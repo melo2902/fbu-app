@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ListHeaderHeaderFooterView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UILabel *titleLabelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
+@property (weak, nonatomic) IBOutlet UITextField *addedTaskBar;
 
 @end
 

@@ -6,7 +6,6 @@
 //
 
 #import "ListHeaderHeaderFooterView.h"
-#import "MTDTask.h"
 
 @implementation ListHeaderHeaderFooterView
 

@@ -75,6 +75,9 @@
             header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
         }
         
+        header.listName = self.list[@"name"];
+        header.addedTaskBar.delegate = self;
+        
         return header;
         
     } else {
@@ -195,25 +198,24 @@
     [self.tableView reloadData];
 }
 
-//-(BOOL)textFieldShouldReturn:(UITextField *)textField {
-//    MTDTask *newTask = [MTDTask createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//    }];
-//
-//    [newTask saveInBackground];
-//
-//    [MTDList addTask:newTask toList:self.list withCompletion:
-//     ^(BOOL succeeded, NSError * _Nullable error) {
-//    }];
-//
-//    [self.arrayOfTasks insertObject:newTask atIndex:0];
-//
-//    [self updateListWorkingTime];
-//
-//    self.addedTaskBar.text = @"";
-//    [self.tableView reloadData];
-//
-//    return YES;
-//}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    MTDTask *newTask = [MTDTask createTask:textField.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    }];
+
+    [newTask saveInBackground];
+
+    [MTDList addTask:newTask toList:self.list withCompletion:
+     ^(BOOL succeeded, NSError * _Nullable error) {
+    }];
+    
+    [[self.allTasksArray[0] lastObject] insertObject:newTask atIndex:0];
+    // [self updateListWorkingTime];
+    
+    textField.text = @"";
+    [self.tableView reloadData];
+
+    return YES;
+}
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
 
