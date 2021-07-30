@@ -445,12 +445,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NAD-gh-J46">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NAD-gh-J46">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="72" id="tOl-Ls-Omc" customClass="MTDConversationCell">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="72"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tOl-Ls-Omc" id="CiJ-nN-7hV">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
@@ -775,8 +775,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ViC-Rd-IC0"/>
-        <segue reference="Uxo-Z5-1c8"/>
+        <segue reference="kW6-NG-E3p"/>
+        <segue reference="wYF-Ja-7ib"/>
         <segue reference="4kM-Bs-vWe"/>
         <segue reference="Bak-5O-5l0"/>
     </inferredMetricsTieBreakers>

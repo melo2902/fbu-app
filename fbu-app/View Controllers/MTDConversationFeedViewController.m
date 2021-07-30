@@ -42,6 +42,10 @@
     } else {
         NSLog(@"User has not logged into their linked account yet");
     }
+    
+    CGRect frame = CGRectZero;
+    frame.size.height = CGFLOAT_MIN;
+    [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:frame]];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
