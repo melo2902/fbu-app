@@ -11,6 +11,7 @@
 #import "MTDList.h"
 #import "MTDListCell.h"
 #import "MainFeedHeaderView.h"
+#import "AddListHeaderView.h"
 
 @interface MTDMainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -27,6 +28,7 @@
     
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
     [self.tableView registerNib:[UINib nibWithNibName:@"MainFeedHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"MainFeedHeaderView"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"AddListHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"AddListHeaderView"];
     
     [self getLists];
 }
@@ -103,6 +105,13 @@
         
         return header;
         
+    } else if (section == 1) {
+        AddListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"AddListHeaderView"];
+        
+        header.addListBarField.delegate = self;
+        
+        return header;
+        
     } else {
         UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
         
@@ -139,25 +148,26 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-//-(BOOL)textFieldShouldReturn:(UITextField *)textField {
-//    MTDList *newList =[MTDList createList:self.addNewListField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//        if (succeeded) {
-//            NSLog(@"New list created");
-//        }
-//    }];
-//
-//    [MTDList addList:newList withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-//        if (succeeded) {
-//            NSLog(@"Added list to user");
-//        }
-//    }];
-//
-//    self.addNewListField.text = @"";
-//    [self.arrayOfUserLists addObject:newList];
-//    [self.userListTableView reloadData];
-//
-//    return YES;
-//}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    MTDList *newList =[MTDList createList:textField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"New list created");
+        }
+    }];
+
+    [MTDList addList:newList withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            NSLog(@"Added list to user");
+        }
+    }];
+
+    textField.text = @"";
+    
+    [[self.allListsArray[1] lastObject] addObject:newList];
+    [self.tableView reloadData];
+
+    return YES;
+}
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     

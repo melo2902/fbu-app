@@ -41,6 +41,8 @@
 		58903F5B26B4587C006BCDBF /* ListHeaderHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58903F5A26B4587C006BCDBF /* ListHeaderHeaderFooterView.xib */; };
 		58903F5F26B487A6006BCDBF /* MainFeedHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58903F5E26B487A6006BCDBF /* MainFeedHeaderView.xib */; };
 		58903F6326B487BD006BCDBF /* MainFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6226B487BD006BCDBF /* MainFeedHeaderView.m */; };
+		58903F6526B49190006BCDBF /* AddListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58903F6426B49190006BCDBF /* AddListHeaderView.xib */; };
+		58903F6826B4919F006BCDBF /* AddListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6726B4919F006BCDBF /* AddListHeaderView.m */; };
 		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
 		878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */; };
 /* End PBXBuildFile section */
@@ -128,6 +130,9 @@
 		58903F5E26B487A6006BCDBF /* MainFeedHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedHeaderView.xib; sourceTree = "<group>"; };
 		58903F6126B487BD006BCDBF /* MainFeedHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainFeedHeaderView.h; sourceTree = "<group>"; };
 		58903F6226B487BD006BCDBF /* MainFeedHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFeedHeaderView.m; sourceTree = "<group>"; };
+		58903F6426B49190006BCDBF /* AddListHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListHeaderView.xib; sourceTree = "<group>"; };
+		58903F6626B4919F006BCDBF /* AddListHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddListHeaderView.h; sourceTree = "<group>"; };
+		58903F6726B4919F006BCDBF /* AddListHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddListHeaderView.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +286,9 @@
 				58903F5E26B487A6006BCDBF /* MainFeedHeaderView.xib */,
 				58903F6126B487BD006BCDBF /* MainFeedHeaderView.h */,
 				58903F6226B487BD006BCDBF /* MainFeedHeaderView.m */,
+				58903F6426B49190006BCDBF /* AddListHeaderView.xib */,
+				58903F6626B4919F006BCDBF /* AddListHeaderView.h */,
+				58903F6726B4919F006BCDBF /* AddListHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -432,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5862EEC0269C9ED600BE2EA4 /* LaunchScreen.storyboard in Resources */,
+				58903F6526B49190006BCDBF /* AddListHeaderView.xib in Resources */,
 				5862EEBD269C9ED600BE2EA4 /* Assets.xcassets in Resources */,
 				5862EEBB269C9ED400BE2EA4 /* Main.storyboard in Resources */,
 				58903F5B26B4587C006BCDBF /* ListHeaderHeaderFooterView.xib in Resources */,
@@ -572,6 +581,7 @@
 				5862EEF7269CB66A00BE2EA4 /* MTDMainFeedViewController.m in Sources */,
 				5862EF0D269DE3EE00BE2EA4 /* MTDAPIManager.m in Sources */,
 				5862EF06269CC04E00BE2EA4 /* MTDTask.m in Sources */,
+				58903F6826B4919F006BCDBF /* AddListHeaderView.m in Sources */,
 				5862EF3126A7622800BE2EA4 /* MTDConversation.m in Sources */,
 				5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */,
 				5862EF2E26A6276600BE2EA4 /* MTDConversationCell.m in Sources */,
