@@ -26,11 +26,14 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    [self registerCustomViews];
+    [self getLists];
+}
+
+- (void) registerCustomViews {
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
     [self.tableView registerNib:[UINib nibWithNibName:@"MainFeedHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"MainFeedHeaderView"];
     [self.tableView registerNib:[UINib nibWithNibName:@"AddListHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"AddListHeaderView"];
-    
-    [self getLists];
 }
 
 # pragma mark - List data
@@ -59,8 +62,8 @@
     self.allListsArray = [[NSMutableArray alloc] init];
     
     NSMutableArray* tmpDefaultList = [[NSMutableArray alloc] init];
-    NSMutableArray* tmpUserList = [[NSMutableArray alloc] init];
     [tmpDefaultList addObject:@"Default Lists"];
+    NSMutableArray* tmpUserList = [[NSMutableArray alloc] init];
     [tmpUserList addObject:@"User Lists"];
     
     for (MTDList *list in userLists) {
@@ -80,6 +83,8 @@
     [self.tableView reloadData];
 }
 
+# pragma mark - initiate table view
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.allListsArray.count;
 }
@@ -87,37 +92,40 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         MTDMainFeedHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"MainFeedHeaderView"];
-
-        header.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
-
-        if (PFUser.currentUser[@"pfp"]) {
-           PFFileObject *pfp = PFUser.currentUser[@"pfp"];
-    
-           [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-               if (!error) {
-                   UIImage *originalImage = [UIImage imageWithData:imageData];
-                   header.pfpView.image = originalImage;
-                   header.pfpView.layer.cornerRadius = header.pfpView.frame.size.width / 2;
-                   header.pfpView.clipsToBounds = true;
-               }
-           }];
-        }
         
-        return header;
+        return [self setUpMainFeedHeader: header];
         
     } else if (section == 1) {
         MTDAddListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"AddListHeaderView"];
-        
         header.addListBarField.delegate = self;
         
         return header;
         
     } else {
         UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
-        
         header.textLabel.text = [self.allListsArray[section] firstObject];
+        
         return header;
     }
+}
+
+- (MTDMainFeedHeaderView *) setUpMainFeedHeader: (MTDMainFeedHeaderView *) header {
+    header.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
+
+    if (PFUser.currentUser[@"pfp"]) {
+       PFFileObject *pfp = PFUser.currentUser[@"pfp"];
+
+       [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+           if (!error) {
+               UIImage *originalImage = [UIImage imageWithData:imageData];
+               header.pfpView.image = originalImage;
+               header.pfpView.layer.cornerRadius = header.pfpView.frame.size.width / 2;
+               header.pfpView.clipsToBounds = true;
+           }
+       }];
+    }
+    
+    return header;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -128,7 +136,13 @@
     }
 }
 
-# pragma mark - set up table view
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[self.allListsArray[section] lastObject] count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MTDListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell" forIndexPath:indexPath];
@@ -140,13 +154,7 @@
     return cell;
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[self.allListsArray[section] lastObject] count];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+# pragma mark - Add a new list functionality
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     MTDList *newList =[MTDList createList:textField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
@@ -168,6 +176,8 @@
 
     return YES;
 }
+
+# pragma mark - Swipe cell configuration
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     
