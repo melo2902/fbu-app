@@ -31,8 +31,6 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    self.allTasksArray = [[NSMutableArray alloc] init];
-    
     //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
     //                                 forBarMetrics:UIBarMetricsDefault];
     //    self.navigationController.navigationBar.shadowImage = [UIImage new];
@@ -76,6 +74,9 @@
         }
         
         header.addedTaskBar.delegate = self;
+        header.taskButtonTapHandler = ^ {
+            [self performSegueWithIdentifier:@"addNewTaskSegue" sender:nil];
+        };
         
         return header;
         
@@ -166,6 +167,7 @@
 - (void) updateTaskArray: (NSArray *) tasks {
     self.arrayOfTasks = [[NSMutableArray alloc] init];
     self.arrayOfCompletedTasks = [[NSMutableArray alloc] init];
+    self.allTasksArray = [[NSMutableArray alloc] init];
     
     NSMutableArray* temporaryTasks = [[NSMutableArray alloc] init];
     NSMutableArray* temporaryCompletedTasks = [[NSMutableArray alloc] init];

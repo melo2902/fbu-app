@@ -9,4 +9,8 @@
 
 @implementation ListHeaderHeaderFooterView
 
+- (IBAction)onTapAddTask:(id)sender {
+    self.taskButtonTapHandler();
+}
+
 @end

@@ -394,11 +394,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="UOo-0c-DmN" id="Uuu-Ym-AXz"/>
+                        <segue destination="15q-3i-RO4" kind="show" identifier="addNewTaskSegue" id="4kM-Bs-vWe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwP-4P-wfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2442.0289855072465" y="865.84821428571422"/>
+            <point key="canvasLocation" x="2570" y="866"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="Ssu-Cj-nd0">
@@ -846,6 +847,7 @@
         <segue reference="ViC-Rd-IC0"/>
         <segue reference="Uxo-Z5-1c8"/>
         <segue reference="j1S-vu-Rx0"/>
+        <segue reference="4kM-Bs-vWe"/>
         <segue reference="Bak-5O-5l0"/>
     </inferredMetricsTieBreakers>
     <resources>

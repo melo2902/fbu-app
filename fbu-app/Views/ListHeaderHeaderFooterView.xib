@@ -31,8 +31,7 @@
                     <rect key="frame" x="376" y="112" width="18" height="22"/>
                     <state key="normal" image="plus" catalog="system"/>
                     <connections>
-                        <action selector="onTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="gjL-Px-U1N"/>
-                        <action selector="onTapButton:" destination="-1" eventType="touchUpInside" id="p5Y-j6-Q2e"/>
+                        <action selector="onTapAddTask:" destination="iN0-l3-epB" eventType="touchUpInside" id="LXj-sp-afK"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="workingTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-Ow-OMS">
@@ -57,6 +56,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="addTaskButton" destination="6ei-MR-lod" id="D6C-II-ch4"/>
                 <outlet property="addedTaskBar" destination="9gc-b1-eZy" id="DUp-cF-ZlC"/>
                 <outlet property="titleLabelTitle" destination="Jl0-Ef-Lrk" id="hMF-1c-OH0"/>
                 <outlet property="workingTimeLabel" destination="RiY-Ow-OMS" id="uHn-78-nJR"/>

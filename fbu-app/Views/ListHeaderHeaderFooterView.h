@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *titleLabelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *addedTaskBar;
-
+@property (weak, nonatomic) IBOutlet UIButton *addTaskButton;
+@property (nonatomic, copy) void(^taskButtonTapHandler)(void);
 @end
 
 NS_ASSUME_NONNULL_END
