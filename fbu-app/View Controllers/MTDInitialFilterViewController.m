@@ -196,12 +196,14 @@
     [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"onRead Conversations filtered out%@", currPlatform[@"onReadConversations"]);
+            
+            [self dismissViewControllerAnimated:YES completion:^{
+                NSLog(@"Dismiss View Controller");
+            }];
         }
     }];
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"Dismiss View Controller");
-    }];
+   
 }
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
