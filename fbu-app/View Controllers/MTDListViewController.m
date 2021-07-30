@@ -16,11 +16,8 @@
 #import "MTDList.h"
 
 @interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
-@property (weak, nonatomic) IBOutlet UITableView *tasksTableView;
-@property (weak, nonatomic) IBOutlet UITableView *completedTableView;
-@property (weak, nonatomic) IBOutlet UITextField *addedTaskBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *allTasksArray;
 @property (nonatomic, strong) NSMutableArray *arrayOfTasks;
 @property (nonatomic, strong) NSMutableArray *arrayOfCompletedTasks;
 @end
@@ -30,31 +27,50 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tasksTableView.dataSource = self;
-    self.tasksTableView.delegate = self;
-    self.addedTaskBar.delegate = self;
-    self.completedTableView.dataSource = self;
-    self.completedTableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-                                 forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    self.allTasksArray = [[NSMutableArray alloc] init];
     
-    self.listNameLabel.text = self.list[@"name"];
+    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+    //                                 forBarMetrics:UIBarMetricsDefault];
+    //    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //    self.navigationController.navigationBar.translucent = YES;
+    //    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    //    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     
-    [self updateListWorkingTime];
+    //  self.listNameLabel.text = self.list[@"name"];
+    
+    //  [self updateListWorkingTime];
 
     if ([self.list[@"name"] isEqual:@"My Day"] || [self.list[@"name"] isEqual:@"My Tomorrow"]) {
         [self checkMyDayMyTomorrowTasks];
     }
     
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
+
     [self getTasks];
     
     // Add an image background programatically for list
     // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.allTasksArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[self.allTasksArray[section] lastObject] count];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
+    header.textLabel.text = [self.allTasksArray[section] firstObject];
+    return header;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
 }
 
 - (void) checkMyDayMyTomorrowTasks {
@@ -122,6 +138,11 @@
     self.arrayOfTasks = [[NSMutableArray alloc] init];
     self.arrayOfCompletedTasks = [[NSMutableArray alloc] init];
     
+    NSMutableArray* temporaryTasks = [[NSMutableArray alloc] init];
+    NSMutableArray* temporaryCompletedTasks = [[NSMutableArray alloc] init];
+    [temporaryTasks addObject:self.list[@"name"]];
+    [temporaryCompletedTasks addObject:@"Completed"];
+    
     NSMutableArray *emptyDueDateTasks = [[NSMutableArray alloc] init];
     for (MTDTask *task in tasks) {
         if ([task[@"completed"] isEqual:@0]) {
@@ -136,66 +157,69 @@
     }
     
     [self.arrayOfTasks addObjectsFromArray:emptyDueDateTasks];
+    [temporaryTasks addObject: self.arrayOfTasks];
+    [self.allTasksArray addObject:temporaryTasks];
     
-    [self.tasksTableView reloadData];
-    [self.completedTableView reloadData];
+    [temporaryCompletedTasks addObject: self.arrayOfCompletedTasks];
+    [self.allTasksArray addObject:temporaryCompletedTasks];
+    
+    [self.tableView reloadData];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    MTDTask *newTask = [MTDTask createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-    }];
-    
-    [newTask saveInBackground];
-    
-    [MTDList addTask:newTask toList:self.list withCompletion:
-     ^(BOOL succeeded, NSError * _Nullable error) {
-    }];
-    
-    [self.arrayOfTasks insertObject:newTask atIndex:0];
-    
-    [self updateListWorkingTime];
-    
-    self.addedTaskBar.text = @"";
-    [self.tasksTableView reloadData];
-    
-    return YES;
-}
+//-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    MTDTask *newTask = [MTDTask createTask:self.addedTaskBar.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//    }];
+//
+//    [newTask saveInBackground];
+//
+//    [MTDList addTask:newTask toList:self.list withCompletion:
+//     ^(BOOL succeeded, NSError * _Nullable error) {
+//    }];
+//
+//    [self.arrayOfTasks insertObject:newTask atIndex:0];
+//
+//    [self updateListWorkingTime];
+//
+//    self.addedTaskBar.text = @"";
+//    [self.tableView reloadData];
+//
+//    return YES;
+//}
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (tableView == self.tasksTableView) {
-        MTDTask *task = self.arrayOfTasks[indexPath.row];
-        
-        UIContextualAction *notif1 = [self createNotification:(NSString *) @"30 second notification" inStringTime:@"30s" inSeconds:30 withIdentifier: task[@"taskTitle"]];
-        
-        UIContextualAction *notif2 = [self createNotification:(NSString *) @"60 second notification" inStringTime:@"60s" inSeconds:60 withIdentifier: task[@"taskTitle"]];
-        
-        UIContextualAction *notif3 = [self createNotification:(NSString *) @"90 second notification" inStringTime:@"90s" inSeconds:90 withIdentifier: task[@"taskTitle"]];
-        
-        UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
-        SwipeActions.performsFirstActionWithFullSwipe=false;
-        return SwipeActions;
-    }
-    
+
+    NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
+    MTDTask *task = tasksInSection[indexPath.row];
+
+    UIContextualAction *notif1 = [self createNotification:(NSString *) @"30 second notification" inStringTime:@"30s" inSeconds:30 withIdentifier: task[@"taskTitle"]];
+
+    UIContextualAction *notif2 = [self createNotification:(NSString *) @"60 second notification" inStringTime:@"60s" inSeconds:60 withIdentifier: task[@"taskTitle"]];
+
+    UIContextualAction *notif3 = [self createNotification:(NSString *) @"90 second notification" inStringTime:@"90s" inSeconds:90 withIdentifier: task[@"taskTitle"]];
+
+    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
+    SwipeActions.performsFirstActionWithFullSwipe=false;
+    return SwipeActions;
+
     return nil;
-    
+
 }
 
 - (UIContextualAction*) createNotification:(NSString *) respondant inStringTime: (NSString *) time inSeconds: (NSTimeInterval) seconds withIdentifier: (NSString *) message {
-    
+
     UIContextualAction *notification = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:time handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-        
+
         UNMutableNotificationContent *content = [UNMutableNotificationContent new];
         content.body = [NSString stringWithFormat:@"Reply to %@'s message!", respondant];
         content.sound = [UNNotificationSound defaultSound];
-        
+
         UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
             triggerWithTimeInterval:seconds repeats:NO];
-        
+
         NSString *identifier = [NSString stringWithFormat:@"%@:%@", respondant, message];
         UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
             content:content trigger:trigger];
-        
+
         // Add a custom action later though will have to use delegate
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
@@ -203,48 +227,45 @@
                 NSLog(@"Unable to set notification, error: %@",error);
             }
         }];
-        
+
         completionHandler(YES);
     }];
-    
+
     // Need to add a different color
     notification.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
-    
+
     return notification;
-    
+
 }
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-        
+
+        NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
+
         MTDTask *task;
-        if (tableView == self.tasksTableView) {
-            task = self.arrayOfTasks[indexPath.row];
-        } else {
-            task = self.arrayOfCompletedTasks[indexPath.row];
-        }
-        
+        task = tasksInSection[indexPath.row];
         
         // Tasks aren't pulled from the list
         [MTDList deleteTask:task toList:self.list withCompletion:
          ^(BOOL succeeded, NSError * _Nullable error) {
         }];
-        
+
         PFQuery *query = [PFQuery queryWithClassName:@"Task"];
         [query getObjectInBackgroundWithId:task.objectId block:^(PFObject *taskObject, NSError *error) {
           [taskObject deleteInBackground];
         }];
-        
-        [self.arrayOfTasks removeObject: task];
-        
-        [self updateListWorkingTime];
-        
-        [self.tasksTableView reloadData];
+
+
+        [[self.allTasksArray[indexPath.section] lastObject] removeObject:task];
+        // [self updateListWorkingTime];
+
+        [self.tableView reloadData];
         completionHandler(YES);
     }];
-    
+
     deleteAction.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
-    
+
     UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];
     SwipeActions.performsFirstActionWithFullSwipe= YES;
     return SwipeActions;
@@ -256,28 +277,24 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
-    MTDTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell" forIndexPath:indexPath];
-    
-    MTDTask *task;
-    if (tableView == self.tasksTableView) {
-        task = self.arrayOfTasks[indexPath.row];
-        
-        NSDate *currentDate = [NSDate new];
-        NSDate *taskDueDate = task[@"dueDate"];
+    MTDTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MTDTaskCell" forIndexPath:indexPath];
+    NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
 
-        if (taskDueDate && ![currentDate isEarlierThanOrEqualTo:taskDueDate]) {
-            cell.dueDateLabel.attributedText = [self colorStringRed:taskDueDate];
-        } else {
-            cell.dueDateLabel.text = taskDueDate.shortTimeAgoSinceNow;
-        }
-        
+    MTDTask *task;
+    task = tasksInSection[indexPath.row];
+    
+    NSDate *currentDate = [NSDate new];
+    NSDate *taskDueDate = task[@"dueDate"];
+
+    if (taskDueDate && ![currentDate isEarlierThanOrEqualTo:taskDueDate]) {
+        cell.dueDateLabel.attributedText = [self colorStringRed:taskDueDate];
     } else {
-        task = self.arrayOfCompletedTasks[indexPath.row];
+        cell.dueDateLabel.text = taskDueDate.shortTimeAgoSinceNow;
     }
    
     cell.task = task;
     cell.taskItemLabel.text = task[@"taskTitle"];
-    
+
     if ([cell.task[@"completed"] isEqual: @0]){
         [cell.completionButton setSelected:NO];
     } else {
@@ -286,45 +303,43 @@
     
     cell.completionButtonTapHandler = ^{
         if ([task[@"completed"]  isEqual: @0]){
-            [self.arrayOfTasks addObject:task];
-            [self.arrayOfCompletedTasks removeObject:task];
-            
+            [[self.allTasksArray[0] lastObject] addObject:task];
+            [[self.allTasksArray[1] lastObject] removeObject:task];
+
             [MTDList updateTime: task[@"workingTime"] toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
                 }
             }];
-            
+
         } else {
-            [self.arrayOfCompletedTasks addObject:task];
-            [self.arrayOfTasks removeObject:task];
-            
+            [[self.allTasksArray[1] lastObject] addObject:task];
+            [[self.allTasksArray[0] lastObject] removeObject:task];
+
             float updatedWorkingTime = -1 * [task[@"workingTime"] floatValue];
-            
+
             [MTDList updateTime:[NSNumber numberWithFloat:updatedWorkingTime] toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
                 }
             }];
         }
-        
-        [self updateListWorkingTime];
-        
-        [self.tasksTableView reloadData];
-        [self.completedTableView reloadData];
+
+        // [self updateListWorkingTime];
+        [self.tableView reloadData];
     };
     
     return cell;
 }
 
-- (void) updateListWorkingTime {
-    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
-    if ([workingTime isEqual: @"1"]) {
-        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
-    } else {
-        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
-    }
-}
+//- (void) updateListWorkingTime {
+//    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
+//    if ([workingTime isEqual: @"1"]) {
+//        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
+//    } else {
+//        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+//    }
+//}
 
 - (NSAttributedString *) colorStringRed: (NSDate *) dueDate {
     UIColor *color = [UIColor redColor];
@@ -335,16 +350,6 @@
     return attrStr;
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    if (tableView == self.tasksTableView) {
-        return self.arrayOfTasks.count;
-    } else {
-        return self.arrayOfCompletedTasks.count;
-    }
-    
-}
-
 - (IBAction)onTapBackButton:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];
 }
@@ -353,7 +358,7 @@
     
     [MTDList updateTime:timeChange toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            [self updateListWorkingTime];
+            // [self updateListWorkingTime];
             [self getTasks];
         }
     }];
@@ -364,13 +369,13 @@
     
     if ([segue.identifier isEqual:@"showTaskDetailsSegue"]|| [segue.identifier isEqual:@"showCompletedTaskDetailsSegue"]) {
         MTDTaskCell *tappedCell = sender;
-        NSIndexPath *indexPath = [self.tasksTableView indexPathForCell:tappedCell];
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         MTDTask *task = self.arrayOfTasks[indexPath.row];
-        
+
         MTDTaskViewController *vc = segue.destinationViewController;
         vc.delegate = self;
         vc.task = task;
-        
+
     } else if ([segue.identifier isEqual:@"addNewTaskSegue"]) {
         MTDTaskViewController *vc = segue.destinationViewController;
         vc.delegate = self;
