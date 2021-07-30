@@ -14,6 +14,7 @@
 #import "MTDTaskCell.h"
 #import "DateTools.h"
 #import "MTDList.h"
+#import "ListHeaderHeaderFooterView.h"
 
 @interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -38,17 +39,14 @@
     //    self.navigationController.navigationBar.translucent = YES;
     //    self.navigationController.view.backgroundColor = [UIColor clearColor];
     //    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-    
-    //  self.listNameLabel.text = self.list[@"name"];
-    
-    //  [self updateListWorkingTime];
 
     if ([self.list[@"name"] isEqual:@"My Day"] || [self.list[@"name"] isEqual:@"My Tomorrow"]) {
         [self checkMyDayMyTomorrowTasks];
     }
     
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
-
+    [self.tableView registerNib:[UINib nibWithNibName:@"ListHeaderHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"ListHeaderHeaderFooterView"];
+    
     [self getTasks];
     
     // Add an image background programatically for list
@@ -64,13 +62,36 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
-    header.textLabel.text = [self.allTasksArray[section] firstObject];
-    return header;
+    if (section == 0) {
+        ListHeaderHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ListHeaderHeaderFooterView"];
+
+        NSLog(@"self.list: %@", self.list[@"name"]);
+        header.titleLabelTitle.text = self.list[@"name"];
+        
+        NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
+        if ([workingTime isEqual: @"1"]) {
+            header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
+        } else {
+            header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+        }
+        
+        return header;
+        
+    } else {
+        UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
+        
+        header.textLabel.text = [self.allTasksArray[section] firstObject];
+        return header;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+    NSLog(@"tableView.sectionHeaderHeight: %f", tableView.sectionHeaderHeight);
+    if (section == 0) {
+        return 100;
+    } else {
+        return 30;
+    }
 }
 
 - (void) checkMyDayMyTomorrowTasks {
@@ -168,6 +189,8 @@
     
     [temporaryCompletedTasks addObject: self.arrayOfCompletedTasks];
     [self.allTasksArray addObject:temporaryCompletedTasks];
+    
+    NSLog(@"tasks array: %@", self.allTasksArray);
     
     [self.tableView reloadData];
 }
@@ -288,6 +311,7 @@
 
     MTDTask *task;
     task = tasksInSection[indexPath.row];
+    NSLog(@"task: %@", task);
     
     NSDate *currentDate = [NSDate new];
     NSDate *taskDueDate = task[@"dueDate"];
@@ -337,7 +361,7 @@
     
     return cell;
 }
-
+//
 //- (void) updateListWorkingTime {
 //    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
 //    if ([workingTime isEqual: @"1"]) {
