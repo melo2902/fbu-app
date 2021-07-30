@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -85,11 +86,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zmq-0I-8DZ">
-                                <rect key="frame" x="139.5" y="108" width="135" height="135"/>
+                                <rect key="frame" x="139.5" y="108.5" width="135" height="134"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="135" id="rv1-Go-HkB"/>
                                     <constraint firstAttribute="width" constant="135" id="ua4-zr-BY8"/>
                                 </constraints>
+                                <imageReference key="image" image="person.crop.circle" catalog="system" renderingMode="original"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hO-et-RQQ">
                                 <rect key="frame" x="104.5" y="253" width="205" height="42"/>
@@ -182,11 +184,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZbK-SW-BDq">
-                                <rect key="frame" x="15" y="66" width="80" height="80"/>
+                                <rect key="frame" x="15" y="66.5" width="80" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="bcj-IZ-K9J"/>
                                     <constraint firstAttribute="width" constant="80" id="c32-SX-PnD"/>
                                 </constraints>
+                                <imageReference key="image" image="person.crop.circle" catalog="system" renderingMode="original"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-O2-7Om">
                                 <rect key="frame" x="0.0" y="154" width="414" height="174"/>
@@ -506,7 +509,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtA-V2-z9p">
-                                <rect key="frame" x="121.5" y="229" width="171" height="48"/>
+                                <rect key="frame" x="121.5" y="265" width="171" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -543,12 +546,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The best to-do app on the market" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6C-sH-0jV">
-                                <rect key="frame" x="79" y="297" width="256.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S2y-jN-vHC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -558,12 +555,9 @@
                             <constraint firstItem="otX-61-JK9" firstAttribute="top" secondItem="eHt-d1-Mwu" secondAttribute="bottom" constant="15" id="1bl-Ao-lrZ"/>
                             <constraint firstItem="qLE-rs-Ofn" firstAttribute="top" secondItem="otX-61-JK9" secondAttribute="bottom" constant="15" id="3sD-uJ-EuH"/>
                             <constraint firstItem="S2y-jN-vHC" firstAttribute="trailing" secondItem="ZIi-5U-CCJ" secondAttribute="trailing" constant="40" id="86h-h4-Y0i"/>
-                            <constraint firstItem="O6C-sH-0jV" firstAttribute="centerX" secondItem="uD9-5V-HT4" secondAttribute="centerX" id="8Sw-VI-1ak"/>
-                            <constraint firstItem="ZIi-5U-CCJ" firstAttribute="top" secondItem="O6C-sH-0jV" secondAttribute="bottom" constant="15" id="A2Y-b2-exc"/>
                             <constraint firstItem="qLE-rs-Ofn" firstAttribute="trailing" secondItem="ZIi-5U-CCJ" secondAttribute="trailing" id="C1U-7h-4Q5"/>
                             <constraint firstItem="76p-V6-Ia2" firstAttribute="leading" secondItem="ZIi-5U-CCJ" secondAttribute="leading" id="DX5-IC-irZ"/>
                             <constraint firstItem="eHt-d1-Mwu" firstAttribute="trailing" secondItem="ZIi-5U-CCJ" secondAttribute="trailing" id="FS3-hb-aaW"/>
-                            <constraint firstItem="O6C-sH-0jV" firstAttribute="top" secondItem="FtA-V2-z9p" secondAttribute="bottom" constant="20" id="Gs3-30-7de"/>
                             <constraint firstItem="otX-61-JK9" firstAttribute="centerY" secondItem="uD9-5V-HT4" secondAttribute="centerY" id="MHP-by-C8H"/>
                             <constraint firstItem="eHt-d1-Mwu" firstAttribute="top" secondItem="ZIi-5U-CCJ" secondAttribute="bottom" constant="15" id="UlM-hq-o8S"/>
                             <constraint firstItem="qLE-rs-Ofn" firstAttribute="leading" secondItem="ZIi-5U-CCJ" secondAttribute="leading" id="VKY-2M-jMi"/>
@@ -572,6 +566,7 @@
                             <constraint firstItem="otX-61-JK9" firstAttribute="leading" secondItem="ZIi-5U-CCJ" secondAttribute="leading" id="mEf-w1-bo1"/>
                             <constraint firstItem="ZRn-in-KUq" firstAttribute="top" secondItem="76p-V6-Ia2" secondAttribute="bottom" constant="15" id="nqv-dz-ADC"/>
                             <constraint firstItem="76p-V6-Ia2" firstAttribute="top" secondItem="qLE-rs-Ofn" secondAttribute="bottom" constant="15" id="qUv-hk-JGN"/>
+                            <constraint firstItem="ZIi-5U-CCJ" firstAttribute="top" secondItem="FtA-V2-z9p" secondAttribute="bottom" constant="20" id="s9e-Iv-88V"/>
                             <constraint firstItem="otX-61-JK9" firstAttribute="trailing" secondItem="ZIi-5U-CCJ" secondAttribute="trailing" id="u3X-ci-5N4"/>
                             <constraint firstItem="FtA-V2-z9p" firstAttribute="centerX" secondItem="uD9-5V-HT4" secondAttribute="centerX" id="vXS-KX-LBu"/>
                         </constraints>
@@ -949,10 +944,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ViC-Rd-IC0"/>
-        <segue reference="wYF-Ja-7ib"/>
+        <segue reference="Uxo-Z5-1c8"/>
         <segue reference="j1S-vu-Rx0"/>
         <segue reference="ZfJ-JM-Rzw"/>
-        <segue reference="MAA-rn-xWN"/>
+        <segue reference="Bak-5O-5l0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
@@ -963,6 +958,7 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
