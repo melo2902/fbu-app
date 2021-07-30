@@ -161,6 +161,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addGroupMePlatformButton" destination="DlI-PI-CM4" id="xFD-1m-FgH"/>
+                        <outlet property="platformLabel" destination="s4M-W0-Kzo" id="71x-iS-4fW"/>
                         <outlet property="userEmailLabel" destination="oLD-rH-X3x" id="ebl-Jd-xCD"/>
                         <outlet property="userNameLabel" destination="3hO-et-RQQ" id="Lvw-3e-Mqd"/>
                         <outlet property="userPFPView" destination="Zmq-0I-8DZ" id="4ut-Er-hlR"/>
@@ -328,6 +330,7 @@
                                 <rect key="frame" x="366" y="171" width="18" height="22"/>
                                 <state key="normal" image="plus" catalog="system"/>
                                 <connections>
+                                    <action selector="addGroupMePlatform:" destination="srJ-gq-CQC" eventType="touchUpInside" id="ACb-cy-65d"/>
                                     <segue destination="15q-3i-RO4" kind="show" identifier="addNewTaskSegue" id="t6j-4o-zKt"/>
                                 </connections>
                             </button>
@@ -490,6 +493,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RwP-4P-wfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="srJ-gq-CQC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2442.0289855072465" y="865.84821428571422"/>
         </scene>

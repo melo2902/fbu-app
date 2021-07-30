@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userEmailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *platformLabel;
 @end
 
 @implementation MTDSettingsViewController
@@ -24,6 +25,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeStates];
+    
+    if ([MTDAPIManager returnAuthToken]) {
+        [self.addGroupMePlatformButton setEnabled:NO];
+        [self.addGroupMePlatformButton setTintColor: [UIColor clearColor]];
+        
+        self.platformLabel.text = @"GroupMe linked!";
+    } else {
+        [self.addGroupMePlatformButton setEnabled:YES];
+        [self.addGroupMePlatformButton setTintColor: nil];
+        
+        self.platformLabel.text = @"Link GroupMe account";
+    }
     
     //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
     //                                 forBarMetrics:UIBarMetricsDefault];
@@ -189,4 +202,6 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (IBAction)addGroupMePlatform:(id)sender {
+}
 @end

@@ -10,6 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MTDSettingsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *addGroupMePlatformButton;
 
 @end
 
