@@ -1,5 +1,5 @@
 //
-//  MainFeedHeaderView.h
+//  MTDMainFeedHeaderView.h
 //  fbu-app
 //
 //  Created by mwen on 7/30/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MainFeedHeaderView : UITableViewHeaderFooterView
+@interface MTDMainFeedHeaderView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UIImageView *pfpView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @end

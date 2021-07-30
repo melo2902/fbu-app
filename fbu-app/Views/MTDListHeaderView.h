@@ -1,5 +1,5 @@
 //
-//  ListHeaderHeaderFooterView.h
+//  MTDListHeaderView.h
 //  fbu-app
 //
 //  Created by mwen on 7/30/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListHeaderHeaderFooterView : UITableViewHeaderFooterView
+@interface MTDListHeaderView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UILabel *titleLabelTitle;
 @property (weak, nonatomic) IBOutlet UILabel *workingTimeLabel;
 @property (weak, nonatomic) IBOutlet UITextField *addedTaskBar;

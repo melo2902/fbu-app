@@ -1,5 +1,5 @@
 //
-//  AddListHeaderView.h
+//  MTDAddListHeaderView.h
 //  fbu-app
 //
 //  Created by mwen on 7/30/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddListHeaderView : UITableViewHeaderFooterView
+@interface MTDAddListHeaderView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UITextField *addListBarField;
 
 @end

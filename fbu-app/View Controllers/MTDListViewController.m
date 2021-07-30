@@ -14,7 +14,7 @@
 #import "MTDTaskCell.h"
 #import "DateTools.h"
 #import "MTDList.h"
-#import "ListHeaderHeaderFooterView.h"
+#import "MTDListHeaderView.h"
 
 @interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -61,7 +61,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        ListHeaderHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ListHeaderHeaderFooterView"];
+        MTDListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ListHeaderHeaderFooterView"];
 
         header.titleLabelTitle.text = self.list[@"name"];
         

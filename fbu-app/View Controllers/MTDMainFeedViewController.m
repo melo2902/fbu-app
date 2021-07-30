@@ -10,8 +10,8 @@
 #import "MTDListViewController.h"
 #import "MTDList.h"
 #import "MTDListCell.h"
-#import "MainFeedHeaderView.h"
-#import "AddListHeaderView.h"
+#import "MTDMainFeedHeaderView.h"
+#import "MTDAddListHeaderView.h"
 
 @interface MTDMainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -86,7 +86,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        MainFeedHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"MainFeedHeaderView"];
+        MTDMainFeedHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"MainFeedHeaderView"];
 
         header.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
 
@@ -106,7 +106,7 @@
         return header;
         
     } else if (section == 1) {
-        AddListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"AddListHeaderView"];
+        MTDAddListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"AddListHeaderView"];
         
         header.addListBarField.delegate = self;
         
@@ -175,6 +175,7 @@
     MTDList *list = listsInSection[indexPath.row];
     
     if ([list[@"defaultList"]  isEqual: @0]){
+        
         UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             
             [self deleteActions:list];
@@ -182,7 +183,7 @@
             
             completionHandler(YES);
         }];
-        
+
         deleteAction.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
         
         UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[deleteAction]];

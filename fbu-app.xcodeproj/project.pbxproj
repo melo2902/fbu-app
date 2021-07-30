@@ -37,12 +37,12 @@
 		5862EF3A26A9CEA700BE2EA4 /* MTDSelectionConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3926A9CEA700BE2EA4 /* MTDSelectionConversationCell.m */; };
 		5862EF4026AF956C00BE2EA4 /* MTDMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF3F26AF956C00BE2EA4 /* MTDMessagesViewController.m */; };
 		586DE3EF26B1EFAF00DD22FF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586DE3EE26B1EFAF00DD22FF /* WebKit.framework */; };
-		58903F5926B4585A006BCDBF /* ListHeaderHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F5826B4585A006BCDBF /* ListHeaderHeaderFooterView.m */; };
+		58903F5926B4585A006BCDBF /* MTDListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F5826B4585A006BCDBF /* MTDListHeaderView.m */; };
 		58903F5B26B4587C006BCDBF /* ListHeaderHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58903F5A26B4587C006BCDBF /* ListHeaderHeaderFooterView.xib */; };
 		58903F5F26B487A6006BCDBF /* MainFeedHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58903F5E26B487A6006BCDBF /* MainFeedHeaderView.xib */; };
-		58903F6326B487BD006BCDBF /* MainFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6226B487BD006BCDBF /* MainFeedHeaderView.m */; };
+		58903F6326B487BD006BCDBF /* MTDMainFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6226B487BD006BCDBF /* MTDMainFeedHeaderView.m */; };
 		58903F6526B49190006BCDBF /* AddListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58903F6426B49190006BCDBF /* AddListHeaderView.xib */; };
-		58903F6826B4919F006BCDBF /* AddListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6726B4919F006BCDBF /* AddListHeaderView.m */; };
+		58903F6826B4919F006BCDBF /* MTDAddListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6726B4919F006BCDBF /* MTDAddListHeaderView.m */; };
 		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
 		878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */; };
 /* End PBXBuildFile section */
@@ -124,15 +124,15 @@
 		5862EF3E26AF956C00BE2EA4 /* MTDMessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDMessagesViewController.h; sourceTree = "<group>"; };
 		5862EF3F26AF956C00BE2EA4 /* MTDMessagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDMessagesViewController.m; sourceTree = "<group>"; };
 		586DE3EE26B1EFAF00DD22FF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		58903F5726B4585A006BCDBF /* ListHeaderHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListHeaderHeaderFooterView.h; sourceTree = "<group>"; };
-		58903F5826B4585A006BCDBF /* ListHeaderHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListHeaderHeaderFooterView.m; sourceTree = "<group>"; };
+		58903F5726B4585A006BCDBF /* MTDListHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDListHeaderView.h; sourceTree = "<group>"; };
+		58903F5826B4585A006BCDBF /* MTDListHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDListHeaderView.m; sourceTree = "<group>"; };
 		58903F5A26B4587C006BCDBF /* ListHeaderHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListHeaderHeaderFooterView.xib; sourceTree = "<group>"; };
 		58903F5E26B487A6006BCDBF /* MainFeedHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainFeedHeaderView.xib; sourceTree = "<group>"; };
-		58903F6126B487BD006BCDBF /* MainFeedHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainFeedHeaderView.h; sourceTree = "<group>"; };
-		58903F6226B487BD006BCDBF /* MainFeedHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainFeedHeaderView.m; sourceTree = "<group>"; };
+		58903F6126B487BD006BCDBF /* MTDMainFeedHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDMainFeedHeaderView.h; sourceTree = "<group>"; };
+		58903F6226B487BD006BCDBF /* MTDMainFeedHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDMainFeedHeaderView.m; sourceTree = "<group>"; };
 		58903F6426B49190006BCDBF /* AddListHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListHeaderView.xib; sourceTree = "<group>"; };
-		58903F6626B4919F006BCDBF /* AddListHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddListHeaderView.h; sourceTree = "<group>"; };
-		58903F6726B4919F006BCDBF /* AddListHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddListHeaderView.m; sourceTree = "<group>"; };
+		58903F6626B4919F006BCDBF /* MTDAddListHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDAddListHeaderView.h; sourceTree = "<group>"; };
+		58903F6726B4919F006BCDBF /* MTDAddListHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDAddListHeaderView.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,15 +280,15 @@
 				5862EF2D26A6276600BE2EA4 /* MTDConversationCell.m */,
 				5862EF3826A9CEA700BE2EA4 /* MTDSelectionConversationCell.h */,
 				5862EF3926A9CEA700BE2EA4 /* MTDSelectionConversationCell.m */,
-				58903F5726B4585A006BCDBF /* ListHeaderHeaderFooterView.h */,
-				58903F5826B4585A006BCDBF /* ListHeaderHeaderFooterView.m */,
+				58903F5726B4585A006BCDBF /* MTDListHeaderView.h */,
+				58903F5826B4585A006BCDBF /* MTDListHeaderView.m */,
 				58903F5A26B4587C006BCDBF /* ListHeaderHeaderFooterView.xib */,
 				58903F5E26B487A6006BCDBF /* MainFeedHeaderView.xib */,
-				58903F6126B487BD006BCDBF /* MainFeedHeaderView.h */,
-				58903F6226B487BD006BCDBF /* MainFeedHeaderView.m */,
+				58903F6126B487BD006BCDBF /* MTDMainFeedHeaderView.h */,
+				58903F6226B487BD006BCDBF /* MTDMainFeedHeaderView.m */,
 				58903F6426B49190006BCDBF /* AddListHeaderView.xib */,
-				58903F6626B4919F006BCDBF /* AddListHeaderView.h */,
-				58903F6726B4919F006BCDBF /* AddListHeaderView.m */,
+				58903F6626B4919F006BCDBF /* MTDAddListHeaderView.h */,
+				58903F6726B4919F006BCDBF /* MTDAddListHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -575,13 +575,13 @@
 				5862EEEE269CA40600BE2EA4 /* MTDSignupViewController.m in Sources */,
 				5862EF3726A9CD7400BE2EA4 /* MTDInitialFilterViewController.m in Sources */,
 				5862EF4026AF956C00BE2EA4 /* MTDMessagesViewController.m in Sources */,
-				58903F6326B487BD006BCDBF /* MainFeedHeaderView.m in Sources */,
+				58903F6326B487BD006BCDBF /* MTDMainFeedHeaderView.m in Sources */,
 				5862EF00269CBF2E00BE2EA4 /* MTDListViewController.m in Sources */,
 				5862EF2426A20FD800BE2EA4 /* MTDGroup.m in Sources */,
 				5862EEF7269CB66A00BE2EA4 /* MTDMainFeedViewController.m in Sources */,
 				5862EF0D269DE3EE00BE2EA4 /* MTDAPIManager.m in Sources */,
 				5862EF06269CC04E00BE2EA4 /* MTDTask.m in Sources */,
-				58903F6826B4919F006BCDBF /* AddListHeaderView.m in Sources */,
+				58903F6826B4919F006BCDBF /* MTDAddListHeaderView.m in Sources */,
 				5862EF3126A7622800BE2EA4 /* MTDConversation.m in Sources */,
 				5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */,
 				5862EF2E26A6276600BE2EA4 /* MTDConversationCell.m in Sources */,
@@ -589,7 +589,7 @@
 				5862EF3A26A9CEA700BE2EA4 /* MTDSelectionConversationCell.m in Sources */,
 				5862EEC3269C9ED600BE2EA4 /* main.m in Sources */,
 				5862EEFA269CB79500BE2EA4 /* MTDSettingsViewController.m in Sources */,
-				58903F5926B4585A006BCDBF /* ListHeaderHeaderFooterView.m in Sources */,
+				58903F5926B4585A006BCDBF /* MTDListHeaderView.m in Sources */,
 				5862EF03269CC03A00BE2EA4 /* MTDList.m in Sources */,
 				5862EF2826A221F900BE2EA4 /* MTDPlatform.m in Sources */,
 				5862EF10269E141500BE2EA4 /* MTDTaskCell.m in Sources */,
