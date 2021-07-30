@@ -75,7 +75,6 @@
             header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
         }
         
-        header.listName = self.list[@"name"];
         header.addedTaskBar.delegate = self;
         
         return header;
