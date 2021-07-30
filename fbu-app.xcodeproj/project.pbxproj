@@ -26,7 +26,6 @@
 		5862EF06269CC04E00BE2EA4 /* MTDTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF05269CC04E00BE2EA4 /* MTDTask.m */; };
 		5862EF0D269DE3EE00BE2EA4 /* MTDAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0C269DE3EE00BE2EA4 /* MTDAPIManager.m */; };
 		5862EF10269E141500BE2EA4 /* MTDTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF0F269E141500BE2EA4 /* MTDTaskCell.m */; };
-		5862EF1B26A08DF200BE2EA4 /* MTDMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF1A26A08DF200BE2EA4 /* MTDMessageCell.m */; };
 		5862EF2126A0C86100BE2EA4 /* MTDConversationFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2026A0C86100BE2EA4 /* MTDConversationFeedViewController.m */; };
 		5862EF2426A20FD800BE2EA4 /* MTDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2326A20FD800BE2EA4 /* MTDGroup.m */; };
 		5862EF2826A221F900BE2EA4 /* MTDPlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF2726A221F800BE2EA4 /* MTDPlatform.m */; };
@@ -103,8 +102,6 @@
 		5862EF0C269DE3EE00BE2EA4 /* MTDAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDAPIManager.m; sourceTree = "<group>"; };
 		5862EF0E269E141500BE2EA4 /* MTDTaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDTaskCell.h; sourceTree = "<group>"; };
 		5862EF0F269E141500BE2EA4 /* MTDTaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDTaskCell.m; sourceTree = "<group>"; };
-		5862EF1926A08DF200BE2EA4 /* MTDMessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDMessageCell.h; sourceTree = "<group>"; };
-		5862EF1A26A08DF200BE2EA4 /* MTDMessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDMessageCell.m; sourceTree = "<group>"; };
 		5862EF1F26A0C86100BE2EA4 /* MTDConversationFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDConversationFeedViewController.h; sourceTree = "<group>"; };
 		5862EF2026A0C86100BE2EA4 /* MTDConversationFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDConversationFeedViewController.m; sourceTree = "<group>"; };
 		5862EF2226A20FD800BE2EA4 /* MTDGroup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDGroup.h; sourceTree = "<group>"; };
@@ -274,8 +271,6 @@
 				5862EEFC269CBEC300BE2EA4 /* MTDListCell.m */,
 				5862EF0E269E141500BE2EA4 /* MTDTaskCell.h */,
 				5862EF0F269E141500BE2EA4 /* MTDTaskCell.m */,
-				5862EF1926A08DF200BE2EA4 /* MTDMessageCell.h */,
-				5862EF1A26A08DF200BE2EA4 /* MTDMessageCell.m */,
 				5862EF2C26A6276600BE2EA4 /* MTDConversationCell.h */,
 				5862EF2D26A6276600BE2EA4 /* MTDConversationCell.m */,
 				5862EF3826A9CEA700BE2EA4 /* MTDSelectionConversationCell.h */,
@@ -593,7 +588,6 @@
 				5862EF03269CC03A00BE2EA4 /* MTDList.m in Sources */,
 				5862EF2826A221F900BE2EA4 /* MTDPlatform.m in Sources */,
 				5862EF10269E141500BE2EA4 /* MTDTaskCell.m in Sources */,
-				5862EF1B26A08DF200BE2EA4 /* MTDMessageCell.m in Sources */,
 				5862EF3426A8CA2000BE2EA4 /* MTDTaskViewController.m in Sources */,
 				5862EEB5269C9ED400BE2EA4 /* SceneDelegate.m in Sources */,
 				5862EEEA269CA28F00BE2EA4 /* MTDLoginViewController.m in Sources */,
