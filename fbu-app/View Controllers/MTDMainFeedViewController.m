@@ -10,15 +10,11 @@
 #import "MTDListViewController.h"
 #import "MTDList.h"
 #import "MTDListCell.h"
+#import "MainFeedHeaderView.h"
 
 @interface MTDMainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
-@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
-@property (weak, nonatomic) IBOutlet UITableView *defaultTableView;
-@property (weak, nonatomic) IBOutlet UITableView *userListTableView;
-@property (weak, nonatomic) IBOutlet UITextField *addNewListField;
-@property (nonatomic, strong) NSMutableArray *arrayOfDefaultLists;
-@property (nonatomic, strong) NSMutableArray *arrayOfUserLists;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *allListsArray;
 @end
 
 @implementation MTDMainFeedViewController
@@ -26,31 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.defaultTableView.dataSource = self;
-    self.defaultTableView.delegate = self;
-    self.userListTableView.dataSource = self;
-    self.userListTableView.delegate = self;
-    self.addNewListField.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
-    [self initializeStates];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MainFeedHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"MainFeedHeaderView"];
+    
     [self getLists];
-}
-
-- (void) initializeStates {
-    self.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
-
-    if (PFUser.currentUser[@"pfp"]) {
-       PFFileObject *pfp = PFUser.currentUser[@"pfp"];
-       
-       [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
-           if (!error) {
-               UIImage *originalImage = [UIImage imageWithData:imageData];
-               self.userPFPView.image = originalImage;
-               self.userPFPView.layer.cornerRadius = self.userPFPView.frame.size.width / 2;
-               self.userPFPView.clipsToBounds = true;
-           }
-       }];
-    }
 }
 
 # pragma mark - List data
@@ -74,19 +52,71 @@
 }
 
 - (void) updateArrayData:(NSMutableArray*) userLists {
-    self.arrayOfUserLists = [[NSMutableArray alloc] init];
-    self.arrayOfDefaultLists = [[NSMutableArray alloc] init];
+    NSMutableArray *arrayOfUserLists = [[NSMutableArray alloc] init];
+    NSMutableArray *arrayOfDefaultLists = [[NSMutableArray alloc] init];
+    self.allListsArray = [[NSMutableArray alloc] init];
+    
+    NSMutableArray* tmpDefaultList = [[NSMutableArray alloc] init];
+    NSMutableArray* tmpUserList = [[NSMutableArray alloc] init];
+    [tmpDefaultList addObject:@"Default Lists"];
+    [tmpUserList addObject:@"User Lists"];
     
     for (MTDList *list in userLists) {
         if ([list[@"defaultList"]  isEqual: @1]) {
-            [self.arrayOfDefaultLists addObject:list];
+            [arrayOfDefaultLists addObject:list];
         } else {
-            [self.arrayOfUserLists addObject:list];
+            [arrayOfUserLists addObject:list];
         }
     }
     
-    [self.defaultTableView reloadData];
-    [self.userListTableView reloadData];
+    [tmpDefaultList addObject: arrayOfDefaultLists];
+    [self.allListsArray addObject:tmpDefaultList];
+    
+    [tmpUserList addObject: arrayOfUserLists];
+    [self.allListsArray addObject:tmpUserList];
+    
+    [self.tableView reloadData];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.allListsArray.count;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        MainFeedHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"MainFeedHeaderView"];
+
+        header.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
+
+        if (PFUser.currentUser[@"pfp"]) {
+           PFFileObject *pfp = PFUser.currentUser[@"pfp"];
+    
+           [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+               if (!error) {
+                   UIImage *originalImage = [UIImage imageWithData:imageData];
+                   header.pfpView.image = originalImage;
+                   header.pfpView.layer.cornerRadius = header.pfpView.frame.size.width / 2;
+                   header.pfpView.clipsToBounds = true;
+               }
+           }];
+        }
+        
+        return header;
+        
+    } else {
+        UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
+        
+        header.textLabel.text = [self.allListsArray[section] firstObject];
+        return header;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 120;
+    } else {
+        return 30;
+    }
 }
 
 # pragma mark - set up table view
@@ -94,60 +124,51 @@
 - (UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MTDListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListCell" forIndexPath:indexPath];
     
-    MTDList *list;
-    if (tableView == self.defaultTableView) {
-        list = self.arrayOfDefaultLists[indexPath.row];
-    } else if (tableView == self.userListTableView) {
-        list = self.arrayOfUserLists[indexPath.row];
-    }
-    
+    NSArray *listsInSection = [self.allListsArray[indexPath.section] lastObject];
+    MTDList *list = listsInSection[indexPath.row];
     cell.listNameLabel.text = list[@"name"];
     
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.defaultTableView) {
-        return self.arrayOfDefaultLists.count;
-    } else if (tableView == self.userListTableView) {
-        return self.arrayOfUserLists.count;
-    }
-    
-    return 0;
+    return [[self.allListsArray[section] lastObject] count];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    MTDList *newList =[MTDList createList:self.addNewListField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"New list created");
-        }
-    }];
-    
-    [MTDList addList:newList withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded) {
-            NSLog(@"Added list to user");
-        }
-    }];
-    
-    self.addNewListField.text = @"";
-    [self.arrayOfUserLists addObject:newList];
-    [self.userListTableView reloadData];
-    
-    return YES;
-}
+//-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    MTDList *newList =[MTDList createList:self.addNewListField.text ifDefault: NO withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (succeeded) {
+//            NSLog(@"New list created");
+//        }
+//    }];
+//
+//    [MTDList addList:newList withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (succeeded) {
+//            NSLog(@"Added list to user");
+//        }
+//    }];
+//
+//    self.addNewListField.text = @"";
+//    [self.arrayOfUserLists addObject:newList];
+//    [self.userListTableView reloadData];
+//
+//    return YES;
+//}
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (tableView == self.userListTableView){
+    NSArray *listsInSection = [self.allListsArray[indexPath.section] lastObject];
+    MTDList *list = listsInSection[indexPath.row];
+    
+    if ([list[@"defaultList"]  isEqual: @0]){
         UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"Delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             
-            MTDList *list = self.arrayOfUserLists[indexPath.row];
             [self deleteActions:list];
-            [self.userListTableView reloadData];
+            [self.tableView reloadData];
             
             completionHandler(YES);
         }];
@@ -169,7 +190,7 @@
       [listObject deleteInBackground];
     }];
     
-    [self.arrayOfUserLists removeObject: list];
+    [[self.allListsArray[1] lastObject] removeObject:list];
 }
 
 #pragma mark - Navigation
@@ -177,18 +198,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual:@"openListSegue"]) {
         MTDListCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         
-        NSIndexPath *indexPath = [self.defaultTableView indexPathForCell:tappedCell];
-        MTDList *list = self.arrayOfDefaultLists[indexPath.row];
-        
-        UINavigationController *navigationController = [segue destinationViewController];
-        MTDListViewController *listViewController = (MTDListViewController*) [navigationController topViewController];
-        listViewController.list = list;
-        
-    } else if ([segue.identifier isEqual:@"openUserListSegue"]) {
-        MTDListCell *tappedCell = sender;
-        NSIndexPath *indexPath = [self.userListTableView indexPathForCell:tappedCell];
-        MTDList *list = self.arrayOfUserLists[indexPath.row];
+        NSArray *listsInSection = [self.allListsArray[indexPath.section] lastObject];
+        MTDList *list = listsInSection[indexPath.row];
         
         UINavigationController *navigationController = [segue destinationViewController];
         MTDListViewController *listViewController = (MTDListViewController*) [navigationController topViewController];

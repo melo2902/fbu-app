@@ -63,7 +63,6 @@
     if (section == 0) {
         ListHeaderHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ListHeaderHeaderFooterView"];
 
-        NSLog(@"self.list: %@", self.list[@"name"]);
         header.titleLabelTitle.text = self.list[@"name"];
         
         NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
@@ -89,7 +88,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    NSLog(@"tableView.sectionHeaderHeight: %f", tableView.sectionHeaderHeight);
     if (section == 0) {
         return 100;
     } else {
@@ -193,8 +191,6 @@
     
     [temporaryCompletedTasks addObject: self.arrayOfCompletedTasks];
     [self.allTasksArray addObject:temporaryCompletedTasks];
-    
-    NSLog(@"tasks array: %@", self.allTasksArray);
     
     [self.tableView reloadData];
 }
