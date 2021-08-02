@@ -9,8 +9,4 @@
 
 @implementation MTDListHeaderView
 
-- (IBAction)onTapAddTask:(id)sender {
-    self.taskButtonTapHandler();
-}
-
 @end

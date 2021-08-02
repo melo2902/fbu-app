@@ -110,12 +110,7 @@
     }
     
     header.addedTaskBar.delegate = self;
-    
-    __weak MTDListHeaderView *weakHeader = header;
-    weakHeader.taskButtonTapHandler = ^ {
-        [self performSegueWithIdentifier:@"addNewTaskSegue" sender:nil];
-    };
-    
+
     return header;
 }
 
