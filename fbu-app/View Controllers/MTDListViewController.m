@@ -64,7 +64,7 @@
         MTDListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ListHeaderHeaderFooterView"];
 
         header.titleLabelTitle.text = self.list[@"name"];
-        
+
         NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
         if ([workingTime isEqual: @"1"]) {
             header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
@@ -73,7 +73,9 @@
         }
         
         header.addedTaskBar.delegate = self;
-        header.taskButtonTapHandler = ^ {
+        
+        __weak MTDListHeaderView *weakHeader = header;
+        weakHeader.taskButtonTapHandler = ^ {
             [self performSegueWithIdentifier:@"addNewTaskSegue" sender:nil];
         };
         
@@ -361,7 +363,7 @@
     
     return cell;
 }
-//
+
 //- (void) updateListWorkingTime {
 //    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
 //    if ([workingTime isEqual: @"1"]) {
