@@ -55,9 +55,11 @@
 + (void) deleteTask: ( MTDTask *)task toList: (MTDList*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
 
     [list[@"arrayOfItems"] removeObject:task];
-    float updatedWorkingTime = [list[@"totalWorkingTime"] floatValue] - [task[@"workingTime"] floatValue];
     
-    list[@"totalWorkingTime"] = [NSNumber numberWithFloat:updatedWorkingTime];
+    if ([task[@"completed"] isEqual: @0]) {
+        float updatedWorkingTime = [list[@"totalWorkingTime"] floatValue] - [task[@"workingTime"] floatValue];
+        list[@"totalWorkingTime"] = [NSNumber numberWithFloat:updatedWorkingTime];
+    }
     
     [list saveInBackgroundWithBlock: completion];
 }

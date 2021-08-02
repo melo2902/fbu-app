@@ -218,7 +218,6 @@
     }];
     
     [[self.allTasksArray[0] lastObject] insertObject:newTask atIndex:0];
-    // [self updateListWorkingTime];
     
     textField.text = @"";
     [self.tableView reloadData];
@@ -295,13 +294,12 @@
 
         PFQuery *query = [PFQuery queryWithClassName:@"Task"];
         [query getObjectInBackgroundWithId:task.objectId block:^(PFObject *taskObject, NSError *error) {
-          [taskObject deleteInBackground];
+            [taskObject deleteInBackground];
         }];
 
 
         [[self.allTasksArray[indexPath.section] lastObject] removeObject:task];
-        // [self updateListWorkingTime];
-
+        
         [self.tableView reloadData];
         completionHandler(YES);
     }];
@@ -370,21 +368,11 @@
             }];
         }
 
-        // [self updateListWorkingTime];
         [self.tableView reloadData];
     };
     
     return cell;
 }
-
-//- (void) updateListWorkingTime {
-//    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
-//    if ([workingTime isEqual: @"1"]) {
-//        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
-//    } else {
-//        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
-//    }
-//}
 
 - (NSAttributedString *) strikeOutText: (NSString *) text {
     NSDictionary* attributes = @{
@@ -412,7 +400,6 @@
     
     [MTDList updateTime:timeChange toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            // [self updateListWorkingTime];
             [self getTasks];
         }
     }];
