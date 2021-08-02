@@ -26,6 +26,13 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                 forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    
     [self registerCustomViews];
     [self getLists];
 }
@@ -92,6 +99,11 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         MTDMainFeedHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"MainFeedHeaderView"];
+        
+        __weak MTDMainFeedHeaderView *weakHeader = header;
+        weakHeader.settingsButtonTapHandler = ^{
+            [self performSegueWithIdentifier:@"showSettingsSegue" sender:nil];
+        };
         
         return [self setUpMainFeedHeader: header];
         

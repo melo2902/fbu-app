@@ -183,7 +183,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-O2-7Om">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-O2-7Om">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCell" rowHeight="76" id="mdE-z9-c2j" customClass="MTDListCell">
@@ -224,10 +224,11 @@
                             <constraint firstItem="V3h-O2-7Om" firstAttribute="leading" secondItem="m9Z-e5-Y1N" secondAttribute="leading" id="c9J-aC-Bjn"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="list.dash" catalog="system" id="0eJ-yA-joW"/>
                     <navigationItem key="navigationItem" id="f4o-E2-wAH">
                         <barButtonItem key="leftBarButtonItem" image="gearshape.fill" catalog="system" id="SXe-7i-dBg">
                             <connections>
-                                <segue destination="Der-Rb-wqR" kind="show" id="Uxo-Z5-1c8"/>
+                                <segue destination="Der-Rb-wqR" kind="show" identifier="showSettingsSegue" id="Uxo-Z5-1c8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -427,7 +428,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="MFY-gw-FFF" kind="relationship" relationship="viewControllers" id="MZt-7T-SYA"/>
+                        <segue destination="yvt-zv-tKF" kind="relationship" relationship="viewControllers" id="iTt-kQ-YaA"/>
                         <segue destination="OQU-e9-7A0" kind="relationship" relationship="viewControllers" id="nuP-cs-viC"/>
                     </connections>
                 </tabBarController>
@@ -443,15 +444,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NAD-gh-J46">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NAD-gh-J46">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="72" id="tOl-Ls-Omc" customClass="MTDConversationCell">
-                                        <rect key="frame" x="0.0" y="49.5" width="414" height="72"/>
+                                        <rect key="frame" x="20" y="49.5" width="374" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tOl-Ls-Omc" id="CiJ-nN-7hV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-8x-7PE">
@@ -467,19 +467,19 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" text="GROUP ME NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-Ko-sxy">
-                                                    <rect key="frame" x="57" y="10" width="275" height="18"/>
+                                                    <rect key="frame" x="57" y="10" width="235" height="18"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message in conversation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfY-Hl-s3h">
-                                                    <rect key="frame" x="57" y="38" width="337" height="20.5"/>
+                                                    <rect key="frame" x="57" y="38" width="297" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Ago" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7m-jL-A2R">
-                                                    <rect key="frame" x="342" y="11" width="57" height="16"/>
+                                                    <rect key="frame" x="302" y="11" width="57" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -546,7 +546,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="50a-Mp-g6q">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectionConversationCell" rowHeight="68" id="7GU-jx-K1v" customClass="MTDSelectionConversationCell">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="68"/>
@@ -695,25 +694,6 @@
             <point key="canvasLocation" x="3447.826086956522" y="865.84821428571422"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="K3P-is-ldS">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="MFY-gw-FFF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="list.bullet" catalog="system" id="MoK-yL-ttd"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y4j-eI-LU6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="yvt-zv-tKF" kind="relationship" relationship="rootViewController" id="THc-9Y-knV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jQe-Sq-75L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-149" y="866"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="Qqb-No-e6G">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="oEw-2C-n9q" sceneMemberID="viewController">
@@ -774,7 +754,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="kW6-NG-E3p"/>
-        <segue reference="wYF-Ja-7ib"/>
+        <segue reference="Uxo-Z5-1c8"/>
         <segue reference="4kM-Bs-vWe"/>
         <segue reference="MAA-rn-xWN"/>
     </inferredMetricsTieBreakers>
@@ -784,7 +764,7 @@
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
-        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>

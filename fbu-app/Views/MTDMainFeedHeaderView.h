@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MTDMainFeedHeaderView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UIImageView *pfpView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (nonatomic, copy) void(^settingsButtonTapHandler)(void);
 @end
 
 NS_ASSUME_NONNULL_END
