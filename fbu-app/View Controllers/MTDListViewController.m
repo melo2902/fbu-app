@@ -331,7 +331,8 @@
         cell.taskItemLabel.attributedText = [self strikeOutText:task[@"taskTitle"]];
     }
     
-    cell.completionButtonTapHandler = ^{
+    __weak MTDTaskCell *weakCell = cell;
+    weakCell.completionButtonTapHandler = ^{
         if ([task[@"completed"]  isEqual: @0]){
             [[self.allTasksArray[0] lastObject] addObject:task];
             [[self.allTasksArray[1] lastObject] removeObject:task];
