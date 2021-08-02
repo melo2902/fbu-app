@@ -15,9 +15,11 @@
 #import "DateTools.h"
 #import "MTDList.h"
 #import "MTDListHeaderView.h"
+#import "MaterialButtons.h"
 
 @interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property(nonatomic, strong) MDCFloatingButton *defaultFloatingButton;
 @property (nonatomic, strong) NSMutableArray *allTasksArray;
 @property (nonatomic, strong) NSMutableArray *arrayOfTasks;
 @property (nonatomic, strong) NSMutableArray *arrayOfCompletedTasks;
@@ -45,10 +47,28 @@
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ListHeaderHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"ListHeaderHeaderFooterView"];
     
+    [self initiateTaskFAB];
     [self getTasks];
     
     // Add an image background programatically for list
     // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
+}
+
+- (void) initiateTaskFAB {
+    UIImage *plusImage =
+        [[UIImage systemImageNamed:@"plus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    MDCFloatingButton *button = [MDCFloatingButton floatingButtonWithShape:MDCFloatingButtonShapeDefault];
+    [button setImage:plusImage forState:UIControlStateNormal];
+    [self.tableView addSubview:button];
+    
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    [button.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-45.0].active = YES;
+    [button.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-50.0].active = YES;
+    [button addTarget:self action:@selector(addTask:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)addTask:(id)sender {
+    [self performSegueWithIdentifier:@"addNewTaskSegue" sender:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
