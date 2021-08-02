@@ -443,14 +443,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NAD-gh-J46">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="NAD-gh-J46">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConversationCell" rowHeight="72" id="tOl-Ls-Omc" customClass="MTDConversationCell">
-                                        <rect key="frame" x="20" y="49.5" width="374" height="72"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tOl-Ls-Omc" id="CiJ-nN-7hV">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-8x-7PE">
@@ -466,19 +467,19 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" text="GROUP ME NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBc-Ko-sxy">
-                                                    <rect key="frame" x="57" y="10" width="235" height="18"/>
+                                                    <rect key="frame" x="57" y="10" width="275" height="18"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last message in conversation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfY-Hl-s3h">
-                                                    <rect key="frame" x="57" y="38" width="297" height="20.5"/>
+                                                    <rect key="frame" x="57" y="38" width="337" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Ago" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7m-jL-A2R">
-                                                    <rect key="frame" x="302" y="11" width="57" height="16"/>
+                                                    <rect key="frame" x="342" y="11" width="57" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -503,7 +504,7 @@
                                             <outlet property="groupNameLabel" destination="IBc-Ko-sxy" id="tH5-3n-7Ne"/>
                                             <outlet property="lastMessageLabel" destination="PfY-Hl-s3h" id="yuB-gz-0sE"/>
                                             <outlet property="statusButton" destination="UPj-8x-7PE" id="d6P-Ch-4yv"/>
-                                            <segue destination="wrI-s2-aHd" kind="show" identifier="showDetailSegue" id="kW6-NG-E3p"/>
+                                            <segue destination="wrI-s2-aHd" kind="presentation" identifier="showDetailSegue" id="kW6-NG-E3p"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -654,14 +655,14 @@
             <objects>
                 <viewController storyboardIdentifier="MessagesViewController" modalPresentationStyle="fullScreen" id="q3I-3q-oj6" customClass="MTDMessagesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="84R-lI-XN0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="r9j-Me-BOI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GJL-xc-Rko">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="eS6-Gh-Rt0">
+                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="eS6-Gh-Rt0">
                             <connections>
                                 <action selector="onTapBackButton:" destination="q3I-3q-oj6" id="zoW-ZS-uQ2"/>
                             </connections>
@@ -754,11 +755,11 @@
         <!--Navigation Controller-->
         <scene sceneID="car-Gj-1xx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="wrI-s2-aHd" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wrI-s2-aHd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="iFy-te-C8V"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tc3-Eh-Vnw">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -788,6 +789,7 @@
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
