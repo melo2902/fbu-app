@@ -82,10 +82,16 @@
         return header;
         
     } else {
-        UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
+        NSArray *tasksInSection = [self.allTasksArray[section] lastObject];
         
-        header.textLabel.text = [self.allTasksArray[section] firstObject];
-        return header;
+        if ([tasksInSection count] == 0) {
+            return nil;
+        } else {
+            UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
+            
+            header.textLabel.text = [self.allTasksArray[section] firstObject];
+            return header;
+        }
     }
 }
 
