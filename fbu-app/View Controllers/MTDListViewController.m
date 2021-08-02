@@ -221,11 +221,11 @@
     NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
     MTDTask *task = tasksInSection[indexPath.row];
 
-    UIContextualAction *notif1 = [self createNotification:(NSString *) @"30 second notification" inStringTime:@"30s" inSeconds:30 withIdentifier: task[@"taskTitle"]];
+    UIContextualAction *notif1 = [self createNotification:(NSString *) task[@"taskTitle"] inStringTime:@"30s" inSeconds:30];
+    
+    UIContextualAction *notif2 = [self createNotification:(NSString *) task[@"taskTitle"] inStringTime:@"60s" inSeconds:60];
 
-    UIContextualAction *notif2 = [self createNotification:(NSString *) @"60 second notification" inStringTime:@"60s" inSeconds:60 withIdentifier: task[@"taskTitle"]];
-
-    UIContextualAction *notif3 = [self createNotification:(NSString *) @"90 second notification" inStringTime:@"90s" inSeconds:90 withIdentifier: task[@"taskTitle"]];
+    UIContextualAction *notif3 = [self createNotification:(NSString *) task[@"taskTitle"] inStringTime:@"90s" inSeconds:90];
 
     UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
     SwipeActions.performsFirstActionWithFullSwipe=false;
@@ -235,18 +235,20 @@
 
 }
 
-- (UIContextualAction*) createNotification:(NSString *) respondant inStringTime: (NSString *) time inSeconds: (NSTimeInterval) seconds withIdentifier: (NSString *) message {
+- (UIContextualAction*) createNotification:(NSString *) taskTitle inStringTime: (NSString *) time inSeconds: (NSTimeInterval) seconds {
 
     UIContextualAction *notification = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:time handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
 
-        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-        content.body = [NSString stringWithFormat:@"Reply to %@'s message!", respondant];
+        UNMutableNotificationContent *content;
+        content = [UNMutableNotificationContent new];
+        content.body = [NSString stringWithFormat:@"Reminder: Complete task '%@'!", taskTitle];
+        
         content.sound = [UNNotificationSound defaultSound];
 
         UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger
             triggerWithTimeInterval:seconds repeats:NO];
 
-        NSString *identifier = [NSString stringWithFormat:@"%@:%@", respondant, message];
+        NSString *identifier = [NSString stringWithFormat:@"%@:%@:%@", PFUser.currentUser, taskTitle, time];
         UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
             content:content trigger:trigger];
 
