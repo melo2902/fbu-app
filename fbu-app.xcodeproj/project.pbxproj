@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BF09B300B50DF7B4FCA9FA8 /* libPods-fbu-appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */; };
+		0952DA2A5F7B31FD10B1618E /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11C0BC756C39C58236CCD019 /* libPods-fbu-app-fbu-appUITests.a */; };
+		117C7A30F3F78F6EF9FB0E9B /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C30363C24351EF4FC94090C /* libPods-fbu-app.a */; };
 		5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEB1269C9ED400BE2EA4 /* AppDelegate.m */; };
 		5862EEB5269C9ED400BE2EA4 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEB4269C9ED400BE2EA4 /* SceneDelegate.m */; };
 		5862EEBB269C9ED400BE2EA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5862EEB9269C9ED400BE2EA4 /* Main.storyboard */; };
@@ -42,8 +43,7 @@
 		58903F6326B487BD006BCDBF /* MTDMainFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6226B487BD006BCDBF /* MTDMainFeedHeaderView.m */; };
 		58903F6526B49190006BCDBF /* AddListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58903F6426B49190006BCDBF /* AddListHeaderView.xib */; };
 		58903F6826B4919F006BCDBF /* MTDAddListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6726B4919F006BCDBF /* MTDAddListHeaderView.m */; };
-		84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */; };
-		878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */; };
+		912C63FB8902718BA348CFA0 /* libPods-fbu-appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B29C4FDD3F569F03CFC5EB72 /* libPods-fbu-appTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		11C0BC756C39C58236CCD019 /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C548A8C351E95D30854500 /* Pods-fbu-app-fbu-appUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app-fbu-appUITests.debug.xcconfig"; path = "Target Support Files/Pods-fbu-app-fbu-appUITests/Pods-fbu-app-fbu-appUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5862EEAD269C9ED400BE2EA4 /* fbu-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fbu-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5862EEB0269C9ED400BE2EA4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -131,9 +131,9 @@
 		58903F6626B4919F006BCDBF /* MTDAddListHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDAddListHeaderView.h; sourceTree = "<group>"; };
 		58903F6726B4919F006BCDBF /* MTDAddListHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDAddListHeaderView.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
-		913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app-fbu-appUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C30363C24351EF4FC94090C /* libPods-fbu-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0C9EA45786B69859BC4DA7 /* Pods-fbu-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-appTests.debug.xcconfig"; path = "Target Support Files/Pods-fbu-appTests/Pods-fbu-appTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B29C4FDD3F569F03CFC5EB72 /* libPods-fbu-appTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-appTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD909AA7DE8A4A54B75C437B /* Pods-fbu-appTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-appTests.release.xcconfig"; path = "Target Support Files/Pods-fbu-appTests/Pods-fbu-appTests.release.xcconfig"; sourceTree = "<group>"; };
 		CEE26385F2D74FFAD239D65E /* Pods-fbu-app-fbu-appUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app-fbu-appUITests.release.xcconfig"; path = "Target Support Files/Pods-fbu-app-fbu-appUITests/Pods-fbu-app-fbu-appUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E47DE2F42046ADAEE3408874 /* Pods-fbu-app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.debug.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				586DE3EF26B1EFAF00DD22FF /* WebKit.framework in Frameworks */,
-				84DFB01A5AD16A5DD71C9297 /* libPods-fbu-app.a in Frameworks */,
+				117C7A30F3F78F6EF9FB0E9B /* libPods-fbu-app.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BF09B300B50DF7B4FCA9FA8 /* libPods-fbu-appTests.a in Frameworks */,
+				912C63FB8902718BA348CFA0 /* libPods-fbu-appTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				878FCE5AE67EB38C84C17E2B /* libPods-fbu-app-fbu-appUITests.a in Frameworks */,
+				0952DA2A5F7B31FD10B1618E /* libPods-fbu-app-fbu-appUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,9 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				586DE3EE26B1EFAF00DD22FF /* WebKit.framework */,
-				22E9D6AA7EC2336B0ECC5197 /* libPods-fbu-app.a */,
-				95168EAEDBA93EDEB4A29C0C /* libPods-fbu-app-fbu-appUITests.a */,
-				913A3A6B2BCAA8857B263B56 /* libPods-fbu-appTests.a */,
+				8C30363C24351EF4FC94090C /* libPods-fbu-app.a */,
+				11C0BC756C39C58236CCD019 /* libPods-fbu-app-fbu-appUITests.a */,
+				B29C4FDD3F569F03CFC5EB72 /* libPods-fbu-appTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -338,7 +338,7 @@
 				5862EEA9269C9ED400BE2EA4 /* Sources */,
 				5862EEAA269C9ED400BE2EA4 /* Frameworks */,
 				5862EEAB269C9ED400BE2EA4 /* Resources */,
-				05ABA5DED8BA530C9B38B4C4 /* [CP] Copy Pods Resources */,
+				12B64AC03BCDC2B6A4703C45 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -376,7 +376,7 @@
 				5862EECF269C9ED700BE2EA4 /* Sources */,
 				5862EED0269C9ED700BE2EA4 /* Frameworks */,
 				5862EED1269C9ED700BE2EA4 /* Resources */,
-				1AE32044E809FB92D3E21E2A /* [CP] Copy Pods Resources */,
+				34094EEA6D9D73573DB322E9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -460,7 +460,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		05ABA5DED8BA530C9B38B4C4 /* [CP] Copy Pods Resources */ = {
+		12B64AC03BCDC2B6A4703C45 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -477,7 +477,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fbu-app/Pods-fbu-app-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1AE32044E809FB92D3E21E2A /* [CP] Copy Pods Resources */ = {
+		34094EEA6D9D73573DB322E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
