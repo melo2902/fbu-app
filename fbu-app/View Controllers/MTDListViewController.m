@@ -61,25 +61,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        MTDListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ListHeaderHeaderFooterView"];
-
-        header.titleLabelTitle.text = self.list[@"name"];
-
-        NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
-        if ([workingTime isEqual: @"1"]) {
-            header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
-        } else {
-            header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
-        }
-        
-        header.addedTaskBar.delegate = self;
-        
-        __weak MTDListHeaderView *weakHeader = header;
-        weakHeader.taskButtonTapHandler = ^ {
-            [self performSegueWithIdentifier:@"addNewTaskSegue" sender:nil];
-        };
-        
-        return header;
+        return [self initializeListHeader];
         
     } else {
         NSArray *tasksInSection = [self.allTasksArray[section] lastObject];
@@ -93,6 +75,28 @@
             return header;
         }
     }
+}
+
+- (MTDListHeaderView *) initializeListHeader {
+    MTDListHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ListHeaderHeaderFooterView"];
+
+    header.titleLabelTitle.text = self.list[@"name"];
+
+    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
+    if ([workingTime isEqual: @"1"]) {
+        header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
+    } else {
+        header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+    }
+    
+    header.addedTaskBar.delegate = self;
+    
+    __weak MTDListHeaderView *weakHeader = header;
+    weakHeader.taskButtonTapHandler = ^ {
+        [self performSegueWithIdentifier:@"addNewTaskSegue" sender:nil];
+    };
+    
+    return header;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
