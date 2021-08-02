@@ -310,7 +310,6 @@
 
     MTDTask *task;
     task = tasksInSection[indexPath.row];
-    NSLog(@"task: %@", task);
     
     NSDate *currentDate = [NSDate new];
     NSDate *taskDueDate = task[@"dueDate"];
@@ -322,12 +321,14 @@
     }
    
     cell.task = task;
-    cell.taskItemLabel.text = task[@"taskTitle"];
-
+    
+    cell.taskItemLabel.attributedText = nil;
     if ([cell.task[@"completed"] isEqual: @0]){
         [cell.completionButton setSelected:NO];
+        cell.taskItemLabel.text = task[@"taskTitle"];
     } else {
         [cell.completionButton setSelected:YES];
+        cell.taskItemLabel.attributedText = [self strikeOutText:task[@"taskTitle"]];
     }
     
     cell.completionButtonTapHandler = ^{
@@ -344,9 +345,8 @@
         } else {
             [[self.allTasksArray[1] lastObject] addObject:task];
             [[self.allTasksArray[0] lastObject] removeObject:task];
-
+            
             float updatedWorkingTime = -1 * [task[@"workingTime"] floatValue];
-
             [MTDList updateTime:[NSNumber numberWithFloat:updatedWorkingTime] toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
@@ -369,6 +369,15 @@
 //        self.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
 //    }
 //}
+
+- (NSAttributedString *) strikeOutText: (NSString *) text {
+    NSDictionary* attributes = @{
+      NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
+    };
+
+    NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    return attrText;
+}
 
 - (NSAttributedString *) colorStringRed: (NSDate *) dueDate {
     UIColor *color = [UIColor redColor];
