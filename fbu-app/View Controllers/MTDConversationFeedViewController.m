@@ -15,6 +15,7 @@
 #import "MTDConversation.h"
 #import "DateTools.h"
 #import "MTDMessagesViewController.h"
+#import "MaterialActivityIndicator.h"
 
 @interface MTDConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,6 +24,7 @@
 @property (assign, nonatomic) BOOL endLoading;
 @property (nonatomic, strong) NSMutableArray *pageNumbers;
 @property (assign, nonatomic) NSNumber *pageCount;
+@property(nonatomic) MDCActivityIndicator *activityIndicator;
 @end
 
 @implementation MTDConversationFeedViewController
@@ -38,14 +40,15 @@
         self.arrayOfMessages = [[NSMutableArray alloc]init];
         self.pageNumbers = [[NSMutableArray alloc]init];
         
+        self.activityIndicator = [[MDCActivityIndicator alloc] init];
+        [self.activityIndicator sizeToFit];
+        [self.tableView addSubview:self.activityIndicator];
+        self.activityIndicator.center = self.view.center;
+        
         [self getConversationsAPI];
     } else {
         NSLog(@"User has not logged into their linked account yet");
     }
-    
-    CGRect frame = CGRectZero;
-    frame.size.height = CGFLOAT_MIN;
-    [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:frame]];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -91,7 +94,7 @@
 
 -(void) getConversationsAPI {
     if (!self.endLoading && ![self.pageNumbers containsObject:self.pageCount])  {
-        
+        [self.activityIndicator startAnimating];
         [self.pageNumbers addObject:self.pageCount];
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
@@ -175,6 +178,7 @@
             currPlatform[@"onReadConversations"] = savedConversations;
             [currPlatform saveInBackground];
             
+            [self.activityIndicator stopAnimating];
             [self.tableView reloadData];
         }
     }
