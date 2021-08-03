@@ -7,17 +7,23 @@
 
 #import "MTDAPIManager.h"
 #import "Parse/Parse.h"
+#import "MTDUser.h"
+
 @implementation MTDAPIManager
 #pragma mark - Auth
 
 + (void) setAuthToken: (NSString *) givenAuthToken {
-    PFUser.currentUser[@"authToken"] = givenAuthToken;
-    [PFUser.currentUser saveInBackground];
+    MTDUser *user = [MTDUser currentUser];
+    
+    user.authToken = givenAuthToken;
+    [user saveInBackground];
 }
 
 + (NSString *)returnAuthToken {
-    if (PFUser.currentUser[@"authToken"]) {
-        return PFUser.currentUser[@"authToken"];
+    MTDUser *user = [MTDUser currentUser];
+    
+    if (user.authToken) {
+        return user.authToken;
     }
     
     return nil;
@@ -42,7 +48,8 @@
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:PFUser.currentUser[@"authToken"] forHTTPHeaderField:@"X-Access-Token"];
+    MTDUser *user = [MTDUser currentUser];
+    [request setValue:user.authToken forHTTPHeaderField:@"X-Access-Token"];
     [request setHTTPBody:requestData];
     
     NSURLSession *session = [NSURLSession sharedSession];

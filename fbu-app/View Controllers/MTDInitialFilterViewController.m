@@ -13,6 +13,7 @@
 #import "MTDAPIManager.h"
 #import "MTDPlatform.h"
 #import "MTDConversation.h"
+#import "MTDUser.h"
 
 @interface MTDInitialFilterViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -98,7 +99,8 @@
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
         [URLString appendString:@"https://api.groupme.com/v3/groups?token="];
-        [URLString appendString:PFUser.currentUser[@"authToken"]];
+        MTDUser *user = [MTDUser currentUser];
+        [URLString appendString:user.authToken];
         [URLString appendString:[NSString stringWithFormat:@"&page=%@", self.pageCount]];
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -139,7 +141,8 @@
         if(error){
             NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
         } else {
-            MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
+            MTDUser *user = [MTDUser currentUser];
+            MTDPlatform *currPlatform = user.GroupMe;
             [currPlatform fetchIfNeeded];
             
             // Page stating that we've already pre-filtered out the read texts
@@ -173,7 +176,8 @@
 }
 
 - (IBAction)onSelectConversations:(id)sender {
-    MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
+    MTDUser *user = [MTDUser currentUser];
+    MTDPlatform *currPlatform = user.GroupMe;
     [currPlatform fetchIfNeeded];
     NSMutableArray *conversations = currPlatform.onReadConversations;
     

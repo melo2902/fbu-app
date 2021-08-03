@@ -16,6 +16,7 @@
 #import "DateTools.h"
 #import "MTDMessagesViewController.h"
 #import "MaterialActivityIndicator.h"
+#import "MTDUser.h"
 
 @interface MTDConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -142,7 +143,9 @@
         if (error){
             NSLog(@"error parsing the json data from server with error description - %@", [error localizedDescription]);
         } else {
-            MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
+            MTDUser *user = [MTDUser currentUser];
+            
+            MTDPlatform *currPlatform = user.GroupMe;
             [currPlatform fetchIfNeeded];
             NSMutableArray *savedConversations = currPlatform.onReadConversations;
             NSMutableDictionary *onReadDictionary = [[NSMutableDictionary alloc] init];

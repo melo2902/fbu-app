@@ -7,6 +7,7 @@
 
 #import "MTDList.h"
 #import "Parse/Parse.h"
+#import "MTDUser.h"
 
 @implementation MTDList
 @dynamic name;
@@ -34,11 +35,12 @@
 
 + (void) addList: ( MTDList *)list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
-    PFUser *currentUser = [PFUser currentUser];
-    NSMutableArray *currentLists = currentUser[@"lists"];
+    MTDUser *user = [MTDUser currentUser];
+    
+    NSMutableArray *currentLists = user.lists;
     [currentLists addObject:list];
-    currentUser[@"lists"] = currentLists;
-    [currentUser saveInBackground];
+    user.lists = currentLists;
+    [user saveInBackground];
 }
 
 + (void) addTask: ( MTDTask *)task toList: (MTDList*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion {

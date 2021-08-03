@@ -8,6 +8,7 @@
 #import "MTDConversationCell.h"
 #import "Parse/Parse.h"
 #import "MTDPlatform.h"
+#import "MTDUser.h"
 #import "MTDConversation.h"
 #import "DateTools.h"
 
@@ -44,7 +45,8 @@
         NSLog(@"Button is selected!");
         self.statusButton.selected = YES;
         
-        MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
+        MTDUser *user = [MTDUser currentUser];
+        MTDPlatform *currPlatform = user.GroupMe;
         [currPlatform fetchIfNeeded];
         
         NSMutableArray *conversations = currPlatform.onReadConversations;

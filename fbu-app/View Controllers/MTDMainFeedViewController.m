@@ -12,6 +12,7 @@
 #import "MTDListCell.h"
 #import "MTDMainFeedHeaderView.h"
 #import "MTDAddListHeaderView.h"
+#import "MTDUser.h"
 
 @interface MTDMainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -46,8 +47,10 @@
 # pragma mark - List data
 
 - (void) getLists {
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"username" equalTo:PFUser.currentUser.username];
+    MTDUser *user = [MTDUser currentUser];
+    
+    PFQuery *query = [MTDUser query];
+    [query whereKey:@"username" equalTo:user.username];
     [query includeKey:@"lists.name"];
     [query includeKey:@"lists.totalWorkingTime"];
     [query includeKey:@"lists.author"];
@@ -55,8 +58,8 @@
 
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!error) {
-            PFUser *queriedUser = (PFUser *)object;
-            NSMutableArray *userLists = queriedUser[@"lists"];
+            MTDUser *queriedUser = (MTDUser *)object;
+            NSMutableArray *userLists = queriedUser.lists;
             [self updateArrayData:userLists];
         }
 
@@ -124,8 +127,9 @@
 - (MTDMainFeedHeaderView *) setUpMainFeedHeader: (MTDMainFeedHeaderView *) header {
     header.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
 
-    if (PFUser.currentUser[@"pfp"]) {
-       PFFileObject *pfp = PFUser.currentUser[@"pfp"];
+    MTDUser *user = [MTDUser currentUser];
+    if (user.pfp) {
+        PFFileObject *pfp = user.pfp;
 
        [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
            if (!error) {

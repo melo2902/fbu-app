@@ -43,6 +43,7 @@
 		58903F6326B487BD006BCDBF /* MTDMainFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6226B487BD006BCDBF /* MTDMainFeedHeaderView.m */; };
 		58903F6526B49190006BCDBF /* AddListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58903F6426B49190006BCDBF /* AddListHeaderView.xib */; };
 		58903F6826B4919F006BCDBF /* MTDAddListHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58903F6726B4919F006BCDBF /* MTDAddListHeaderView.m */; };
+		58E0A77126B9AF4000C1DCE1 /* MTDUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A77026B9AF4000C1DCE1 /* MTDUser.m */; };
 		912C63FB8902718BA348CFA0 /* libPods-fbu-appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B29C4FDD3F569F03CFC5EB72 /* libPods-fbu-appTests.a */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +131,8 @@
 		58903F6426B49190006BCDBF /* AddListHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddListHeaderView.xib; sourceTree = "<group>"; };
 		58903F6626B4919F006BCDBF /* MTDAddListHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDAddListHeaderView.h; sourceTree = "<group>"; };
 		58903F6726B4919F006BCDBF /* MTDAddListHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDAddListHeaderView.m; sourceTree = "<group>"; };
+		58E0A76F26B9AF4000C1DCE1 /* MTDUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDUser.h; sourceTree = "<group>"; };
+		58E0A77026B9AF4000C1DCE1 /* MTDUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDUser.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		8C30363C24351EF4FC94090C /* libPods-fbu-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0C9EA45786B69859BC4DA7 /* Pods-fbu-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-appTests.debug.xcconfig"; path = "Target Support Files/Pods-fbu-appTests/Pods-fbu-appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 				5862EF2726A221F800BE2EA4 /* MTDPlatform.m */,
 				5862EF2F26A7622800BE2EA4 /* MTDConversation.h */,
 				5862EF3026A7622800BE2EA4 /* MTDConversation.m */,
+				58E0A76F26B9AF4000C1DCE1 /* MTDUser.h */,
+				58E0A77026B9AF4000C1DCE1 /* MTDUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -577,6 +582,7 @@
 				5862EF0D269DE3EE00BE2EA4 /* MTDAPIManager.m in Sources */,
 				5862EF06269CC04E00BE2EA4 /* MTDTask.m in Sources */,
 				58903F6826B4919F006BCDBF /* MTDAddListHeaderView.m in Sources */,
+				58E0A77126B9AF4000C1DCE1 /* MTDUser.m in Sources */,
 				5862EF3126A7622800BE2EA4 /* MTDConversation.m in Sources */,
 				5862EEB2269C9ED400BE2EA4 /* AppDelegate.m in Sources */,
 				5862EF2E26A6276600BE2EA4 /* MTDConversationCell.m in Sources */,

@@ -7,6 +7,7 @@
 
 #import "MTDLoginViewController.h"
 #import "Parse/Parse.h"
+#import "MTDUser.h"
 
 @interface MTDLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailLabel;
@@ -26,7 +27,7 @@
     NSString *email = self.emailLabel.text;
     NSString *password = self.passwordLabel.text;
     
-    [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {
+    [MTDUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
             [self alertUserOfError];

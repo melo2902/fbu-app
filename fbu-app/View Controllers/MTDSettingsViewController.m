@@ -12,6 +12,7 @@
 #import "Parse/Parse.h"
 #import "MTDPlatform.h"
 #import "WebKit/WebKit.h"
+#import "MTDUser.h"
 
 @interface MTDSettingsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, WKNavigationDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;
@@ -50,8 +51,9 @@
     self.userNameLabel.text = PFUser.currentUser.username;
     self.userEmailLabel.text = PFUser.currentUser.email;
     
-    if (PFUser.currentUser[@"pfp"]) {
-       PFFileObject *pfp = PFUser.currentUser[@"pfp"];
+    MTDUser *user = [MTDUser currentUser];
+    if (user.pfp) {
+        PFFileObject *pfp = user.pfp;
        
        [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
            if (!error) {
@@ -160,8 +162,10 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     self.userPFPView.image = [self resizeImage:editedImage withSize: CGSizeMake(100, 100)];
-    PFUser.currentUser[@"pfp"] = [self getPFFileFromImage:self.userPFPView.image];
-    [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    
+    MTDUser *user = [MTDUser currentUser];
+    user.pfp = [self getPFFileFromImage:self.userPFPView.image];
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Did not save correctly");
         }

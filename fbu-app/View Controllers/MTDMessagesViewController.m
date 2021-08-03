@@ -9,6 +9,7 @@
 #import "MTDGroup.h"
 #import "MTDAPIManager.h"
 #import "MTDPlatform.h"
+#import "MTDUser.h"
 
 @interface MTDMessagesViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate>
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
@@ -37,7 +38,8 @@
     self.avatarTable = [[NSMutableDictionary alloc] init];
     // [self setUpAvatarTable];
     
-    MTDPlatform *userPlatform = PFUser.currentUser[@"GroupMe"];
+    MTDUser *user = [MTDUser currentUser];
+    MTDPlatform *userPlatform = user.GroupMe;
     [userPlatform fetchIfNeeded];
     
     self.senderId = userPlatform.userID;
@@ -96,7 +98,8 @@
         [URLString appendString:@"https://api.groupme.com/v3/groups/"];
         [URLString appendString:self.group.groupID];
         [URLString appendString:@"/messages?limit=10&token="];
-        [URLString appendString:PFUser.currentUser[@"authToken"]];
+        MTDUser *user = [MTDUser currentUser];
+        [URLString appendString:user.authToken];
         
         if ([self.latestMessageID length] != 0) {
             [URLString appendString:[NSString stringWithFormat:@"&before_id=%@", self.latestMessageID]];

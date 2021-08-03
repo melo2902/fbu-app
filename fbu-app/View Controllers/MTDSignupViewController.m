@@ -8,6 +8,7 @@
 #import "MTDSignupViewController.h"
 #import "Parse/Parse.h"
 #import "MTDList.h"
+#import "MTDUser.h"
 
 @interface MTDSignupViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
@@ -47,12 +48,12 @@
 }
 
 - (PFUser *) initializeUser {
-    PFUser *newUser = [PFUser user];
+    MTDUser *newUser = [MTDUser user];
     
     newUser.username = [NSString stringWithFormat:@"%@ %@", self.firstNameField.text, self.lastNameField.text];
-    newUser[@"firstName"] = self.firstNameField.text;
+    newUser.firstName = self.firstNameField.text;
     newUser.email = self.emailField.text;
-    newUser[@"lastName"] = self.lastNameField.text;
+    newUser.lastName = self.lastNameField.text;
     newUser.password = self.passwordField.text;
     
     NSMutableArray *preDefinedLists = [[NSMutableArray alloc] init];
@@ -60,7 +61,7 @@
     [self createPredefinedLists:@"My Tomorrow" toList:preDefinedLists];
     [self createPredefinedLists:@"All" toList:preDefinedLists];
     
-    newUser[@"lists"] = preDefinedLists;
+    newUser.lists = preDefinedLists;
     
     return newUser;
 }
