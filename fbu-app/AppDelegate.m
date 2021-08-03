@@ -32,33 +32,6 @@
     return YES;
 }
 
-//- (void)applicationDidBecomeActive:(UIApplication *)application {
-//    NSLog(@"The user is beginning to use the app");
-////    PFUser.currentUser
-//}
-//
-//- (void)applicationWillResignActive:(UIApplication *)application {
-//    PFUser.currentUser[@"lastOpened"] = [NSDate date];
-//    [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//        if (succeeded){
-//            NSLog(@"The user is leaving the app - resign active");
-//        }
-//    }];
-//}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    PFUser *currentUser = [PFUser currentUser];
-    
-    currentUser[@"lastOpened"] = [NSDate date];
-    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (succeeded){
-            NSLog(@"The user is leaving the app - terminate");
-        } else {
-            NSLog(@"Error: %@", error);
-        }
-    }];
-}
-
 
 #pragma mark - UISceneSession lifecycle
 
@@ -74,29 +47,6 @@
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-}
-
-- (BOOL)application:(UIApplication *)app
-            openURL:(NSURL *)url
-            options:(NSDictionary<NSString *, id> *)options {
-    NSLog(@"Hit this?");
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
-                                            resolvingAgainstBaseURL:NO];
-    NSArray *queryItems = urlComponents.queryItems;
-    NSString *oAuthToken = [self valueForKey:@"access_token" fromQueryItems:queryItems];
-    NSLog(@"Given oAuthToken: %@", oAuthToken);
-//    [Lockbox archiveObject:oAuthToken forKey:@"oAuthToken"];
-    return YES;
-}
-
-- (NSString *)valueForKey:(NSString *)key
-           fromQueryItems:(NSArray *)queryItems
-{
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name=%@", key];
-    NSURLQueryItem *queryItem = [[queryItems
-                                  filteredArrayUsingPredicate:predicate]
-                                 firstObject];
-    return queryItem.value;
 }
 
 @end
