@@ -16,6 +16,9 @@
 #import "MTDList.h"
 #import "MTDListHeaderView.h"
 #import "MaterialButtons.h"
+#import "MaterialBottomSheet.h"
+#import "MTDAddTaskViewController.h"
+#import "CompletedListView.h"
 
 @interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -46,10 +49,11 @@
     
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ListHeaderHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"ListHeaderHeaderFooterView"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CompletedListView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"CompletedListView"];
     
     [self initiateTaskFAB];
     [self getTasks];
-    
+
     // Add an image background programatically for list
     // [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"iPhonePoolBackground.png"]]];
 }
@@ -58,18 +62,23 @@
     UIImage *plusImage =
         [[UIImage systemImageNamed:@"plus"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     MDCFloatingButton *button = [MDCFloatingButton floatingButtonWithShape:MDCFloatingButtonShapeDefault];
+    [button setBackgroundColor:[UIColor whiteColor]];
     [button setImage:plusImage forState:UIControlStateNormal];
     [self.tableView addSubview:button];
     
     button.translatesAutoresizingMaskIntoConstraints = NO;
-    [button.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-45.0].active = YES;
-    [button.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-50.0].active = YES;
+    [button.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-30.0].active = YES;
+    [button.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-40.0].active = YES;
     [button addTarget:self action:@selector(addTask:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)addTask:(id)sender {
-    [self performSegueWithIdentifier:@"addNewTaskSegue" sender:nil];
-}
+//- (void)addTask:(id)sender {
+//    MTDAddTaskViewController *viewController = [[MTDAddTaskViewController alloc] init];
+//    MDCBottomSheetController *bottomSheet = [[MDCBottomSheetController alloc] initWithContentViewController:viewController];
+//    
+//    [bottomSheet setPreferredContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height/3)];
+//    [self presentViewController:bottomSheet animated:true completion:nil];
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.allTasksArray.count;
@@ -82,6 +91,14 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (section == 0) {
         return [self initializeListHeader];
+        
+    } else if (section == 1) {
+        CompletedListView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"CompletedListView"];
+
+        NSUInteger completedTasks = [[self.allTasksArray[1] lastObject] count];
+        header.completedLabel.text = [NSString stringWithFormat:@"COMPLETED - %lu", completedTasks];
+        
+        return header;
         
     } else {
         NSArray *tasksInSection = [self.allTasksArray[section] lastObject];
