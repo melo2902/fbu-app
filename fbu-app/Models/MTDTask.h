@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MTDTask : PFObject
+@interface MTDTask : PFObject <PFSubclassing>
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) NSMutableArray *inLists;
 @property (nonatomic, strong) NSString *taskTitle;

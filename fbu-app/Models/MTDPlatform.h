@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MTDPlatform : PFObject
+@interface MTDPlatform : PFObject <PFSubclassing>
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) NSString *platformName;
 @property (nonatomic, strong) NSString *username;

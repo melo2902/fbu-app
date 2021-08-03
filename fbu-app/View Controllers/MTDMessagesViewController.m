@@ -40,8 +40,8 @@
     MTDPlatform *userPlatform = PFUser.currentUser[@"GroupMe"];
     [userPlatform fetchIfNeeded];
     
-    self.senderId = userPlatform[@"userID"];
-    self.senderDisplayName = userPlatform[@"username"];
+    self.senderId = userPlatform.userID;
+    self.senderDisplayName = userPlatform.username;
     
     self.isMoreDataLoading = NO;
     self.endLoading = NO;

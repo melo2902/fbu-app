@@ -146,7 +146,7 @@
             for(NSDictionary *eachGroup in arrayFromServer){
                 MTDGroup *group = [[MTDGroup alloc] initWithJSONData:eachGroup];
                 
-                if (![group.lastSender isEqual:currPlatform[@"username"]]) {
+                if (![group.lastSender isEqual:currPlatform.username]) {
                     [self.arrayOfConversations addObject:group];
                 }
             }
@@ -175,7 +175,7 @@
 - (IBAction)onSelectConversations:(id)sender {
     MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
     [currPlatform fetchIfNeeded];
-    NSMutableArray *conversations = currPlatform[@"onReadConversations"];
+    NSMutableArray *conversations = currPlatform.onReadConversations;
     
     for (MTDGroup *group in self.arrayOfConversations) {
         if (group.onRead) {
@@ -191,11 +191,11 @@
         }
     }
     
-    currPlatform[@"onReadConversations"] = conversations;
+    currPlatform.onReadConversations = conversations;
     
     [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            NSLog(@"onRead Conversations filtered out%@", currPlatform[@"onReadConversations"]);
+            NSLog(@"onRead Conversations filtered out%@", currPlatform.onReadConversations);
             
             [self dismissViewControllerAnimated:YES completion:^{
                 NSLog(@"Dismiss View Controller");

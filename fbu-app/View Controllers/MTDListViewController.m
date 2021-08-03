@@ -40,7 +40,7 @@
     //    self.navigationController.view.backgroundColor = [UIColor clearColor];
     //    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 
-    if ([self.list[@"name"] isEqual:@"My Day"] || [self.list[@"name"] isEqual:@"My Tomorrow"]) {
+    if ([self.list.name isEqual:@"My Day"] || [self.list.name isEqual:@"My Tomorrow"]) {
         [self checkMyDayMyTomorrowTasks];
     }
     
@@ -100,9 +100,9 @@
 - (MTDListHeaderView *) initializeListHeader {
     MTDListHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"ListHeaderHeaderFooterView"];
 
-    header.titleLabelTitle.text = self.list[@"name"];
+    header.titleLabelTitle.text = self.list.name;
 
-    NSString *workingTime = [self.list[@"totalWorkingTime"] stringValue];
+    NSString *workingTime = [self.list.totalWorkingTime stringValue];
     if ([workingTime isEqual: @"1"]) {
         header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
     } else {
@@ -125,13 +125,13 @@
 - (void) checkMyDayMyTomorrowTasks {
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query whereKey:@"author" equalTo: PFUser.currentUser];
-    [query whereKey:@"inLists" equalTo: self.list[@"name"]];
+    [query whereKey:@"inLists" equalTo: self.list.name];
     [query orderByAscending:@"dueDate"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
         NSDate *currentDate = [NSDate date];
         
-        if ([self.list[@"name"] isEqual:@"My Day"]) {
+        if ([self.list.name isEqual:@"My Day"]) {
             for (MTDTask *task in tasks) {
                 NSDate *nextDate = [task.createdAt dateByAddingDays:1];
                 
@@ -142,9 +142,9 @@
                     // Task pulled from the "My Tomorrow" list
                     continue;
                 } else {
-                    NSMutableArray *currentLists = task[@"inLists"];
+                    NSMutableArray *currentLists = task.inLists;
                     [currentLists removeObject:@"My Day"];
-                    task[@"inLists"] = currentLists;
+                    task.inLists = currentLists;
                     [task saveInBackground];
                 }
             }
@@ -154,18 +154,18 @@
                 
                 if ([nextDate isSameDay:currentDate]) {
                     // Move task from My Tomorrow to My Day
-                    NSMutableArray *currentLists = task[@"inLists"];
+                    NSMutableArray *currentLists = task.inLists;
                     [currentLists removeObject:@"My Tomorrow"];
                     [currentLists addObject:@"My Day"];
-                    task[@"inLists"] = currentLists;
+                    task.inLists = currentLists;
                     [task saveInBackground];;
                 } else if ([task.createdAt isSameDay:currentDate]) {
                     // Task created today for tomorrow
                     continue;
                 } else {
-                    NSMutableArray *currentLists = task[@"inLists"];
+                    NSMutableArray *currentLists = task.inLists;
                     [currentLists removeObject:@"My Tomorrow"];
-                    task[@"inLists"] = currentLists;
+                    task.inLists = currentLists;
                     [task saveInBackground];
                 }
             }
@@ -177,7 +177,7 @@
 - (void) getTasks {
     PFQuery *query = [PFQuery queryWithClassName:@"Task"];
     [query whereKey:@"author" equalTo: PFUser.currentUser];
-    [query whereKey:@"inLists" equalTo: self.list[@"name"]];
+    [query whereKey:@"inLists" equalTo: self.list.name];
     [query orderByAscending:@"dueDate"];
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *tasks, NSError *error) {
@@ -196,13 +196,13 @@
     
     NSMutableArray* temporaryTasks = [[NSMutableArray alloc] init];
     NSMutableArray* temporaryCompletedTasks = [[NSMutableArray alloc] init];
-    [temporaryTasks addObject:self.list[@"name"]];
+    [temporaryTasks addObject:self.list.name];
     [temporaryCompletedTasks addObject:@"Completed"];
     
     NSMutableArray *emptyDueDateTasks = [[NSMutableArray alloc] init];
     for (MTDTask *task in tasks) {
-        if ([task[@"completed"] isEqual:@0]) {
-            if (task[@"dueDate"]) {
+        if (!task.completed) {
+            if (task.dueDate) {
                 [self.arrayOfTasks addObject:task];
             } else {
                 [emptyDueDateTasks addObject:task];
@@ -223,7 +223,7 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    MTDTask *newTask = [MTDTask createTask:textField.text inList: self.list[@"name"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    MTDTask *newTask = [MTDTask createTask:textField.text inList: self.list.name withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
     }];
 
     [newTask saveInBackground];
@@ -245,11 +245,11 @@
     NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
     MTDTask *task = tasksInSection[indexPath.row];
 
-    UIContextualAction *notif1 = [self createNotification:(NSString *) task[@"taskTitle"] inStringTime:@"30s" inSeconds:30];
+    UIContextualAction *notif1 = [self createNotification:(NSString *) task.taskTitle inStringTime:@"30s" inSeconds:30];
     
-    UIContextualAction *notif2 = [self createNotification:(NSString *) task[@"taskTitle"] inStringTime:@"60s" inSeconds:60];
+    UIContextualAction *notif2 = [self createNotification:(NSString *) task.taskTitle inStringTime:@"60s" inSeconds:60];
 
-    UIContextualAction *notif3 = [self createNotification:(NSString *) task[@"taskTitle"] inStringTime:@"90s" inSeconds:90];
+    UIContextualAction *notif3 = [self createNotification:(NSString *) task.taskTitle inStringTime:@"90s" inSeconds:90];
 
     UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
     SwipeActions.performsFirstActionWithFullSwipe=false;
@@ -341,7 +341,7 @@
     task = tasksInSection[indexPath.row];
     
     NSDate *currentDate = [NSDate new];
-    NSDate *taskDueDate = task[@"dueDate"];
+    NSDate *taskDueDate = task.dueDate;
 
     if (taskDueDate && ![currentDate isEarlierThanOrEqualTo:taskDueDate]) {
         cell.dueDateLabel.attributedText = [self colorStringRed:taskDueDate];
@@ -352,21 +352,21 @@
     cell.task = task;
     
     cell.taskItemLabel.attributedText = nil;
-    if ([cell.task[@"completed"] isEqual: @0]){
+    if (!cell.task.completed){
         [cell.completionButton setSelected:NO];
-        cell.taskItemLabel.text = task[@"taskTitle"];
+        cell.taskItemLabel.text = task.taskTitle;
     } else {
         [cell.completionButton setSelected:YES];
-        cell.taskItemLabel.attributedText = [self strikeOutText:task[@"taskTitle"]];
+        cell.taskItemLabel.attributedText = [self strikeOutText:task.taskTitle];
     }
 
     __weak MTDTaskCell *weakCell = cell;
     weakCell.completionButtonTapHandler = ^{
-        if ([task[@"completed"]  isEqual: @0]){
+        if (!task.completed){
             [[self.allTasksArray[0] lastObject] addObject:task];
             [[self.allTasksArray[1] lastObject] removeObject:task];
 
-            [MTDList updateTime: task[@"workingTime"] toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            [MTDList updateTime: task.workingTime toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
                 }
@@ -376,7 +376,7 @@
             [[self.allTasksArray[1] lastObject] addObject:task];
             [[self.allTasksArray[0] lastObject] removeObject:task];
             
-            float updatedWorkingTime = -1 * [task[@"workingTime"] floatValue];
+            float updatedWorkingTime = -1 * [task.workingTime floatValue];
             [MTDList updateTime:[NSNumber numberWithFloat:updatedWorkingTime] toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
@@ -436,7 +436,7 @@
     } else if ([segue.identifier isEqual:@"addNewTaskSegue"]) {
         MTDTaskViewController *vc = segue.destinationViewController;
         vc.delegate = self;
-        vc.listName = self.list[@"name"];
+        vc.listName = self.list.name;
     }
 }
 

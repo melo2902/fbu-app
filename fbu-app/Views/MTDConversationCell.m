@@ -47,10 +47,10 @@
         MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
         [currPlatform fetchIfNeeded];
         
-        NSMutableArray *conversations = currPlatform[@"onReadConversations"];
+        NSMutableArray *conversations = currPlatform.onReadConversations;
         
         for (MTDConversation *conversationItem in conversations) {
-            if ([conversationItem[@"conversationID"] isEqual:self.group.groupID]) {
+            if ([conversationItem.conversationID isEqual:self.group.groupID]) {
                 [conversations removeObject:conversationItem];
                 
                 break;
@@ -64,11 +64,11 @@
         }];
         
         [conversations addObject: updateConversation];
-        currPlatform[@"onReadConversations"] = conversations;
+        currPlatform.onReadConversations = conversations;
         
         [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                NSLog(@"Saved conversation ID with associated timestamp%@", currPlatform[@"onReadConversations"]);
+                NSLog(@"Saved conversation ID with associated timestamp%@", currPlatform.onReadConversations);
                 
                 self.completionButtonTapHandler();
                 

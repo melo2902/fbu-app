@@ -27,7 +27,7 @@
         }];
     }
     
-    self.oldTaskTime = self.task[@"workingTime"];
+    self.oldTaskTime = self.task.workingTime;
     
     [self initializeForm];
 }
@@ -45,7 +45,7 @@
 
     // Title
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"taskTitle" rowType:XLFormRowDescriptorTypeText];
-    row.value = self.task[@"taskTitle"];
+    row.value = self.task.taskTitle;
     [section addFormRow:row];
 
     section = [XLFormSectionDescriptor formSection];
@@ -53,13 +53,13 @@
     
     // Due Date
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"dueDate" rowType:XLFormRowDescriptorTypeDate title:@"Due Date"];
-    row.value = self.task[@"dueDate"];
+    row.value = self.task.dueDate;
     [section addFormRow:row];
     
     // Estimated work hours
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"workHours" rowType:XLFormRowDescriptorTypeDecimal title:@"Work Hours"];
     [row.cellConfigAtConfigure setObject:@(NSTextAlignmentRight) forKey:@"textField.textAlignment"];
-    row.value = self.task[@"workingTime"];
+    row.value = self.task.workingTime;
     [section addFormRow:row];
     
     // Repeat due date
@@ -81,7 +81,7 @@
     // Notes
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeTextView];
     [row.cellConfigAtConfigure setObject:@"Notes" forKey:@"textView.placeholder"];
-    row.value = self.task[@"notes"];
+    row.value = self.task.notes;
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
@@ -107,21 +107,21 @@
 -(void)formRowDescriptorValueHasChanged:(XLFormRowDescriptor *)rowDescriptor oldValue:(id)oldValue newValue:(id)newValue {
     [super formRowDescriptorValueHasChanged:rowDescriptor oldValue:oldValue newValue:newValue];
     if ([rowDescriptor.tag isEqualToString:@"workHours"]){
-        self.task[@"workingTime"] = newValue;
+        self.task.workingTime = newValue;
     } else if ([rowDescriptor.tag isEqualToString:@"notes"]) {
-        self.task[@"notes"] = newValue;
+        self.task.notes = newValue;
     } else if ([rowDescriptor.tag isEqualToString:@"dueDate"]) {
-        self.task[@"dueDate"] = newValue;
+        self.task.dueDate = newValue;
     } else if ([rowDescriptor.tag isEqualToString:@"taskTitle"]) {
-        self.task[@"taskTitle"] = newValue;
+        self.task.taskTitle = newValue;
     }
 }
 
 - (IBAction)onTapSave:(id)sender {
-    if (![self.task[@"taskTitle"] isEqual:@""]) {
+    if (self.task.taskTitle) {
         [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                float updatedWorkingTime = [self.task[@"workingTime"] floatValue] - [self.oldTaskTime floatValue];
+                float updatedWorkingTime = [self.task.workingTime floatValue] - [self.oldTaskTime floatValue];
                 
                 NSNumber* deltaTimeChange = [NSNumber numberWithFloat:updatedWorkingTime];
                 

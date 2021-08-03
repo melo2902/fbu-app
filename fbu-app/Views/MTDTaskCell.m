@@ -37,13 +37,13 @@
         NSLog(@"Button is not selected!");
         
         self.completionButton.selected = NO;
-        self.task[@"completed"] = @NO;
+        self.task.completed = NO;
         
     } else {
         NSLog(@"Button is selected!");
         
         self.completionButton.selected = YES;
-        self.task[@"completed"] = @YES;
+        self.task.completed = YES;
     }
     
     [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {

@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MTDList : PFObject
+@interface MTDList : PFObject <PFSubclassing>
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSMutableArray *arrayOfItems;
 @property (nonatomic, strong) NSNumber *totalWorkingTime;

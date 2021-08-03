@@ -74,7 +74,7 @@
     [tmpUserList addObject:@"User Lists"];
     
     for (MTDList *list in userLists) {
-        if ([list[@"defaultList"]  isEqual: @1]) {
+        if (list.defaultList) {
             [arrayOfDefaultLists addObject:list];
         } else {
             [arrayOfUserLists addObject:list];
@@ -161,7 +161,7 @@
     
     NSArray *listsInSection = [self.allListsArray[indexPath.section] lastObject];
     MTDList *list = listsInSection[indexPath.row];
-    cell.listNameLabel.text = list[@"name"];
+    cell.listNameLabel.text = list.name;
     
     return cell;
 }
@@ -196,8 +196,8 @@
     NSArray *listsInSection = [self.allListsArray[indexPath.section] lastObject];
     MTDList *list = listsInSection[indexPath.row];
     
-    if ([list[@"defaultList"]  isEqual: @0]){
-        
+    
+    if (!list.defaultList){
         UIContextualAction *deleteAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title: nil handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
             
             [self deleteActions:list];

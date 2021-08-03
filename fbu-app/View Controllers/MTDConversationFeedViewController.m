@@ -144,19 +144,19 @@
         } else {
             MTDPlatform *currPlatform = PFUser.currentUser[@"GroupMe"];
             [currPlatform fetchIfNeeded];
-            NSMutableArray *savedConversations = currPlatform[@"onReadConversations"];
+            NSMutableArray *savedConversations = currPlatform.onReadConversations;
             NSMutableDictionary *onReadDictionary = [[NSMutableDictionary alloc] init];
             
             for (MTDConversation *conversationItem in savedConversations) {
                 [conversationItem fetchIfNeeded];
                 
-                onReadDictionary[conversationItem[@"conversationID"]] = conversationItem[@"latestTimeStamp"];
+                onReadDictionary[conversationItem.conversationID] = conversationItem.latestTimeStamp;
             }
             
             for(NSDictionary *eachGroup in arrayFromServer){
                 MTDGroup *group = [[MTDGroup alloc] initWithJSONData:eachGroup];
                 
-                if (![group.lastSender isEqual:currPlatform[@"username"]]) {
+                if (![group.lastSender isEqual:currPlatform.username]) {
                     // Don't want to list any to-do items that has the user as the last sent
                     if ([onReadDictionary objectForKey:group.groupID]) {
                         if (group.lastUpdated > onReadDictionary[group.groupID]) {
@@ -171,12 +171,12 @@
 
             NSMutableArray* newSavedConversations = [[NSMutableArray alloc] init];
             for (MTDConversation *conversationItem in savedConversations) {
-                if ([onReadDictionary objectForKey:conversationItem[@"conversationID"]]) {
+                if ([onReadDictionary objectForKey:conversationItem.conversationID]) {
                     [newSavedConversations addObject:conversationItem];
                 }
             }
             
-            currPlatform[@"onReadConversations"] = savedConversations;
+            currPlatform.onReadConversations = savedConversations;
             [currPlatform saveInBackground];
             
             [self.activityIndicator stopAnimating];
