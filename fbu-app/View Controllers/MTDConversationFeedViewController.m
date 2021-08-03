@@ -247,6 +247,10 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
 -(NSMutableAttributedString *)modifyMessage:(NSString *)message withSender:(NSString *)sender {
     NSUInteger usernameLength = [sender length];
     
