@@ -32,7 +32,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+
     //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
     //                                 forBarMetrics:UIBarMetricsDefault];
     //    self.navigationController.navigationBar.shadowImage = [UIImage new];
@@ -334,6 +334,8 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     MTDTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MTDTaskCell" forIndexPath:indexPath];
+    [self updateCellPadding: cell];
+    
     NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
 
     MTDTask *task;
@@ -358,7 +360,7 @@
         [cell.completionButton setSelected:YES];
         cell.taskItemLabel.attributedText = [self strikeOutText:task[@"taskTitle"]];
     }
-    
+
     __weak MTDTaskCell *weakCell = cell;
     weakCell.completionButtonTapHandler = ^{
         if ([task[@"completed"]  isEqual: @0]){
@@ -387,6 +389,20 @@
     };
     
     return cell;
+}
+
+- (void) updateCellPadding: (MTDTaskCell *) cell{
+    cell.contentView.backgroundColor = self.tableView.backgroundColor;
+
+    UIView *whiteRoundedView = [[UIView alloc]initWithFrame:CGRectMake(0, 5, self.view.frame.size.width, cell.contentView.frame.size.height - 12)];
+                                      
+    whiteRoundedView.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    whiteRoundedView.clipsToBounds = true;
+    whiteRoundedView.layer.masksToBounds = true;
+    whiteRoundedView.layer.cornerRadius = 12.0;
+
+    [cell.contentView addSubview:whiteRoundedView];
+    [cell.contentView sendSubviewToBack:whiteRoundedView];
 }
 
 - (NSAttributedString *) strikeOutText: (NSString *) text {
