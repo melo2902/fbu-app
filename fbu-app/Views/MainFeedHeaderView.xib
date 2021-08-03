@@ -23,8 +23,8 @@
                     <imageReference key="image" image="person.crop.circle" catalog="system" renderingMode="original"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="namelabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89f-Co-e2l">
-                    <rect key="frame" x="140" y="91" width="141" height="36"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                    <rect key="frame" x="140" y="92" width="116.5" height="34.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>

@@ -14,13 +14,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl0-Ef-Lrk">
-                    <rect key="frame" x="20" y="54" width="126.5" height="36"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                    <rect key="frame" x="20" y="54" width="110" height="34.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a task..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-b1-eZy">
-                    <rect key="frame" x="20" y="106" width="300" height="34"/>
+                    <rect key="frame" x="20" y="104.5" width="300" height="35.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="vrd-Fj-Rnj"/>
                     </constraints>
@@ -28,8 +28,8 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="workingTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-Ow-OMS">
-                    <rect key="frame" x="156.5" y="61.5" width="98" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="140" y="61" width="86.5" height="20.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
