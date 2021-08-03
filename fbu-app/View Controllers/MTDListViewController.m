@@ -33,12 +33,12 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 
-    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
-    //                                 forBarMetrics:UIBarMetricsDefault];
-    //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    //    self.navigationController.navigationBar.translucent = YES;
-    //    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    //    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                 forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
 
     if ([self.list.name isEqual:@"My Day"] || [self.list.name isEqual:@"My Tomorrow"]) {
         [self checkMyDayMyTomorrowTasks];
@@ -103,10 +103,11 @@
     header.titleLabelTitle.text = self.list.name;
 
     NSString *workingTime = [self.list.totalWorkingTime stringValue];
+    NSUInteger taskNumber = [[self.allTasksArray[0] lastObject] count];
     if ([workingTime isEqual: @"1"]) {
-        header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hr", workingTime];
+        header.workingTimeLabel.text = [NSString stringWithFormat:@"%lu tasks - %@ hr", (unsigned long)taskNumber, workingTime];
     } else {
-        header.workingTimeLabel.text = [NSString stringWithFormat:@"%@ hrs", workingTime];
+        header.workingTimeLabel.text = [NSString stringWithFormat:@"%lu tasks - %@ hrs", (unsigned long)taskNumber, workingTime];
     }
     
     header.addedTaskBar.delegate = self;
@@ -116,7 +117,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 100;
+        return 80;
     } else {
         return 30;
     }

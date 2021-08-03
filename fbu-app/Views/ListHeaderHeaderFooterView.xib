@@ -10,17 +10,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleAspectFill" id="iN0-l3-epB" customClass="MTDListHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="titleLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl0-Ef-Lrk">
-                    <rect key="frame" x="20" y="54" width="110" height="34.5"/>
+                    <rect key="frame" x="20" y="49" width="110" height="34.5"/>
                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a task..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-b1-eZy">
-                    <rect key="frame" x="20" y="104.5" width="300" height="35.5"/>
+                    <rect key="frame" x="20" y="89.5" width="300" height="32.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="vrd-Fj-Rnj"/>
                     </constraints>
@@ -28,21 +28,21 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="workingTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-Ow-OMS">
-                    <rect key="frame" x="140" y="61" width="86.5" height="20.5"/>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
+                    <rect key="frame" x="135" y="59" width="81" height="19.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
-                <constraint firstItem="Jl0-Ef-Lrk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="0l0-LP-8Oc"/>
+                <constraint firstItem="Jl0-Ef-Lrk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="0l0-LP-8Oc"/>
                 <constraint firstItem="9gc-b1-eZy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="7fp-zE-VWJ"/>
-                <constraint firstAttribute="bottom" secondItem="9gc-b1-eZy" secondAttribute="bottom" constant="10" id="c1S-2n-Hcs"/>
+                <constraint firstItem="RiY-Ow-OMS" firstAttribute="bottom" secondItem="Jl0-Ef-Lrk" secondAttribute="bottom" constant="-5" id="bRG-5l-go1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9gc-b1-eZy" secondAttribute="bottom" constant="5" id="eOw-Xc-JcX"/>
                 <constraint firstItem="Jl0-Ef-Lrk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ewT-9X-GcV"/>
-                <constraint firstItem="RiY-Ow-OMS" firstAttribute="centerY" secondItem="Jl0-Ef-Lrk" secondAttribute="centerY" id="ijC-pq-J0u"/>
-                <constraint firstItem="RiY-Ow-OMS" firstAttribute="leading" secondItem="Jl0-Ef-Lrk" secondAttribute="trailing" constant="10" id="kl4-jR-zGY"/>
-                <constraint firstItem="9gc-b1-eZy" firstAttribute="top" secondItem="Jl0-Ef-Lrk" secondAttribute="bottom" constant="16" id="w2G-nb-D39"/>
+                <constraint firstItem="9gc-b1-eZy" firstAttribute="top" secondItem="Jl0-Ef-Lrk" secondAttribute="bottom" constant="6" id="sKl-mT-YJi"/>
+                <constraint firstItem="RiY-Ow-OMS" firstAttribute="leading" secondItem="Jl0-Ef-Lrk" secondAttribute="trailing" constant="5" id="t2p-Ex-169"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -50,7 +50,7 @@
                 <outlet property="titleLabelTitle" destination="Jl0-Ef-Lrk" id="hMF-1c-OH0"/>
                 <outlet property="workingTimeLabel" destination="RiY-Ow-OMS" id="uHn-78-nJR"/>
             </connections>
-            <point key="canvasLocation" x="-14.492753623188406" y="19.419642857142858"/>
+            <point key="canvasLocation" x="-14.492753623188406" y="11.71875"/>
         </view>
     </objects>
 </document>
