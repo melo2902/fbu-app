@@ -428,7 +428,9 @@
     if ([segue.identifier isEqual:@"showTaskDetailsSegue"]|| [segue.identifier isEqual:@"showCompletedTaskDetailsSegue"]) {
         MTDTaskCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-        MTDTask *task = self.arrayOfTasks[indexPath.row];
+        
+        NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
+        MTDTask *task = tasksInSection[indexPath.row];
 
         MTDTaskViewController *vc = segue.destinationViewController;
         vc.delegate = self;
