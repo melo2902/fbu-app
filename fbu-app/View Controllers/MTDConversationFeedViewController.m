@@ -69,8 +69,9 @@
     NSTimeInterval _interval=unixTimeStamp;
     NSDate *dateString = [NSDate dateWithTimeIntervalSince1970:_interval];
     cell.dataAgoLabel.text = dateString.shortTimeAgoSinceNow;
-    
-    cell.completionButtonTapHandler = ^{
+
+    __weak MTDConversationCell *weakCell = cell;
+    weakCell.completionButtonTapHandler = ^{
         [self.arrayOfMessages removeObject:group];
         [self.tableView reloadData];
     };
@@ -252,7 +253,7 @@
     [lastMessage beginEditing];
     
     [lastMessage addAttribute:NSFontAttributeName
-                        value:[UIFont fontWithName:@"Helvetica-Bold" size:17.0]
+                        value:[UIFont fontWithName:@"Helvetica-Bold" size:14.0]
                         range:selectedRange];
     
     [lastMessage endEditing];
