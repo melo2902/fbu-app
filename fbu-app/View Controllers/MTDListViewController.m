@@ -19,6 +19,7 @@
 #import "MaterialBottomSheet.h"
 #import "MTDAddTaskViewController.h"
 #import "CompletedListView.h"
+#import <STPopup/STPopup.h>
 
 @interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,6 +30,10 @@
 @end
 
 @implementation MTDListViewController
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self getTasks];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,13 +77,14 @@
     [button addTarget:self action:@selector(addTask:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-//- (void)addTask:(id)sender {
-//    MTDAddTaskViewController *viewController = [[MTDAddTaskViewController alloc] init];
-//    MDCBottomSheetController *bottomSheet = [[MDCBottomSheetController alloc] initWithContentViewController:viewController];
-//    
-//    [bottomSheet setPreferredContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height/3)];
-//    [self presentViewController:bottomSheet animated:true completion:nil];
-//}
+- (void)addTask:(id)sender {
+    MTDAddTaskViewController *viewController = [[MTDAddTaskViewController alloc] init];
+    viewController.listName = self.list.name;
+    
+    STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:viewController];
+    popupController.style = STPopupStyleBottomSheet;
+    [popupController presentInViewController:self];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.allTasksArray.count;
@@ -93,6 +99,10 @@
         return [self initializeListHeader];
         
     } else if (section == 1) {
+        if ([[self.allTasksArray[1] lastObject] count] == 0) {
+            return nil;
+        }
+        
         CompletedListView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"CompletedListView"];
 
         NSUInteger completedTasks = [[self.allTasksArray[1] lastObject] count];
@@ -134,9 +144,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 80;
+        return 100;
     } else {
-        return 30;
+        return 25;
     }
 }
 
