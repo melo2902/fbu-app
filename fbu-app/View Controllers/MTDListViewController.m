@@ -131,12 +131,16 @@
 
     header.titleLabelTitle.text = self.list.name;
 
-    NSString *workingTime = [self.list.totalWorkingTime stringValue];
-    NSUInteger taskNumber = [[self.allTasksArray[0] lastObject] count];
-    if ([workingTime isEqual: @"1"]) {
-        header.workingTimeLabel.text = [NSString stringWithFormat:@"%lu tasks - %@ hr", (unsigned long)taskNumber, workingTime];
+    if ([[self.allTasksArray[0] lastObject] count] != 0) {
+        NSString *workingTime = [self.list.totalWorkingTime stringValue];
+        NSUInteger taskNumber = [[self.allTasksArray[0] lastObject] count];
+        if ([workingTime isEqual: @"1"]) {
+            header.workingTimeLabel.text = [NSString stringWithFormat:@"%lu tasks - %@ hr", (unsigned long)taskNumber, workingTime];
+        } else {
+            header.workingTimeLabel.text = [NSString stringWithFormat:@"%lu tasks - %@ hrs", (unsigned long)taskNumber, workingTime];
+        }
     } else {
-        header.workingTimeLabel.text = [NSString stringWithFormat:@"%lu tasks - %@ hrs", (unsigned long)taskNumber, workingTime];
+        header.workingTimeLabel.text = @"";
     }
     
     header.addedTaskBar.delegate = self;
@@ -146,9 +150,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 70;
+        return 45;
     } else {
-        return 25;
+        return 15;
     }
 }
 
