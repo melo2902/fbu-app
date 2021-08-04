@@ -207,7 +207,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YLE-Ou-eTM">
-                                                    <rect key="frame" x="46" y="10" width="227.5" height="56"/>
+                                                    <rect key="frame" x="46" y="10" width="29.5" height="56"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -559,7 +559,6 @@
         <!--Initial Filter View Controller-->
         <scene sceneID="kp3-f6-ix0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YqI-Ys-sHG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="InitialFilterViewController" modalPresentationStyle="fullScreen" id="Di4-KZ-Qqz" customClass="MTDInitialFilterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kna-sH-i9w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -644,6 +643,7 @@
                         <outlet property="tableView" destination="50a-Mp-g6q" id="Bfo-YR-LLS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YqI-Ys-sHG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4316" y="1602"/>
         </scene>

@@ -29,7 +29,9 @@
 @property (nonatomic, strong) NSMutableArray *arrayOfCompletedTasks;
 @end
 
-@implementation MTDListViewController
+@implementation MTDListViewController {
+    UILabel *noTasksLabel;
+}
 
 - (void) viewWillAppear:(BOOL)animated {
     [self getTasks];
@@ -144,7 +146,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 100;
+        return 70;
     } else {
         return 25;
     }
@@ -247,7 +249,27 @@
     [temporaryCompletedTasks addObject: self.arrayOfCompletedTasks];
     [self.allTasksArray addObject:temporaryCompletedTasks];
     
+    [self backgroundText];
+    
     [self.tableView reloadData];
+}
+
+- (void) backgroundText {
+    if ([self.arrayOfTasks count] == 0 && [self.arrayOfCompletedTasks count] == 0) {
+        noTasksLabel = [UILabel new];
+        noTasksLabel.text = @"No Tasks";
+        noTasksLabel.font = [UIFont fontWithName:@"Avenir Light" size:16];
+        noTasksLabel.textColor = [UIColor systemGrayColor];
+        noTasksLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:noTasksLabel];
+        [self.view bringSubviewToFront:noTasksLabel];
+    }
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    noTasksLabel.frame = CGRectMake(0, self.view.frame.size.height / 2, self.view.frame.size.width, 20);
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
