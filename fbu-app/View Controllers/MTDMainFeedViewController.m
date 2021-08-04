@@ -14,7 +14,7 @@
 #import "MTDAddListHeaderView.h"
 #import "MTDUser.h"
 
-@interface MTDMainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface MTDMainFeedViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, MTDListViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *allListsArray;
 @end
@@ -255,6 +255,10 @@
     [[self.allListsArray[1] lastObject] removeObject:list];
 }
 
+- (void)MTDMainFeedViewController:(nonnull MTDListViewController *)controller {
+    [self.tableView reloadData];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -264,10 +268,11 @@
         
         NSArray *listsInSection = [self.allListsArray[indexPath.section] lastObject];
         MTDList *list = listsInSection[indexPath.row];
-        
+
         UINavigationController *navigationController = [segue destinationViewController];
-        MTDListViewController *listViewController = (MTDListViewController*) [navigationController topViewController];
-        listViewController.list = list;
+        MTDListViewController *vc = (MTDListViewController*) [navigationController topViewController];
+        vc.list = list;
+        vc.delegate = self;
     }
 }
 

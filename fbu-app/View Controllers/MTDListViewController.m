@@ -20,6 +20,7 @@
 #import "MTDAddTaskViewController.h"
 #import "CompletedListView.h"
 #import <STPopup/STPopup.h>
+#import "MTDMainFeedViewController.h"
 
 @interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -464,6 +465,8 @@
 }
 
 - (IBAction)onTapBackButton:(id)sender {
+    [self.delegate MTDMainFeedViewController:self];
+    
     [self dismissViewControllerAnimated:true completion:nil];
 }
 

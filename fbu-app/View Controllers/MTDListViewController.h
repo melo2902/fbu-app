@@ -10,7 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MTDListViewController;
+
+@protocol MTDListViewControllerDelegate <NSObject>
+- (void)MTDMainFeedViewController:(MTDListViewController *)controller;
+@end
+
 @interface MTDListViewController : UIViewController
+@property (nonatomic, weak) id <MTDListViewControllerDelegate> delegate;
 @property (strong, nonatomic) MTDList *list;
 @end
 
