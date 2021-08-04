@@ -9,6 +9,7 @@
 #import "MTDListViewController.h"
 #import "XLForm.h"
 #import "MTDTask.h"
+#import "TaskHeaderView.h"
 
 @interface MTDTaskViewController ()
 @property (nonatomic) NSNumber *oldTaskTime;
@@ -19,17 +20,33 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
-    if (!self.task) {
-        self.task = [MTDTask createTask:@"" inList:self.listName withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if (succeeded) {
-                NSLog(@"Task created but not saved yet");
-            }
-        }];
-    }
+    [self.tableView registerNib:[UINib nibWithNibName:@"TaskHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"TaskHeaderView"];
     
     self.oldTaskTime = self.task.workingTime;
     
     [self initializeForm];
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+
+    if (section == 0) {
+        TaskHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TaskHeaderView"];
+
+        header.taskLabel.text = self.task.taskTitle;
+        header.statusButton.selected = self.task.completed;
+                
+        return header;
+    }
+    
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 50;
+    }
+    
+    return 20;
 }
 
 - (void)initializeForm {
@@ -38,58 +55,38 @@
     XLFormRowDescriptor * row;
 
     form = [XLFormDescriptor formDescriptorWithTitle:@"Add Event"];
-
-    // First section
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
-
-    // Title
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"taskTitle" rowType:XLFormRowDescriptorTypeText];
-    row.value = self.task.taskTitle;
-    [section addFormRow:row];
-
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
     // Due Date
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"dueDate" rowType:XLFormRowDescriptorTypeDate title:@"Due Date"];
     row.value = self.task.dueDate;
+    [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
     
     // Estimated work hours
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"workHours" rowType:XLFormRowDescriptorTypeDecimal title:@"Work Hours"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"workHours" rowType:XLFormRowDescriptorTypeDecimal title:@"Est. Working Hours"];
     [row.cellConfigAtConfigure setObject:@(NSTextAlignmentRight) forKey:@"textField.textAlignment"];
     row.value = self.task.workingTime;
+    [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
     
-    // Repeat due date
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"repeat" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Repeat"];
-    row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"Never"];
-    row.selectorTitle = @"Repeat";
-    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"Never"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"Every Day"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"Every Week"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(3) displayText:@"Every 2 Weeks"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(4) displayText:@"Every Month"],
-                            [XLFormOptionsObject formOptionsObjectWithValue:@(5) displayText:@"Every Year"],
-                            ];
-    [section addFormRow:row];
-    
-    section = [XLFormSectionDescriptor formSectionWithTitle:@"NOTES"];
-    [form addFormSection:section];
-    
+    XLFormRowDescriptor * buttonLeftAlignedRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"buttonLeftAligned" rowType:XLFormRowDescriptorTypeButton title:@"Add to My Day"];
+    [buttonLeftAlignedRow.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
+    [buttonLeftAlignedRow.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
+    buttonLeftAlignedRow.action.formSelector = @selector(connectToGroupMe:);
+    [section addFormRow:buttonLeftAlignedRow];
     // Notes
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeTextView];
     [row.cellConfigAtConfigure setObject:@"Notes" forKey:@"textView.placeholder"];
     row.value = self.task.notes;
+    [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
     
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
-    
-    XLFormRowDescriptor * buttonRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"button" rowType:XLFormRowDescriptorTypeButton title:@"Add to My Day"];
-    buttonRow.action.formSelector = @selector(addToMyDay:);
-    [section addFormRow:buttonRow];
+    NSDateFormatter* day = [[NSDateFormatter alloc] init];
+    [day setDateFormat: @"EEEE, LLLL d, yyyy"];
+    NSString *date = [day stringFromDate:[NSDate date]];
+    section.footerTitle = [NSString stringWithFormat:@"Created on %@", date];
     
     self.form = form;
 }
