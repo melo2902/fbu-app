@@ -22,10 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void) addList: ( MTDList *)list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
-+ (void) addTask: ( MTDTask *)task toList: (MTDList *) list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-
-+ (void) deleteTask: ( MTDTask *)task toList: (MTDList *) list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-
 + (void) updateTime: ( NSNumber *) time toList: (MTDList*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end

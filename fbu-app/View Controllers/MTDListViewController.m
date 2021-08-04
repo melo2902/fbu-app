@@ -345,9 +345,9 @@
         task = tasksInSection[indexPath.row];
         
         // Tasks aren't pulled from the list
-        [MTDList deleteTask:task toList:self.list withCompletion:
-         ^(BOOL succeeded, NSError * _Nullable error) {
-        }];
+//        [MTDList deleteTask:task toList:self.list withCompletion:
+//         ^(BOOL succeeded, NSError * _Nullable error) {
+//        }];
 
         PFQuery *query = [PFQuery queryWithClassName:@"Task"];
         [query getObjectInBackgroundWithId:task.objectId block:^(PFObject *taskObject, NSError *error) {
@@ -418,6 +418,7 @@
             [[self.allTasksArray[0] lastObject] removeObject:task];
             
             float updatedWorkingTime = -1 * [task.workingTime floatValue];
+
             [MTDList updateTime:[NSNumber numberWithFloat:updatedWorkingTime] toList:self.list withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
                     NSLog(@"Update list time");
