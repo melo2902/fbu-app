@@ -22,28 +22,41 @@
     [super setSelected:selected animated:animated];
 }
 
-- (void)layoutSubviews {
-    self.contentView.backgroundColor = [UIColor systemGroupedBackgroundColor];
-
-    UIView *whiteRoundedView = [[UIView alloc]initWithFrame:CGRectMake(0, 5, self.contentView.frame.size.width - 1, self.contentView.frame.size.height - 12)];
-                                      
-    whiteRoundedView.layer.backgroundColor = [UIColor whiteColor].CGColor;
-    whiteRoundedView.clipsToBounds = true;
-    whiteRoundedView.layer.masksToBounds = true;
-    whiteRoundedView.layer.cornerRadius = 12.0;
-
-    [self.contentView addSubview:whiteRoundedView];
-    [self.contentView sendSubviewToBack:whiteRoundedView];
-}
-
 - (IBAction)onTapStatusButton:(id)sender {
     if (self.statusButton.selected) {
         NSLog(@"Button is not selected!");
         self.statusButton.selected = NO;
+        self.group.onRead = NO;
+        
+        MTDUser *user = [MTDUser currentUser];
+        MTDPlatform *currPlatform = user.GroupMe;
+        [currPlatform fetchIfNeeded];
+        
+        NSMutableArray *conversations = currPlatform.onReadConversations;
+        
+        for (MTDConversation *conversationItem in conversations) {
+            if ([conversationItem.conversationID isEqual:self.group.groupID]) {
+                [conversations removeObject:conversationItem];
+                break;
+            }
+        }
+        
+        currPlatform.onReadConversations = conversations;
+        
+        [currPlatform saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (succeeded) {
+                NSLog(@"Saved conversation ID with associated timestamp%@", currPlatform.onReadConversations);
+                
+                self.completionButtonTapHandler();
+                
+                self.statusButton.selected = NO;
+            }
+        }];
    
     } else {
         NSLog(@"Button is selected!");
         self.statusButton.selected = YES;
+        self.group.onRead = YES;
         
         MTDUser *user = [MTDUser currentUser];
         MTDPlatform *currPlatform = user.GroupMe;

@@ -17,10 +17,15 @@
 #import "MTDMessagesViewController.h"
 #import "MaterialActivityIndicator.h"
 #import "MTDUser.h"
+#import "CompletedListView.h"
 
 @interface MTDConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *allMessagesArray;
+@property (nonatomic, strong) NSMutableArray *tempMessagesArray;
+@property (nonatomic, strong) NSMutableArray *tempCompletedMessages;
 @property (nonatomic, strong) NSMutableArray *arrayOfMessages;
+@property (nonatomic, strong) NSMutableArray *arrayOfCompletedMessages;
 @property (assign, nonatomic) BOOL isMoreDataLoading;
 @property (assign, nonatomic) BOOL endLoading;
 @property (nonatomic, strong) NSMutableArray *pageNumbers;
@@ -33,18 +38,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [UIFont fontWithName:@"Avenir Book" size:17], NSFontAttributeName, nil];
+    
+    self.navigationController.navigationBar.titleTextAttributes = textAttributes;
+    
     if ([MTDAPIManager returnAuthToken]) {
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         
         self.pageCount = @1;
+        
+        self.allMessagesArray = [[NSMutableArray alloc] init];
         self.arrayOfMessages = [[NSMutableArray alloc]init];
+        self.arrayOfCompletedMessages = [[NSMutableArray alloc]init];
+        
         self.pageNumbers = [[NSMutableArray alloc]init];
         
         self.activityIndicator = [[MDCActivityIndicator alloc] init];
         [self.activityIndicator sizeToFit];
         [self.tableView addSubview:self.activityIndicator];
         self.activityIndicator.center = self.view.center;
+        
+        [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
+        [self.tableView registerNib:[UINib nibWithNibName:@"CompletedListView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"CompletedListView"];
         
         [self getConversationsAPI];
     } else {
@@ -55,7 +72,9 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MTDConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ConversationCell" forIndexPath:indexPath];
     
-    MTDGroup *group = self.arrayOfMessages[indexPath.row];
+    NSArray *groupsInSection = [self.allMessagesArray[indexPath.section] lastObject];
+    MTDGroup *group = groupsInSection[indexPath.row];
+    
     cell.group = group;
     cell.groupNameLabel.text = group.groupName;
     
@@ -66,6 +85,14 @@
         cell.lastMessageLabel.text = group.lastMessage;
     }
     
+    if (!cell.group.onRead){
+        [cell.statusButton setSelected:NO];
+//        cell.taskItemLabel.text = cell.taskTitle;
+    } else {
+        [cell.statusButton setSelected:YES];
+//        cell.taskItemLabel.attributedText = [self strikeOutText:task.taskTitle];
+    }
+    
     double unixTimeStamp =[group.lastUpdated doubleValue];
     NSTimeInterval _interval=unixTimeStamp;
     NSDate *dateString = [NSDate dateWithTimeIntervalSince1970:_interval];
@@ -73,15 +100,56 @@
 
     __weak MTDConversationCell *weakCell = cell;
     weakCell.completionButtonTapHandler = ^{
-        [self.arrayOfMessages removeObject:group];
+        if (group.onRead) {
+            [self.arrayOfMessages removeObject:group];
+            [self.arrayOfCompletedMessages addObject:group];
+        } else {
+            [self.arrayOfMessages addObject:group];
+            [self.arrayOfCompletedMessages removeObject:group];
+        }
+        
         [self.tableView reloadData];
     };
     
     return cell;
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.arrayOfMessages.count;
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 30;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        if ([[self.allMessagesArray[1] lastObject] count] == 0) {
+            return nil;
+        }
+        
+        CompletedListView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"CompletedListView"];
+
+        NSUInteger completedTasks = [[self.allMessagesArray[0] lastObject] count];
+        header.completedLabel.text = [NSString stringWithFormat:@"TO REPLY - %lu", completedTasks];
+        header.completedLabel.font =  [UIFont fontWithName:@"Avenir Book" size:14];
+        
+        return header;
+        
+    } else if (section == 1) {
+        if ([[self.allMessagesArray[1] lastObject] count] == 0) {
+            return nil;
+        }
+        
+        CompletedListView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"CompletedListView"];
+
+        NSUInteger completedTasks = [[self.allMessagesArray[1] lastObject] count];
+        header.completedLabel.text = [NSString stringWithFormat:@"COMPLETED - %lu", completedTasks];
+        header.completedLabel.font =  [UIFont fontWithName:@"Avenir Book" size:14];
+        
+        return header;
+    } else {
+        UITableViewHeaderFooterView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TableViewHeaderView"];
+        
+        header.textLabel.text = [self.allMessagesArray[section] firstObject];
+        return header;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -98,6 +166,11 @@
     if (!self.endLoading && ![self.pageNumbers containsObject:self.pageCount])  {
         [self.activityIndicator startAnimating];
         [self.pageNumbers addObject:self.pageCount];
+        
+        self.tempMessagesArray = [[NSMutableArray alloc] init];
+        self.tempCompletedMessages = [[NSMutableArray alloc] init];
+        [self.tempMessagesArray addObject:@"TO REPLY"];
+        [self.tempCompletedMessages addObject:@"COMPLETED"];
         
         NSMutableString *URLString = [[NSMutableString alloc] init];
         [URLString appendString:@"https://api.groupme.com/v3/groups?limit=6&token="];
@@ -164,11 +237,19 @@
                     if ([onReadDictionary objectForKey:group.groupID]) {
                         if (group.lastUpdated > onReadDictionary[group.groupID]) {
                             [onReadDictionary removeObjectForKey:group.groupID];
+                            group.onRead = NO;
                             [self.arrayOfMessages addObject:group];
+                        } else {
+                            group.onRead = YES;
+                            [self.arrayOfCompletedMessages addObject:group];
                         }
                     } else {
+                        group.onRead = NO;
                         [self.arrayOfMessages addObject:group];
                     }
+                } else {
+                    group.onRead = YES;
+                    [self.arrayOfCompletedMessages addObject:group];
                 }
             }
 
@@ -182,10 +263,25 @@
             currPlatform.onReadConversations = savedConversations;
             [currPlatform saveInBackground];
             
+            self.allMessagesArray = [[NSMutableArray alloc] init];
+            [self.tempMessagesArray addObject: self.arrayOfMessages];
+            [self.allMessagesArray addObject:self.tempMessagesArray];
+            
+            [self.tempCompletedMessages addObject: self.arrayOfCompletedMessages];
+            [self.allMessagesArray addObject:self.tempCompletedMessages];
+            
             [self.activityIndicator stopAnimating];
             [self.tableView reloadData];
         }
     }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.allMessagesArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [[self.allMessagesArray[section] lastObject] count];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -204,15 +300,20 @@
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    MTDGroup *group = self.arrayOfMessages[indexPath.row];
+    if (indexPath.section == 0) {
+        NSArray *groupsInSection = [self.allMessagesArray[indexPath.section] lastObject];
+        MTDGroup *group = groupsInSection[indexPath.row];
+        
+        UIContextualAction *notif1 = [self createNotification: group inStringTime:@"30s" inSeconds:30];
+        UIContextualAction *notif2 = [self createNotification: group inStringTime:@"60s" inSeconds:60];
+        UIContextualAction *notif3 = [self createNotification: group inStringTime:@"90s" inSeconds:90];
+        
+        UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
+        SwipeActions.performsFirstActionWithFullSwipe=false;
+        return SwipeActions;
+    }
     
-    UIContextualAction *notif1 = [self createNotification: group inStringTime:@"30s" inSeconds:30];
-    UIContextualAction *notif2 = [self createNotification: group inStringTime:@"60s" inSeconds:60];
-    UIContextualAction *notif3 = [self createNotification: group inStringTime:@"90s" inSeconds:90];
-    
-    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
-    SwipeActions.performsFirstActionWithFullSwipe=false;
-    return SwipeActions;
+    return nil;
 }
 
 - (UIContextualAction*) createNotification:(MTDGroup *) group inStringTime: (NSString *) time inSeconds: (NSTimeInterval) seconds {
@@ -248,7 +349,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return 88;
 }
 
 -(NSMutableAttributedString *)modifyMessage:(NSString *)message withSender:(NSString *)sender {
@@ -260,7 +361,7 @@
     [lastMessage beginEditing];
     
     [lastMessage addAttribute:NSFontAttributeName
-                        value:[UIFont fontWithName:@"Helvetica-Bold" size:14.0]
+                        value:[UIFont fontWithName:@"Avenir Book" size:14.0]
                         range:selectedRange];
     
     [lastMessage endEditing];
@@ -269,13 +370,28 @@
     
 }
 
+- (NSAttributedString *) strikeOutText: (NSString *) text {
+    NSDictionary* attributes = @{
+      NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
+    };
+
+    NSAttributedString* attrText = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    return attrText;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqual:@"showDetailSegue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 
-        MTDGroup *group = self.arrayOfMessages[indexPath.row];
+        NSArray *groupsInSection = [self.allMessagesArray[indexPath.section] lastObject];
+        MTDGroup *group = groupsInSection[indexPath.row];
+        
         UINavigationController *navigationController = [segue destinationViewController];
         MTDMessagesViewController *messagesViewController = (MTDMessagesViewController *)[navigationController topViewController];
         messagesViewController.group = group;
