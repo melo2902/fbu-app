@@ -586,7 +586,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="APe-Jx-cD7">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="nVl-JB-L9F">
+                        <barButtonItem key="rightBarButtonItem" image="pencil" catalog="system" id="nVl-JB-L9F">
                             <connections>
                                 <action selector="onTapSave:" destination="15q-3i-RO4" id="ofQ-C2-qeP"/>
                             </connections>
@@ -713,6 +713,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="message" catalog="system" width="128" height="113"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
