@@ -33,6 +33,11 @@
 }
 
 - (void) initializeVariables {
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [UIFont fontWithName:@"Avenir Book" size:17], NSFontAttributeName, nil];
+    
+    self.navigationController.navigationBar.titleTextAttributes = textAttributes;
+    
     self.title = self.group.groupName;
     self.arrayOfMessages = [[NSMutableArray alloc]init];
     self.avatarTable = [[NSMutableDictionary alloc] init];
