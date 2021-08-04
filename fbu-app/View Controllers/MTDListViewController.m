@@ -43,6 +43,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    noTasksLabel = [UILabel new];
 
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                  forBarMetrics:UIBarMetricsDefault];
@@ -260,8 +261,10 @@
 }
 
 - (void) checkForBackgroundText {
-    if ([self.arrayOfTasks count] == 0 && [self.arrayOfCompletedTasks count] == 0) {
-        noTasksLabel = [UILabel new];
+    NSUInteger tasksCount = [[self.allTasksArray[0] lastObject] count];
+    NSUInteger completedTasksCount = [[self.allTasksArray[1] lastObject] count];
+    
+    if (tasksCount == 0 && completedTasksCount == 0) {
         noTasksLabel.text = @"No Tasks";
         noTasksLabel.font = [UIFont fontWithName:@"Avenir Light" size:16];
         noTasksLabel.textColor = [UIColor systemGrayColor];
