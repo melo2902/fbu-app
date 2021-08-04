@@ -33,7 +33,9 @@
 @property(nonatomic) MDCActivityIndicator *activityIndicator;
 @end
 
-@implementation MTDConversationFeedViewController
+@implementation MTDConversationFeedViewController {
+    UILabel *addBackgroundLabel;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,6 +67,7 @@
         
         [self getConversationsAPI];
     } else {
+        [self checkForBackgroundText];
         NSLog(@"User has not logged into their linked account yet");
     }
 }
@@ -150,6 +153,22 @@
         header.textLabel.text = [self.allMessagesArray[section] firstObject];
         return header;
     }
+}
+
+- (void) checkForBackgroundText {
+    addBackgroundLabel = [UILabel new];
+    addBackgroundLabel.text = @"No Platforms Connected";
+    addBackgroundLabel.font = [UIFont fontWithName:@"Avenir Light" size:16];
+    addBackgroundLabel.textColor = [UIColor systemGrayColor];
+    addBackgroundLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:addBackgroundLabel];
+    [self.view bringSubviewToFront:addBackgroundLabel];
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    addBackgroundLabel.frame = CGRectMake(0, self.view.frame.size.height / 2, self.view.frame.size.width, 20);
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{

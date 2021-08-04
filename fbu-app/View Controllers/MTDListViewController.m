@@ -249,12 +249,12 @@
     [temporaryCompletedTasks addObject: self.arrayOfCompletedTasks];
     [self.allTasksArray addObject:temporaryCompletedTasks];
     
-    [self backgroundText];
+    [self checkForBackgroundText];
     
     [self.tableView reloadData];
 }
 
-- (void) backgroundText {
+- (void) checkForBackgroundText {
     if ([self.arrayOfTasks count] == 0 && [self.arrayOfCompletedTasks count] == 0) {
         noTasksLabel = [UILabel new];
         noTasksLabel.text = @"No Tasks";
