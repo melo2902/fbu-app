@@ -11,7 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MTDListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *listNameLabel;
-
+@property (weak, nonatomic) IBOutlet UIImageView *listIcon;
+@property (weak, nonatomic) IBOutlet UILabel *numTasksLabel;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -170,6 +170,18 @@
     NSArray *listsInSection = [self.allListsArray[indexPath.section] lastObject];
     MTDList *list = listsInSection[indexPath.row];
     cell.listNameLabel.text = list.name;
+    cell.numTasksLabel.text = [NSString stringWithFormat: @"%@ hrs", [list.totalWorkingTime stringValue]];
+    
+    if ([list.name isEqual: @"My Day"]) {
+        cell.listIcon.image = [[UIImage systemImageNamed:@"sun.min"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    } else if ([list.name isEqual: @"My Tomorrow"]) {
+        cell.listIcon.image = [[UIImage systemImageNamed:@"scribble.variable"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    } else if ([list.name isEqual: @"All"]) {
+        cell.listIcon.image = [[UIImage systemImageNamed:@"tray"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    } else {
+        cell.listIcon.image = [[UIImage systemImageNamed:@"pencil"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    }
+   
     
     return cell;
 }

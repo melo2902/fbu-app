@@ -25,7 +25,7 @@
     whiteRoundedView.layer.backgroundColor = [UIColor whiteColor].CGColor;
     whiteRoundedView.clipsToBounds = true;
     whiteRoundedView.layer.masksToBounds = true;
-    whiteRoundedView.layer.cornerRadius = 12.0;
+    whiteRoundedView.layer.cornerRadius = 5.0;
 
     [self.contentView addSubview:whiteRoundedView];
     [self.contentView sendSubviewToBack:whiteRoundedView];
