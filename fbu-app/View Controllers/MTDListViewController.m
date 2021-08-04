@@ -369,7 +369,7 @@
         }];
 
         [[self.allTasksArray[indexPath.section] lastObject] removeObject:task];
-        [self checkForBackgroundText];
+        [self checkForBackgroundText]; // Not show how consistent this is
         [self.tableView reloadData];
         completionHandler(YES);
     }];

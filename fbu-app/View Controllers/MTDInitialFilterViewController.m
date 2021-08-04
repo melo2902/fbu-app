@@ -67,13 +67,12 @@
     [lastMessage beginEditing];
     
     [lastMessage addAttribute:NSFontAttributeName
-                        value:[UIFont fontWithName:@"Helvetica-Bold" size:17.0]
+                        value:[UIFont fontWithName:@"Avenir Book" size:14.0]
                         range:selectedRange];
     
     [lastMessage endEditing];
     
     return lastMessage;
-    
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
