@@ -256,7 +256,7 @@
 }
 
 - (void)MTDMainFeedViewController:(nonnull MTDListViewController *)controller {
-    [self.tableView reloadData];
+    [self getLists];
 }
 
 #pragma mark - Navigation

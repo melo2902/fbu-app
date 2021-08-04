@@ -102,7 +102,7 @@
         
         [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                [self updateListTime];
+                [self updateListTime: task];
             }
         }];
         
@@ -115,7 +115,8 @@
     self.dateTextField.text = [datePicker.date formattedDateWithFormat:@"MM-dd-yyyy"];
 }
 
-- (void) updateListTime {
+- (void) updateListTime: (MTDTask *) task {
+    
     [MTDList updateTime: @([_workingHoursTextField.text floatValue]) toList:self.list  withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             [self.popupController dismiss];
