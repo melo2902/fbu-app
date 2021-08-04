@@ -19,14 +19,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a task..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-b1-eZy">
-                    <rect key="frame" x="20" y="89.5" width="300" height="32.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="300" id="vrd-Fj-Rnj"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="workingTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-Ow-OMS">
                     <rect key="frame" x="135" y="59" width="81" height="19.5"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
@@ -37,16 +29,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="Jl0-Ef-Lrk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="0l0-LP-8Oc"/>
-                <constraint firstItem="9gc-b1-eZy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="7fp-zE-VWJ"/>
                 <constraint firstItem="RiY-Ow-OMS" firstAttribute="bottom" secondItem="Jl0-Ef-Lrk" secondAttribute="bottom" constant="-5" id="bRG-5l-go1"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9gc-b1-eZy" secondAttribute="bottom" constant="5" id="eOw-Xc-JcX"/>
                 <constraint firstItem="Jl0-Ef-Lrk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="ewT-9X-GcV"/>
-                <constraint firstItem="9gc-b1-eZy" firstAttribute="top" secondItem="Jl0-Ef-Lrk" secondAttribute="bottom" constant="6" id="sKl-mT-YJi"/>
                 <constraint firstItem="RiY-Ow-OMS" firstAttribute="leading" secondItem="Jl0-Ef-Lrk" secondAttribute="trailing" constant="5" id="t2p-Ex-169"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="addedTaskBar" destination="9gc-b1-eZy" id="DUp-cF-ZlC"/>
                 <outlet property="titleLabelTitle" destination="Jl0-Ef-Lrk" id="hMF-1c-OH0"/>
                 <outlet property="workingTimeLabel" destination="RiY-Ow-OMS" id="uHn-78-nJR"/>
             </connections>
