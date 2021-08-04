@@ -11,6 +11,7 @@ target 'fbu-app' do
   pod 'DateTools'
   pod 'JSQMessagesViewController'
   pod 'MaterialComponents'
+  pod 'STPopup'
 
   target 'fbu-appTests' do
     inherit! :search_paths
