@@ -25,6 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [UIFont fontWithName:@"Avenir Medium" size:17], NSFontAttributeName, nil];
+    
+    self.navigationController.navigationBar.titleTextAttributes = textAttributes;
+    
     [self initializeStates];
     
     if ([MTDAPIManager returnAuthToken]) {

@@ -80,13 +80,13 @@
         <!--Settings-->
         <scene sceneID="irP-Ba-PFS">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" modalPresentationStyle="fullScreen" id="ubJ-Zr-8Zu" customClass="MTDSettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="ubJ-Zr-8Zu" customClass="MTDSettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z0Q-Qb-78n">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zmq-0I-8DZ">
-                                <rect key="frame" x="139.5" y="108.5" width="135" height="134"/>
+                                <rect key="frame" x="139.5" y="76.5" width="135" height="134"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="135" id="rv1-Go-HkB"/>
                                     <constraint firstAttribute="width" constant="135" id="ua4-zr-BY8"/>
@@ -94,39 +94,39 @@
                                 <imageReference key="image" image="person.crop.circle" catalog="system" renderingMode="original"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hO-et-RQQ">
-                                <rect key="frame" x="115" y="253" width="184.5" height="41"/>
+                                <rect key="frame" x="115" y="221" width="184.5" height="41"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLD-rH-X3x">
-                                <rect key="frame" x="161.5" y="304" width="91.5" height="27.5"/>
+                                <rect key="frame" x="161.5" y="272" width="91.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Messaging Platforms" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4M-W0-Kzo">
-                                <rect key="frame" x="25" y="346.5" width="173" height="21"/>
+                                <rect key="frame" x="25" y="314.5" width="173" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlI-PI-CM4">
-                                <rect key="frame" x="371" y="346" width="18" height="22"/>
+                                <rect key="frame" x="371" y="314" width="18" height="22"/>
                                 <state key="normal" image="plus" catalog="system"/>
                                 <connections>
                                     <action selector="onTapAddPlatform:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="IJS-OF-rR6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1S-Ba-dq4">
-                                <rect key="frame" x="25" y="419.5" width="55" height="30"/>
+                                <rect key="frame" x="25" y="387.5" width="55" height="30"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
                                     <action selector="onTapLogOut:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="P7b-cZ-axt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f03-Zc-usB">
-                                <rect key="frame" x="25" y="382.5" width="25" height="22"/>
+                                <rect key="frame" x="25" y="350.5" width="25" height="22"/>
                                 <state key="normal" image="camera" catalog="system"/>
                                 <connections>
                                     <action selector="editProfilePicture:" destination="ubJ-Zr-8Zu" eventType="touchUpInside" id="Y2P-bo-bNf"/>
@@ -155,7 +155,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Settings" id="f2D-De-N7D">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="E8M-zZ-ZWg">
+                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="E8M-zZ-ZWg">
                             <connections>
                                 <action selector="onTapBackButton:" destination="ubJ-Zr-8Zu" id="fu6-W3-McF"/>
                             </connections>
@@ -247,7 +247,7 @@
                     <navigationItem key="navigationItem" id="f4o-E2-wAH">
                         <barButtonItem key="leftBarButtonItem" image="gearshape.fill" catalog="system" id="SXe-7i-dBg">
                             <connections>
-                                <segue destination="Der-Rb-wqR" kind="show" identifier="showSettingsSegue" id="Uxo-Z5-1c8"/>
+                                <segue destination="Der-Rb-wqR" kind="presentation" identifier="showSettingsSegue" id="Uxo-Z5-1c8"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -543,7 +543,7 @@
                     <navigationItem key="navigationItem" title="Messages" id="jRV-Vh-tMa">
                         <barButtonItem key="leftBarButtonItem" image="gearshape.fill" catalog="system" id="h2D-Jx-2QM">
                             <connections>
-                                <segue destination="Der-Rb-wqR" kind="show" id="wYF-Ja-7ib"/>
+                                <segue destination="Der-Rb-wqR" kind="presentation" id="wYF-Ja-7ib"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -561,11 +561,11 @@
             <objects>
                 <viewController storyboardIdentifier="InitialFilterViewController" modalPresentationStyle="fullScreen" id="Di4-KZ-Qqz" customClass="MTDInitialFilterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kna-sH-i9w">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="50a-Mp-g6q">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectionConversationCell" rowHeight="68" id="7GU-jx-K1v" customClass="MTDSelectionConversationCell">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="68"/>
@@ -735,12 +735,12 @@
         <!--Item-->
         <scene sceneID="CBg-Xe-MxQ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Der-Rb-wqR" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Der-Rb-wqR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="MUX-DV-puW"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Mxn-qx-XGC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aj6-6m-Z4S">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
