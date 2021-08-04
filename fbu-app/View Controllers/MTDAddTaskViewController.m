@@ -9,6 +9,7 @@
 #import "MTDTask.h"
 #import <STPopup/STPopup.h>
 #import "DateTools.h"
+#import "MTDList.h"
 
 @interface MTDAddTaskViewController ()
 @property (strong, nonatomic) UITextField *dateTextField;
@@ -22,8 +23,7 @@
     UITextField *_dateTextField;
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (self = [super init]) {
         self.title = @"New task";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"pencil"] style:UIBarButtonItemStylePlain target:self action:@selector(saveTask)];
@@ -53,7 +53,6 @@
     _workingHoursTextField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
     _workingHoursTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:_workingHoursTextField];
-    
     
     self.dateTextField = [UITextField new];
     self.dateTextField.placeholder = @"Due Date";
@@ -89,7 +88,7 @@
 
 - (void) saveTask {
     if (_textField.text) {
-        MTDTask *task = [MTDTask createTask:_textField.text inList:self.listName withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        MTDTask *task = [MTDTask createTask:_textField.text inList:self.list.name withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 NSLog(@"Task created but not saved yet");
             }
@@ -104,11 +103,9 @@
         
         [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-//                [self.delegate ListViewController:self withTimeChange:task.workingTime];
+                [self updateListTime];
             }
         }];
-        
-        [self.popupController dismiss];
         
     } else {
         NSLog(@"Please add a task title");
@@ -117,6 +114,14 @@
 
 - (void)onDatePickerValueChanged:(UIDatePicker *)datePicker {
     self.dateTextField.text = [datePicker.date formattedDateWithFormat:@"MM-dd-yyyy"];
+}
+
+- (void) updateListTime {
+    [MTDList updateTime: @([_workingHoursTextField.text floatValue]) toList:self.list  withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            [self.popupController dismiss];
+        }
+    }];
 }
 
 @end

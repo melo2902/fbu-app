@@ -79,7 +79,7 @@
 
 - (void)addTask:(id)sender {
     MTDAddTaskViewController *viewController = [[MTDAddTaskViewController alloc] init];
-    viewController.listName = self.list.name;
+    viewController.list = self.list;
     
     STPopupController *popupController = [[STPopupController alloc] initWithRootViewController:viewController];
     popupController.style = STPopupStyleBottomSheet;
@@ -339,7 +339,6 @@
         [query getObjectInBackgroundWithId:task.objectId block:^(PFObject *taskObject, NSError *error) {
             [taskObject deleteInBackground];
         }];
-
 
         [[self.allTasksArray[indexPath.section] lastObject] removeObject:task];
         
