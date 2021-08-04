@@ -176,7 +176,6 @@
 
 # pragma mark - connect to GroupMe
 - (void) connectToGroupMe:(id) sender {
-    NSLog(@"Do we hit this");
     NSString *oAuthURL = @"https://oauth.groupme.com/oauth/authorize?client_id=fsmTfdnj8zqq1r3fnjB25IJ3muBt1VUYHcVc03BuZAkATsW1";
     
     WKWebViewConfiguration *theConfiguration = [[WKWebViewConfiguration alloc] init];

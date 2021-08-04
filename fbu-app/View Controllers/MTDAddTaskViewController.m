@@ -29,7 +29,6 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"pencil"] style:UIBarButtonItemStylePlain target:self action:@selector(saveTask)];
         // It's required to set content size of popup.
         self.contentSizeInPopup = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height / 6);
-        NSLog(@"height: %f", self.view.frame.size.height/6);
         self.view.layer.cornerRadius = 20;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
     }
