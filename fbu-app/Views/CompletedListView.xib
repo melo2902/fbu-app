@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCZ-RE-PNP">
-                    <rect key="frame" x="30" y="49" width="379" height="29"/>
+                    <rect key="frame" x="25" y="49" width="384" height="29"/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -27,7 +27,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="rCZ-RE-PNP" secondAttribute="bottom" constant="2" id="6pX-Sf-cpI"/>
                 <constraint firstItem="rCZ-RE-PNP" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="8oe-WT-MZA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rCZ-RE-PNP" secondAttribute="trailing" constant="5" id="REQ-3h-Esb"/>
-                <constraint firstItem="rCZ-RE-PNP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="rbK-Xg-9Bw"/>
+                <constraint firstItem="rCZ-RE-PNP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="rbK-Xg-9Bw"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
