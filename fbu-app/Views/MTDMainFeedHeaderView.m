@@ -6,8 +6,8 @@
 //
 
 #import "MTDMainFeedHeaderView.h"
-
 @implementation MTDMainFeedHeaderView
+
 - (IBAction)onTapSettingsButton:(id)sender {
     self.settingsButtonTapHandler();
 }

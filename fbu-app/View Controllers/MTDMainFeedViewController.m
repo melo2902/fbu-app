@@ -128,9 +128,14 @@
 }
 
 - (MTDMainFeedHeaderView *) setUpMainFeedHeader: (MTDMainFeedHeaderView *) header {
-    header.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", PFUser.currentUser.username];
-
+    
     MTDUser *user = [MTDUser currentUser];
+    header.usernameLabel.text = [NSString stringWithFormat:@"Hi, %@!", user.firstName];
+    
+    NSDateFormatter* day = [[NSDateFormatter alloc] init];
+    [day setDateFormat: @"EEEE, LLLL d"];
+     header.dateLabel.text = [day stringFromDate:[NSDate date]];
+    
     if (user.pfp) {
         PFFileObject *pfp = user.pfp;
 
@@ -149,7 +154,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return 120;
+        return 137;
     } else {
         return 40;
     }
