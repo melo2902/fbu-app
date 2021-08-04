@@ -25,6 +25,7 @@
 @end
 
 @implementation MTDInitialFilterViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

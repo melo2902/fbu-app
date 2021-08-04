@@ -6,10 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XLForm.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MTDInitialFilterViewController : UIViewController
+@interface MTDInitialFilterViewController : UIViewController <XLFormRowDescriptorViewController>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *filterConversationButton;
 @end
 

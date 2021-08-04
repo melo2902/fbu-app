@@ -47,6 +47,9 @@
 		58E0A77F26B9E5A900C1DCE1 /* MTDAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A77E26B9E5A900C1DCE1 /* MTDAddTaskViewController.m */; };
 		58E0A78126B9EDAA00C1DCE1 /* CompletedListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E0A78026B9EDAA00C1DCE1 /* CompletedListView.xib */; };
 		58E0A78426B9EE1C00C1DCE1 /* CompletedListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E0A78326B9EE1C00C1DCE1 /* CompletedListView.m */; };
+		58EBE75726BA8BE0000B5BC9 /* MTDXLSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EBE75626BA8BE0000B5BC9 /* MTDXLSettingsViewController.m */; };
+		58EBE75926BA90B1000B5BC9 /* SettingsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58EBE75826BA90B1000B5BC9 /* SettingsHeaderView.xib */; };
+		58EBE75C26BA9106000B5BC9 /* SettingsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EBE75B26BA9106000B5BC9 /* SettingsHeaderView.m */; };
 		912C63FB8902718BA348CFA0 /* libPods-fbu-appTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B29C4FDD3F569F03CFC5EB72 /* libPods-fbu-appTests.a */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +144,11 @@
 		58E0A78026B9EDAA00C1DCE1 /* CompletedListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompletedListView.xib; sourceTree = "<group>"; };
 		58E0A78226B9EE1C00C1DCE1 /* CompletedListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompletedListView.h; sourceTree = "<group>"; };
 		58E0A78326B9EE1C00C1DCE1 /* CompletedListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompletedListView.m; sourceTree = "<group>"; };
+		58EBE75526BA8BE0000B5BC9 /* MTDXLSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDXLSettingsViewController.h; sourceTree = "<group>"; };
+		58EBE75626BA8BE0000B5BC9 /* MTDXLSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDXLSettingsViewController.m; sourceTree = "<group>"; };
+		58EBE75826BA90B1000B5BC9 /* SettingsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsHeaderView.xib; sourceTree = "<group>"; };
+		58EBE75A26BA9106000B5BC9 /* SettingsHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsHeaderView.h; sourceTree = "<group>"; };
+		58EBE75B26BA9106000B5BC9 /* SettingsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsHeaderView.m; sourceTree = "<group>"; };
 		6EB52F323BF97ED29C867606 /* Pods-fbu-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-app.release.xcconfig"; path = "Target Support Files/Pods-fbu-app/Pods-fbu-app.release.xcconfig"; sourceTree = "<group>"; };
 		8C30363C24351EF4FC94090C /* libPods-fbu-app.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fbu-app.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0C9EA45786B69859BC4DA7 /* Pods-fbu-appTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fbu-appTests.debug.xcconfig"; path = "Target Support Files/Pods-fbu-appTests/Pods-fbu-appTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -300,6 +308,11 @@
 				58E0A78026B9EDAA00C1DCE1 /* CompletedListView.xib */,
 				58E0A78226B9EE1C00C1DCE1 /* CompletedListView.h */,
 				58E0A78326B9EE1C00C1DCE1 /* CompletedListView.m */,
+				58EBE75526BA8BE0000B5BC9 /* MTDXLSettingsViewController.h */,
+				58EBE75626BA8BE0000B5BC9 /* MTDXLSettingsViewController.m */,
+				58EBE75826BA90B1000B5BC9 /* SettingsHeaderView.xib */,
+				58EBE75A26BA9106000B5BC9 /* SettingsHeaderView.h */,
+				58EBE75B26BA9106000B5BC9 /* SettingsHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -456,6 +469,7 @@
 				58903F6526B49190006BCDBF /* AddListHeaderView.xib in Resources */,
 				5862EEBD269C9ED600BE2EA4 /* Assets.xcassets in Resources */,
 				5862EEBB269C9ED400BE2EA4 /* Main.storyboard in Resources */,
+				58EBE75926BA90B1000B5BC9 /* SettingsHeaderView.xib in Resources */,
 				58903F5B26B4587C006BCDBF /* ListHeaderHeaderFooterView.xib in Resources */,
 				58E0A78126B9EDAA00C1DCE1 /* CompletedListView.xib in Resources */,
 				58903F5F26B487A6006BCDBF /* MainFeedHeaderView.xib in Resources */,
@@ -586,6 +600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58EBE75726BA8BE0000B5BC9 /* MTDXLSettingsViewController.m in Sources */,
 				5862EEEE269CA40600BE2EA4 /* MTDSignupViewController.m in Sources */,
 				5862EF3726A9CD7400BE2EA4 /* MTDInitialFilterViewController.m in Sources */,
 				5862EF4026AF956C00BE2EA4 /* MTDMessagesViewController.m in Sources */,
@@ -611,6 +626,7 @@
 				5862EF2826A221F900BE2EA4 /* MTDPlatform.m in Sources */,
 				5862EF10269E141500BE2EA4 /* MTDTaskCell.m in Sources */,
 				5862EF3426A8CA2000BE2EA4 /* MTDTaskViewController.m in Sources */,
+				58EBE75C26BA9106000B5BC9 /* SettingsHeaderView.m in Sources */,
 				5862EEB5269C9ED400BE2EA4 /* SceneDelegate.m in Sources */,
 				5862EEEA269CA28F00BE2EA4 /* MTDLoginViewController.m in Sources */,
 				5862EF2126A0C86100BE2EA4 /* MTDConversationFeedViewController.m in Sources */,
