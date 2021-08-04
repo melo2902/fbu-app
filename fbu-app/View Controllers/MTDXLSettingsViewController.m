@@ -87,57 +87,56 @@
     [form addFormSection:section];
     
     if (![MTDAPIManager returnAuthToken]) {
-        XLFormRowDescriptor * buttonLeftAlignedRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"buttonLeftAligned" rowType:XLFormRowDescriptorTypeButton title:@"GroupMe"];
+        XLFormRowDescriptor * buttonLeftAlignedRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"groupMe" rowType:XLFormRowDescriptorTypeButton title:@"GroupMe"];
         [buttonLeftAlignedRow.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
         [buttonLeftAlignedRow.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
         buttonLeftAlignedRow.action.formSelector = @selector(connectToGroupMe:);
         [section addFormRow:buttonLeftAlignedRow];
     } else {
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"version" rowType:XLFormRowDescriptorTypeSelectorPush title:@"GroupMe"];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"groupMe" rowType:XLFormRowDescriptorTypeSelectorPush title:@"GroupMe"];
         [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
         row.value = @"Connected";
         [section addFormRow:row];
     }
     
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"version" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Slack"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"slack" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Slack"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"version" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Instagram Business"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"instagramBusiness" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Instagram Business"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
     section.title = @"GENERAL";
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"version" rowType:XLFormRowDescriptorTypeInfo title:@"Manage Account"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"manageAccount" rowType:XLFormRowDescriptorTypeInfo title:@"Manage Account"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"version" rowType:XLFormRowDescriptorTypeAccount title:@"Edit Profile Picture"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"editPFP" rowType:XLFormRowDescriptorTypeAccount title:@"Edit Profile Picture"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"version" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Update Notification Defaults"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notifDefaults" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Update Notification Defaults"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor  formSection];
     section.title = @"HELP & FEEDBACK";
     [form addFormSection:section];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"version" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Get Support"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"support" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Get Support"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"privacyCookies" rowType:XLFormRowDescriptorTypeInfo title:@"Suggest a Platform"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"platform" rowType:XLFormRowDescriptorTypeInfo title:@"Suggest a Platform"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"exportYourInfo" rowType:XLFormRowDescriptorTypeInfo title:@"Copy Session and User ID"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"copySessionUserID" rowType:XLFormRowDescriptorTypeInfo title:@"Copy Session and User ID"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"exportYourInfo" rowType:XLFormRowDescriptorTypeInfo title:@"Sync"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"sync" rowType:XLFormRowDescriptorTypeInfo title:@"Sync"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
     
     section = [XLFormSectionDescriptor formSection];
     section.title = @"ABOUT";
-    
     [form addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"version" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Version"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
@@ -151,7 +150,7 @@
     
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
-    XLFormRowDescriptor * buttonRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"button" rowType:XLFormRowDescriptorTypeButton title:@"Sign Out"];
+    XLFormRowDescriptor * buttonRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"signOut" rowType:XLFormRowDescriptorTypeButton title:@"Sign Out"];
     [buttonRow.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     buttonRow.action.formSelector = @selector(signOut:);
     [section addFormRow:buttonRow];
