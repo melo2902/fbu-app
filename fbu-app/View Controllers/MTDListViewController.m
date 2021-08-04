@@ -267,6 +267,8 @@
         noTasksLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:noTasksLabel];
         [self.view bringSubviewToFront:noTasksLabel];
+    } else {
+        noTasksLabel.text = @"";
     }
 }
 
@@ -367,7 +369,7 @@
         }];
 
         [[self.allTasksArray[indexPath.section] lastObject] removeObject:task];
-        
+        [self checkForBackgroundText];
         [self.tableView reloadData];
         completionHandler(YES);
     }];
