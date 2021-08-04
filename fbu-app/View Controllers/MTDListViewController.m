@@ -22,7 +22,7 @@
 #import <STPopup/STPopup.h>
 #import "MTDMainFeedViewController.h"
 
-@interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, XLFTaskViewControllerDelegate>
+@interface MTDListViewController () <UITableViewDelegate, UITableViewDataSource, XLFTaskViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic, strong) MDCFloatingButton *defaultFloatingButton;
 @property (nonatomic, strong) NSMutableArray *allTasksArray;
@@ -280,24 +280,6 @@
     [super viewDidLayoutSubviews];
     
     noTasksLabel.frame = CGRectMake(0, self.view.frame.size.height / 2, self.view.frame.size.width, 20);
-}
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    MTDTask *newTask = [MTDTask createTask:textField.text inList: self.list.name withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-    }];
-
-    [newTask saveInBackground];
-
-    [MTDList addTask:newTask toList:self.list withCompletion:
-     ^(BOOL succeeded, NSError * _Nullable error) {
-    }];
-    
-    [[self.allTasksArray[0] lastObject] insertObject:newTask atIndex:0];
-    
-    textField.text = @"";
-    [self.tableView reloadData];
-
-    return YES;
 }
 
 - (UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath {
