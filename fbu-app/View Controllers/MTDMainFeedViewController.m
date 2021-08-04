@@ -112,6 +112,9 @@
         
     } else if (section == 1) {
         MTDAddListHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"AddListHeaderView"];
+        NSAttributedString *blackText = [[NSAttributedString alloc] initWithString:@"New List" attributes:@{ NSForegroundColorAttributeName : [UIColor blackColor] }];
+        header.placeHolderField.attributedPlaceholder = blackText;
+
         header.addListBarField.delegate = self;
         
         return header;
@@ -148,7 +151,7 @@
     if (section == 0) {
         return 120;
     } else {
-        return 30;
+        return 40;
     }
 }
 
