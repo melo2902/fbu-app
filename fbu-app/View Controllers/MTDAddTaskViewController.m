@@ -64,6 +64,7 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [datePicker addTarget:self action:@selector(onDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
     self.dueDate = datePicker.date;
     self.dateTextField.inputView = datePicker;
     
@@ -96,7 +97,10 @@
         
         task.workingTime = @( [_workingHoursTextField.text floatValue]);
         task.notes = _notesTextField.text;
-        task.dueDate = self.dueDate;
+        
+        if (![self.dateTextField.text isEqual:@""]) {
+            task.dueDate = self.dueDate;
+        }
         
         [task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
