@@ -312,6 +312,7 @@
 
     [MTDAPIManager sendTextMessage:text inGroup:self.group.groupID];
     
+    [self.delegate MTDConversationFeedViewController:self];
     [self finishSendingMessageAnimated:YES];
     [self scrollToBottomAnimated:YES];
     
@@ -353,7 +354,6 @@
 # pragma mark - view controller segues
 
 - (IBAction)onTapBackButton:(id)sender {
-    [self.delegate MTDConversationFeedViewController:self];
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
