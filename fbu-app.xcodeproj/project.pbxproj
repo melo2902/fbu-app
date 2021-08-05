@@ -323,16 +323,8 @@
 		5862EEE7269CA23500BE2EA4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5862EF01269CC03A00BE2EA4 /* MTDList.h */,
-				5862EF02269CC03A00BE2EA4 /* MTDList.m */,
-				5862EF04269CC04E00BE2EA4 /* MTDTask.h */,
-				5862EF05269CC04E00BE2EA4 /* MTDTask.m */,
-				5862EF2226A20FD800BE2EA4 /* MTDGroup.h */,
-				5862EF2326A20FD800BE2EA4 /* MTDGroup.m */,
-				5862EF2626A221F800BE2EA4 /* MTDPlatform.h */,
-				5862EF2726A221F800BE2EA4 /* MTDPlatform.m */,
-				5862EF2F26A7622800BE2EA4 /* MTDConversation.h */,
-				5862EF3026A7622800BE2EA4 /* MTDConversation.m */,
+				58EBE76326BBA62E000B5BC9 /* Messages */,
+				58EBE76226BBA61B000B5BC9 /* Tasks */,
 				58E0A76F26B9AF4000C1DCE1 /* MTDUser.h */,
 				58E0A77026B9AF4000C1DCE1 /* MTDUser.m */,
 			);
@@ -346,6 +338,30 @@
 				5862EF0C269DE3EE00BE2EA4 /* MTDAPIManager.m */,
 			);
 			path = "API Manager";
+			sourceTree = "<group>";
+		};
+		58EBE76226BBA61B000B5BC9 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				5862EF01269CC03A00BE2EA4 /* MTDList.h */,
+				5862EF02269CC03A00BE2EA4 /* MTDList.m */,
+				5862EF04269CC04E00BE2EA4 /* MTDTask.h */,
+				5862EF05269CC04E00BE2EA4 /* MTDTask.m */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		58EBE76326BBA62E000B5BC9 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				5862EF2226A20FD800BE2EA4 /* MTDGroup.h */,
+				5862EF2326A20FD800BE2EA4 /* MTDGroup.m */,
+				5862EF2626A221F800BE2EA4 /* MTDPlatform.h */,
+				5862EF2726A221F800BE2EA4 /* MTDPlatform.m */,
+				5862EF2F26A7622800BE2EA4 /* MTDConversation.h */,
+				5862EF3026A7622800BE2EA4 /* MTDConversation.m */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		6FEE81DCAF646E2A04BCAD83 /* Pods */ = {
