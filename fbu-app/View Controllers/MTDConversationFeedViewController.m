@@ -103,7 +103,7 @@
     weakCell.completionButtonTapHandler = ^{
         if (group.onRead) {
             [self.arrayOfMessages removeObject:group];
-            [self.arrayOfCompletedMessages addObject:group];
+            [self.arrayOfCompletedMessages insertObject:group atIndex:0];
         } else {
             [self.arrayOfMessages addObject:group];
             [self.arrayOfCompletedMessages removeObject:group];
