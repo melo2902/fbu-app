@@ -10,7 +10,7 @@
 @implementation TaskHeaderView
 
 - (IBAction)updateTaskStatus:(id)sender {
-    
+    self.statusButtonTapHandler();
 }
 
 @end

@@ -17,12 +17,15 @@
 @end
 
 @implementation MTDTaskViewController
+BOOL taskCompletion;
 
 - (void) viewDidLoad {
     [super viewDidLoad];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TaskHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"TaskHeaderView"];
     
+    taskCompletion = self.task.completed;
+    self.taskTitle = self.task.taskTitle;
     self.oldTaskTime = self.task.workingTime;
     
     [self initializeForm];
@@ -36,6 +39,17 @@
         header.titleTextField.text = self.task.taskTitle;
         header.titleTextField.delegate = self;
         header.statusButton.selected = self.task.completed;
+        
+        __weak TaskHeaderView *weakHeader = header;
+        weakHeader.statusButtonTapHandler = ^{
+            if (!self.task.completed) {
+                header.statusButton.selected = YES;
+                taskCompletion = YES;
+            } else {
+                header.statusButton.selected = NO;
+                taskCompletion = NO;
+            }
+        };
                 
         return header;
     }
@@ -124,6 +138,7 @@
 - (IBAction)onTapSave:(id)sender {
     if (self.taskTitle) {
         self.task.taskTitle = self.taskTitle;
+        self.task.completed = taskCompletion;
         [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 float updatedWorkingTime = [self.task.workingTime floatValue] - [self.oldTaskTime floatValue];

@@ -27,7 +27,7 @@
                             <state key="normal" image="circle" catalog="system"/>
                             <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                             <connections>
-                                <action selector="updateTaskStatus:" destination="iN0-l3-epB" eventType="touchUpInside" id="dEl-gI-RoP"/>
+                                <action selector="updateTaskStatus:" destination="iN0-l3-epB" eventType="touchUpInside" id="cKD-bY-lPl"/>
                             </connections>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jqw-qo-4cu">
@@ -54,7 +54,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="statusButton" destination="dGf-nu-Nxb" id="OH9-0M-EBt"/>
+                <outlet property="statusButton" destination="dGf-nu-Nxb" id="O3x-rB-O1a"/>
                 <outlet property="titleTextField" destination="Jqw-qo-4cu" id="Qfv-xz-ZvM"/>
             </connections>
             <point key="canvasLocation" x="-52.173913043478265" y="68.303571428571431"/>
