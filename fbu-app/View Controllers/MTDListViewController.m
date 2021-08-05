@@ -343,11 +343,6 @@
 
         MTDTask *task;
         task = tasksInSection[indexPath.row];
-        
-        // Tasks aren't pulled from the list
-//        [MTDList deleteTask:task toList:self.list withCompletion:
-//         ^(BOOL succeeded, NSError * _Nullable error) {
-//        }];
 
         PFQuery *query = [PFQuery queryWithClassName:@"Task"];
         [query getObjectInBackgroundWithId:task.objectId block:^(PFObject *taskObject, NSError *error) {
@@ -355,7 +350,7 @@
         }];
 
         [[self.allTasksArray[indexPath.section] lastObject] removeObject:task];
-        [self checkForBackgroundText]; // Not show how consistent this is
+        [self checkForBackgroundText];
         [self.tableView reloadData];
         completionHandler(YES);
     }];
