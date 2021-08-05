@@ -18,8 +18,8 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="114"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRd-6A-0a1">
-                            <rect key="frame" x="55" y="2.5" width="61" height="34.5"/>
-                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="25"/>
+                            <rect key="frame" x="55" y="6" width="49" height="27.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -31,7 +31,7 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="1"/>
                             <state key="normal" image="circle" catalog="system"/>
-                            <state key="selected" image="circle.fill" catalog="system"/>
+                            <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                             <connections>
                                 <action selector="updateTaskStatus:" destination="iN0-l3-epB" eventType="touchUpInside" id="dEl-gI-RoP"/>
                             </connections>
@@ -62,8 +62,8 @@
         </view>
     </objects>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
-        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
