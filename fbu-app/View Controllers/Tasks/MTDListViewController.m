@@ -373,7 +373,8 @@
     
     NSDate *currentDate = [NSDate new];
     NSDate *taskDueDate = task.dueDate;
-
+    
+    cell.dueDateLabel.attributedText = nil;
     if (taskDueDate && ![currentDate isEarlierThanOrEqualTo:taskDueDate]) {
         cell.dueDateLabel.attributedText = [self colorStringRed:taskDueDate];
     } else {
