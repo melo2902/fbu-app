@@ -1,5 +1,5 @@
 //
-//  SettingsHeaderView.h
+//  MTDSettingsHeaderView.h
 //  fbu-app
 //
 //  Created by mwen on 8/4/21.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SettingsHeaderView : UITableViewHeaderFooterView
+@interface MTDSettingsHeaderView : UITableViewHeaderFooterView
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *userPFPView;

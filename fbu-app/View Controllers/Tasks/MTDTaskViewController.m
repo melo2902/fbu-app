@@ -9,7 +9,7 @@
 #import "MTDListViewController.h"
 #import "XLForm.h"
 #import "MTDTask.h"
-#import "TaskHeaderView.h"
+#import "MTDTaskHeaderView.h"
 
 @interface MTDTaskViewController ()
 @property (nonatomic) NSNumber *oldTaskTime;
@@ -34,13 +34,13 @@ BOOL taskCompletion;
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
     if (section == 0) {
-        TaskHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TaskHeaderView"];
+        MTDTaskHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TaskHeaderView"];
 
         header.titleTextField.text = self.task.taskTitle;
         header.titleTextField.delegate = self;
         header.statusButton.selected = self.task.completed;
         
-        __weak TaskHeaderView *weakHeader = header;
+        __weak MTDTaskHeaderView *weakHeader = header;
         weakHeader.statusButtonTapHandler = ^{
             if (!self.task.completed) {
                 header.statusButton.selected = YES;

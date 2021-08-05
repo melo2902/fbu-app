@@ -8,7 +8,7 @@
 #import "MTDXLSettingsViewController.h"
 #import "MTDUser.h"
 #import "XLForm.h"
-#import "SettingsHeaderView.h"
+#import "MTDSettingsHeaderView.h"
 #import "SceneDelegate.h"
 #import "MTDLoginViewController.h"
 #import "MTDAPIManager.h"
@@ -38,7 +38,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
     if (section == 0) {
-        SettingsHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"SettingsHeaderView"];
+        MTDSettingsHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"SettingsHeaderView"];
 
         MTDUser *user = [MTDUser currentUser];
         header.nameLabel.text = user.username;
