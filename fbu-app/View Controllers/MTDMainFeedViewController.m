@@ -20,6 +20,7 @@
 @end
 
 @implementation MTDMainFeedViewController
+NSInteger firstLoad = 0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -192,6 +193,23 @@
    
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (firstLoad < 3) {
+        cell.alpha = 0;
+
+        [UIView animateWithDuration:0.5 delay:0.5 * indexPath.row options:UIViewAnimationOptionCurveEaseIn animations:^{
+            cell.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                NSLog(@"Cell done animating");
+            }
+        }];
+        
+        firstLoad += 1;
+    }
+    
 }
 
 # pragma mark - Add a new list functionality
