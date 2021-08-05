@@ -10,9 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TaskHeaderView : UITableViewHeaderFooterView
-@property (weak, nonatomic) IBOutlet UILabel *taskLabel;
 @property (weak, nonatomic) IBOutlet UIButton *statusButton;
-
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @end
 
 NS_ASSUME_NONNULL_END

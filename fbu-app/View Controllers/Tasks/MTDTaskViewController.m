@@ -13,6 +13,7 @@
 
 @interface MTDTaskViewController ()
 @property (nonatomic) NSNumber *oldTaskTime;
+@property (strong, nonatomic) NSString *taskTitle;
 @end
 
 @implementation MTDTaskViewController
@@ -32,7 +33,8 @@
     if (section == 0) {
         TaskHeaderView *header = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:@"TaskHeaderView"];
 
-        header.taskLabel.text = self.task.taskTitle;
+        header.titleTextField.text = self.task.taskTitle;
+        header.titleTextField.delegate = self;
         header.statusButton.selected = self.task.completed;
                 
         return header;
@@ -47,6 +49,10 @@
     }
     
     return 20;
+}
+
+- (void)textFieldDidChangeSelection:(UITextField *)textField {
+    self.taskTitle = textField.text;
 }
 
 - (void)initializeForm {
@@ -116,7 +122,8 @@
 }
 
 - (IBAction)onTapSave:(id)sender {
-    if (self.task.taskTitle) {
+    if (self.taskTitle) {
+        self.task.taskTitle = self.taskTitle;
         [self.task saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
                 float updatedWorkingTime = [self.task.workingTime floatValue] - [self.oldTaskTime floatValue];

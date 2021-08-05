@@ -17,12 +17,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ped-Pd-qMs">
                     <rect key="frame" x="0.0" y="44" width="414" height="114"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRd-6A-0a1">
-                            <rect key="frame" x="55" y="6" width="49" height="27.5"/>
-                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dGf-nu-Nxb">
                             <rect key="frame" x="20" y="10" width="20" height="19"/>
                             <constraints>
@@ -36,11 +30,16 @@
                                 <action selector="updateTaskStatus:" destination="iN0-l3-epB" eventType="touchUpInside" id="dEl-gI-RoP"/>
                             </connections>
                         </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jqw-qo-4cu">
+                            <rect key="frame" x="55" y="3.5" width="7" height="32"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="Jqw-qo-4cu" firstAttribute="leading" secondItem="dGf-nu-Nxb" secondAttribute="trailing" constant="15" id="2VH-ok-9ul"/>
                         <constraint firstItem="dGf-nu-Nxb" firstAttribute="top" secondItem="Ped-Pd-qMs" secondAttribute="top" constant="10" id="9jx-ah-OO3"/>
-                        <constraint firstItem="PRd-6A-0a1" firstAttribute="centerY" secondItem="dGf-nu-Nxb" secondAttribute="centerY" id="WYE-L2-YXH"/>
-                        <constraint firstItem="PRd-6A-0a1" firstAttribute="leading" secondItem="dGf-nu-Nxb" secondAttribute="trailing" constant="15" id="boy-Y1-KtH"/>
+                        <constraint firstItem="Jqw-qo-4cu" firstAttribute="centerY" secondItem="dGf-nu-Nxb" secondAttribute="centerY" id="Rgm-Qz-0oS"/>
                         <constraint firstItem="dGf-nu-Nxb" firstAttribute="leading" secondItem="Ped-Pd-qMs" secondAttribute="leading" constant="20" id="xot-ST-Utn"/>
                     </constraints>
                 </view>
@@ -56,7 +55,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="statusButton" destination="dGf-nu-Nxb" id="OH9-0M-EBt"/>
-                <outlet property="taskLabel" destination="PRd-6A-0a1" id="xLW-nu-hEa"/>
+                <outlet property="titleTextField" destination="Jqw-qo-4cu" id="Qfv-xz-ZvM"/>
             </connections>
             <point key="canvasLocation" x="-52.173913043478265" y="68.303571428571431"/>
         </view>
