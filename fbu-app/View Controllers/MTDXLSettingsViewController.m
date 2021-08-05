@@ -13,10 +13,11 @@
 #import "MTDLoginViewController.h"
 #import "MTDAPIManager.h"
 #import "MTDPlatform.h"
+#import "MTDUser.h"
 #import "WebKit/WebKit.h"
 
-@interface MTDXLSettingsViewController () <UINavigationControllerDelegate, WKNavigationDelegate>
-
+@interface MTDXLSettingsViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, WKNavigationDelegate>
+@property (strong, nonatomic) PFFileObject *userPFPView;
 @end
 
 @implementation MTDXLSettingsViewController
@@ -46,7 +47,7 @@
         if (user.pfp) {
             PFFileObject *pfp = user.pfp;
            
-           [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
+            [pfp getDataInBackgroundWithBlock:^(NSData *imageData, NSError *error) {
                if (!error) {
                    UIImage *originalImage = [UIImage imageWithData:imageData];
                    header.userPFPView.image = originalImage;
@@ -112,9 +113,11 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"manageAccount" rowType:XLFormRowDescriptorTypeInfo title:@"Manage Account"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"editPFP" rowType:XLFormRowDescriptorTypeAccount title:@"Edit Profile Picture"];
-    [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
-    [section addFormRow:row];
+    XLFormRowDescriptor * buttonLeftAlignedRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"buttonLeftAligned" rowType:XLFormRowDescriptorTypeButton title:@"Edit Profile Picture"];
+    [buttonLeftAlignedRow.cellConfig setObject:@(NSTextAlignmentNatural) forKey:@"textLabel.textAlignment"];
+    [buttonLeftAlignedRow.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
+    buttonLeftAlignedRow.action.formSelector = @selector(editProfilePicture:);
+    [section addFormRow:buttonLeftAlignedRow];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notifDefaults" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Update Notification Defaults"];
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
@@ -156,6 +159,64 @@
     [section addFormRow:buttonRow];
     
     self.form = form;
+}
+
+- (void) editProfilePicture: (id) sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+
+    MTDUser *user = [MTDUser currentUser];
+    user.pfp = [self getPFFileFromImage:editedImage];
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (succeeded) {
+            [self.tableView reloadData];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
+}
+
+- (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
+    
+    if (!image) {
+        return nil;
+    }
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    if (!imageData) {
+        return nil;
+    }
+    
+    return [PFFileObject fileObjectWithData:imageData];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 - (IBAction)closeModule:(id)sender {

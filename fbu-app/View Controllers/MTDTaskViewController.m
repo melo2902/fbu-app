@@ -76,6 +76,7 @@
     [buttonLeftAlignedRow.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     buttonLeftAlignedRow.action.formSelector = @selector(connectToGroupMe:);
     [section addFormRow:buttonLeftAlignedRow];
+    
     // Notes
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notes" rowType:XLFormRowDescriptorTypeTextView];
     [row.cellConfigAtConfigure setObject:@"Notes" forKey:@"textView.placeholder"];
