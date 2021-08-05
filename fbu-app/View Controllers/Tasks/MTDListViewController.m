@@ -405,7 +405,7 @@
             }];
 
         } else {
-            [[self.allTasksArray[1] lastObject] addObject:task];
+            [[self.allTasksArray[1] lastObject] insertObject:task atIndex:0];
             [[self.allTasksArray[0] lastObject] removeObject:task];
             
             float updatedWorkingTime = -1 * [task.workingTime floatValue];
