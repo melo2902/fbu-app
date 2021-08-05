@@ -11,7 +11,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MTDMessagesViewController;
+
+@protocol MTDMessagesViewControllerDelegate <NSObject>
+- (void)MTDConversationFeedViewController:(MTDMessagesViewController *)controller;
+@end
+
 @interface MTDMessagesViewController : JSQMessagesViewController
+@property (nonatomic, weak) id <MTDMessagesViewControllerDelegate> delegate;
 @property (strong, nonatomic) MTDGroup *group;
 @end
 

@@ -353,6 +353,7 @@
 # pragma mark - view controller segues
 
 - (IBAction)onTapBackButton:(id)sender {
+    [self.delegate MTDConversationFeedViewController:self];
     [self dismissViewControllerAnimated:true completion:nil];
 }
 

@@ -19,7 +19,7 @@
 #import "MTDUser.h"
 #import "CompletedListView.h"
 
-@interface MTDConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface MTDConversationFeedViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, MTDMessagesViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *allMessagesArray;
 @property (nonatomic, strong) NSMutableArray *tempMessagesArray;
@@ -45,26 +45,26 @@
     
     self.navigationController.navigationBar.titleTextAttributes = textAttributes;
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+    self.pageCount = @1;
+    
+    self.allMessagesArray = [[NSMutableArray alloc] init];
+    self.arrayOfMessages = [[NSMutableArray alloc]init];
+    self.arrayOfCompletedMessages = [[NSMutableArray alloc]init];
+    
+    self.pageNumbers = [[NSMutableArray alloc]init];
+    
+    self.activityIndicator = [[MDCActivityIndicator alloc] init];
+    [self.activityIndicator sizeToFit];
+    [self.tableView addSubview:self.activityIndicator];
+    self.activityIndicator.center = self.view.center;
+    
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CompletedListView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"CompletedListView"];
+    
     if ([MTDAPIManager returnAuthToken]) {
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
-        
-        self.pageCount = @1;
-        
-        self.allMessagesArray = [[NSMutableArray alloc] init];
-        self.arrayOfMessages = [[NSMutableArray alloc]init];
-        self.arrayOfCompletedMessages = [[NSMutableArray alloc]init];
-        
-        self.pageNumbers = [[NSMutableArray alloc]init];
-        
-        self.activityIndicator = [[MDCActivityIndicator alloc] init];
-        [self.activityIndicator sizeToFit];
-        [self.tableView addSubview:self.activityIndicator];
-        self.activityIndicator.center = self.view.center;
-        
-        [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
-        [self.tableView registerNib:[UINib nibWithNibName:@"CompletedListView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"CompletedListView"];
-        
         [self getConversationsAPI];
     } else {
         [self checkForBackgroundText];
@@ -400,6 +400,25 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)MTDConversationFeedViewController:(nonnull MTDMessagesViewController *)controller {
+    
+    self.pageCount = @1;
+    self.endLoading = NO;
+    
+    self.allMessagesArray = [[NSMutableArray alloc] init];
+    self.arrayOfMessages = [[NSMutableArray alloc]init];
+    self.arrayOfCompletedMessages = [[NSMutableArray alloc]init];
+    
+    self.pageNumbers = [[NSMutableArray alloc]init];
+    
+    if ([MTDAPIManager returnAuthToken]) {
+        [self getConversationsAPI];
+    } else {
+        [self checkForBackgroundText];
+        NSLog(@"User has not logged into their linked account yet");
+    }
+}
+
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -412,6 +431,7 @@
         UINavigationController *navigationController = [segue destinationViewController];
         MTDMessagesViewController *messagesViewController = (MTDMessagesViewController *)[navigationController topViewController];
         messagesViewController.group = group;
+        messagesViewController.delegate = self;
     }
 }
 
