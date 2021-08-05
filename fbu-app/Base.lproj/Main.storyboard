@@ -212,7 +212,7 @@
                                                         <constraint firstAttribute="height" constant="22" id="u3H-Fe-Gbv"/>
                                                     </constraints>
                                                     <state key="normal" image="circle" catalog="system"/>
-                                                    <state key="selected" image="circle.fill" catalog="system"/>
+                                                    <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                                                     <connections>
                                                         <action selector="onTapStatus:" destination="KuR-wg-slr" eventType="touchUpInside" id="0Oa-Rq-1mR"/>
                                                     </connections>
@@ -409,7 +409,7 @@
                                                         <constraint firstAttribute="height" constant="22" id="w2r-Yu-3be"/>
                                                     </constraints>
                                                     <state key="normal" image="circle" catalog="system"/>
-                                                    <state key="selected" image="circle.fill" catalog="system"/>
+                                                    <state key="selected" image="checkmark.circle.fill" catalog="system"/>
                                                     <connections>
                                                         <action selector="onTapStatusButton:" destination="tOl-Ls-Omc" eventType="touchUpInside" id="2l4-5G-Oe0"/>
                                                     </connections>
@@ -701,15 +701,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ViC-Rd-IC0"/>
-        <segue reference="Uxo-Z5-1c8"/>
+        <segue reference="kW6-NG-E3p"/>
+        <segue reference="wYF-Ja-7ib"/>
         <segue reference="4kM-Bs-vWe"/>
         <segue reference="Bak-5O-5l0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="circle" catalog="system" width="128" height="121"/>
-        <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="message" catalog="system" width="128" height="113"/>

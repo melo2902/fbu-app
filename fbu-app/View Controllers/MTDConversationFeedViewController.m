@@ -90,10 +90,8 @@
     
     if (!cell.group.onRead){
         [cell.statusButton setSelected:NO];
-//        cell.taskItemLabel.text = cell.taskTitle;
     } else {
         [cell.statusButton setSelected:YES];
-//        cell.taskItemLabel.attributedText = [self strikeOutText:task.taskTitle];
     }
     
     double unixTimeStamp =[group.lastUpdated doubleValue];
