@@ -20,7 +20,6 @@
 		5862EEEA269CA28F00BE2EA4 /* MTDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEE9269CA28F00BE2EA4 /* MTDLoginViewController.m */; };
 		5862EEEE269CA40600BE2EA4 /* MTDSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEED269CA40600BE2EA4 /* MTDSignupViewController.m */; };
 		5862EEF7269CB66A00BE2EA4 /* MTDMainFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEF6269CB66A00BE2EA4 /* MTDMainFeedViewController.m */; };
-		5862EEFA269CB79500BE2EA4 /* MTDSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEF9269CB79500BE2EA4 /* MTDSettingsViewController.m */; };
 		5862EEFD269CBEC300BE2EA4 /* MTDListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEFC269CBEC300BE2EA4 /* MTDListCell.m */; };
 		5862EF00269CBF2E00BE2EA4 /* MTDListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EEFF269CBF2E00BE2EA4 /* MTDListViewController.m */; };
 		5862EF03269CC03A00BE2EA4 /* MTDList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862EF02269CC03A00BE2EA4 /* MTDList.m */; };
@@ -97,8 +96,6 @@
 		5862EEED269CA40600BE2EA4 /* MTDSignupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDSignupViewController.m; sourceTree = "<group>"; };
 		5862EEF5269CB66A00BE2EA4 /* MTDMainFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDMainFeedViewController.h; sourceTree = "<group>"; };
 		5862EEF6269CB66A00BE2EA4 /* MTDMainFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDMainFeedViewController.m; sourceTree = "<group>"; };
-		5862EEF8269CB79500BE2EA4 /* MTDSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDSettingsViewController.h; sourceTree = "<group>"; };
-		5862EEF9269CB79500BE2EA4 /* MTDSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDSettingsViewController.m; sourceTree = "<group>"; };
 		5862EEFB269CBEC300BE2EA4 /* MTDListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDListCell.h; sourceTree = "<group>"; };
 		5862EEFC269CBEC300BE2EA4 /* MTDListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTDListCell.m; sourceTree = "<group>"; };
 		5862EEFE269CBF2E00BE2EA4 /* MTDListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTDListViewController.h; sourceTree = "<group>"; };
@@ -274,8 +271,6 @@
 				58EBE75626BA8BE0000B5BC9 /* MTDXLSettingsViewController.m */,
 				58EBE75526BA8BE0000B5BC9 /* MTDXLSettingsViewController.h */,
 				5862EEF6269CB66A00BE2EA4 /* MTDMainFeedViewController.m */,
-				5862EEF8269CB79500BE2EA4 /* MTDSettingsViewController.h */,
-				5862EEF9269CB79500BE2EA4 /* MTDSettingsViewController.m */,
 				5862EEFE269CBF2E00BE2EA4 /* MTDListViewController.h */,
 				5862EEFF269CBF2E00BE2EA4 /* MTDListViewController.m */,
 				5862EF1F26A0C86100BE2EA4 /* MTDConversationFeedViewController.h */,
@@ -629,7 +624,6 @@
 				5862EEFD269CBEC300BE2EA4 /* MTDListCell.m in Sources */,
 				5862EF3A26A9CEA700BE2EA4 /* MTDSelectionConversationCell.m in Sources */,
 				5862EEC3269C9ED600BE2EA4 /* main.m in Sources */,
-				5862EEFA269CB79500BE2EA4 /* MTDSettingsViewController.m in Sources */,
 				58EBE76126BB04DD000B5BC9 /* TaskHeaderView.m in Sources */,
 				58903F5926B4585A006BCDBF /* MTDListHeaderView.m in Sources */,
 				5862EF03269CC03A00BE2EA4 /* MTDList.m in Sources */,
