@@ -27,7 +27,6 @@
     if (self = [super init]) {
         self.title = @"New task";
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"pencil"] style:UIBarButtonItemStylePlain target:self action:@selector(saveTask)];
-        // It's required to set content size of popup.
         self.contentSizeInPopup = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height / 6);
         self.view.layer.cornerRadius = 20;
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
@@ -62,8 +61,6 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
     [datePicker setDatePickerMode:UIDatePickerModeDate];
     [datePicker addTarget:self action:@selector(onDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    self.dueDate = datePicker.date;
     self.dateTextField.inputView = datePicker;
     
     [self.view addSubview:self.dateTextField];
@@ -112,7 +109,8 @@
 }
 
 - (void)onDatePickerValueChanged:(UIDatePicker *)datePicker {
-    self.dateTextField.text = [datePicker.date formattedDateWithFormat:@"MM-dd-yyyy"];
+    self.dateTextField.text = [datePicker.date formattedDateWithFormat:@"M/d/yy"];
+    self.dueDate = datePicker.date;
 }
 
 - (void) updateListTime: (MTDTask *) task {
