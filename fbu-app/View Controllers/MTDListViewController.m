@@ -287,7 +287,7 @@
     NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
     MTDTask *task = tasksInSection[indexPath.row];
 
-    UIContextualAction *notif = [self createNotification:(NSString *) task.taskTitle inStringTime:@"30s" inSeconds:30];
+    UIContextualAction *notif = [self createNotification:(NSString *) task.taskTitle inStringTime:@"3600s" inSeconds:3600];
 
     UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif]];
     SwipeActions.performsFirstActionWithFullSwipe=false;

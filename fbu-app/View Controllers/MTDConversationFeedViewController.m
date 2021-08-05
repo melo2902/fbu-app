@@ -332,11 +332,9 @@
         NSArray *groupsInSection = [self.allMessagesArray[indexPath.section] lastObject];
         MTDGroup *group = groupsInSection[indexPath.row];
         
-        UIContextualAction *notif1 = [self createNotification: group inStringTime:@"30s" inSeconds:30];
-        UIContextualAction *notif2 = [self createNotification: group inStringTime:@"60s" inSeconds:60];
-        UIContextualAction *notif3 = [self createNotification: group inStringTime:@"90s" inSeconds:90];
+        UIContextualAction *notif = [self createNotification: group inStringTime:@"3600s" inSeconds:3600];
         
-        UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
+        UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif]];
         SwipeActions.performsFirstActionWithFullSwipe=false;
         return SwipeActions;
     }
@@ -369,8 +367,8 @@
         completionHandler(YES);
     }];
     
-    // Need to add a different color
-    notification.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
+    notification.image = [UIImage systemImageNamed:@"bell.badge"];
+    notification.backgroundColor = [UIColor systemBlueColor];
     
     return notification;
     
