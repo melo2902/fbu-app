@@ -118,7 +118,8 @@
     [buttonLeftAlignedRow.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     buttonLeftAlignedRow.action.formSelector = @selector(editProfilePicture:);
     [section addFormRow:buttonLeftAlignedRow];
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notifDefaults" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Update Notification Defaults"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notifDefaults" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Update Notification Default"];
+    row.value = @"1 hr";
     [row.cellConfig setObject:[UIFont fontWithName:@"Avenir Book" size:16] forKey:@"textLabel.font"];
     [section addFormRow:row];
     

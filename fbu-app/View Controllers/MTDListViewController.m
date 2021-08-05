@@ -287,13 +287,9 @@
     NSArray *tasksInSection = [self.allTasksArray[indexPath.section] lastObject];
     MTDTask *task = tasksInSection[indexPath.row];
 
-    UIContextualAction *notif1 = [self createNotification:(NSString *) task.taskTitle inStringTime:@"30s" inSeconds:30];
-    
-    UIContextualAction *notif2 = [self createNotification:(NSString *) task.taskTitle inStringTime:@"60s" inSeconds:60];
+    UIContextualAction *notif = [self createNotification:(NSString *) task.taskTitle inStringTime:@"30s" inSeconds:30];
 
-    UIContextualAction *notif3 = [self createNotification:(NSString *) task.taskTitle inStringTime:@"90s" inSeconds:90];
-
-    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif1,notif2, notif3]];
+    UISwipeActionsConfiguration *SwipeActions = [UISwipeActionsConfiguration configurationWithActions:@[notif]];
     SwipeActions.performsFirstActionWithFullSwipe=false;
     return SwipeActions;
 
@@ -303,7 +299,7 @@
 
 - (UIContextualAction*) createNotification:(NSString *) taskTitle inStringTime: (NSString *) time inSeconds: (NSTimeInterval) seconds {
 
-    UIContextualAction *notification = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:time handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+    UIContextualAction *notification = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"1 hr" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
 
         UNMutableNotificationContent *content;
         content = [UNMutableNotificationContent new];
@@ -318,7 +314,6 @@
         UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
             content:content trigger:trigger];
 
-        // Add a custom action later though will have to use delegate
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
             if (error != nil) {
@@ -329,8 +324,8 @@
         completionHandler(YES);
     }];
 
-    // Need to add a different color
-    notification.backgroundColor = [UIColor colorWithRed:(245/255.0) green:(78/255.0) blue:(70/255.0) alpha:1];
+    notification.image = [UIImage systemImageNamed:@"bell.badge"];
+    notification.backgroundColor = [UIColor systemBlueColor];
 
     return notification;
 
