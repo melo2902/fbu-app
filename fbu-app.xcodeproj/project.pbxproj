@@ -263,26 +263,13 @@
 		5862EEE5269CA22200BE2EA4 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5862EEE8269CA28F00BE2EA4 /* MTDLoginViewController.h */,
-				5862EEE9269CA28F00BE2EA4 /* MTDLoginViewController.m */,
-				5862EEEC269CA40600BE2EA4 /* MTDSignupViewController.h */,
-				5862EEED269CA40600BE2EA4 /* MTDSignupViewController.m */,
 				5862EEF5269CB66A00BE2EA4 /* MTDMainFeedViewController.h */,
+				5862EEF6269CB66A00BE2EA4 /* MTDMainFeedViewController.m */,
+				58EBE76726BBA6D1000B5BC9 /* Login */,
+				58EBE76626BBA6C1000B5BC9 /* Messages */,
+				58EBE76526BBA6B9000B5BC9 /* Tasks */,
 				58EBE75626BA8BE0000B5BC9 /* MTDXLSettingsViewController.m */,
 				58EBE75526BA8BE0000B5BC9 /* MTDXLSettingsViewController.h */,
-				5862EEF6269CB66A00BE2EA4 /* MTDMainFeedViewController.m */,
-				5862EEFE269CBF2E00BE2EA4 /* MTDListViewController.h */,
-				5862EEFF269CBF2E00BE2EA4 /* MTDListViewController.m */,
-				5862EF1F26A0C86100BE2EA4 /* MTDConversationFeedViewController.h */,
-				5862EF2026A0C86100BE2EA4 /* MTDConversationFeedViewController.m */,
-				5862EF3526A9CD7400BE2EA4 /* MTDInitialFilterViewController.h */,
-				5862EF3626A9CD7400BE2EA4 /* MTDInitialFilterViewController.m */,
-				5862EF3226A8CA2000BE2EA4 /* MTDTaskViewController.h */,
-				5862EF3326A8CA2000BE2EA4 /* MTDTaskViewController.m */,
-				5862EF3E26AF956C00BE2EA4 /* MTDMessagesViewController.h */,
-				5862EF3F26AF956C00BE2EA4 /* MTDMessagesViewController.m */,
-				58E0A77D26B9E5A900C1DCE1 /* MTDAddTaskViewController.h */,
-				58E0A77E26B9E5A900C1DCE1 /* MTDAddTaskViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -362,6 +349,43 @@
 				5862EF3026A7622800BE2EA4 /* MTDConversation.m */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		58EBE76526BBA6B9000B5BC9 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				5862EEFE269CBF2E00BE2EA4 /* MTDListViewController.h */,
+				5862EEFF269CBF2E00BE2EA4 /* MTDListViewController.m */,
+				5862EF3226A8CA2000BE2EA4 /* MTDTaskViewController.h */,
+				5862EF3326A8CA2000BE2EA4 /* MTDTaskViewController.m */,
+				58E0A77D26B9E5A900C1DCE1 /* MTDAddTaskViewController.h */,
+				58E0A77E26B9E5A900C1DCE1 /* MTDAddTaskViewController.m */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		58EBE76626BBA6C1000B5BC9 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				5862EF3526A9CD7400BE2EA4 /* MTDInitialFilterViewController.h */,
+				5862EF3626A9CD7400BE2EA4 /* MTDInitialFilterViewController.m */,
+				5862EF1F26A0C86100BE2EA4 /* MTDConversationFeedViewController.h */,
+				5862EF2026A0C86100BE2EA4 /* MTDConversationFeedViewController.m */,
+				5862EF3E26AF956C00BE2EA4 /* MTDMessagesViewController.h */,
+				5862EF3F26AF956C00BE2EA4 /* MTDMessagesViewController.m */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		58EBE76726BBA6D1000B5BC9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5862EEE8269CA28F00BE2EA4 /* MTDLoginViewController.h */,
+				5862EEE9269CA28F00BE2EA4 /* MTDLoginViewController.m */,
+				5862EEEC269CA40600BE2EA4 /* MTDSignupViewController.h */,
+				5862EEED269CA40600BE2EA4 /* MTDSignupViewController.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		6FEE81DCAF646E2A04BCAD83 /* Pods */ = {
