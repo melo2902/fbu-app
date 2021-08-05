@@ -50,7 +50,8 @@
     
     self.pageCount = @1;
     
-    self.allMessagesArray = [[NSMutableArray alloc] init];
+    addBackgroundLabel = [UILabel new];
+    
     self.arrayOfMessages = [[NSMutableArray alloc]init];
     self.arrayOfCompletedMessages = [[NSMutableArray alloc]init];
     
@@ -63,6 +64,11 @@
     
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"TableViewHeaderView"];
     [self.tableView registerNib:[UINib nibWithNibName:@"CompletedListView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"CompletedListView"];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+           selector:@selector(updateConversationFilters:)
+           name:@"updatedConversationFeed"
+           object:nil];
     
     if ([MTDAPIManager returnAuthToken]) {
         [self getConversationsAPI];
@@ -154,11 +160,16 @@
 }
 
 - (void) checkForBackgroundText {
-    addBackgroundLabel = [UILabel new];
     addBackgroundLabel.text = @"No Platforms Connected";
     addBackgroundLabel.font = [UIFont fontWithName:@"Avenir Light" size:16];
     addBackgroundLabel.textColor = [UIColor systemGrayColor];
     addBackgroundLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:addBackgroundLabel];
+    [self.view bringSubviewToFront:addBackgroundLabel];
+}
+
+- (void) removeBackgroundText {
+    addBackgroundLabel.text = @"";
     [self.view addSubview:addBackgroundLabel];
     [self.view bringSubviewToFront:addBackgroundLabel];
 }
@@ -400,14 +411,18 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)MTDConversationFeedViewController:(nonnull MTDMessagesViewController *)controller {
-    
+- (void) reloadViews {
     self.pageCount = @1;
     self.endLoading = NO;
     
     self.allMessagesArray = [[NSMutableArray alloc] init];
     self.arrayOfMessages = [[NSMutableArray alloc]init];
     self.arrayOfCompletedMessages = [[NSMutableArray alloc]init];
+    
+    self.activityIndicator = [[MDCActivityIndicator alloc] init];
+    [self.activityIndicator sizeToFit];
+    [self.tableView addSubview:self.activityIndicator];
+    self.activityIndicator.center = self.view.center;
     
     self.pageNumbers = [[NSMutableArray alloc]init];
     
@@ -416,6 +431,17 @@
     } else {
         [self checkForBackgroundText];
         NSLog(@"User has not logged into their linked account yet");
+    }
+}
+
+- (void)MTDConversationFeedViewController:(nonnull MTDMessagesViewController *)controller {
+    [self reloadViews];
+}
+
+- (void) updateConversationFilters:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"updatedConversationFeed"]) {
+        [self removeBackgroundText];
+        [self reloadViews];
     }
 }
 

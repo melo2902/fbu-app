@@ -201,6 +201,10 @@
             NSLog(@"onRead Conversations filtered out%@", currPlatform.onReadConversations);
             
             [self dismissViewControllerAnimated:YES completion:^{
+                [[NSNotificationCenter defaultCenter]
+                        postNotificationName:@"updatedConversationFeed"
+                        object:self];
+                
                 NSLog(@"Dismiss View Controller");
             }];
         }
