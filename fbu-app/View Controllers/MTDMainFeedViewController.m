@@ -35,6 +35,11 @@ NSInteger firstLoad = 0;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+           selector:@selector(updatePFPMethod:)
+           name:@"updatePFP"
+           object:nil];
+    
     [self registerCustomViews];
     [self getLists];
 }
@@ -275,6 +280,12 @@ NSInteger firstLoad = 0;
 
 - (void)MTDMainFeedViewController:(nonnull MTDListViewController *)controller {
     [self getLists];
+}
+
+- (void) updatePFPMethod:(NSNotification *) notification {
+    if ([[notification name] isEqualToString:@"updatePFP"]) {
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Navigation

@@ -186,6 +186,9 @@
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             [self.tableView reloadData];
+            [[NSNotificationCenter defaultCenter]
+                    postNotificationName:@"updatePFP"
+                    object:self];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
