@@ -17,13 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *totalWorkingTime;
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic) BOOL defaultList;
-
 + (MTDList *) createList: ( NSString *)name ifDefault: (BOOL) userDefined withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-
 + (void) addList: ( MTDList *)list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-
 + (void) updateTime: ( NSNumber *) time toList: (MTDList*) list withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-
++ (void) updateAllListTime: (NSNumber *) time;
 @end
 
 NS_ASSUME_NONNULL_END

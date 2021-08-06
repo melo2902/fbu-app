@@ -37,8 +37,8 @@
 + (void) addList: ( MTDList *)list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     MTDUser *user = [MTDUser currentUser];
-    
     NSMutableArray *currentLists = user.lists;
+    
     [currentLists addObject:list];
     user.lists = currentLists;
     [user saveInBackground];
@@ -51,32 +51,34 @@
     [list saveInBackgroundWithBlock: completion];
     
     if (![list.name isEqual:@"All"]) {
-        MTDUser *user = [MTDUser currentUser];
+        [self updateAllListTime:time];
+    }
+}
 
-        PFQuery *query = [MTDUser query];
-        [query whereKey:@"username" equalTo:user.username];
-        [query includeKey:@"lists.name"];
++ (void) updateAllListTime: (NSNumber *) time {
+    MTDUser *user = [MTDUser currentUser];
 
-        [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-            if (!error) {
-                MTDUser *queriedUser = (MTDUser *)object;
-                NSMutableArray *userLists = queriedUser.lists;
-                for (MTDList *list in userLists) {
-                    if ([list.name isEqual:@"All"]) {
-                        float updatedWorkingTime = [list.totalWorkingTime floatValue] + [time floatValue];
+    PFQuery *query = [MTDUser query];
+    [query whereKey:@"username" equalTo:user.username];
+    [query includeKey:@"lists.name"];
 
-                        list.totalWorkingTime = [NSNumber numberWithFloat:updatedWorkingTime];
-
-                        [list saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                            if (succeeded) {
-                                NSLog(@"Save updated All List: %@", list);
-                            }
-                        }];
-                    }
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+            MTDUser *queriedUser = (MTDUser *)object;
+            NSMutableArray *userLists = queriedUser.lists;
+            for (MTDList *list in userLists) {
+                if ([list.name isEqual:@"All"]) {
+                    float updatedWorkingTime = [list.totalWorkingTime floatValue] + [time floatValue];
+                    list.totalWorkingTime = [NSNumber numberWithFloat:updatedWorkingTime];
+                    [list saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                        if (succeeded) {
+                            NSLog(@"Save updated All List: %@", list);
+                        }
+                    }];
                 }
             }
-        }];
-    }
+        }
+    }];
 }
 
 @end
