@@ -24,7 +24,6 @@
 + (MTDTask*) createTask: ( NSString *)name inList: ( NSString *)list withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     MTDTask *newTask = [[MTDTask alloc] initWithClassName:@"Task"];
-    
     newTask.author = PFUser.currentUser;
     
     NSMutableArray *lists = [[NSMutableArray alloc] init];
@@ -34,9 +33,8 @@
     }
     
     newTask.inLists = lists;
-    
     newTask.taskTitle = name;
-    newTask.workingTime = @(0); // Allow the user to change the default working time
+    newTask.workingTime = @(0);
     newTask.notes = @"";
     newTask.completed = NO;
     

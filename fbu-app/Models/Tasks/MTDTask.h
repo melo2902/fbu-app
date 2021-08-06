@@ -18,9 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSDate *dueDate;
 @property (nonatomic, strong) NSString *notes;
 @property (nonatomic) BOOL completed;
-
 + (MTDTask*) createTask: ( NSString *)name inList: ( NSString *)list withCompletion: (PFBooleanResultBlock  _Nullable) completion;
-
 @end
 
 NS_ASSUME_NONNULL_END
