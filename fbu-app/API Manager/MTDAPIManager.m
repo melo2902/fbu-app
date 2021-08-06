@@ -34,9 +34,7 @@
     [URLString appendString:[NSString stringWithFormat:@"https://api.groupme.com/v3/groups/%@/messages", groupID]];
     
     NSURL *URLRequest = [NSURL URLWithString:URLString];
-
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URLRequest];
-    
     NSDictionary *params =  @{@"message": @{
                                       @"source_guid":[[NSUUID UUID] UUIDString],
                                       @"text":text,
@@ -48,8 +46,7 @@
     
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    MTDUser *user = [MTDUser currentUser];
-    [request setValue:user.authToken forHTTPHeaderField:@"X-Access-Token"];
+    [request setValue:[self returnAuthToken] forHTTPHeaderField:@"X-Access-Token"];
     [request setHTTPBody:requestData];
     
     NSURLSession *session = [NSURLSession sharedSession];
