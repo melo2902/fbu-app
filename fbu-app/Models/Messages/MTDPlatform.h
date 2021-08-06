@@ -16,9 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSMutableArray *onReadConversations;
-
 -(instancetype)initWithJSONData:(NSDictionary*)data onPlatform: (NSString*) platform;
-
 @end
 
 NS_ASSUME_NONNULL_END
