@@ -9,11 +9,9 @@
 #import "Parse/Parse.h"
 
 @interface SceneDelegate ()
-
 @end
 
 @implementation SceneDelegate
-
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
     ParseClientConfiguration *config = [ParseClientConfiguration  configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
