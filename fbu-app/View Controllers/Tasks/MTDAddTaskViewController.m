@@ -39,12 +39,13 @@
     [super viewDidLoad];
 
     _textField = [UITextField new];
+    [_textField becomeFirstResponder];
     _textField.placeholder = @"Add a new task";
     _textField.font = [UIFont fontWithName:@"Avenir Book" size:16];
     _textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
     _textField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:_textField];
-    
+   
     _workingHoursTextField = [UITextField new];
     _workingHoursTextField.placeholder = @"Est. working hours";
     _workingHoursTextField.font = [UIFont fontWithName:@"Avenir Book" size:14];
